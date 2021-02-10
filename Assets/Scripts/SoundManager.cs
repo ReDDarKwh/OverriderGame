@@ -25,9 +25,6 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
-        DontDestroyOnLoad(gameObject);
     }
 
     // Play a single clip through the sound effects source.
@@ -41,8 +38,11 @@ public class SoundManager : MonoBehaviour
     {
         foreach (var source in activeSources.Where(x => !x.isPlaying).ToList())
         {
-            Destroy(source.gameObject);
-            activeSources.Remove(source);
+            if (source != null)
+            {
+                Destroy(source.gameObject);
+                activeSources.Remove(source);
+            }
         }
     }
 }

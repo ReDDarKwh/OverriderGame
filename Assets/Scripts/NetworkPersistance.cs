@@ -31,7 +31,6 @@ namespace Scripts.Hacking
             foreach (var node in levelNodes)
             {
                 levelNodesRepo.Add(node.nodeId, node);
-                Debug.Log(node.nodeId);
             }
 
             yield return new WaitForSeconds(0.5f);
@@ -117,7 +116,6 @@ namespace Scripts.Hacking
                 }
                 else
                 {
-                    Debug.Log($"{savedNode.id} DataNode not found");
                 }
             }
 

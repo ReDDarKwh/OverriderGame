@@ -48,7 +48,6 @@ public class ObjectiveManager : MonoBehaviour
                     {
                         CompleteObjective(objective);
                         objective.triggerZone.playerHasEntered -= handler;
-                        Debug.Log("InZONE!");
                     };
                 objective.triggerZone.playerHasEntered += handler;
                 break;

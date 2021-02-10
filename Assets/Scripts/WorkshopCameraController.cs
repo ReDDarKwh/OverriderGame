@@ -5,6 +5,7 @@ using UnityEngine;
 public class WorkshopCameraController : MonoBehaviour
 {
     public Transform target;
+
     public float distance = 5.0f;
     public float maxDistance = 20;
     public float minDistance = .6f;
@@ -59,6 +60,14 @@ public class WorkshopCameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            ZoomOrthoCamera(cam.ScreenToWorldPoint(Input.mousePosition), 1);
+        }
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            ZoomOrthoCamera(cam.ScreenToWorldPoint(Input.mousePosition), -1);
+        }
 
         if (Input.GetMouseButtonDown(2))
         {
@@ -68,15 +77,6 @@ public class WorkshopCameraController : MonoBehaviour
         {
             var difference = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             transform.position = lastPosition - difference;
-        }
-
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        {
-            ZoomOrthoCamera(cam.ScreenToWorldPoint(Input.mousePosition), 1);
-        }
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            ZoomOrthoCamera(cam.ScreenToWorldPoint(Input.mousePosition), -1);
         }
     }
 }

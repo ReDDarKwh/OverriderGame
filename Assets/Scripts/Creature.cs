@@ -41,9 +41,6 @@ public class Creature : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-
-        Debug.Log(col.collider.tag);
-
         if (col.collider.tag == "Door")
         {
             var door = col.collider.GetComponent<Door>();

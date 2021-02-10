@@ -26,6 +26,9 @@ TextureImporter:
   - first:
       213: -6323605942401353617
     second: CharacterWalkUpper7
+  - first:
+      213: -8608218890353531461
+    second: CharacterWalkUpper8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -69,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -262,6 +265,27 @@ TextureImporter:
       bones: []
       spriteID: f683e9736e90e38a0800000000000000
       internalID: -6323605942401353617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CharacterWalkUpper8
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 1
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb5abab0786798880800000000000000
+      internalID: -8608218890353531461
       vertices: []
       indices: 
       edges: []

@@ -30,7 +30,6 @@ public class LaserEmitter : Action
         ToggleLaser(outputGate.currentValue);
         outputGate.ValueHasChanged += (object sender, EventArgs e) =>
         {
-            Debug.Log("Value changed");
             ToggleLaser(outputGate.currentValue);
         };
     }

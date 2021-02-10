@@ -15,7 +15,6 @@ public class Killable : MonoBehaviour
     internal void InflictDamage(float damage, DamageType damageType = DamageType.Unknown)
     {
         health -= damage;
-        Debug.Log($"{this.gameObject.name} took {damage} damage");
 
         if (health <= 0 && !dead)
         {
