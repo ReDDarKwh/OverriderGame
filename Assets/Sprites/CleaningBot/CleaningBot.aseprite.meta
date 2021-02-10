@@ -1,0 +1,343 @@
+fileFormatVersion: 2
+guid: d79010da3e6089f40a4cfaabbff3669c
+ScriptedImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6478474908320026504
+    second: CleaningBot_0
+  - first:
+      213: -273357342248961652
+    second: CleaningBot_1
+  - first:
+      213: 1201953316760269743
+    second: CleaningBot_2
+  - first:
+      213: 1992237455172116245
+    second: CleaningBot_3
+  - first:
+      213: 621421486468886028
+    second: CleaningBot_4
+  - first:
+      213: -5214876315991712500
+    second: CleaningBot_5
+  - first:
+      213: 5997000780679784907
+    second: CleaningBot_6
+  - first:
+      213: -5314662279151309126
+    second: CleaningBot_7
+  - first:
+      213: -1958269094393161992
+    second: CleaningBot_8
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: d1956ce1ff810451f9738b29e9df561a, type: 3}
+  settings:
+    importType: 0
+    transparencyMode: 0
+    transparentColor: {r: 1, g: 0, b: 1, a: 1}
+    pixelsPerUnit: 16
+    spriteAlignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    generateAnimations: 1
+    createAnimationAssets: 0
+    bindType: 0
+    animType: 0
+    baseAnimator: {instanceID: 0}
+    buildAtlas: 0
+    tileSize: {x: 16, y: 16}
+    tileNameType: 0
+    tileEmpty: 0
+  textureImporterSettings:
+    seamlessCubemap: 0
+    mipmapBias: 0.5
+    wrapMode: 1
+    wrapModeU: 0
+    wrapModeV: 0
+    wrapModeW: 0
+    alphaIsTransparency: 1
+    spriteMode: 2
+    spritePixelsPerUnit: 32
+    spriteTessellationDetail: 0
+    spriteExtrude: 1
+    spriteMeshType: 1
+    spriteAlignment: 0
+    spritePivot: {x: 0, y: 0}
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 1
+    aniso: 1
+    filterMode: 0
+    cubemapConvolution: 0
+    textureType: 8
+    textureShape: 1
+    mipmapFilter: 0
+    mipmapEnabled: 0
+    sRGBTexture: 1
+    fadeOut: 0
+    borderMipmap: 0
+    mipMapsPreserveCoverage: 0
+    mipmapFadeDistanceStart: 1
+    alphaTestReferenceValue: 1
+    convertToNormalMap: 0
+    heightmapScale: 0
+    normalMapFilter: 0
+    alphaSource: 1
+    singleChannelComponent: 0
+    readable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    npotScale: 0
+    generateCubemap: 0
+    mipmapFadeDistanceEnd: 3
+  animationSettings:
+  - animationName: Idle
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 0; To: 0"
+    sprites:
+    - {instanceID: 0}
+    frameNumbers: 00000000
+  - animationName: Washing
+    loopTime: 1
+    about: "Animation Type:\tForward\r\nAnimation:\tFrom: 1; To: 8"
+    sprites:
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    - {instanceID: 0}
+    frameNumbers: 0100000002000000030000000400000005000000060000000700000008000000
+  texture: {instanceID: 0}
+  spriteImportData:
+  - name: CleaningBot_0
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 128
+      width: 64
+      height: 64
+    alignment: 0
+    pivot: {x: 0, y: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    tessellationDetail: 0
+    spriteID: 870bd433565d716a0800000000000000
+  - name: CleaningBot_1
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 128
+      width: 64
+      height: 64
+    alignment: 0
+    pivot: {x: 0, y: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    tessellationDetail: 0
+    spriteID: c89718e02f6d43cf0800000000000000
+  - name: CleaningBot_2
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 128
+      width: 64
+      height: 64
+    alignment: 0
+    pivot: {x: 0, y: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    tessellationDetail: 0
+    spriteID: fa339126c223ea010800000000000000
+  - name: CleaningBot_3
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 64
+      width: 64
+      height: 64
+    alignment: 0
+    pivot: {x: 0, y: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    tessellationDetail: 0
+    spriteID: 51f13cff869d5ab10800000000000000
+  - name: CleaningBot_4
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 64
+      width: 64
+      height: 64
+    alignment: 0
+    pivot: {x: 0, y: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    tessellationDetail: 0
+    spriteID: c0ee5ccac8bbf9800800000000000000
+  - name: CleaningBot_5
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 64
+      width: 64
+      height: 64
+    alignment: 0
+    pivot: {x: 0, y: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    tessellationDetail: 0
+    spriteID: c0d57b5ce9901a7b0800000000000000
+  - name: CleaningBot_6
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 64
+      height: 64
+    alignment: 0
+    pivot: {x: 0, y: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    tessellationDetail: 0
+    spriteID: bc9a822cf60a93350800000000000000
+  - name: CleaningBot_7
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 0
+      width: 64
+      height: 64
+    alignment: 0
+    pivot: {x: 0, y: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    tessellationDetail: 0
+    spriteID: abea40eb0d68e36b0800000000000000
+  - name: CleaningBot_8
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 0
+      width: 64
+      height: 64
+    alignment: 0
+    pivot: {x: 0, y: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
+    tessellationDetail: 0
+    spriteID: 8f6d11e42a4d2d4e0800000000000000
+  spriteRects:
+  - name: CleaningBot_0
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 128
+      width: 64
+      height: 64
+    spriteID: 870bd433565d716a0800000000000000
+    internalID: 0
+  - name: CleaningBot_1
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 128
+      width: 64
+      height: 64
+    spriteID: c89718e02f6d43cf0800000000000000
+    internalID: 0
+  - name: CleaningBot_2
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 128
+      width: 64
+      height: 64
+    spriteID: fa339126c223ea010800000000000000
+    internalID: 0
+  - name: CleaningBot_3
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 64
+      width: 64
+      height: 64
+    spriteID: 51f13cff869d5ab10800000000000000
+    internalID: 0
+  - name: CleaningBot_4
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 64
+      width: 64
+      height: 64
+    spriteID: c0ee5ccac8bbf9800800000000000000
+    internalID: 0
+  - name: CleaningBot_5
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 64
+      width: 64
+      height: 64
+    spriteID: c0d57b5ce9901a7b0800000000000000
+    internalID: 0
+  - name: CleaningBot_6
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 64
+      height: 64
+    spriteID: bc9a822cf60a93350800000000000000
+    internalID: 0
+  - name: CleaningBot_7
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 0
+      width: 64
+      height: 64
+    spriteID: abea40eb0d68e36b0800000000000000
+    internalID: 0
+  - name: CleaningBot_8
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 0
+      width: 64
+      height: 64
+    spriteID: 8f6d11e42a4d2d4e0800000000000000
+    internalID: 0
+  selectedImporter: 1

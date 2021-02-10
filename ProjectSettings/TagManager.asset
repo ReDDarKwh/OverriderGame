@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - HackUI
+  - Door
+  - LineFactory
+  - SceneManager
+  - Network
+  - MousePos
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - AI
+  - Node
+  - Projectile
+  - Separation
+  - Guard
+  - Obstacle
+  - HackUI
+  - Dead
+  - Body
+  - Dirt
+  - Gadget
+  - PostProcess
+  - Damageable
+  - Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

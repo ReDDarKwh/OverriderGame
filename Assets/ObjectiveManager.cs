@@ -1,0 +1,77 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ObjectiveManager : MonoBehaviour
+{
+    public GameObject objectiveUIPrefab;
+    public Transform objectiveUIContainer;
+    public List<Objective> objectives = new List<Objective>();
+    private Dictionary<string, ObjectiveUI> objectiveUIPerName = new Dictionary<string, ObjectiveUI>();
+
+    private int currentObjective = -1;
+
+    void Start()
+    {
+        InitNextObjective();
+    }
+    void InitNextObjective()
+    {
+        currentObjective++;
+
+        if (currentObjective <= objectives.Count - 1)
+        {
+            InitObjective(objectives[currentObjective]);
+        }
+    }
+
+    void InitObjective(Objective objective)
+    {
+        AddObjectiveUI(objective.name);
+
+        EventHandler handler = null;
+
+        switch (objective.objectiveType)
+        {
+            case ObjectiveType.Kill:
+
+                handler = (object sender, EventArgs e) =>
+                    {
+                        CompleteObjective(objective);
+                        objective.target.hasDied -= handler;
+                    };
+                objective.target.hasDied += handler;
+                break;
+            case ObjectiveType.GoToPosition:
+                handler = (object sender, EventArgs e) =>
+                    {
+                        CompleteObjective(objective);
+                        objective.triggerZone.playerHasEntered -= handler;
+                        Debug.Log("InZONE!");
+                    };
+                objective.triggerZone.playerHasEntered += handler;
+                break;
+        }
+    }
+
+    private void CompleteObjective(Objective objective)
+    {
+        CompleteObjectiveUI(objective.name);
+        objective.onComplete.Invoke();
+        InitNextObjective();
+    }
+
+    public void AddObjectiveUI(string name)
+    {
+        var inst = Instantiate(objectiveUIPrefab, objectiveUIContainer);
+        var objective = inst.GetComponent<ObjectiveUI>();
+        objective.objectiveName = name;
+        objectiveUIPerName.Add(name, objective);
+    }
+
+    public void CompleteObjectiveUI(string name)
+    {
+        objectiveUIPerName[name].ObjectiveDone();
+    }
+}

@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3304561438250524466
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1546505376848041546, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6418797896536166765, guid: 6323b1d614d97b042ac1ac59ecc5d9d6,
+        type: 3}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457497, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457509, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: m_Name
+      value: NoiseMakerGadget
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457510, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: gadgetName
+      value: Noise Maker
+      objectReference: {fileID: 0}
+    - target: {fileID: 2743065138823457510, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: handObject
+      value: 
+      objectReference: {fileID: 4516646305362742111, guid: d9c73f51c2e16f94a9a4f70bc86d87d8,
+        type: 3}
+    - target: {fileID: 2743065138823457511, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: prefab
+      value: 
+      objectReference: {fileID: 5896636880886007396, guid: 371a18295e5e4d74ab8fb4db06df7e6c,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 19a23a06465da544798d285e44254062, type: 3}
