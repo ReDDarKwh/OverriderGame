@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Bolt;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Killable : MonoBehaviour
 {
     public float health;
     public bool dead;
     public event EventHandler hasDied;
+    public UnityEvent OnDied;
 
     internal void InflictDamage(float damage, DamageType damageType = DamageType.Unknown)
     {
@@ -19,6 +21,7 @@ public class Killable : MonoBehaviour
         {
             dead = true;
             CustomEvent.Trigger(gameObject, "Died", damageType);
+            OnDied.Invoke();
             OnDeath(EventArgs.Empty);
         }
     }

@@ -67,7 +67,7 @@ MonoBehaviour:
   edgeDstThreshold: 0.5
   maskCutawayDst: 0
   lineWidth: 45
-  lineTex: {fileID: 2800000, guid: 509943d5fac2e7741b15b5e3524b8583, type: 3}
+  lineTex: {fileID: 0}
   viewMeshFilter: {fileID: 869137357626560296}
   maxWeldDistance: 45
   lineMat: {fileID: 2100000, guid: 129768a918b7f924d93fd3fb2bb30486, type: 2}

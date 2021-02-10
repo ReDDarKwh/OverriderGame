@@ -24,6 +24,8 @@ namespace Scripts.Actions
         public Transform minimizeConnectionTransform;
         public Preconnection[] preconnections;
         public TextMeshProUGUI title;
+        public bool disableLine;
+        public GameObject deviceCircle;
 
         private Dictionary<string, GameObject> currentActionDisplays = new Dictionary<string, GameObject>();
         internal Device parentDevice;
@@ -63,8 +65,15 @@ namespace Scripts.Actions
             }
             else
             {
-                lineFactory = GameObject.FindGameObjectWithTag("LineFactory").GetComponent<LineFactory>();
-                line = lineFactory.GetLine(Vector2.zero, Vector2.zero, 0.02f, Color.green);
+                if (!disableLine)
+                {
+                    lineFactory = GameObject.FindGameObjectWithTag("LineFactory").GetComponent<LineFactory>();
+                    line = lineFactory.GetLine(Vector2.zero, Vector2.zero, 0.02f, Color.green);
+                }
+                else
+                {
+                    deviceCircle.SetActive(false);
+                }
             }
 
             mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
@@ -74,7 +83,7 @@ namespace Scripts.Actions
         // Update is called once per frame
         void Update()
         {
-            if (parentDevice == null)
+            if (line != null)
             {
                 line.start = transform.position;
                 line.end = uiVisible ? actionDisplayContainer.position +
