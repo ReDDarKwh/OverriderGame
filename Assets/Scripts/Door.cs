@@ -6,30 +6,14 @@ using UnityEngine.AI;
 
 public class Door : MonoBehaviour
 {
-    public NavMeshObstacle obstacle;
+
+    public DoorController doorController;
     public OpeningAction openingAction;
     public float doorDamage;
-    public float lockTime;
-    private float lockStartTime;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if ((Time.time - lockStartTime > lockTime && obstacle.enabled) || openingAction.outputGate.currentValue)
-        {
-            obstacle.enabled = false;
-        }
-    }
 
     internal void SetIsLocked()
     {
-        obstacle.enabled = true;
-        lockStartTime = Time.time;
+        doorController.SetIsLocked();
     }
 
     void OnTriggerEnter2D(Collider2D collider)

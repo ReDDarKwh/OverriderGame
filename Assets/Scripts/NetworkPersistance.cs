@@ -8,6 +8,7 @@ using System;
 using System.Reflection;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
+using Scripts.Actions;
 
 namespace Scripts.Hacking
 {
@@ -21,6 +22,14 @@ namespace Scripts.Hacking
         void Start()
         {
             StartCoroutine(DelayedLoad());
+        }
+
+        public void RunPreConnections()
+        {
+            foreach (var device in GetComponentsInChildren<Device>())
+            {
+                device.ExecutePreConnection();
+            }
         }
 
         public IEnumerator DelayedLoad()

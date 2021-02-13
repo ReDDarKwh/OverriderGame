@@ -18,7 +18,6 @@ namespace Scripts.Hacking
 
         private NodeState currentState;
         private Dictionary<AbstractGate, Connection> connectionsTo = new Dictionary<AbstractGate, Connection>();
-        private Dictionary<AbstractGate, Connection> connectionsFrom = new Dictionary<AbstractGate, Connection>();
         private Transform mousePos;
         internal Network network;
         internal AbstractGate gate;
@@ -28,6 +27,7 @@ namespace Scripts.Hacking
         public int maxOutputs = Int16.MaxValue;
 
         internal bool isVisible = true;
+        internal bool connectedToInUI;
 
         public HackUI hackUI;
         internal Device device;
@@ -211,6 +211,7 @@ namespace Scripts.Hacking
             {
                 connection.end = node;
                 connectionsTo.Add(node.gate, connection);
+                connectedToInUI = true;
             }
             return result;
         }
@@ -221,6 +222,7 @@ namespace Scripts.Hacking
             {
                 connectionsTo.Remove(e.Gate);
                 Destroy(connection.gameObject);
+                connectedToInUI = connectionsTo.Count > 0;
             }
         }
 

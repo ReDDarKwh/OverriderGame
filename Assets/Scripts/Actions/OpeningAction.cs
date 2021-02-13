@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 
 public class OpeningAction : Action
 {
-    public Vector3 openPositionOffset;
+    public DoorSettings[] doors;
     public float movingSpeed;
-    public Transform door;
-    public Collider2D doorCollider;
-    private Vector3 doorStartPos;
+    private Vector3[] doorStartPos;
     private float pos;
 
     internal bool IsDoorClosing()
@@ -19,19 +18,23 @@ public class OpeningAction : Action
 
     internal override void OnStart()
     {
-        doorStartPos = door.transform.position;
+        doorStartPos = doors.Select(x => x.door.position).ToArray();
     }
 
     // Update is called once per frame
     void Update()
     {
         pos = Mathf.Clamp(pos + Time.deltaTime * movingSpeed * (outputGate.currentValue ? 1 : -1), 0, 1);
-        door.transform.position = Vector3.Lerp(doorStartPos,
-            doorStartPos + openPositionOffset,
-            Mathf.SmoothStep(0.0f, 1.0f, pos)
-        );
+        for (var i = 0; i < doors.Count(); i++)
+        {
+            var doorData = doors[i];
 
-        doorCollider.enabled = !outputGate.currentValue;
+            doorData.door.transform.position = Vector3.Lerp(doorStartPos[i],
+                doorStartPos[i] + doorData.openPositionOffset,
+                Mathf.SmoothStep(0.0f, 1.0f, pos)
+            );
+            doorData.doorCollider.enabled = !outputGate.currentValue;
+        }
     }
 }
 

@@ -28,21 +28,52 @@ public class SoundManager : MonoBehaviour
     }
 
     // Play a single clip through the sound effects source.
-    public void Play(GameObject soundPlayerPrefab, Vector3 pos)
+    public AudioSource Play(GameObject soundPlayerPrefab, Vector3 pos)
     {
         var inst = Instantiate(soundPlayerPrefab, pos, Quaternion.identity).GetComponent<AudioSource>();
         activeSources.Add(inst);
+
+        return inst;
+    }
+
+    public void PauseAll()
+    {
+        foreach (var source in activeSources)
+        {
+            if (source != null)
+            {
+                source.Pause();
+                source.tag = "Paused";
+            }
+        }
+    }
+
+    public void PlayAll()
+    {
+        foreach (var source in activeSources)
+        {
+            if (source != null)
+            {
+                source.Play();
+                source.tag = "Untagged";
+            }
+        }
     }
 
     void Update()
     {
-        foreach (var source in activeSources.Where(x => !x.isPlaying).ToList())
+        foreach (var source in activeSources.Where(x => !x.isPlaying && x.tag != "Paused").ToList())
         {
             if (source != null)
             {
-                Destroy(source.gameObject);
-                activeSources.Remove(source);
+                Stop(source);
             }
         }
+    }
+
+    public void Stop(AudioSource source)
+    {
+        Destroy(source.gameObject);
+        activeSources.Remove(source);
     }
 }

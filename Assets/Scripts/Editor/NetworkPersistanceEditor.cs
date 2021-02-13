@@ -20,6 +20,11 @@ public class NetworkPersistanceEditor : Editor
             np.Load();
         }
 
+        if (GUILayout.Button("Run Preconnections"))
+        {
+            np.RunPreConnections();
+        }
+
         base.OnInspectorGUI();
     }
 }

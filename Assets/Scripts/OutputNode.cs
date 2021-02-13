@@ -14,7 +14,7 @@ public class OutputNode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (node.network.selectedNode == node || node.gate.children.Count > 0)
+        if (node.network.selectedNode == node || node.connectedToInUI)
         {
             spriteRenderer.sprite = connectedSprite;
         }

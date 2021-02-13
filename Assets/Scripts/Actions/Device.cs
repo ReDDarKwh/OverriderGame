@@ -18,13 +18,13 @@ namespace Scripts.Actions
         public UniqueId deviceId;
         public bool disableOutput;
         public bool disableInput;
+        public bool disableLine;
         public Transform actionWindow;
         public Canvas actionDisplayCanvas;
         public RectTransform actionDisplayContainer;
         public Transform minimizeConnectionTransform;
         public Preconnection[] preconnections;
         public TextMeshProUGUI title;
-        public bool disableLine;
         public GameObject deviceCircle;
 
         private Dictionary<string, GameObject> currentActionDisplays = new Dictionary<string, GameObject>();
@@ -40,6 +40,7 @@ namespace Scripts.Actions
         private Line line;
 
         internal bool isAnchored;
+        private Dictionary<Action, Dictionary<string, Node>> nodesPerAction;
 
         public void ToggleIsAnchored()
         {
@@ -54,9 +55,8 @@ namespace Scripts.Actions
         // Start is called before the first frame update
         void Start()
         {
-            ExecutePreConnection(UpdateActionDisplays());
+            UpdateActionDisplays();
             pos = actionWindow.transform.position;
-
             title.SetText(deviceName);
 
             if (parentDevice != null)
@@ -157,7 +157,7 @@ namespace Scripts.Actions
             }
         }
 
-        public Dictionary<Action, Dictionary<string, Node>> UpdateActionDisplays()
+        public void UpdateActionDisplays()
         {
             var nodesPerAction = new Dictionary<Action, Dictionary<string, Node>>();
 
@@ -225,10 +225,10 @@ namespace Scripts.Actions
 
             }
 
-            return nodesPerAction;
+            this.nodesPerAction = nodesPerAction;
         }
 
-        private void ExecutePreConnection(Dictionary<Action, Dictionary<string, Node>> nodesPerAction)
+        public void ExecutePreConnection()
         {
             foreach (var preconnection in preconnections)
             {

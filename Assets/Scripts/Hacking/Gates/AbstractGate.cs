@@ -133,8 +133,11 @@ namespace Scripts.Hacking
 
         internal void SetValue(bool value)
         {
-            currentValue = value;
-            BroadcastValue(value);
+            if (value != currentValue)
+            {
+                currentValue = value;
+                BroadcastValue(value);
+            }
         }
     }
 }

@@ -19,6 +19,8 @@ public partial class PlayerController : MonoBehaviour
     public WorkshopCameraController hackCam;
     public Follower followCam;
 
+    public SoundManager soundManager;
+
     private Vector3 animDir;
     private bool paused;
 
@@ -31,15 +33,17 @@ public partial class PlayerController : MonoBehaviour
             {
                 Time.timeScale = 0.0f;
                 paused = true;
+                soundManager.PauseAll();
             }
             else
             {
                 Time.timeScale = 1.0f;
                 paused = false;
+                soundManager.PlayAll();
             }
 
-            hackCam.enabled = paused;
-            followCam.enabled = !paused;
+            // hackCam.enabled = paused;
+            // followCam.enabled = !paused;
         }
 
         if (!paused)
