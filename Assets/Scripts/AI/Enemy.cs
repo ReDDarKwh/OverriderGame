@@ -14,6 +14,36 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Killable killable;
 
+    public float alertSpottingRadius;
+    public int alertSpottingAngle;
+
+    private bool alert;
+    private AlarmManager alarm;
+    public SpottingAction spotting;
+
+    void Start()
+    {
+        alarm = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<AlarmManager>();
+
+        alarm.gate.ValueHasChanged += (object sender, EventArgs args) =>
+        {
+            if (alarm.gate.currentValue)
+            {
+                SetAlert();
+            }
+        };
+    }
+
+    void SetAlert()
+    {
+        if (!alert)
+        {
+            spotting.VisionRadius = alertSpottingRadius;
+            spotting.VisionAngle = alertSpottingAngle;
+            alert = true;
+        }
+    }
+
     void Update()
     {
         if (!killable.dead)

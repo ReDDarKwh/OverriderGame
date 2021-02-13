@@ -4058,6 +4058,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.13
       objectReference: {fileID: 0}
+    - target: {fileID: 6725844347703517072, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: spotting
+      value: 
+      objectReference: {fileID: 1231297698}
+    - target: {fileID: 6725844347703517072, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: alertSpottingAngle
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725844347703517072, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: alertSpottingRadius
+      value: 2.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6725844347703517073, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: waypoints.Array.data[0]
@@ -8313,6 +8328,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 359987208}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1231297698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1108686864222151840, guid: 07d7b830d55fc444495a8d5f2cb65199,
+    type: 3}
+  m_PrefabInstance: {fileID: 709889445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2fbb147e71b1b42a893d75cc643259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1254755452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8887736350954690249, guid: 1f2a62400f55d584793e367a82224c33,

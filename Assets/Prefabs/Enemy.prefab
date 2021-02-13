@@ -403,6 +403,9 @@ MonoBehaviour:
   anim: {fileID: 1842735973723458397}
   spriteRenderer: {fileID: 4424575753510071145}
   killable: {fileID: 5394983135458890893}
+  alertSpottingRadius: 0
+  alertSpottingAngle: 0
+  spotting: {fileID: 0}
 --- !u!114 &6725844347703517083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,8 +736,8 @@ MonoBehaviour:
   actionName: Spotting
   disableOutput: 0
   disableInput: 0
-  VisionRadius: 3.5
-  VisionAngle: 55
+  VisionRadius: 2.27
+  VisionAngle: 51
   ViewBlockingLayers:
     serializedVersion: 2
     m_Bits: 16384

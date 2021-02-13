@@ -29,6 +29,12 @@ public class SpottingAction : Action
             .Where(x => x != null);
         intrudersDataOutput.SetData(targets == null ? null : targets);
         actionGate.SetValue(targets.Count() != 0);
+
+        if (fieldOfView != null)
+        {
+            fieldOfView.viewAngle = VisionAngle;
+            fieldOfView.viewRadius = VisionRadius;
+        }
     }
 
     public GameObject TargetInView(GameObject target)
