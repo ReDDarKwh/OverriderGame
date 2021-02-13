@@ -8,7 +8,7 @@ public partial class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public float speedModifier;
     public Animator anim;
-    private Vector3 vel;
+    internal Vector3 vel;
     private Vector3 dir;
     public bool dashing;
     public float dashTime;

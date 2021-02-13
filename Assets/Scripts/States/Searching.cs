@@ -50,4 +50,9 @@ public class Searching : MonoBehaviour
         }
     }
 
+    public void StateExit()
+    {
+        creature.nav.Stop();
+    }
+
 }
