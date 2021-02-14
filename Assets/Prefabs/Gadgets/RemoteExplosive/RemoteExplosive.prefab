@@ -15,13 +15,7 @@ MonoBehaviour:
   actionName: Explode
   disableOutput: 0
   disableInput: 0
-  range: 0
-  damage: 0
   parentToDestroy: {fileID: 7007766289619576505}
-  explosionPrefab: {fileID: 3430710727229081019, guid: f5fa1e695b707604b93527b22bbef33b,
-    type: 3}
-  beepingSoundPrefab: {fileID: 1839555597847234748, guid: 132640850d22fe44c83bce5fbca399bf,
-    type: 3}
   animator: {fileID: 2127716760677237124}
 --- !u!1 &3736820784926301948
 GameObject:
@@ -69,7 +63,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -293,7 +286,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7061072599311032807}
-        m_TargetAssemblyTypeName: ExplodingAction, Assembly-CSharp
         m_MethodName: Explode
         m_Mode: 1
         m_Arguments:
@@ -321,6 +313,7 @@ MonoBehaviour:
   device: {fileID: 156271097128408870}
   explodeEffect: {fileID: 3430710727229081019, guid: f5fa1e695b707604b93527b22bbef33b,
     type: 3}
+  deadBodyPrefab: {fileID: 0}
 --- !u!114 &3293176676484684791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +396,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   dead: 0
+  OnDied:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &4245582770435842902
 PrefabInstance:
   m_ObjectHideFlags: 0

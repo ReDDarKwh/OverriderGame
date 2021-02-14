@@ -66,7 +66,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 0f21f35dfbfc3794195286bb8f708ed4, type: 3}
+      objectReference: {fileID: 8300000, guid: 49744445769705c4987ab3de44688f4a, type: 3}
     - target: {fileID: 6291496981245604240, guid: ed55698cbdcf69f468de67c219c85cc9,
         type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 6291496981245604241, guid: ed55698cbdcf69f468de67c219c85cc9,
         type: 3}
       propertyPath: m_Name
-      value: Explosion
+      value: BeepingSound
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed55698cbdcf69f468de67c219c85cc9, type: 3}

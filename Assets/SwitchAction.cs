@@ -5,11 +5,14 @@ using UnityEngine;
 public class SwitchAction : Action
 {
     public float onTime;
+    public AudioSource audioSource;
     private float lastOnTime;
 
     public void Toggle()
     {
         actionGate.SetValue(!actionGate.currentValue);
+
+        audioSource.Play();
 
         if (actionGate.currentValue)
         {
@@ -19,6 +22,7 @@ public class SwitchAction : Action
 
     internal override void OnStart()
     {
+
     }
 
 
