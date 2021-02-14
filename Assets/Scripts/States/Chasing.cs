@@ -10,11 +10,13 @@ public class Chasing : MonoBehaviour
     public ExternalLogicAction chasingAction;
     private GameObject target;
     public float attackRange;
+    public float chasingSpeed;
 
     public void StateEnter()
     {
         target = Variables.Object(gameObject).Get<GameObject>("target");
         creature.nav.SetTarget(target.transform);
+        creature.nav.SetSpeed(chasingSpeed);
 
         if (chasingAction != null)
         {

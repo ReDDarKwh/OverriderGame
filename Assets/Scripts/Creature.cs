@@ -13,6 +13,9 @@ public class Creature : MonoBehaviour
     public float speed;
     public float damping = 10;
 
+    [System.NonSerialized]
+    public bool canLock;
+
     void Update()
     {
         if (!killable.dead)
@@ -39,12 +42,5 @@ public class Creature : MonoBehaviour
         moveState = MoveState.Idle;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.collider.tag == "Door")
-        {
-            var door = col.collider.GetComponent<Door>();
-            door.SetIsLocked();
-        }
-    }
+
 }

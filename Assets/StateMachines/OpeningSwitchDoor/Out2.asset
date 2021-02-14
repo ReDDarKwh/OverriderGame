@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1893448595, guid: a040fb66244a7f54289914d98ea4ef7d, type: 3}
+  m_Name: Out2
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"variables":{"collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":null,"summary":null,"pan":{"x":0.0,"y":0.0},"zoom":1.0,"elements":[{"defaultValues":{},"position":{"x":289.0,"y":-167.0},"guid":"65423917-cb1a-47a4-a044-51a4fd580b84","$version":"A","$type":"Bolt.TriggerStateTransition","$id":"9"},{"coroutine":false,"defaultValues":{},"position":{"x":-375.0,"y":-191.0},"guid":"fdebd3f4-6c0c-4000-a4cf-ce1aa696dcea","$version":"A","$type":"Bolt.Update","$id":"11"},{"member":{"name":"openingAction","parameterTypes":null,"targetType":"DoorController","targetTypeName":"DoorController","$version":"A"},"defaultValues":{"target":null},"position":{"x":-151.0,"y":128.0},"guid":"de9609f3-7d7f-4f92-95bb-af2c9832699b","$version":"A","$type":"Bolt.GetMember","$id":"13"},{"member":{"name":"outputGate","parameterTypes":null,"targetType":"Action","targetTypeName":"Action","$version":"A"},"defaultValues":{"target":null},"position":{"x":-148.0,"y":32.0},"guid":"3095b6fd-508d-40b7-97f0-b9284dc57bd3","$version":"A","$type":"Bolt.GetMember","$id":"16"},{"member":{"name":"currentValue","parameterTypes":null,"targetType":"Scripts.Hacking.AbstractGate","targetTypeName":"Scripts.Hacking.AbstractGate","$version":"A"},"defaultValues":{},"position":{"x":-147.0,"y":-69.0},"guid":"67a1efc3-5cc8-4872-8d8d-79bfb75edf54","$version":"A","$type":"Bolt.GetMember","$id":"19"},{"defaultValues":{},"position":{"x":74.0,"y":-206.0},"guid":"e5939a70-392f-48be-bd92-861ac9144da2","$version":"A","$type":"Bolt.Branch","$id":"22"},{"specifyFallback":false,"kind":"Object","defaultValues":{"name":{"$content":"doorController","$type":"System.String"},"object":null},"position":{"x":-441.0,"y":64.0},"guid":"8b40c11e-3d67-4084-8d43-afe2df6cf75d","$version":"A","$type":"Bolt.GetVariable","$id":"24"},{"sourceUnit":{"$ref":"22"},"sourceKey":"ifTrue","destinationUnit":{"$ref":"9"},"destinationKey":"trigger","guid":"be55ddfc-e638-4ab4-8acc-1307826dac55","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"11"},"sourceKey":"trigger","destinationUnit":{"$ref":"22"},"destinationKey":"enter","guid":"a89385ae-ae19-4e38-9da5-4814ed73da32","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"24"},"sourceKey":"value","destinationUnit":{"$ref":"13"},"destinationKey":"target","guid":"d9fd6a5a-3519-4926-8669-30e6cf476b0a","$type":"Bolt.ValueConnection"},{"sourceUnit":{"$ref":"13"},"sourceKey":"value","destinationUnit":{"$ref":"16"},"destinationKey":"target","guid":"6886d2be-3d31-43fb-afcf-5e8033e1de98","$type":"Bolt.ValueConnection"},{"sourceUnit":{"$ref":"16"},"sourceKey":"value","destinationUnit":{"$ref":"19"},"destinationKey":"target","guid":"24fc4a07-f7b0-405c-a981-143cb0e79b1e","$type":"Bolt.ValueConnection"},{"sourceUnit":{"$ref":"19"},"sourceKey":"value","destinationUnit":{"$ref":"22"},"destinationKey":"condition","guid":"d6dc3e99-30b7-4994-a29c-2737489b16b1","$type":"Bolt.ValueConnection"}],"$version":"A"}}'
+    _objectReferences: []

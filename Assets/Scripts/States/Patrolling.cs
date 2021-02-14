@@ -7,10 +7,12 @@ public class Patrolling : MonoBehaviour
 {
     public Creature creature;
     public WaypointFollower waypointFollower;
+    public float patrollingSpeed;
 
     public void StateEnter()
     {
         waypointFollower.enabled = true;
+        creature.nav.SetSpeed(patrollingSpeed);
     }
 
     public void StateUpdate()

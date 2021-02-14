@@ -9,7 +9,9 @@ public class Door : MonoBehaviour
 
     public DoorController doorController;
     public OpeningAction openingAction;
+    public LayerMask AILayers;
     public float doorDamage;
+    public bool disableTouchLock;
 
     internal void SetIsLocked()
     {
@@ -22,6 +24,17 @@ public class Door : MonoBehaviour
         if (killable != null && openingAction.IsDoorClosing())
         {
             killable.InflictDamage(doorDamage, DamageType.Explosion);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (!disableTouchLock)
+        {
+            if (AILayers == (AILayers | (1 << col.collider.gameObject.layer)))
+            {
+                SetIsLocked();
+            }
         }
     }
 }

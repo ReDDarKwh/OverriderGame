@@ -123,19 +123,19 @@ namespace Scripts.Hacking
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                uiVisible = !uiVisible;
+            // if (Input.GetKeyDown(KeyCode.E))
+            // {
+            //     uiVisible = !uiVisible;
 
-                if (uiVisible)
-                {
-                    ShowHUD();
-                }
-                else
-                {
-                    HideHUD();
-                }
-            }
+            //     if (uiVisible)
+            //     {
+            //         ShowHUD();
+            //     }
+            //     else
+            //     {
+            //         HideHUD();
+            //     }
+            // }
         }
 
         private HackUI[] GetUIHack()

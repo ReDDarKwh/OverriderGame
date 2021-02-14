@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,6 +10,11 @@ public class DoorController : MonoBehaviour
     public NavMeshObstacle obstacle;
     public float lockTime;
     private float lockStartTime;
+
+    void Start()
+    {
+
+    }
 
     internal void SetIsLocked()
     {
@@ -23,5 +29,10 @@ public class DoorController : MonoBehaviour
         {
             obstacle.enabled = false;
         }
+
+        // if (openingAction.outputGate != null)
+        // {
+        //     obstacle.enabled = !openingAction.outputGate.currentValue;
+        // }
     }
 }

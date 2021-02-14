@@ -13,7 +13,6 @@ public abstract class Navigation : MonoBehaviour
     public abstract void Stop();
     public abstract void SetTarget(Transform target);
     public abstract void SetTarget(Vector3 target);
-
-
+    public abstract void SetSpeed(float speed);
 
 }

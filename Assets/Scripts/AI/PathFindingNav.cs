@@ -7,12 +7,18 @@ public class PathFindingNav : Navigation
 {
     public NavMeshAgent navMeshAgent;
     public float refreshDis;
+    public LayerMask doorLayer;
     private Transform movingTarget;
     private Vector3 lastDesiredVelocity;
 
     public override Vector3 GetDir()
     {
         return (!navMeshAgent.hasPath || navMeshAgent.pathPending) ? lastDesiredVelocity : navMeshAgent.desiredVelocity;
+    }
+
+    public override void SetSpeed(float speed)
+    {
+        navMeshAgent.speed = speed;
     }
 
     public override void SetTarget(Transform target)
@@ -57,6 +63,29 @@ public class PathFindingNav : Navigation
         {
             lastDesiredVelocity = navMeshAgent.desiredVelocity;
         }
+    }
+
+    public bool IsGoingThroughDoor(DoorController doorController)
+    {
+        if (this.navMeshAgent.hasPath)
+        {
+            var lastCorner = transform.position;
+            foreach (var c in this.navMeshAgent.path.corners)
+            {
+                var hit = Physics2D.Linecast(lastCorner, c, doorLayer);
+                if (hit.collider != null)
+                {
+                    var door = hit.collider.GetComponent<Door>();
+                    if (door != null)
+                    {
+                        return door.doorController == doorController;
+                    }
+                }
+
+                lastCorner = c;
+            }
+        }
+        return false;
     }
 
     void OnEnable()

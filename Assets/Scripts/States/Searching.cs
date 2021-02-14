@@ -13,7 +13,7 @@ public class Searching : MonoBehaviour
     private Transform targetTranform;
     private bool isMovingObject;
 
-    public void StateEnter(bool isMovingObject = false)
+    public void StateEnter(bool isMovingObject = false, string targetVariableName = "target")
     {
 
         creature.nav.Stop();
@@ -22,12 +22,12 @@ public class Searching : MonoBehaviour
 
         if (isMovingObject)
         {
-            targetTranform = Variables.Object(gameObject).Get<GameObject>("target").transform;
+            targetTranform = Variables.Object(gameObject).Get<GameObject>(targetVariableName).transform;
             creature.nav.SetTarget(targetTranform);
         }
         else
         {
-            lastPos = Variables.Object(gameObject).Get<Vector3>("lastTargetPos");
+            lastPos = Variables.Object(gameObject).Get<Vector3>(targetVariableName);
             creature.nav.SetTarget(lastPos);
         }
 

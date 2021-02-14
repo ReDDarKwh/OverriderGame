@@ -27,7 +27,7 @@ public class WaypointFollower : MonoBehaviour
 
     void OnEnable()
     {
-        if (currentPoint != -1)
+        if (currentPoint != -1 && !requestPath)
         {
             pathFindingNav.SetTarget(waypoints[currentPoint]);
         }
