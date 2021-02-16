@@ -56,7 +56,6 @@ public class Enemy : MonoBehaviour
 
     public void OnDead(DamageType deathDamageType)
     {
-        anim.SetInteger("Dir", 1);
         anim.SetInteger("Mode", 0);
         spriteRenderer.sortingOrder = 9;
         spriteRenderer.transform.rotation = Quaternion.Euler(0, 0, 90);

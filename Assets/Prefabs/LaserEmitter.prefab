@@ -19083,33 +19083,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &6086026253526059095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7833325544650443850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2cc61eb177013a48a1539d6aefd7007, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionName: Active
-  disableOutput: 0
-  disableInput: 0
-  collisionLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  baseCollisionLayers:
-    serializedVersion: 2
-    m_Bits: 16384
-  laserDepth: -1
-  line: {fileID: 6086026253762222401}
-  end: {fileID: 6086026253331330125}
-  endParticleSystem: {fileID: 6086026252563658400}
-  muzzle: {fileID: 6086026253762222403}
-  filterDataInputName: Filter
 --- !u!1 &6086026253762222404
 GameObject:
   m_ObjectHideFlags: 0
@@ -19318,6 +19291,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6086026253526059095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833325544650443850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2cc61eb177013a48a1539d6aefd7007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionName: Active
+  disableOutput: 0
+  disableInput: 0
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  baseCollisionLayers:
+    serializedVersion: 2
+    m_Bits: 16384
+  laserDepth: -1
+  line: {fileID: 6086026253762222401}
+  end: {fileID: 6086026253331330125}
+  endParticleSystem: {fileID: 6086026252563658400}
+  muzzle: {fileID: 6086026253762222403}
+  filterDataInputName: Filter
 --- !u!1001 &6086026253526059053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19433,7 +19433,7 @@ PrefabInstance:
     - target: {fileID: 8355662138841550960, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: uniqueId
-      value: SampleScene_eb828f0c-897e-4b1c-9286-84b9f9d2f9ce
+      value: LaserEmitter_6d48f816-4506-483e-b057-65de252787db
       objectReference: {fileID: 0}
     - target: {fileID: 8639037805424752173, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}

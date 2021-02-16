@@ -9,6 +9,12 @@ public class Unsure : MonoBehaviour
     public ExternalLogicAction chasingAction;
     public Creature creature;
     private GameObject target;
+    private SoundManager soundManager;
+
+    void Start()
+    {
+        soundManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SoundManager>();
+    }
 
     public void StateEnter(bool randomTargetSelection = false)
     {

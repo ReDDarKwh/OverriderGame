@@ -16,13 +16,14 @@ public class Creature : MonoBehaviour
     [System.NonSerialized]
     public bool canLock;
 
+
+
     void Update()
     {
         if (!killable.dead)
         {
             if (body != null)
             {
-                var step = speed * Time.deltaTime;
                 var desiredRotQ = Quaternion.LookRotation(Vector3.forward, headDir) * Quaternion.Euler(0, 0, 90);
                 body.rotation = Quaternion.Lerp(body.rotation, desiredRotQ, Time.deltaTime * damping);
             }

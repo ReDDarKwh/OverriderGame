@@ -50,6 +50,8 @@ MonoBehaviour:
   activate: {fileID: 1713218348889189703}
   desactivate: {fileID: 3198241498445768273}
   animator: {fileID: 7874016005625999646}
+  assignedGuards:
+  - {fileID: 0}
 --- !u!1 &2631911752668581684
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +217,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17a0cc5aacf09a945a2c12604e2e1205, type: 2}
+  - {fileID: 2100000, guid: 99e4d11147509c34a8f4eaa5d16df983, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

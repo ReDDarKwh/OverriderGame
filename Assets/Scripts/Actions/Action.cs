@@ -10,19 +10,14 @@ public abstract class Action : MonoBehaviour
     public string actionName;
     public bool disableOutput;
     public bool disableInput;
-
     internal AbstractGate inputGate;
     public AbstractGate outputGate;
-
     internal OrGate actionGate;
     private OrGate cGate;
-
     internal abstract void OnStart();
-
     private bool isInitiated;
-
     internal IList<DataGate> dataGates = new List<DataGate>();
-
+    public event EventHandler AfterInit;
 
     public void Init()
     {
@@ -56,8 +51,9 @@ public abstract class Action : MonoBehaviour
         OnStart();
 
         isInitiated = true;
-    }
 
+        OnAfterInit(EventArgs.Empty);
+    }
     private void gate_DisconnectedFrom(object sender, EventArgs e)
     {
         if (inputGate.parents.Count == 0)
@@ -72,6 +68,10 @@ public abstract class Action : MonoBehaviour
             cGate.SetValue(true);
         }
     }
-
+    protected virtual void OnAfterInit(EventArgs e)
+    {
+        EventHandler handler = AfterInit;
+        handler?.Invoke(this, e);
+    }
 }
 

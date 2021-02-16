@@ -8,8 +8,8 @@ using System;
 public class Attacking : MonoBehaviour
 {
     public Creature creature;
-    public ShootingAction shootingAction;
-    public Transform gun;
+    public Action shootingAction;
+    public Transform[] guns;
     public float bulletSpeed;
 
     private GameObject target;
@@ -37,10 +37,13 @@ public class Attacking : MonoBehaviour
         }
         creature.headDir = (target.transform.position - transform.position);
 
-        var bulletTravelTime = (target.transform.position - transform.position).magnitude / bulletSpeed;
-        var positionToAimAt = target.transform.position + (GetTargetDirection().normalized * bulletTravelTime) - transform.position;
+        foreach (var gun in guns)
+        {
+            var bulletTravelTime = (target.transform.position - transform.position).magnitude / bulletSpeed;
+            var positionToAimAt = target.transform.position + (GetTargetDirection().normalized * bulletTravelTime) - gun.position;
 
-        gun.rotation = Quaternion.LookRotation(Vector3.forward, positionToAimAt) * Quaternion.Euler(0, 0, 90);
+            gun.rotation = Quaternion.LookRotation(Vector3.forward, positionToAimAt) * Quaternion.Euler(0, 0, 90);
+        }
     }
 
     Vector3 GetTargetDirection()

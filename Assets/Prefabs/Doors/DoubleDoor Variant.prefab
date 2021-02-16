@@ -99,7 +99,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorController: {fileID: 8193812657647299937}
   openingAction: {fileID: 4126590000693253459}
+  AILayers:
+    serializedVersion: 2
+    m_Bits: 8192
   doorDamage: 1000000
+  disableTouchLock: 0
 --- !u!61 &255170172
 BoxCollider2D:
   m_ObjectHideFlags: 0
