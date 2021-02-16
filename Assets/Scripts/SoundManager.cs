@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class SoundManager : MonoBehaviour
 {
@@ -9,31 +10,81 @@ public class SoundManager : MonoBehaviour
 
     // Singleton instance.
     public static SoundManager Instance = null;
-
-    public HashSet<AudioSource> activeSources = new HashSet<AudioSource>();
+    public GameObject soundPrefab;
+    public int poolSize;
+    public Transform poolParent;
+    private HashSet<AudioSource> activeSources = new HashSet<AudioSource>();
+    private Stack<AudioSource> pool = new Stack<AudioSource>();
 
     // Initialize the singleton instance.
     private void Awake()
     {
-        // If there is not already an instance of SoundManager, set it to this.
         if (Instance == null)
         {
             Instance = this;
+            InitPool();
         }
-        //If an instance already exists, destroy whatever this object is to enforce the singleton.
         else if (Instance != this)
         {
             Destroy(gameObject);
         }
     }
 
-    // Play a single clip through the sound effects source.
-    public AudioSource Play(GameObject soundPlayerPrefab, Vector3 pos)
+    private void InitPool()
     {
-        var inst = Instantiate(soundPlayerPrefab, pos, Quaternion.identity).GetComponent<AudioSource>();
-        activeSources.Add(inst);
+        for (var i = 0; i < poolSize; i++)
+        {
+            var inst = Instantiate(soundPrefab, poolParent);
+            inst.SetActive(false);
+            pool.Push(inst.GetComponent<AudioSource>());
+        }
+    }
 
+    private AudioSource GetAudioSource(SoundPreset settings)
+    {
+        var audioSource = pool.Pop();
+        audioSource.gameObject.SetActive(true);
+        activeSources.Add(audioSource);
+
+        audioSource.clip = settings.audioClip;
+        audioSource.loop = settings.loop;
+        audioSource.spatialBlend = settings.spacialBlend;
+        audioSource.pitch = settings.pitch;
+        audioSource.priority = settings.priority;
+        audioSource.volume = settings.volume;
+
+        return audioSource;
+    }
+
+    private void RemoveAudioSource(AudioSource audioSource)
+    {
+        pool.Push(audioSource);
+        activeSources.Remove(audioSource);
+        audioSource.gameObject.SetActive(false);
+    }
+
+    // Play a single clip through the sound effects source.
+    public AudioSource Make(SoundPreset soundPreset, Vector3 pos)
+    {
+        var inst = GetAudioSource(soundPreset);
+        inst.transform.position = pos;
+        if (soundPreset.playOnAwake)
+        {
+            Play(inst);
+        }
         return inst;
+    }
+
+    public void Play(AudioSource audioSource)
+    {
+        audioSource.Play();
+        audioSource.tag = "Untagged";
+    }
+
+    public void Pause(AudioSource audioSource)
+    {
+        audioSource.Pause();
+        audioSource.tag = "Paused";
     }
 
     public void PauseAll()
@@ -73,7 +124,6 @@ public class SoundManager : MonoBehaviour
 
     public void Stop(AudioSource source)
     {
-        Destroy(source.gameObject);
-        activeSources.Remove(source);
+        RemoveAudioSource(source);
     }
 }

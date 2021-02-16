@@ -5,14 +5,13 @@ using UnityEngine;
 public class SwitchAction : Action
 {
     public float onTime;
-    public AudioSource audioSource;
+    public SoundPreset soundPreset;
     private float lastOnTime;
 
     public void Toggle()
     {
         actionGate.SetValue(!actionGate.currentValue);
-
-        audioSource.Play();
+        SoundManager.Instance.Make(soundPreset, transform.position);
 
         if (actionGate.currentValue)
         {

@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class SoundPlayer : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public AudioClip audioClip;
-
+    public SoundPreset[] soundPresets;
     public void Play()
     {
-        audioSource.PlayOneShot(audioClip);
+        foreach (var soundPreset in soundPresets) SoundManager.Instance.Make(soundPreset, transform.position);
     }
 }

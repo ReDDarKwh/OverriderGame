@@ -6,7 +6,7 @@ using System.Linq;
 public class Explosion : MonoBehaviour
 {
     public MilkShake.ShakePreset shakePreset;
-    public GameObject explosionSoundPrefab;
+    public SoundPreset explosionSound;
     public float damage;
     public float radius;
     public LayerMask affected;
@@ -14,7 +14,7 @@ public class Explosion : MonoBehaviour
     void Start()
     {
         MilkShake.Shaker.ShakeAll(shakePreset);
-        SoundManager.Instance.Play(explosionSoundPrefab, transform.position);
+        SoundManager.Instance.Make(explosionSound, transform.position);
     }
 
     public void DealDamage()
@@ -29,7 +29,6 @@ public class Explosion : MonoBehaviour
 
     public void AnimationEnd()
     {
-
         Destroy(this.gameObject);
     }
 }

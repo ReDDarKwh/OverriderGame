@@ -11,6 +11,15 @@ public class Chasing : MonoBehaviour
     private GameObject target;
     public float attackRange;
     public float chasingSpeed;
+    public SoundPreset chasingSound;
+
+    public void MakeChasingSound()
+    {
+        if (chasingSound)
+        {
+            SoundManager.Instance.Make(chasingSound, transform.position);
+        }
+    }
 
     public void StateEnter()
     {

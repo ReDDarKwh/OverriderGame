@@ -32,7 +32,7 @@ public class GuardRobotAnimControl : MonoBehaviour
     {
         foreach (var gun in gunSprites)
         {
-            gun.enabled = true;
+            gun.gameObject.SetActive(true);
         }
     }
 
@@ -40,7 +40,7 @@ public class GuardRobotAnimControl : MonoBehaviour
     {
         foreach (var gun in gunSprites)
         {
-            gun.enabled = false;
+            gun.gameObject.SetActive(false);
         }
     }
 }

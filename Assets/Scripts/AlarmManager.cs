@@ -8,7 +8,7 @@ public class AlarmManager : MonoBehaviour
 {
     internal OrGate gate = new OrGate();
     public SoundManager soundManager;
-    public GameObject soundPrefab;
+    public SoundPreset alarmSound;
     public float alarmTime;
 
     private float alarmStartTime;
@@ -18,19 +18,24 @@ public class AlarmManager : MonoBehaviour
     {
         gate.ValueHasChanged += (object sender, EventArgs args) =>
         {
-            if(gate.currentValue){
-                audioSource = soundManager.Play(soundPrefab, Vector3.zero);
+            if (gate.currentValue)
+            {
+                audioSource = SoundManager.Instance.Make(alarmSound, Vector3.zero);
                 alarmStartTime = Time.time;
-            } else {
-                soundManager.Stop(audioSource);
+            }
+            else
+            {
+                SoundManager.Instance.Stop(audioSource);
                 audioSource = null;
             }
-        }; 
+        };
     }
 
-    void Update(){
-        
-        if(gate.currentValue &&  Time.time - alarmStartTime > alarmTime){
+    void Update()
+    {
+
+        if (gate.currentValue && Time.time - alarmStartTime > alarmTime)
+        {
             gate.SetValue(false);
         }
     }

@@ -50,7 +50,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -118,8 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakePreset: {fileID: 11400000, guid: 807abbe8858c97d46807731c6ac00e6e, type: 2}
-  explosionSoundPrefab: {fileID: 1839555597847234748, guid: 1db9f76999f0df643810dcf11a821e06,
-    type: 3}
+  explosionSound: {fileID: 11400000, guid: 118398140f73d9a408858e516a5bf664, type: 2}
   damage: 100
   radius: 2
   affected:

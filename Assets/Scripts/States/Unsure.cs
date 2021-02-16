@@ -9,11 +9,17 @@ public class Unsure : MonoBehaviour
     public ExternalLogicAction chasingAction;
     public Creature creature;
     private GameObject target;
-    private SoundManager soundManager;
+    public SoundPreset unsureSound;
+    public SoundPreset scanningSound;
+    private AudioSource scanningAudio;
 
-    void Start()
+    public void MakeSound()
     {
-        soundManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SoundManager>();
+        if (unsureSound)
+        {
+            unsureSound.Play(transform.position);
+            scanningAudio = scanningSound.Play(transform.position);
+        }
     }
 
     public void StateEnter(bool randomTargetSelection = false)
@@ -47,5 +53,13 @@ public class Unsure : MonoBehaviour
     public void StateUpdate()
     {
         creature.headDir = target.transform.position - transform.position;
+    }
+
+    public void StateExit()
+    {
+        if (scanningAudio)
+        {
+            SoundManager.Instance.Stop(scanningAudio);
+        }
     }
 }

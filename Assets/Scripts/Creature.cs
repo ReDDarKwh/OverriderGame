@@ -16,8 +16,6 @@ public class Creature : MonoBehaviour
     [System.NonSerialized]
     public bool canLock;
 
-
-
     void Update()
     {
         if (!killable.dead)
@@ -43,5 +41,9 @@ public class Creature : MonoBehaviour
         moveState = MoveState.Idle;
     }
 
+    public void MakeSound(SoundPreset sound)
+    {
+        SoundManager.Instance.Make(sound, transform.position);
+    }
 
 }

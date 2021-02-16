@@ -9,7 +9,7 @@ public class GuardRobotShooting : MonoBehaviour
     public Animator animator;
     public ExternalLogicAction shootingAction;
     public GameObject projectilePrefab;
-    public GameObject soundPrefab;
+    public SoundPreset shootingSound;
     public ParticleSystem particle;
 
     public float shootOffset;
@@ -17,13 +17,7 @@ public class GuardRobotShooting : MonoBehaviour
 
     private float lastShot;
     private float time;
-    private SoundManager soundManager;
     private bool canShoot;
-
-    void Start()
-    {
-        soundManager = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SoundManager>();
-    }
 
     void Update()
     {
@@ -52,7 +46,7 @@ public class GuardRobotShooting : MonoBehaviour
     {
         var projectile = Instantiate(projectilePrefab, muzzle.position, muzzle.rotation);
         animator.SetTrigger("Shoot");
-        soundManager.Play(soundPrefab, transform.position);
+        SoundManager.Instance.Make(shootingSound, transform.position);
         particle.Play();
     }
 }

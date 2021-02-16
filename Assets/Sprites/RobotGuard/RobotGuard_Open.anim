@@ -21,16 +21,16 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 35711240464388495, guid: 1b0f52401ecf2b340bc9c04c3a49e2b4, type: 3}
-    - time: 0.07
+    - time: 0.08
       value: {fileID: -2796573470879238080, guid: 1b0f52401ecf2b340bc9c04c3a49e2b4,
         type: 3}
-    - time: 0.14
+    - time: 0.16
       value: {fileID: 8896247408397206590, guid: 1b0f52401ecf2b340bc9c04c3a49e2b4,
         type: 3}
-    - time: 0.21
+    - time: 0.24
       value: {fileID: 414733346971214952, guid: 1b0f52401ecf2b340bc9c04c3a49e2b4,
         type: 3}
-    - time: 0.24000001
+    - time: 0.32
       value: {fileID: 414733346971214952, guid: 1b0f52401ecf2b340bc9c04c3a49e2b4,
         type: 3}
     attribute: m_Sprite
@@ -62,7 +62,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.28
+    m_StopTime: 0.36
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -82,7 +82,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.28
+  - time: 0
+    functionName: Play
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.36
     functionName: ShowGuns
     data: 
     objectReferenceParameter: {fileID: 0}

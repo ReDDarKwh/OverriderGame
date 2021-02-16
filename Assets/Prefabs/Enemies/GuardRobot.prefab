@@ -173,7 +173,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 56
+  m_SortingOrder: 11
   m_Sprite: {fileID: -1506921096087569618, guid: 1b0f52401ecf2b340bc9c04c3a49e2b4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -220,11 +220,12 @@ MonoBehaviour:
   muzzle: {fileID: 1831342911426946365}
   animator: {fileID: 1831342910298731199}
   shootingAction: {fileID: 1831342911131102649}
-  projectilePrefab: {fileID: 6453841275999851734, guid: 1f94bdbdc1f64dc4ca6b8b3b5c409564,
+  projectilePrefab: {fileID: 5889038630896542070, guid: 3441baa409a875544a8aa491f942b2cf,
     type: 3}
-  soundPrefab: {fileID: 0}
-  shootOffset: 0
-  shootSpeed: 0
+  shootingSound: {fileID: 11400000, guid: 0969d1fcb71b86d4e9a67ed736069f18, type: 2}
+  particle: {fileID: 625526989259335713}
+  shootOffset: 4.712389
+  shootSpeed: 10
 --- !u!1 &1831342910506462111
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +378,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 56
+  m_SortingOrder: 11
   m_Sprite: {fileID: -1506921096087569618, guid: 1b0f52401ecf2b340bc9c04c3a49e2b4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -421,14 +422,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1749303e253fd4eb4ecd28e3ce41bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzle: {fileID: 0}
+  muzzle: {fileID: 3728769934262597101}
   animator: {fileID: 1831342911697850161}
   shootingAction: {fileID: 1831342911131102649}
-  projectilePrefab: {fileID: 6453841275999851734, guid: 1f94bdbdc1f64dc4ca6b8b3b5c409564,
+  projectilePrefab: {fileID: 5889038630896542070, guid: 3441baa409a875544a8aa491f942b2cf,
     type: 3}
-  soundPrefab: {fileID: 0}
+  shootingSound: {fileID: 11400000, guid: 0969d1fcb71b86d4e9a67ed736069f18, type: 2}
+  particle: {fileID: 2484629821373577457}
   shootOffset: 0
-  shootSpeed: 0
+  shootSpeed: 10
 --- !u!1 &1831342912116185838
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,6 +604,7 @@ MonoBehaviour:
   chasingAction: {fileID: 8692191912280212608}
   attackRange: 2
   chasingSpeed: 2.5
+  chasingSound: {fileID: 11400000, guid: 233b969e7395fc74099a0e1845a38d74, type: 2}
 --- !u!114 &4917019711562854735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,6 +1446,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5687418374181266281}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &625526989259335713 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5063054900156582728, guid: 88ec40b63f997144c83aa11bc54238ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 5687418374181266281}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7221724535151801273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1515,6 +1524,12 @@ PrefabInstance:
 --- !u!4 &3728769934262597101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6307282808919475796, guid: 88ec40b63f997144c83aa11bc54238ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7221724535151801273}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2484629821373577457 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5063054900156582728, guid: 88ec40b63f997144c83aa11bc54238ee,
     type: 3}
   m_PrefabInstance: {fileID: 7221724535151801273}
   m_PrefabAsset: {fileID: 0}
