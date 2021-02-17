@@ -9,4 +9,9 @@ public class SoundPlayer : MonoBehaviour
     {
         foreach (var soundPreset in soundPresets) SoundManager.Instance.Make(soundPreset, transform.position);
     }
+
+    public void PlayOne(int index)
+    {
+        SoundManager.Instance.Make(soundPresets[index], transform.position);
+    }
 }

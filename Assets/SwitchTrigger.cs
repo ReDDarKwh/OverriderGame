@@ -10,7 +10,10 @@ public class SwitchTrigger : MonoBehaviour
 
     void Start()
     {
-        interactable.onUsed.AddListener(OnSwitchUsed);
+        if (interactable)
+        {
+            interactable.onUsed.AddListener(OnSwitchUsed);
+        }
     }
 
     void OnSwitchUsed()
@@ -31,8 +34,11 @@ public class SwitchTrigger : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider)
     {
+        if (!interactable)
+            return;
+
         var creature = collider.GetComponent<Creature>();
-        if (creature != null)
+        if (creature)
         {
             CustomEvent.Trigger(collider.gameObject, "ActivateSwitchRequested", interactable.gameObject, doorController);
         }

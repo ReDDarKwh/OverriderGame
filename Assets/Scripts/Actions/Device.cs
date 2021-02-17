@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using System.Linq;
 using Vectrosity;
 using TMPro;
+using Network = Scripts.Hacking.Network;
 
 namespace Scripts.Actions
 {
@@ -26,7 +27,11 @@ namespace Scripts.Actions
         public Preconnection[] preconnections;
         public TextMeshProUGUI title;
         public GameObject deviceCircle;
+        public int accessLevel;
+        public GameObject AccessDeniedDisplay;
+        public TextMeshProUGUI AccessDeniedText;
 
+        internal bool playerCanAccess = true;
         private Dictionary<string, GameObject> currentActionDisplays = new Dictionary<string, GameObject>();
         internal Device parentDevice;
         internal bool uiVisible;
@@ -42,22 +47,13 @@ namespace Scripts.Actions
         internal bool isAnchored;
         private Dictionary<Action, Dictionary<string, Node>> nodesPerAction;
 
-        public void ToggleIsAnchored()
-        {
-            isAnchored = !isAnchored;
-
-            if (isAnchored)
-            {
-                pos = actionWindow.transform.position;
-            }
-        }
-
         // Start is called before the first frame update
         void Start()
         {
             UpdateActionDisplays();
+            UpdateAccessLevel();
+
             pos = actionWindow.transform.position;
-            title.SetText(deviceName);
 
             if (parentDevice != null)
             {
@@ -78,7 +74,6 @@ namespace Scripts.Actions
 
             mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
         }
-
 
         // Update is called once per frame
         void Update()
@@ -104,6 +99,46 @@ namespace Scripts.Actions
                 {
                     actionWindow.position = pos;
                 }
+            }
+        }
+
+        internal void UpdateAccessLevel()
+        {
+            if (Network.Instance.accessLevel < this.accessLevel && playerCanAccess)
+            {
+                SetNodesPlayerAccessible(false);
+                playerCanAccess = false;
+                AccessDeniedDisplay.SetActive(true);
+                title.SetText(deviceName + " (Secured)");
+                AccessDeniedText.SetText($"Level {this.accessLevel}");
+            }
+            else
+            {
+                SetNodesPlayerAccessible(true);
+                playerCanAccess = true;
+                AccessDeniedDisplay.SetActive(false);
+                title.SetText(deviceName);
+            }
+        }
+
+        private void SetNodesPlayerAccessible(bool accessible)
+        {
+            foreach (var actions in nodesPerAction)
+            {
+                foreach (var node in actions.Value.Values)
+                {
+                    node.SetPlayerAccessible(accessible);
+                }
+            }
+        }
+
+        public void ToggleIsAnchored()
+        {
+            isAnchored = !isAnchored;
+
+            if (isAnchored)
+            {
+                pos = actionWindow.transform.position;
             }
         }
 
@@ -234,7 +269,7 @@ namespace Scripts.Actions
             {
                 var fromNode = nodesPerAction[preconnection.fromAction][preconnection.fromNodeName];
                 var toNode = nodesPerAction[preconnection.toAction][preconnection.toNodeName];
-                fromNode.network.Connect(fromNode, toNode);
+                Network.Instance.Connect(fromNode, toNode);
             }
         }
 

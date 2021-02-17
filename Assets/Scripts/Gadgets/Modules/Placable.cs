@@ -1,5 +1,7 @@
 
 using UnityEngine;
+using Scripts.Hacking;
+using Network = Scripts.Hacking.Network;
 
 namespace Scripts.Gadgets.Modules
 {
@@ -38,7 +40,7 @@ namespace Scripts.Gadgets.Modules
                 }
                 else
                 {
-                    Instantiate(prefab, preview.transform.position, Quaternion.identity);
+                    Instantiate(prefab, preview.transform.position, Quaternion.identity, Network.Instance.transform);
                 }
 
                 repo.SelectGadget(null);

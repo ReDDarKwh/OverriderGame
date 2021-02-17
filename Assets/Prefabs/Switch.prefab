@@ -16,7 +16,6 @@ MonoBehaviour:
   disableOutput: 0
   disableInput: 0
   onTime: 2
-  soundPreset: {fileID: 11400000, guid: b12989c42072baf498f034e406405db2, type: 2}
 --- !u!1 &2077865597902047870
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,11 +41,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077865597902047870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.112, y: -0.017, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
-  m_Father: {fileID: 436977084987991357}
-  m_RootOrder: 1
+  m_Father: {fileID: 7796842112792754721}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6602321360208572027
 SpriteRenderer:
@@ -111,6 +110,8 @@ GameObject:
   - component: {fileID: 6024979840678002462}
   - component: {fileID: 8057143037798720841}
   - component: {fileID: 4295983865210312306}
+  - component: {fileID: 4373818247106391183}
+  - component: {fileID: 5483629005321924417}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -128,7 +129,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.136, y: -0.021, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6743741003446124912}
   m_Father: {fileID: 436977084987991357}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -225,6 +227,53 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4373818247106391183}
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Use
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5483629005321924417}
+        m_MethodName: PlayOne
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onError:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4373818247106391183}
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Error
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5483629005321924417}
+        m_MethodName: PlayOne
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4295983865210312306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +288,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectionSprite: {fileID: 6602321360208572027}
   interactable: {fileID: 8057143037798720841}
+  device: {fileID: 978377719302242187}
+  cooldownTime: 0.05
+--- !u!95 &4373818247106391183
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017124398312231228}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 84bc4ee4cb82aef418206c969535bb74, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5483629005321924417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017124398312231228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3596759f023f1174bbf93c317947cc37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPresets:
+  - {fileID: 11400000, guid: 653b299d9edc0c847b3d5e08cfe34da1, type: 2}
+  - {fileID: 11400000, guid: b12989c42072baf498f034e406405db2, type: 2}
 --- !u!1 &9051389437459904685
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +352,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7796842112792754721}
-  - {fileID: 6743741003446124912}
   - {fileID: 978377719302242184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -292,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 4089401180447782003, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4089401180447782003, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
@@ -447,6 +531,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3842588557429279739}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &978377719302242187 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3842588557429279739}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996142f587c96d144ab89cb06f4311c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &978377720833560476 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4089401182147920999, guid: 6e3ab18108021c44f8ff40f77330424b,

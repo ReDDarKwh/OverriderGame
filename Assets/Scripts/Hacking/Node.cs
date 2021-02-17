@@ -19,7 +19,6 @@ namespace Scripts.Hacking
         private NodeState currentState;
         private Dictionary<AbstractGate, Connection> connectionsTo = new Dictionary<AbstractGate, Connection>();
         private Transform mousePos;
-        internal Network network;
         internal AbstractGate gate;
         internal string nodeId;
         public bool moving;
@@ -31,6 +30,7 @@ namespace Scripts.Hacking
 
         public HackUI hackUI;
         internal Device device;
+        internal bool accessible = true;
 
         // Start is called before the first frame update
 
@@ -66,7 +66,6 @@ namespace Scripts.Hacking
             gate.DeconnectionCompleted += gate_DeconnectionCompleted;
             gate.ValueHasChanged += gate_ValueChange;
             mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
-            network = GameObject.FindGameObjectWithTag("Network").GetComponent<Network>();
             this.device = device;
         }
 
@@ -101,7 +100,7 @@ namespace Scripts.Hacking
         void Update()
         {
 
-            if (!isVisible)
+            if (!isVisible || !accessible)
             {
                 return;
             }
@@ -114,12 +113,12 @@ namespace Scripts.Hacking
 
             SetState(gate.currentValue ? NodeState.On : NodeState.Off);
 
-            if (network.selectedNode != this)
+            if (Network.Instance.selectedNode != this)
             {
                 if ((mousePos.position - transform.position).magnitude < interactionRadius)
                 {
                     SetState(NodeState.Hover);
-                    if (network.selectedNode != null && !network.selectedNode.gate.CanConnect(gate))
+                    if (Network.Instance.selectedNode != null && !Network.Instance.selectedNode.gate.CanConnect(gate))
                     {
                         SetState(NodeState.Error);
                     }
@@ -140,6 +139,11 @@ namespace Scripts.Hacking
             {
                 this.transform.position = mousePos.position;
             }
+        }
+
+        internal void SetPlayerAccessible(bool accessible)
+        {
+            this.accessible = accessible;
         }
 
         public IEnumerator DisableMove()

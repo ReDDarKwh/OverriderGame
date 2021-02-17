@@ -46,7 +46,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -148,6 +147,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   dead: 0
+  OnDied:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &896281460711478618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +198,7 @@ MonoBehaviour:
   device: {fileID: 0}
   explodeEffect: {fileID: 8319351579001915392, guid: e93a4ba14ac1fb64b90c2290b10abd80,
     type: 3}
+  deadBodyPrefab: {fileID: 0}
 --- !u!50 &-4312008987662555675
 Rigidbody2D:
   serializedVersion: 4
@@ -250,6 +253,7 @@ MonoBehaviour:
   disableInput: 0
   noiseEmitter: {fileID: 8367086829589083150}
   emissionInterval: 1
+  soundPreset: {fileID: 11400000, guid: 238a423f29e5ba649b22c3ba868d2187, type: 2}
 --- !u!114 &7594355578923186127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +270,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2565922368253618937}
-        m_TargetAssemblyTypeName: Destroyer, Assembly-CSharp
         m_MethodName: Run
         m_Mode: 1
         m_Arguments:
@@ -277,6 +280,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onError:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8367086829589083150
 MonoBehaviour:
   m_ObjectHideFlags: 0

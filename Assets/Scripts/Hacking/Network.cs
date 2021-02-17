@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Scripts.Actions;
 using UnityEngine;
 
 namespace Scripts.Hacking
@@ -17,10 +18,28 @@ namespace Scripts.Hacking
         public LayerMask nodeLayerMask;
         private bool uiVisible = true;
         public Node mousePosNode;
+        internal int accessLevel;
+        public static Network Instance = null;
 
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else if (Instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        public void UpdateAccessLevels(int accessLevel)
+        {
+            foreach (var device in GetComponentsInChildren<Device>())
+            {
+                this.accessLevel = accessLevel;
+                device.UpdateAccessLevel();
+            }
         }
 
         void DeselectSelectedNode(bool destroyConnection = true)
@@ -78,7 +97,7 @@ namespace Scripts.Hacking
             {
                 if ((mousePos.position - closestNode.transform.position).magnitude < interactionRadius)
                 {
-                    if (closestNode != selectedNode && closestNode.isVisible)
+                    if (closestNode != selectedNode && closestNode.isVisible && closestNode.accessible)
                     {
                         if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && !closestNode.moving && !Input.GetKey(KeyCode.LeftControl))
                         {
