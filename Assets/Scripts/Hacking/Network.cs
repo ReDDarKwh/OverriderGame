@@ -16,7 +16,6 @@ namespace Scripts.Hacking
         public GameObject connectionPrefab;
         public float nodeSearchRadius;
         public LayerMask nodeLayerMask;
-        private bool uiVisible = true;
         public Node mousePosNode;
         internal int accessLevel;
         public static Network Instance = null;

@@ -15,13 +15,11 @@ public class GuardRobotShooting : MonoBehaviour
     public float shootOffset;
     public float shootSpeed;
 
-    private float lastShot;
     private float time;
     private bool canShoot;
 
     void Update()
     {
-
         if (shootingAction.outputGate.currentValue)
         {
             time += Time.deltaTime * shootSpeed;
@@ -36,11 +34,6 @@ public class GuardRobotShooting : MonoBehaviour
                 canShoot = true;
             };
         }
-        else
-        {
-            lastShot = float.MinValue;
-        }
-
     }
     private void Shoot()
     {

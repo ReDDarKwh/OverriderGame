@@ -17,7 +17,7 @@ public class PlayerInteractable : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && playerInRange)
         {
-            if (device.playerCanAccess)
+            if (!device || device.playerCanAccess)
             {
                 interactable.Use();
             }
