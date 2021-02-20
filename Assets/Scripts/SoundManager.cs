@@ -52,6 +52,7 @@ public class SoundManager : MonoBehaviour
         audioSource.pitch = settings.pitch;
         audioSource.priority = settings.priority;
         audioSource.volume = settings.volume;
+        audioSource.ignoreListenerPause = settings.ignorePause;
 
         return audioSource;
     }
@@ -91,7 +92,7 @@ public class SoundManager : MonoBehaviour
     {
         foreach (var source in activeSources)
         {
-            if (source != null)
+            if (source != null && !source.ignoreListenerPause)
             {
                 source.Pause();
                 source.tag = "Paused";
@@ -103,7 +104,7 @@ public class SoundManager : MonoBehaviour
     {
         foreach (var source in activeSources)
         {
-            if (source != null)
+            if (source != null && source.tag == "Paused")
             {
                 source.Play();
                 source.tag = "Untagged";

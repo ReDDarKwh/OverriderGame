@@ -19,3 +19,4 @@ MonoBehaviour:
   volume: 0.094
   spacialBlend: 0
   priority: 128
+  ignorePause: 0

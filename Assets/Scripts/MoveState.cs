@@ -1,9 +1,9 @@
 ﻿public enum MoveState
 {
-  Idle,
-  Walk,
-  Dash,
-  Attack,
-  Stab
+    Idle,
+    Walk,
+    Run,
+    Attack,
+    Stab
 }
 

@@ -701,6 +701,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chasingAction: {fileID: 8692191912280212608}
   creature: {fileID: 5287253910397005366}
+  unsureSound: {fileID: 0}
+  scanningSound: {fileID: 0}
 --- !u!114 &6418954751923457285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -934,7 +936,7 @@ MonoBehaviour:
   VisionAngle: 51
   ViewBlockingLayers:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 8404992
   TargetLayers:
     serializedVersion: 2
     m_Bits: 256

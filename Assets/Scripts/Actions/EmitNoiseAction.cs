@@ -6,7 +6,7 @@ public class EmitNoiseAction : Action
 {
     public NoiseEmitter noiseEmitter;
     public float emissionInterval;
-    public SoundPreset soundPreset;
+    public SoundPlayer player;
     private float lastEmission;
 
     internal override void OnStart()
@@ -21,7 +21,10 @@ public class EmitNoiseAction : Action
             if (outputGate.currentValue)
             {
                 lastEmission = Time.time;
-                soundPreset.Play(transform.position);
+                if (player)
+                {
+                    player.Play();
+                }
                 noiseEmitter.EmitNoise();
             }
         }

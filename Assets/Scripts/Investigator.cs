@@ -18,6 +18,7 @@ public class Investigator : MonoBehaviour
     public bool CanBeInvestigated(GameObject gameObject)
     {
         var investigated = sharedInfoManager.IsObjectAlreadyInvestigated(gameObject);
+        var wasInvestigated = investigatedObjects.Contains(gameObject);
 
         if (!investigated)
         {
@@ -25,7 +26,7 @@ public class Investigator : MonoBehaviour
             investigatedObjects.Add(gameObject);
         }
 
-        return !investigated;
+        return !investigated || wasInvestigated;
     }
 
     void OnDestroy()

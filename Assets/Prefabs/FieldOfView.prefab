@@ -60,7 +60,7 @@ MonoBehaviour:
     m_Bits: 0
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 8404992
   visibleTargets: []
   meshResolution: 1
   edgeResolveIterations: 4
@@ -109,4 +109,4 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2

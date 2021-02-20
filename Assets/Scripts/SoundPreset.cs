@@ -14,6 +14,8 @@ public class SoundPreset : ScriptableObject
     public float spacialBlend;
     [Range(0, 256)]
     public int priority = 128;
+    public bool ignorePause;
+
 
     public AudioSource Play(Vector3 pos)
     {

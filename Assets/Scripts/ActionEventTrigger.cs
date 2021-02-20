@@ -12,14 +12,20 @@ public class ActionEventTrigger : MonoBehaviour
     {
         foreach (var a in actionEventItems)
         {
-            a.action.outputGate.ValueHasChanged += (sender, e) => gate_ValueChanged(sender, e, a);
+            if (a.action.outputGate != null)
+            {
+                a.action.outputGate.ValueHasChanged += (sender, e) => gate_ValueChanged(sender, e, a);
+            }
+            else
+            {
+                a.action.AfterInit += (x, y) => a.action.outputGate.ValueHasChanged += (sender, e) => gate_ValueChanged(sender, e, a);
+            }
         }
     }
 
     private void gate_ValueChanged(object sender, System.EventArgs e, ActionEventItem a)
     {
-        var gate = (AbstractGate)sender;
-        if (gate.currentValue)
+        if (a.action.outputGate.currentValue)
         {
             a.onOutputTrue.Invoke();
         }

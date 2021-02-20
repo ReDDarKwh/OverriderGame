@@ -11,6 +11,7 @@ TagManager:
   - Network
   - MousePos
   - Paused
+  - Cover
   layers:
   - Default
   - TransparentFX
@@ -35,8 +36,8 @@ TagManager:
   - PostProcess
   - Damageable
   - Ground
-  - 
-  - 
+  - Cover
+  - CoverLow
   - 
   - 
   - 
