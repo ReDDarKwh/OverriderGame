@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     public float speed;
     public Collider2D ignoredCollider;
     public float inactiveTime;
+    public GameObject hitEffect;
+    public LayerMask collisionLayers;
     private float lifeStart;
     private bool damageDone;
 
@@ -31,6 +33,14 @@ public class Projectile : MonoBehaviour
             {
                 collider.GetComponent<Killable>()?.InflictDamage(damage);
                 damageDone = true;
+                if (hitEffect)
+                {
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, collisionLayers);
+                    if (hit)
+                    {
+                        Instantiate(hitEffect, hit.point, transform.rotation);
+                    }
+                }
             }
             Destroy(this.gameObject);
         }

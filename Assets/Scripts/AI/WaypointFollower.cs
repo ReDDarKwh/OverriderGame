@@ -50,8 +50,11 @@ public class WaypointFollower : MonoBehaviour
         if ((!pathFindingNav.navMeshAgent.hasPath && !pathFindingNav.navMeshAgent.pathPending) || requestPath)
         {
             requestPath = false;
-            currentPoint = GetNextPoint();
-            pathFindingNav.SetTarget(waypoints[currentPoint]);
+            if (GetNextPoint() != currentPoint)
+            {
+                currentPoint = GetNextPoint();
+                pathFindingNav.SetTarget(waypoints[currentPoint]);
+            }
         }
 
         if ((transform.position - waypoints[currentPoint].position).magnitude < targetRadius)

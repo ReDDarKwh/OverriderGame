@@ -7,6 +7,16 @@ public class SoundPlayer : MonoBehaviour
 {
     public SoundPreset[] soundPresets;
     private AudioSource[] sources;
+    public bool playOnStart;
+
+    void Start()
+    {
+        if (playOnStart)
+        {
+            Play();
+        }
+    }
+
     public void Play()
     {
         sources = soundPresets.Select(x => x.Play(transform.position)).ToArray();

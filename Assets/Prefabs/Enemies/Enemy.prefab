@@ -233,7 +233,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6725844347703517073
 MonoBehaviour:
@@ -289,6 +289,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creature: {fileID: 5767463812728996064}
   waypointFollower: {fileID: 6725844347703517073}
+  stationnaryDirection: {x: 0, y: 0, z: 0}
+  stationnary: 0
+  patrollingSpeed: 0.5
 --- !u!114 &6725844347703517082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +307,8 @@ MonoBehaviour:
   creature: {fileID: 5767463812728996064}
   chasingAction: {fileID: 7046693956010093142}
   attackRange: 2
+  chasingSpeed: 2.5
+  chasingSound: {fileID: 0}
 --- !u!114 &6725844347703517081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[{"name":"spottingAction","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"target","value":null,"$version":"A"},{"name":"lastTargetPos","value":{"x":0.0,"y":0.0,"z":0.0,"$type":"UnityEngine.Vector3"},"$version":"A"},{"name":"deathDamageType","value":{"$content":"Unknown","$type":"DamageType"},"$version":"A"},{"name":"chasingAction","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"investigationObject","value":null,"$version":"A"},{"name":"investigatedMovingObject","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"unsureTime","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"spottingAction","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"target","value":null,"$version":"A"},{"name":"lastTargetPos","value":{"x":0.0,"y":0.0,"z":0.0,"$type":"UnityEngine.Vector3"},"$version":"A"},{"name":"deathDamageType","value":{"$content":"Unknown","$type":"DamageType"},"$version":"A"},{"name":"chasingAction","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"investigationObject","value":null,"$version":"A"},{"name":"investigatedMovingObject","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"unsureTime","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"switch","value":null,"$version":"A"},{"name":"doorController","value":null,"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
     - {fileID: 1108686864222151840}
     - {fileID: 7046693956010093142}
@@ -400,6 +405,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chasingAction: {fileID: 7046693956010093142}
   creature: {fileID: 5767463812728996064}
+  unsureSound: {fileID: 0}
+  scanningSound: {fileID: 0}
 --- !u!114 &4647303575072400339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chasingAction: {fileID: 7046693956010093142}
   creature: {fileID: 5767463812728996064}
-  targetRange: 0.2
+  targetRange: 0.5
 --- !u!114 &1891062268300944313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creature: {fileID: 5767463812728996064}
   shootingAction: {fileID: 466547867553926064}
-  gun: {fileID: 1416289387}
+  guns: []
   bulletSpeed: 15
   attackRangePlusBuffer: 2.5
 --- !u!114 &2861525003701565247
@@ -446,6 +453,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 955787581}
   refreshDis: 0.5
+  doorLayer:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!195 &955787581
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -480,6 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3897c2b29a829a14bbfda1998b9b5a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!114 &4016200958806998589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,7 +638,7 @@ MonoBehaviour:
   VisionAngle: 51
   ViewBlockingLayers:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 8404992
   TargetLayers:
     serializedVersion: 2
     m_Bits: 256

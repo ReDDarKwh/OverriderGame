@@ -7,17 +7,25 @@ public class Patrolling : MonoBehaviour
 {
     public Creature creature;
     public WaypointFollower waypointFollower;
+    public Vector3 stationnaryDirection;
+    public bool stationnary;
     public float patrollingSpeed;
 
     public void StateEnter()
     {
-        waypointFollower.enabled = true;
+        if (waypointFollower)
+            waypointFollower.enabled = true;
         creature.nav.SetSpeed(patrollingSpeed);
     }
 
     public void StateUpdate()
     {
-        creature.headDir = creature.nav.GetDir();
+        if (!waypointFollower)
+            return;
+
+        creature.headDir = waypointFollower.pathFindingNav.IsMoving() ?
+            creature.nav.GetDir() : stationnary ?
+                stationnaryDirection : creature.nav.GetDir();
 
         if (waypointFollower.pathFindingNav.IsTargetUnreachable())
         {
@@ -28,6 +36,7 @@ public class Patrolling : MonoBehaviour
 
     public void StateExit()
     {
-        waypointFollower.enabled = false;
+        if (waypointFollower)
+            waypointFollower.enabled = false;
     }
 }

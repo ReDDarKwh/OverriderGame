@@ -16,6 +16,11 @@ public class Creature : MonoBehaviour
     [System.NonSerialized]
     public bool canLock;
 
+    void Start()
+    {
+        headDir = body.rotation * Vector3.right;
+    }
+
     void Update()
     {
         if (!killable.dead)

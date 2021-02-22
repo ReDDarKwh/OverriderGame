@@ -16,8 +16,8 @@ MonoBehaviour:
   disableOutput: 0
   disableInput: 0
   speed: 0.2
-  relativeMinAngle: 30
-  relativeMaxAngle: 30
+  relativeMinAngle: 22.13
+  relativeMaxAngle: 44
 --- !u!114 &6008291312490995698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,11 +33,11 @@ MonoBehaviour:
   actionName: Spotting
   disableOutput: 0
   disableInput: 0
-  VisionRadius: 5.14
+  VisionRadius: 2.55
   VisionAngle: 57
   ViewBlockingLayers:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 8404992
   TargetLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -227,7 +227,7 @@ PrefabInstance:
     - target: {fileID: 4089401182147920997, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.48
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4089401182147920999, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}

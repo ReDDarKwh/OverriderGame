@@ -171,7 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3596759f023f1174bbf93c317947cc37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundPreset: {fileID: 11400000, guid: cb82e1b2ce04d2e4b89f24d9bad85943, type: 2}
+  soundPresets:
+  - {fileID: 11400000, guid: cb82e1b2ce04d2e4b89f24d9bad85943, type: 2}
+  playOnStart: 0
 --- !u!114 &241347166286803916
 MonoBehaviour:
   m_ObjectHideFlags: 0
