@@ -11,6 +11,7 @@ public class AlarmAction : Action
     public ExternalLogicAction activate;
     public ExternalLogicAction desactivate;
     public Animator animator;
+    public GameObject alternativeTarget;
     public Enemy[] assignedGuards;
     private DataGate targetsDataInput;
 
@@ -49,27 +50,25 @@ public class AlarmAction : Action
 
     private void AttractClosestGuard()
     {
-        var target = targetsDataInput.GetData<GameObject>().FirstOrDefault();
+        var target = targetsDataInput.GetData<GameObject>().FirstOrDefault() ?? alternativeTarget;
 
-        if (target != null)
+        var minDis = float.MaxValue;
+        Enemy minEnemy = null;
+        foreach (var guard in assignedGuards)
         {
-            var minDis = float.MaxValue;
-            Enemy minEnemy = null;
-            foreach (var guard in assignedGuards)
+            float magnitude = (transform.position - guard.transform.position).magnitude;
+            if (magnitude < minDis && guard.gameObject != target)
             {
-                float magnitude = (transform.position - guard.transform.position).magnitude;
-                if (magnitude < minDis && guard.gameObject != target)
-                {
-                    minEnemy = guard;
-                    minDis = magnitude;
-                }
-            }
-
-            if (minEnemy != null)
-            {
-                CustomEvent.Trigger(minEnemy.gameObject, "NoiseHeard", target.transform.position);
+                minEnemy = guard;
+                minDis = magnitude;
             }
         }
+
+        if (minEnemy != null)
+        {
+            CustomEvent.Trigger(minEnemy.gameObject, "NoiseHeard", target.transform.position);
+        }
+
     }
 
     // Update is called once per frame

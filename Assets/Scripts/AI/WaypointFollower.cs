@@ -21,46 +21,10 @@ public class WaypointFollower : MonoBehaviour
     void Start()
     {
         currentPoint = -1;
-        requestPath = true;
-        OnEnable();
     }
 
-    void OnEnable()
+    internal Vector3 GetNextPoint()
     {
-        if (currentPoint != -1 && !requestPath)
-        {
-            pathFindingNav.SetTarget(waypoints[currentPoint]);
-        }
+        return waypoints[currentPoint = (currentPoint + 1) % waypoints.Count()].position;
     }
-
-    void OnDisable()
-    {
-        pathFindingNav.navMeshAgent.ResetPath();
-        pathFindingNav.Stop();
-    }
-
-    internal int GetNextPoint()
-    {
-        return (currentPoint + 1) % waypoints.Count();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if ((!pathFindingNav.navMeshAgent.hasPath && !pathFindingNav.navMeshAgent.pathPending) || requestPath)
-        {
-            requestPath = false;
-            if (GetNextPoint() != currentPoint)
-            {
-                currentPoint = GetNextPoint();
-                pathFindingNav.SetTarget(waypoints[currentPoint]);
-            }
-        }
-
-        if ((transform.position - waypoints[currentPoint].position).magnitude < targetRadius)
-        {
-            pathFindingNav.navMeshAgent.ResetPath();
-        }
-    }
-
 }

@@ -7,11 +7,16 @@ using UnityEngine.Events;
 public class Interactor : MonoBehaviour
 {
     public Animator animator;
+    public Creature creature;
     public void InteractWith(GameObject interactable)
     {
         var i = interactable.GetComponent<Interactable>();
         if (i != null)
         {
+            if (creature)
+            {
+                creature.headDir = interactable.transform.position - transform.position;
+            }
             if (animator != null)
             {
                 animator.SetTrigger("Interact");
