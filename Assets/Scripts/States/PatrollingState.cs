@@ -20,13 +20,14 @@ public class PatrollingState : MonoBehaviour
         return waypoints[currentPoint = (currentPoint + 1) % waypoints.Count()].position;
     }
 
-    public void StateEnter()
+    public Vector3? StateEnter()
     {
         if (waypoints.Count() > 0)
         {
-            Variables.Object(gameObject).Set("patrolPoint", GetNextPoint());
-            CustomEvent.Trigger(this.gameObject, "asPatrolPoint");
+            return GetNextPoint();
         }
+
+        return null;
     }
 
     public void StateUpdate()

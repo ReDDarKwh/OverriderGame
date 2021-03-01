@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 5394983135458890893}
   - component: {fileID: 7473415128989248738}
   - component: {fileID: 2369176284625806879}
+  - component: {fileID: 2100702830022439322}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Untagged
@@ -316,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[{"name":"spottingAction","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"target","value":null,"$version":"A"},{"name":"lastTargetPos","value":{"x":0.0,"y":0.0,"z":0.0,"$type":"UnityEngine.Vector3"},"$version":"A"},{"name":"deathDamageType","value":{"$content":"Unknown","$type":"DamageType"},"$version":"A"},{"name":"chasingAction","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"investigationObject","value":null,"$version":"A"},{"name":"investigatedMovingObject","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"unsureTime","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"switch","value":null,"$version":"A"},{"name":"doorController","value":null,"$version":"A"},{"name":"patrolPoint","value":{"x":0.0,"y":0.0,"z":0.0,"$type":"UnityEngine.Vector3"},"$version":"A"},{"name":"patrollingTargetRange","value":{"$content":0.2,"$type":"System.Single"},"$version":"A"},{"name":"patrollingSpeed","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"searchingTargetRange","value":{"$content":0.2,"$type":"System.Single"},"$version":"A"},{"name":"searchingSpeed","value":{"$content":2.0,"$type":"System.Single"},"$version":"A"},{"name":"chasingTargetRange","value":{"$content":2.0,"$type":"System.Single"},"$version":"A"},{"name":"chasingSpeed","value":{"$content":2.0,"$type":"System.Single"},"$version":"A"},{"name":"investigatingTargetRange","value":{"$content":0.5,"$type":"System.Single"},"$version":"A"},{"name":"investigatingSpeed","value":{"$content":1.5,"$type":"System.Single"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"spottingAction","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"target","value":null,"$version":"A"},{"name":"lastTargetPos","value":{"x":0.0,"y":0.0,"z":0.0,"$type":"UnityEngine.Vector3"},"$version":"A"},{"name":"deathDamageType","value":{"$content":"Unknown","$type":"DamageType"},"$version":"A"},{"name":"chasingAction","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"investigationObject","value":null,"$version":"A"},{"name":"investigatedMovingObject","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"unsureTime","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"switch","value":null,"$version":"A"},{"name":"doorController","value":null,"$version":"A"},{"name":"patrolPoint","value":{"x":0.0,"y":0.0,"z":0.0,"$type":"UnityEngine.Vector3"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences:
     - {fileID: 1108686864222151840}
     - {fileID: 7046693956010093142}
@@ -510,6 +511,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creature: {fileID: 5767463812728996064}
+  moveSettings:
+  - name: patrolling
+    targetRange: 0.2
+    moveSpeed: 0.5
+  - name: chasing
+    targetRange: 2
+    moveSpeed: 2
+  - name: investigating
+    targetRange: 0.5
+    moveSpeed: 1.5
+  - name: searching
+    targetRange: 0.2
+    moveSpeed: 1.5
+--- !u!114 &2100702830022439322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71529b1b7efcebb43904b4bf32505e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8713028075916982006
 GameObject:
   m_ObjectHideFlags: 0

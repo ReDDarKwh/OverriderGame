@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: moveSettings.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: moveSettings.Array.data[4].name
+      value: fleeing
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: moveSettings.Array.data[4].moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: moveSettings.Array.data[4].targetRange
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 6725844347703517074, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_RootOrder
@@ -65,7 +85,8 @@ PrefabInstance:
     - target: {fileID: 6725844347703517079, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Target Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6725844347703517082, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}

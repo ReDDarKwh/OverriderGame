@@ -33,5 +33,9 @@ public class ChasingState : MonoBehaviour
 
     public void StateExit()
     {
+        if (chasingAction != null)
+        {
+            chasingAction.actionGate.SetValue(false);
+        }
     }
 }

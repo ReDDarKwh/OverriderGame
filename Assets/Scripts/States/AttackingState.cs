@@ -29,7 +29,10 @@ public class AttackingState : MonoBehaviour
 
     public void StateUpdate()
     {
-        Variables.Object(gameObject).Set("lastTargetPos", target.transform.position);
+        if (!target)
+        {
+            return;
+        }
 
         if ((target.transform.position - transform.position).magnitude > attackRangePlusBuffer)
         {

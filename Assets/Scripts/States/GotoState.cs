@@ -7,17 +7,27 @@ using System.Linq;
 public class GotoState : MonoBehaviour
 {
     public Creature creature;
+    public MoveSetting[] moveSettings;
     private Vector3 targetPos;
     private Transform targetTransform;
+
     private bool isMovingObject;
     private float targetRange;
 
-    public void StateEnter(Transform targetTransform, Vector3 targetPos, float targetRange, float speed)
-    {
-        creature.nav.Stop();
-        creature.nav.SetSpeed(speed);
+    private Dictionary<string, MoveSetting> moveSettingsRepo;
 
-        this.targetRange = targetRange;
+
+    public void StateEnter(Transform targetTransform, Vector3 targetPos, string settingName)
+    {
+        if (moveSettingsRepo == null)
+        {
+            moveSettingsRepo = moveSettings.ToDictionary(x => x.name);
+        }
+
+        creature.nav.Stop();
+        creature.nav.SetSpeed(moveSettingsRepo[settingName].moveSpeed);
+
+        this.targetRange = moveSettingsRepo[settingName].targetRange;
         if (targetTransform != null)
         {
             this.targetTransform = targetTransform;
@@ -32,7 +42,7 @@ public class GotoState : MonoBehaviour
         }
     }
 
-    public void StateUpdate()
+    public void StateUpdate(string atPositionEventName = "isAtPosition")
     {
 
         creature.headDir = creature.nav.GetDir();
@@ -44,7 +54,7 @@ public class GotoState : MonoBehaviour
 
         if ((transform.position - (isMovingObject ? targetTransform.position : targetPos)).magnitude < targetRange)
         {
-            CustomEvent.Trigger(gameObject, "isAtPosition");
+            CustomEvent.Trigger(gameObject, atPositionEventName);
         }
     }
 
