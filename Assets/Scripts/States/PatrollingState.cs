@@ -8,11 +8,19 @@ public class PatrollingState : MonoBehaviour
 {
     public Creature creature;
     public Transform[] waypoints;
-    internal int currentPoint;
+    public Transform stationnaryTransform;
+    public GameObject waypointPrefab;
+    internal int currentPoint = -1;
 
-    void Start()
+    void Init()
     {
-        currentPoint = -1;
+        if (stationnaryTransform)
+        {
+            var inst = Instantiate(waypointPrefab, stationnaryTransform.position, stationnaryTransform.rotation)
+                .GetComponent<Transform>();
+
+            waypoints = new Transform[] { inst };
+        }
     }
 
     internal Vector3 GetNextPoint()
@@ -20,11 +28,27 @@ public class PatrollingState : MonoBehaviour
         return waypoints[currentPoint = (currentPoint + 1) % waypoints.Count()].position;
     }
 
+    public void AtStationnaryOutpost()
+    {
+        creature.headDir = waypoints[0].right;
+    }
+
     public Vector3? StateEnter()
     {
-        if (waypoints.Count() > 0)
+        if (stationnaryTransform)
         {
+            if (waypoints.Count() == 0)
+            {
+                Init();
+            }
             return GetNextPoint();
+        }
+        else
+        {
+            if (waypoints.Count() > 0)
+            {
+                return GetNextPoint();
+            }
         }
 
         return null;

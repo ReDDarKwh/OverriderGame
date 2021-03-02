@@ -102,8 +102,18 @@ namespace Scripts.Hacking
                         {
                             if (selectedNode == null)
                             {
-                                selectedNode = closestNode;
-                                ConnectionStart(closestNode);
+                                if (Input.GetMouseButtonDown(1))
+                                {
+                                    closestNode.gate.SetValue(!closestNode.gate.currentValue);
+                                }
+                                else
+                                {
+                                    if (closestNode.maxOutputs > 0)
+                                    {
+                                        selectedNode = closestNode;
+                                        ConnectionStart(closestNode);
+                                    }
+                                }
                             }
                             else
                             {

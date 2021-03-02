@@ -24,13 +24,13 @@ public class GuardRobotShooting : MonoBehaviour
         if (shootingAction.outputGate.currentValue)
         {
             time += Time.deltaTime * shootSpeed;
-            if (Mathf.Abs(Mathf.Sin(time + shootOffset)) >= 0.9 && canShoot)
+            if (Mathf.Abs(Mathf.Sin(time + shootOffset)) >= 0.5 && canShoot)
             {
                 StartShoot();
                 canShoot = false;
             };
 
-            if (Mathf.Abs(Mathf.Sin(time + shootOffset)) <= 0.1)
+            if (Mathf.Abs(Mathf.Sin(time + shootOffset)) < 0.5)
             {
                 canShoot = true;
             };

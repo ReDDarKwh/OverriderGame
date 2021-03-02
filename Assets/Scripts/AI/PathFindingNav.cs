@@ -13,7 +13,7 @@ public class PathFindingNav : Navigation
 
     public override Vector3 GetDir()
     {
-        return (!navMeshAgent.hasPath || navMeshAgent.pathPending) ? lastDesiredVelocity : navMeshAgent.desiredVelocity;
+        return (!navMeshAgent.hasPath || navMeshAgent.pathPending || navMeshAgent.pathStatus == NavMeshPathStatus.PathPartial) ? lastDesiredVelocity : navMeshAgent.velocity;
     }
 
     public override void SetSpeed(float speed)
@@ -61,7 +61,14 @@ public class PathFindingNav : Navigation
 
         if (navMeshAgent.hasPath)
         {
-            lastDesiredVelocity = navMeshAgent.desiredVelocity;
+            if (navMeshAgent.pathStatus == NavMeshPathStatus.PathPartial)
+            {
+                navMeshAgent.velocity = Vector3.zero;
+            }
+            else
+            {
+                lastDesiredVelocity = navMeshAgent.velocity;
+            }
         }
     }
 
