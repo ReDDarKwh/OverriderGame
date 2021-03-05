@@ -11,12 +11,14 @@ public class Projectile : MonoBehaviour
     public float inactiveTime;
     public GameObject hitEffect;
     public LayerMask collisionLayers;
+    public NoiseEmitter noiseEmitter;
     private float lifeStart;
     private bool damageDone;
 
     void Start()
     {
         lifeStart = Time.time;
+        noiseEmitter.EmitNoise();
     }
 
     void FixedUpdate()

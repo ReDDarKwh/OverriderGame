@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7917729047696385602}
   - component: {fileID: 7917729047696385603}
   - component: {fileID: 7917729047696385604}
+  - component: {fileID: 3081774797762356312}
   m_Layer: 11
   m_Name: Projectile
   m_TagString: Untagged
@@ -142,3 +143,24 @@ MonoBehaviour:
   collisionLayers:
     serializedVersion: 2
     m_Bits: 2121984
+  noiseEmitter: {fileID: 3081774797762356312}
+--- !u!114 &3081774797762356312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6453841275999851734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40aba3376cf008f46ae3fd48617e70ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layersThatCanHear:
+    serializedVersion: 2
+    m_Bits: 8192
+  noiseHeardEvent: NoiseHeard
+  noiseRadius: 2.2
+  maxTargets: 100
+  rippleEffect: {fileID: 0}
+  interactableObject: {fileID: 6453841275999851734}

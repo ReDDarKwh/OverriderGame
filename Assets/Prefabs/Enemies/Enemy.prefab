@@ -192,6 +192,8 @@ GameObject:
   - component: {fileID: 7473415128989248738}
   - component: {fileID: 2369176284625806879}
   - component: {fileID: 2100702830022439322}
+  - component: {fileID: 1325969491194499124}
+  - component: {fileID: 1742297655901097447}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Untagged
@@ -269,6 +271,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creature: {fileID: 5767463812728996064}
   waypoints: []
+  stationnaryTransform: {fileID: 0}
+  waypointPrefab: {fileID: 0}
 --- !u!114 &6725844347703517082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +289,7 @@ MonoBehaviour:
   chasingAction: {fileID: 7046693956010093142}
   chasingSpeed: 2.5
   chasingSound: {fileID: 0}
+  chasingNoise: {fileID: 0}
 --- !u!114 &6725844347703517081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,8 +358,7 @@ MonoBehaviour:
   body: {fileID: 6764651856418279996}
   nav: {fileID: 2861525003701565247}
   killable: {fileID: 5394983135458890893}
-  speed: 0
-  damping: 10
+  damping: 7
 --- !u!114 &2490535789703305076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58074716555ecc43b9a8c6639db1ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
   dead: 0
   OnDied:
     m_PersistentCalls:
@@ -536,6 +540,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71529b1b7efcebb43904b4bf32505e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1325969491194499124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e10bdd368ae224d9916c9f082ce9d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creature: {fileID: 5767463812728996064}
+  speed: 1
+  relativeMinAngle: 20
+  relativeMaxAngle: 20
+--- !u!114 &1742297655901097447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40aba3376cf008f46ae3fd48617e70ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layersThatCanHear:
+    serializedVersion: 2
+    m_Bits: 0
+  noiseHeardEvent: NoiseHeard
+  noiseRadius: 2.73
+  maxTargets: 100
+  rippleEffect: {fileID: 0}
+  interactableObject: {fileID: 6725844347703517079}
 --- !u!1 &8713028075916982006
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,7 +681,7 @@ MonoBehaviour:
     m_Bits: 8404992
   TargetLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 33554688
   fieldOfView: {fileID: 6760242283404706886}
   disableFilterInput: 0
   intrudersDataOutputName: Intruders
@@ -756,10 +796,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6725844347703517074}
     m_Modifications:
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: deviceName
       value: Guard
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: accessLevel
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
@@ -980,15 +1050,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996142f587c96d144ab89cb06f4311c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2777979766958130287 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4089401180447782003, guid: 6e3ab18108021c44f8ff40f77330424b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2183442437897465884}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2777979767576163449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4089401182147920997, guid: 6e3ab18108021c44f8ff40f77330424b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2183442437897465884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2777979766958130287 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4089401180447782003, guid: 6e3ab18108021c44f8ff40f77330424b,
     type: 3}
   m_PrefabInstance: {fileID: 2183442437897465884}
   m_PrefabAsset: {fileID: 0}
@@ -1061,12 +1131,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d84b4068902fcaf4baf99884eebd10d7, type: 3}
---- !u!4 &5450037227351043794 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7857602174127217369, guid: d84b4068902fcaf4baf99884eebd10d7,
-    type: 3}
-  m_PrefabInstance: {fileID: 2785938646855414795}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6760242283404706886 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8897020468531343437, guid: d84b4068902fcaf4baf99884eebd10d7,
@@ -1079,3 +1143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f419b990f010a4478c640dc3ac8cd74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5450037227351043794 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7857602174127217369, guid: d84b4068902fcaf4baf99884eebd10d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2785938646855414795}
+  m_PrefabAsset: {fileID: 0}

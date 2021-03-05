@@ -24,6 +24,11 @@ public class AttackingState : MonoBehaviour
         targetCreature = target.GetComponent<Creature>();
         targetPlayerController = target.GetComponent<PlayerController>();
 
+        if (target.layer == LayerMask.NameToLayer("Guard"))
+        {
+            gameObject.layer = LayerMask.NameToLayer("HackedGuard");
+        }
+
         shootingAction.actionGate.SetValue(true);
     }
 
@@ -65,6 +70,7 @@ public class AttackingState : MonoBehaviour
     public void StateExit()
     {
         shootingAction.actionGate.SetValue(false);
+        gameObject.layer = LayerMask.NameToLayer("Guard");
     }
 
 }

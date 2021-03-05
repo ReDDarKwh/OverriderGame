@@ -8,6 +8,7 @@ public class GotoState : MonoBehaviour
 {
     public Creature creature;
     public MoveSetting[] moveSettings;
+    private bool lookAtTarget;
     private Vector3 targetPos;
     private Transform targetTransform;
 
@@ -15,14 +16,17 @@ public class GotoState : MonoBehaviour
     private float targetRange;
 
     private Dictionary<string, MoveSetting> moveSettingsRepo;
+    private string atPositionEventName;
 
-
-    public void StateEnter(Transform targetTransform, Vector3 targetPos, string settingName)
+    public void StateEnter(Transform targetTransform, Vector3 targetPos, string settingName, bool lookAtTarget, string atPositionEventName = "isAtPosition")
     {
         if (moveSettingsRepo == null)
         {
             moveSettingsRepo = moveSettings.ToDictionary(x => x.name);
         }
+
+        this.lookAtTarget = lookAtTarget;
+        this.atPositionEventName = atPositionEventName;
 
         creature.nav.Stop();
         creature.nav.SetSpeed(moveSettingsRepo[settingName].moveSpeed);
@@ -40,18 +44,27 @@ public class GotoState : MonoBehaviour
             creature.nav.SetTarget(this.targetPos);
             isMovingObject = false;
         }
+
+        CheckIsAtPosition(atPositionEventName);
     }
 
-    public void StateUpdate(string atPositionEventName = "isAtPosition")
+    public void StateUpdate()
     {
 
-        creature.headDir = creature.nav.GetDir();
+        var v = lookAtTarget ? ((isMovingObject ? targetTransform.position : targetPos) - transform.position) : creature.nav.GetDir();
+        Debug.Log(Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg);
+        creature.headDir = v;
 
         if (creature.nav.IsTargetUnreachable())
         {
             CustomEvent.Trigger(this.gameObject, "isUnreachable");
         }
 
+        CheckIsAtPosition(atPositionEventName);
+    }
+
+    private void CheckIsAtPosition(string atPositionEventName)
+    {
         if ((transform.position - (isMovingObject ? targetTransform.position : targetPos)).magnitude < targetRange)
         {
             CustomEvent.Trigger(gameObject, atPositionEventName);

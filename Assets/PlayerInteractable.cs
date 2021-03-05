@@ -26,6 +26,7 @@ public class PlayerInteractable : MonoBehaviour
                 interactable.Error();
             }
         }
+
     }
 
     void OnTriggerEnter2D(Collider2D collider)

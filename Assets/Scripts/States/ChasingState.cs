@@ -10,6 +10,7 @@ public class ChasingState : MonoBehaviour
     public ExternalLogicAction chasingAction;
     public float chasingSpeed;
     public SoundPreset chasingSound;
+    public NoiseEmitter chasingNoise;
 
     public void MakeChasingSound()
     {
@@ -24,6 +25,11 @@ public class ChasingState : MonoBehaviour
         if (chasingAction != null)
         {
             chasingAction.actionGate.SetValue(true);
+        }
+
+        if (chasingNoise)
+        {
+            chasingNoise.EmitNoise();
         }
     }
 

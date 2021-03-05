@@ -239,7 +239,7 @@ MonoBehaviour:
   openingAction: {fileID: 8919092600668445285}
   AILayers:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 33562624
   doorDamage: 1000000
   disableTouchLock: 0
 --- !u!61 &3689620147346789885
@@ -442,7 +442,7 @@ MonoBehaviour:
     m_Bits: 0
   TargetLayers:
     serializedVersion: 2
-    m_Bits: 8448
+    m_Bits: 33562880
   fieldOfView: {fileID: 0}
   disableFilterInput: 0
   intrudersDataOutputName: Users
@@ -475,6 +475,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8062640577781362898}
     m_Modifications:
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: deviceName

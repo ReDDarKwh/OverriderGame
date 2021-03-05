@@ -54,7 +54,7 @@ public class AlarmAction : Action
 
         var minDis = float.MaxValue;
         Enemy minEnemy = null;
-        foreach (var guard in assignedGuards)
+        foreach (var guard in assignedGuards.Where(x => x != null))
         {
             float magnitude = (transform.position - guard.transform.position).magnitude;
             if (magnitude < minDis && guard.gameObject != target)

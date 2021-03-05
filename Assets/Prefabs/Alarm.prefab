@@ -50,6 +50,7 @@ MonoBehaviour:
   activate: {fileID: 1713218348889189703}
   desactivate: {fileID: 3198241498445768273}
   animator: {fileID: 7874016005625999646}
+  alternativeTarget: {fileID: 2043161702366058443}
   assignedGuards:
   - {fileID: 0}
 --- !u!1 &2631911752668581684
@@ -603,6 +604,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e3ab18108021c44f8ff40f77330424b, type: 3}
+--- !u!1 &2043161702366058443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4089401180447782002, guid: 6e3ab18108021c44f8ff40f77330424b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2637627288292762553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2043161702366058442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4089401180447782003, guid: 6e3ab18108021c44f8ff40f77330424b,

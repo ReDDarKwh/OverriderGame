@@ -10,8 +10,7 @@ public class Creature : MonoBehaviour
     public Vector3 headDir { get; set; }
     public Navigation nav;
     public Killable killable;
-    public float speed;
-    public float damping = 10;
+    public float damping = 7;
 
     [System.NonSerialized]
     public bool canLock;

@@ -52,7 +52,10 @@ public class UnsureState : MonoBehaviour
 
     public void StateUpdate()
     {
-        creature.headDir = target.transform.position - transform.position;
+        if (target)
+        {
+            creature.headDir = target.transform.position - transform.position;
+        }
     }
 
     public void StateExit()

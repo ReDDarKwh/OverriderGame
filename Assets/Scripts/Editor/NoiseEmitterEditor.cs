@@ -12,6 +12,10 @@ public class NoiseEmitterEditor : Editor
     public void OnSceneGUI()
     {
         c = this.target as NoiseEmitter;
+        if (c == null)
+        {
+            return;
+        }
 
         Handles.color = Color.red;
 

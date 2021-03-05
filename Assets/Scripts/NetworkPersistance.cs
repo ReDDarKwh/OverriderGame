@@ -128,6 +128,11 @@ namespace Scripts.Hacking
                 }
             }
 
+            if (node == null)
+            {
+                return null;
+            }
+
             if (node.gate is DataGate && savedNode.data != null)
             {
                 ((DataGate)node.gate).SetData(savedNode.data);

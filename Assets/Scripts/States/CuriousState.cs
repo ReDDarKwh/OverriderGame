@@ -9,6 +9,10 @@ public class CuriousState : MonoBehaviour
     public void StateEnter()
     {
         target = Variables.Object(gameObject).Get<GameObject>("target");
-        Variables.Object(gameObject).Set("lastTargetPos", target.transform.position);
+
+        if (target)
+        {
+            Variables.Object(gameObject).Set("lastTargetPos", target.transform.position);
+        }
     }
 }

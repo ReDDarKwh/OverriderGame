@@ -37,6 +37,7 @@ public class FilterOutputDisplay : MonoBehaviour
 
     void UpdateUI()
     {
+        guards.SetIsOnWithoutNotify(this.mask == (this.mask | (1 << LayerMask.NameToLayer("HackedGuard"))));
         guards.SetIsOnWithoutNotify(this.mask == (this.mask | (1 << LayerMask.NameToLayer("Guard"))));
         player.SetIsOnWithoutNotify(this.mask == (this.mask | (1 << LayerMask.NameToLayer("Player"))));
         dead.SetIsOnWithoutNotify(this.mask == (this.mask | (1 << LayerMask.NameToLayer("Dead"))));
