@@ -8,7 +8,6 @@ namespace Scripts.Hacking
 {
     public class Network : MonoBehaviour
     {
-        private Node[] nodes;
         public Node selectedNode;
         public float interactionRadius;
         public Transform mousePos;
@@ -17,8 +16,10 @@ namespace Scripts.Hacking
         public float nodeSearchRadius;
         public LayerMask nodeLayerMask;
         public Node mousePosNode;
-        internal int accessLevel;
         public static Network Instance = null;
+
+        internal int accessLevel;
+        private Node[] nodes;
 
         private void Awake()
         {

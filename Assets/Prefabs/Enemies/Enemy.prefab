@@ -526,7 +526,7 @@ MonoBehaviour:
     targetRange: 0.5
     moveSpeed: 1.5
   - name: searching
-    targetRange: 0.2
+    targetRange: 0.5
     moveSpeed: 1.5
 --- !u!114 &2100702830022439322
 MonoBehaviour:
@@ -553,9 +553,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creature: {fileID: 5767463812728996064}
-  speed: 1
-  relativeMinAngle: 20
-  relativeMaxAngle: 20
+  speed: 1.5
+  relativeMinAngle: 30
+  relativeMaxAngle: 30
 --- !u!114 &1742297655901097447
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,8 +27,8 @@ public class Connection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var startPos = start.isVisible ? start.transform : start.device.minimizeConnectionTransform;
-        var endPos = end.isVisible ? end.transform : end.device.minimizeConnectionTransform;
+        var startPos = GetPos(start);
+        var endPos = GetPos(end);
 
         if (startPos != endPos)
         {
@@ -42,6 +42,16 @@ public class Connection : MonoBehaviour
         {
             lineRenderer.positionCount = 0;
         }
+    }
+
+    private Transform GetPos(Node node)
+    {
+        if (node == null)
+        {
+            Debug.Log("");
+        }
+
+        return node.isVisible || node.deviceUI == null ? node.transform : node.deviceUI.transform;
     }
 
     private Vector2 CalculateBezierPoint(Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3, float t)

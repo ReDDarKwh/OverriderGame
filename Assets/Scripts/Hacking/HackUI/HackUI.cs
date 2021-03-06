@@ -8,8 +8,19 @@ namespace Scripts.Hacking
     public abstract class HackUI : MonoBehaviour
     {
         public Device device;
-        public abstract void Show();
-        public abstract void Hide();
+        public int hideLevel;
+        public bool hidden;
+        internal bool partialHide;
+        public virtual void Show()
+        {
+
+        }
+        public virtual void Hide()
+        {
+
+        }
+
+
 
     }
 }

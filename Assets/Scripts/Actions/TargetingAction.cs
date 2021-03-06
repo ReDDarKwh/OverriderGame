@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class TargetingAction : Action
 {
+    public float damping;
+    public float bulletSpeed;
     internal IEnumerable<Transform> targets;
     private Quaternion initialRotation;
     private DataGate targetsDataInput;
@@ -29,16 +31,36 @@ public class TargetingAction : Action
     void Update()
     {
         var target = targets?.FirstOrDefault();
+        Quaternion desiredRotQ = Quaternion.identity;
         if (target != null)
         {
-            var turretToTarget = target.position - transform.position;
-            transform.rotation = Quaternion.LookRotation(Vector3.forward, turretToTarget) * Quaternion.Euler(0, 0, 90);
+            var bulletTravelTime = (target.transform.position - transform.position).magnitude / bulletSpeed;
+            var turretToTarget = target.transform.position + (GetTargetDirection(target).normalized * bulletTravelTime) - transform.position;
+            desiredRotQ = Quaternion.LookRotation(Vector3.forward, turretToTarget) * Quaternion.Euler(0, 0, 90);
             actionGate.SetValue(true);
         }
         else
         {
+            desiredRotQ = initialRotation;
             actionGate.SetValue(false);
-            transform.rotation = initialRotation;
         }
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotQ, Time.deltaTime * damping);
+    }
+
+    Vector3 GetTargetDirection(Transform target)
+    {
+        var targetCreature = target.GetComponent<Creature>();
+        var targetPlayerController = target.GetComponent<PlayerController>();
+
+        if (targetPlayerController != null)
+        {
+            return targetPlayerController.vel;
+        }
+        else if (targetCreature != null)
+        {
+            return targetCreature.headDir;
+        }
+        return Vector3.zero;
     }
 }

@@ -9,6 +9,7 @@ public partial class PlayerController : MonoBehaviour
     public float speedModifier;
     public float runSpeedModifier;
     public NoiseEmitter runNoiseEmitter;
+    public NoiseEmitter sneakNoiseEmitter;
     public float runNoiseEmissionInterval;
     public Animator anim;
     public SoundManager soundManager;
@@ -48,10 +49,15 @@ public partial class PlayerController : MonoBehaviour
 
         if (Time.time - lastEmission > runNoiseEmissionInterval)
         {
+            lastEmission = Time.time;
             if (Input.GetAxisRaw("Run") == 1)
             {
-                lastEmission = Time.time;
+
                 runNoiseEmitter.EmitNoise();
+            }
+            else
+            {
+                sneakNoiseEmitter.EmitNoise();
             }
         }
 

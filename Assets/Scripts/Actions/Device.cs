@@ -13,39 +13,29 @@ namespace Scripts.Actions
 {
     public class Device : MonoBehaviour
     {
-
         public string deviceName;
         public GameObject ActionNodePrefab;
         public UniqueId deviceId;
         public bool disableOutput;
         public bool disableInput;
-        public bool disableLine;
         public Transform actionWindow;
         public Canvas actionDisplayCanvas;
         public RectTransform actionDisplayContainer;
-        public Transform minimizeConnectionTransform;
         public Preconnection[] preconnections;
-        public TextMeshProUGUI title;
-        public GameObject deviceCircle;
         public int accessLevel;
-        public GameObject AccessDeniedDisplay;
-        public TextMeshProUGUI AccessDeniedText;
 
         internal bool playerCanAccess = true;
-        private Dictionary<string, GameObject> currentActionDisplays = new Dictionary<string, GameObject>();
         internal Device parentDevice;
-        internal bool uiVisible;
         internal AttachedGadgetController attachedGadgetController;
         internal bool isAttachedGadget;
+        internal bool isAnchored;
+        internal Dictionary<Action, Dictionary<string, Node>> nodesPerAction;
+
         private bool isMoving;
+        private Dictionary<string, GameObject> currentActionDisplays = new Dictionary<string, GameObject>();
         private Transform mousePos;
         private Vector3 pos;
         private Vector3 diff;
-        private LineFactory lineFactory;
-        private Line line;
-
-        internal bool isAnchored;
-        private Dictionary<Action, Dictionary<string, Node>> nodesPerAction;
 
         // Start is called before the first frame update
         void Start()
@@ -59,31 +49,8 @@ namespace Scripts.Actions
             {
                 actionWindow.gameObject.SetActive(false);
             }
-            else
-            {
-                if (!disableLine)
-                {
-                    lineFactory = GameObject.FindGameObjectWithTag("LineFactory").GetComponent<LineFactory>();
-                    line = lineFactory.GetLine(Vector2.zero, Vector2.zero, 0.02f, Color.green);
-                }
-                else
-                {
-                    deviceCircle.SetActive(false);
-                }
-            }
 
             mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (line != null)
-            {
-                line.start = transform.position;
-                line.end = uiVisible ? actionDisplayContainer.position +
-                new Vector3(actionDisplayContainer.rect.size.x / 2, -actionDisplayContainer.rect.size.y / 2) : actionDisplayCanvas.transform.position;
-            }
         }
 
         void LateUpdate()
@@ -108,16 +75,11 @@ namespace Scripts.Actions
             {
                 SetNodesPlayerAccessible(false);
                 playerCanAccess = false;
-                AccessDeniedDisplay.SetActive(true);
-                title.SetText(deviceName + " (Secured)");
-                AccessDeniedText.SetText($"Level {this.accessLevel}");
             }
             else
             {
                 SetNodesPlayerAccessible(true);
                 playerCanAccess = true;
-                AccessDeniedDisplay.SetActive(false);
-                title.SetText(deviceName);
             }
         }
 
@@ -132,6 +94,17 @@ namespace Scripts.Actions
             }
         }
 
+        public void DisconnectAll(bool nodesOnly)
+        {
+            foreach (var action in nodesPerAction)
+            {
+                foreach (var node in action.Value.Values)
+                {
+                    node.DisconnectAll(nodesOnly);
+                }
+            }
+        }
+
         public void ToggleIsAnchored()
         {
             isAnchored = !isAnchored;
@@ -142,12 +115,6 @@ namespace Scripts.Actions
             }
         }
 
-        public void ToggleMinimize()
-        {
-            uiVisible = !uiVisible;
-            UpdateVisibility();
-        }
-
         public void SetIsMoving(bool isMoving)
         {
             this.isMoving = isMoving;
@@ -155,40 +122,6 @@ namespace Scripts.Actions
             {
                 diff = actionWindow.position - mousePos.transform.position;
                 actionDisplayCanvas.sortingOrder++;
-            }
-        }
-
-        private void UpdateVisibility()
-        {
-            if (uiVisible)
-            {
-                ShowHUD();
-            }
-            else
-            {
-                HideHUD();
-            }
-        }
-
-        private HackUI[] GetUIHack()
-        {
-            return GetComponentsInChildren<HackUI>();
-        }
-
-
-        private void ShowHUD()
-        {
-            foreach (var h in GetUIHack())
-            {
-                h.Show();
-            }
-        }
-
-        private void HideHUD()
-        {
-            foreach (var h in GetUIHack())
-            {
-                h.Hide();
             }
         }
 
@@ -250,14 +183,11 @@ namespace Scripts.Actions
                     }
                 }
 
-                UpdateVisibility();
                 actionDisplayContainer.anchoredPosition = Vector2.zero;
-
             }
             else
             {
                 parentDevice.UpdateActionDisplays();
-
             }
 
             this.nodesPerAction = nodesPerAction;
@@ -277,20 +207,10 @@ namespace Scripts.Actions
         {
             UpdateActionDisplays();
 
-            if (line != null)
-            {
-                line.gameObject.SetActive(false);
-            }
-
             if (isAttachedGadget)
             {
                 attachedGadgetController.DetachGadget();
             }
         }
-
-        internal void Disable()
-        {
-        }
     }
-
 }

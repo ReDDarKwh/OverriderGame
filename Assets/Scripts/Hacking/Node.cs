@@ -29,7 +29,7 @@ namespace Scripts.Hacking
         internal bool connectedToInUI;
 
         public HackUI hackUI;
-        internal Device device;
+        internal DeviceUI deviceUI;
         internal bool accessible = true;
 
         // Start is called before the first frame update
@@ -66,7 +66,7 @@ namespace Scripts.Hacking
             gate.DeconnectionCompleted += gate_DeconnectionCompleted;
             gate.ValueHasChanged += gate_ValueChange;
             mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
-            this.device = device;
+            deviceUI = device?.GetComponent<DeviceUI>();
         }
 
         private void UpdateConnectionColor(Connection c)
@@ -99,6 +99,14 @@ namespace Scripts.Hacking
         // Update is called once per frame
         void Update()
         {
+            if (deviceUI?.selected ?? true)
+            {
+                Show();
+            }
+            else
+            {
+                Hide();
+            }
 
             if (!isVisible || !accessible)
             {
@@ -189,16 +197,27 @@ namespace Scripts.Hacking
 
         void OnDestroy()
         {
+            DisconnectAll();
+        }
+
+        public void DisconnectAll(bool nodesOnly = false)
+        {
             if (gate != null)
             {
                 foreach (var parent in new List<AbstractGate>(gate.parents))
                 {
-                    parent.Disconnect(this.gate);
+                    if ((nodesOnly && parent.node) || !nodesOnly)
+                    {
+                        parent.Disconnect(this.gate);
+                    }
                 }
 
                 foreach (var child in new List<AbstractGate>(gate.children))
                 {
-                    gate.Disconnect(child);
+                    if ((nodesOnly && child.node) || !nodesOnly)
+                    {
+                        gate.Disconnect(child);
+                    }
                 }
             }
         }
@@ -238,7 +257,7 @@ namespace Scripts.Hacking
 
         internal void Show()
         {
-            spriteRenderer.enabled = device == null ? true : device.uiVisible;
+            spriteRenderer.enabled = true;
             isVisible = true;
         }
     }

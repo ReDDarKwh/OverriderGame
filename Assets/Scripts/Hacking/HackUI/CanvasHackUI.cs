@@ -20,12 +20,13 @@ namespace Scripts.Hacking
 
         public override void Show()
         {
-            canvas.enabled = device == null ? true : device.uiVisible;
+            canvas.enabled = true;
 
             foreach (var g in toDisable)
             {
                 g.SetActive(true);
             }
         }
+
     }
 }
