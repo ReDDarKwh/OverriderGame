@@ -596,6 +596,11 @@ namespace Vectrosity
                 if (m_canvasState == CanvasState.OffCanvas)
                 {
                     m_drawDepth = value;
+
+                    if (m_vectorObject != null)
+                    {
+                        m_vectorObject.SetDrawDepth(value);
+                    }
                     return;
                 }
                 m_go.transform.SetSiblingIndex(value);

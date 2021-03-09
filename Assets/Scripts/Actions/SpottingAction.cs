@@ -92,9 +92,20 @@ public class SpottingAction : Action
     {
         disableInput = true;
 
-        intrudersDataOutput = new DataGate { name = intrudersDataOutputName, dataGateType = DataGate.DataGateType.Output };
+        intrudersDataOutput = new DataGate
+        {
+            name = intrudersDataOutputName,
+            dataGateType = DataGate.DataGateType.Output
+        };
+
         dataGates.Add(intrudersDataOutput);
-        filterDataInput = new DataGate { name = filterDataInputName, dataGateType = DataGate.DataGateType.Input };
+
+        filterDataInput = new DataGate
+        {
+            name = filterDataInputName,
+            dataGateType = DataGate.DataGateType.Input,
+            dataType = DataGate.DataType.Filters
+        };
 
         if (!disableFilterInput)
         {

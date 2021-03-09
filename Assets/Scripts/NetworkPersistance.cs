@@ -119,12 +119,14 @@ namespace Scripts.Hacking
             {
                 if (savedNode.gateType != (int)GateType.DATA)
                 {
-                    node = Instantiate(nodePrefabs[savedNode.gateType], new Vector3(savedNode.pos[0], savedNode.pos[1]), Quaternion.identity, transform).GetComponent<Node>();
+                    node = Instantiate(
+                        nodePrefabs[savedNode.gateType],
+                        new Vector3(savedNode.pos[0], savedNode.pos[1]),
+                        Quaternion.identity,
+                        transform
+                    ).GetComponent<Node>();
                     node.Init(null, savedNode.id);
                     levelNodesRepo.Add(savedNode.id, node);
-                }
-                else
-                {
                 }
             }
 

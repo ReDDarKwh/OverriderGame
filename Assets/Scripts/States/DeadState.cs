@@ -5,12 +5,8 @@ using UnityEngine;
 
 public class DeadState : MonoBehaviour
 {
-    public Creature creature;
-    public string deadLayer;
-    public Device device;
     public GameObject explodeEffect;
     public GameObject deadBodyPrefab;
-
 
     // Start is called before the first frame update
     public void StateEnter(DamageType damageType)

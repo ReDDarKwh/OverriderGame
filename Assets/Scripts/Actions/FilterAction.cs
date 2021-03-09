@@ -8,7 +8,13 @@ public class FilterAction : Action
     private DataGate filtersDataInput;
     internal override void OnStart()
     {
-        filtersDataInput = new DataGate { name = "filter", dataGateType = DataGate.DataGateType.Filter, saveData = true };
+        filtersDataInput = new DataGate
+        {
+            name = "filter",
+            dataGateType = DataGate.DataGateType.Filter,
+            saveData = true,
+            dataType = DataGate.DataType.Filters
+        };
         dataGates.Add(filtersDataInput);
     }
 }

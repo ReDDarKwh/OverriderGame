@@ -6,6 +6,8 @@ using UnityEngine;
 using System.Linq;
 using System;
 using TMPro;
+using Network = Scripts.Hacking.Network;
+using UnityEngine.UI;
 
 public class DeviceUI : MonoBehaviour
 {
@@ -16,22 +18,37 @@ public class DeviceUI : MonoBehaviour
     public TextMeshProUGUI title;
     public GameObject AccessDeniedDisplay;
     public TextMeshProUGUI AccessDeniedText;
-    public SpriteRenderer selectionCircle;
+    public Image selectionCircle;
     public float selectionRadius;
+    public int baseSortingOrder = 60;
+    public Canvas actionDisplayContainerCanvas;
+    public Transform actionWindow;
+    public Canvas actionDisplayCanvas;
 
     internal bool disableLine;
     internal bool minimized;
-
     internal bool selected;
-    private bool canBeSelected;
+    internal bool isAnchored;
 
+    private bool canBeSelected;
     private LineFactory lineFactory;
     private Line line;
     private Transform mousePos;
+    private Vector3 diff;
+    private bool isMoving;
+    private Vector3 pos;
+    private bool isHovered;
 
     void Start()
     {
         UpdateVisible();
+
+        pos = actionWindow.transform.position;
+
+        if (device.parentDevice != null)
+        {
+            actionWindow.gameObject.SetActive(false);
+        }
 
         if (!disableLine)
         {
@@ -54,9 +71,19 @@ public class DeviceUI : MonoBehaviour
         }
     }
 
+    public void OnHover()
+    {
+        isHovered = true;
+    }
+
+    public void OnHoverExit()
+    {
+        isHovered = false;
+    }
+
     void Update()
     {
-        if ((mousePos.position - transform.position).magnitude < selectionRadius && !selected)
+        if (isHovered)
         {
             selectionCircle.enabled = true;
             if (Input.GetMouseButtonDown(0))
@@ -99,11 +126,69 @@ public class DeviceUI : MonoBehaviour
         {
             actionsToolbar.Show();
             actionsContainer.Show();
+
+            // Move actionWindow above others;
+            SetIsMoving(true);
+            SetIsMoving(false);
         }
         else
         {
             actionsToolbar.Hide();
             actionsContainer.Hide();
+        }
+    }
+
+    void LateUpdate()
+    {
+        if (isMoving)
+        {
+            pos = mousePos.transform.position + diff;
+            actionWindow.position = pos;
+        }
+        else
+        {
+            if (isAnchored)
+            {
+                actionWindow.position = pos;
+            }
+        }
+    }
+
+    public void ToggleIsAnchored()
+    {
+        isAnchored = !isAnchored;
+
+        if (isAnchored)
+        {
+            pos = actionWindow.transform.position;
+        }
+    }
+
+    public void SetIsMoving(bool isMoving)
+    {
+        this.isMoving = isMoving;
+        if (isMoving)
+        {
+            diff = actionWindow.position - mousePos.transform.position;
+
+            if (Network.Instance.lastDeviceMoved != gameObject.GetInstanceID())
+            {
+                Network.Instance.baseDeviceSortingOrder += 2;
+
+                actionDisplayCanvas.sortingOrder = baseSortingOrder + Network.Instance.baseDeviceSortingOrder;
+                actionDisplayContainerCanvas.sortingOrder = baseSortingOrder + Network.Instance.baseDeviceSortingOrder;
+
+                foreach (var action in device.nodesPerAction)
+                {
+                    foreach (var node in action.Value.Values)
+                    {
+                        node.nodeCanvas.overrideSorting = true;
+                        node.nodeCanvas.sortingOrder = baseSortingOrder + 2 + Network.Instance.baseDeviceSortingOrder;
+                    }
+                }
+
+                Network.Instance.lastDeviceMoved = gameObject.GetInstanceID();
+            }
         }
     }
 
@@ -121,5 +206,4 @@ public class DeviceUI : MonoBehaviour
             AccessDeniedText.SetText($"Level {device.accessLevel}");
         }
     }
-
 }

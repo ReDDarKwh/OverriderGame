@@ -3,34 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using Scripts.Actions;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Scripts.Hacking
 {
     public class Node : MonoBehaviour
     {
         public GateType gateType;
-        public GameObject connectionPrefab;
-        public SpriteRenderer spriteRenderer;
-        public float interactionRadius;
-
-
         public float boardcastDelay;
-
-        private NodeState currentState;
-        private Dictionary<AbstractGate, Connection> connectionsTo = new Dictionary<AbstractGate, Connection>();
-        private Transform mousePos;
-        internal AbstractGate gate;
-        internal string nodeId;
         public bool moving;
         public int maxInputs = Int16.MaxValue;
         public int maxOutputs = Int16.MaxValue;
+        public Image nodeImage;
+        public Canvas nodeCanvas;
+        public Color hoverColor;
+        public Color selectedColor;
+        public Color onColor;
+        public Color offColor;
+        public Color errorColor;
+        public Color disabledColor;
 
+        internal AbstractGate gate;
+        internal string nodeId;
         internal bool isVisible = true;
         internal bool connectedToInUI;
-
-        public HackUI hackUI;
         internal DeviceUI deviceUI;
         internal bool accessible = true;
+
+        private Dictionary<AbstractGate, Connection> connectionsTo = new Dictionary<AbstractGate, Connection>();
+        private Transform mousePos;
+        private NodeState currentState;
+        private bool isHovered;
+        internal bool rightClickDown;
 
         // Start is called before the first frame update
 
@@ -69,10 +74,7 @@ namespace Scripts.Hacking
             deviceUI = device?.GetComponent<DeviceUI>();
         }
 
-        private void UpdateConnectionColor(Connection c)
-        {
-            c.lineRenderer.startColor = gate.currentValue ? Color.green : Color.grey;
-        }
+
 
         private void gate_ValueChange(object sender, EventArgs e)
         {
@@ -90,62 +92,135 @@ namespace Scripts.Hacking
         {
             yield return new WaitForSeconds(boardcastDelay);
             gate.Broadcast(gate.currentValue);
-            foreach (var c in connectionsTo.Values)
+        }
+
+        public void OnClick(BaseEventData eventData)
+        {
+            var pointerEvent = (PointerEventData)eventData;
+
+            if (moving)
             {
-                UpdateConnectionColor(c);
+                StartCoroutine(DisableMove());
+                return;
             }
+
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                if (!moving)
+                {
+                    moving = true;
+                }
+            }
+            else
+            {
+                if (pointerEvent.button == PointerEventData.InputButton.Left)
+                {
+                    if (Network.Instance.selectedNode)
+                    {
+                        Network.Instance.ConnectionEnd(Network.Instance.selectedNode, this);
+                        EventSystem.current.SetSelectedGameObject(null);
+                    }
+                    else if (maxOutputs > 0)
+                    {
+                        Network.Instance.selectedNode = this;
+                        Network.Instance.ConnectionStart(this);
+                    }
+                }
+                else
+                {
+                    rightClickDown = true;
+                }
+            }
+        }
+
+        public void OnUnClick(BaseEventData eventData)
+        {
+            var pointerEvent = (PointerEventData)eventData;
+            if (pointerEvent.button == PointerEventData.InputButton.Right && rightClickDown)
+            {
+                DisconnectAll(true);
+                rightClickDown = false;
+            }
+        }
+
+        public void OnHoverEnter()
+        {
+            isHovered = true;
+        }
+
+        public void OnHoverExit()
+        {
+            isHovered = false;
+            rightClickDown = false;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (deviceUI?.selected ?? true)
-            {
-                Show();
-            }
-            else
-            {
-                Hide();
-            }
 
-            if (!isVisible || !accessible)
+            nodeCanvas.enabled = deviceUI?.selected ?? true;
+
+            if (deviceUI && !deviceUI.selected)
             {
                 return;
             }
 
-            if (Input.GetMouseButtonDown(0) && moving)
-            {
-                StartCoroutine(DisableMove());
-            }
-
-
             SetState(gate.currentValue ? NodeState.On : NodeState.Off);
 
-            if (Network.Instance.selectedNode != this)
-            {
-                if ((mousePos.position - transform.position).magnitude < interactionRadius)
-                {
-                    SetState(NodeState.Hover);
-                    if (Network.Instance.selectedNode != null && !Network.Instance.selectedNode.gate.CanConnect(gate))
-                    {
-                        SetState(NodeState.Error);
-                    }
-
-                    if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftControl) && !moving)
-                    {
-                        moving = true;
-                    }
-                }
-            }
-            else
+            if (Network.Instance.selectedNode == this)
             {
                 SetState(NodeState.Selected);
             }
+            else
+            {
+                if (isHovered)
+                {
+                    SetState(NodeState.Hover);
+                }
 
+                if (Network.Instance.selectedNode && !Network.Instance.selectedNode.gate.CanConnect(gate))
+                {
+                    SetState(isHovered ? NodeState.Error : NodeState.Disabled);
+                }
+            }
 
             if (moving)
             {
                 this.transform.position = mousePos.position;
+            }
+        }
+
+        public void SetState(NodeState state)
+        {
+            if (currentState != state)
+            {
+                currentState = state;
+                switch (state)
+                {
+                    case NodeState.Hover:
+                        nodeImage.color = hoverColor;
+                        break;
+
+                    case NodeState.Selected:
+                        nodeImage.color = selectedColor;
+                        break;
+
+                    case NodeState.On:
+                        nodeImage.color = onColor;
+                        break;
+
+                    case NodeState.Off:
+                        nodeImage.color = offColor;
+                        break;
+
+                    case NodeState.Error:
+                        nodeImage.color = errorColor;
+                        break;
+
+                    case NodeState.Disabled:
+                        nodeImage.color = disabledColor;
+                        break;
+                }
             }
         }
 
@@ -158,36 +233,6 @@ namespace Scripts.Hacking
         {
             yield return new WaitForEndOfFrame();
             moving = false;
-        }
-
-        public void SetState(NodeState state)
-        {
-            if (currentState != state)
-            {
-                currentState = state;
-                switch (state)
-                {
-                    case NodeState.Hover:
-                        spriteRenderer.color = Color.gray;
-                        break;
-
-                    case NodeState.Selected:
-                        spriteRenderer.color = Color.yellow;
-                        break;
-
-                    case NodeState.On:
-                        spriteRenderer.color = Color.green;
-                        break;
-
-                    case NodeState.Off:
-                        spriteRenderer.color = Color.white;
-                        break;
-
-                    case NodeState.Error:
-                        spriteRenderer.color = Color.red;
-                        break;
-                }
-            }
         }
 
         internal void Remove()
@@ -247,18 +292,6 @@ namespace Scripts.Hacking
                 Destroy(connection.gameObject);
                 connectedToInUI = connectionsTo.Count > 0;
             }
-        }
-
-        internal void Hide()
-        {
-            spriteRenderer.enabled = false;
-            isVisible = false;
-        }
-
-        internal void Show()
-        {
-            spriteRenderer.enabled = true;
-            isVisible = true;
         }
     }
 }

@@ -18,8 +18,6 @@ namespace Scripts.Actions
         public UniqueId deviceId;
         public bool disableOutput;
         public bool disableInput;
-        public Transform actionWindow;
-        public Canvas actionDisplayCanvas;
         public RectTransform actionDisplayContainer;
         public Preconnection[] preconnections;
         public int accessLevel;
@@ -28,45 +26,17 @@ namespace Scripts.Actions
         internal Device parentDevice;
         internal AttachedGadgetController attachedGadgetController;
         internal bool isAttachedGadget;
-        internal bool isAnchored;
         internal Dictionary<Action, Dictionary<string, Node>> nodesPerAction;
 
-        private bool isMoving;
         private Dictionary<string, GameObject> currentActionDisplays = new Dictionary<string, GameObject>();
         private Transform mousePos;
-        private Vector3 pos;
-        private Vector3 diff;
 
         // Start is called before the first frame update
         void Start()
         {
             UpdateActionDisplays();
             UpdateAccessLevel();
-
-            pos = actionWindow.transform.position;
-
-            if (parentDevice != null)
-            {
-                actionWindow.gameObject.SetActive(false);
-            }
-
             mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
-        }
-
-        void LateUpdate()
-        {
-            if (isMoving)
-            {
-                pos = mousePos.transform.position + diff;
-                actionWindow.position = pos;
-            }
-            else
-            {
-                if (isAnchored)
-                {
-                    actionWindow.position = pos;
-                }
-            }
         }
 
         internal void UpdateAccessLevel()
@@ -102,26 +72,6 @@ namespace Scripts.Actions
                 {
                     node.DisconnectAll(nodesOnly);
                 }
-            }
-        }
-
-        public void ToggleIsAnchored()
-        {
-            isAnchored = !isAnchored;
-
-            if (isAnchored)
-            {
-                pos = actionWindow.transform.position;
-            }
-        }
-
-        public void SetIsMoving(bool isMoving)
-        {
-            this.isMoving = isMoving;
-            if (isMoving)
-            {
-                diff = actionWindow.position - mousePos.transform.position;
-                actionDisplayCanvas.sortingOrder++;
             }
         }
 

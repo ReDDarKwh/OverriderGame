@@ -5,12 +5,12 @@ namespace Scripts.Hacking
         public Connection connection;
         public override void Hide()
         {
-            connection.lineRenderer.enabled = false;
+            //connection.lineRenderer.enabled = false;
         }
 
         public override void Show()
         {
-            connection.lineRenderer.enabled = true;
+            //connection.lineRenderer.enabled = true;
         }
     }
 }

@@ -47,12 +47,11 @@ public partial class PlayerController : MonoBehaviour
             }
         }
 
-        if (Time.time - lastEmission > runNoiseEmissionInterval)
+        if (creature.moveState != MoveState.Idle && Time.time - lastEmission > runNoiseEmissionInterval)
         {
             lastEmission = Time.time;
             if (Input.GetAxisRaw("Run") == 1)
             {
-
                 runNoiseEmitter.EmitNoise();
             }
             else

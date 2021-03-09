@@ -10,7 +10,7 @@ namespace Scripts.Hacking
     {
         public DataGateType dataGateType;
         public string name;
-        public string dataType;
+        public DataType dataType = DataType.GameObjects;
         public bool saveData;
         private object data;
 
@@ -63,6 +63,12 @@ namespace Scripts.Hacking
             Input,
             Output,
             Filter
+        }
+
+        public enum DataType
+        {
+            GameObjects,
+            Filters,
         }
     }
 }

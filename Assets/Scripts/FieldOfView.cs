@@ -138,9 +138,6 @@ public class FieldOfView : MonoBehaviour
             }
         }
 
-
-
-
         var linePoints = new List<Vector3>(vertices);
 
         if (viewAngle != 360)

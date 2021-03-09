@@ -7,6 +7,7 @@ namespace Scripts.Hacking
         Idle,
         On,
         Off,
-        Error
+        Error,
+        Disabled
     }
 }

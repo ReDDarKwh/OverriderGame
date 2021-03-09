@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
+    public float InteractionTime;
     public UnityEvent onUsed;
     public UnityEvent onError;
     internal void Use()

@@ -175,6 +175,11 @@ namespace Vectrosity
         {
             return m_mesh.vertexCount;
         }
+
+        public void SetDrawDepth(int drawDepth)
+        {
+            GetComponent<MeshRenderer>().sortingOrder = drawDepth;
+        }
     }
 
 }

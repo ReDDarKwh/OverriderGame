@@ -3,25 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using Scripts.Hacking;
 using UnityEngine;
+using Vectrosity;
+using System.Linq;
 
 public class Connection : MonoBehaviour
 {
     public float offset = 25;
-    internal Node end;
-    internal Node start;
-
     public float disFromEnd;
-    public LineRenderer lineRenderer;
     public NoodlePath noodlePath;
     public float zoom = 1;
     public float divMultiplier;
+    public float lineWidth = 1;
+    public int lineDepth;
+    public float lineMaxWeldDistance;
+    public Color color;
+    public Color onColor;
+    public Color removeColor;
+    public Material lineMaterial;
 
-    public float LineWidth = 1;
+    internal VectorLine line;
+    internal Node end;
+    internal Node start;
+    private Transform lastStartPos;
+    private Transform lastEndPos;
+    private bool selectedForDelete;
 
     // Start is called before the first frame update
     void Start()
     {
-        lineRenderer.widthMultiplier = LineWidth;
+        line = new VectorLine("ConnectionLine", new List<Vector3>(), lineWidth, lineDepth);
+        line.joins = Joins.Weld;
+        line.lineType = LineType.Continuous;
+        line.maxWeldDistance = lineMaxWeldDistance;
+        line.color = color;
+        line.material = lineMaterial;
     }
 
     // Update is called once per frame
@@ -30,18 +45,57 @@ public class Connection : MonoBehaviour
         var startPos = GetPos(start);
         var endPos = GetPos(end);
 
+        transform.position = startPos.position;
+
+        SetLineOn(start.gate.currentValue);
+        UpdateSelection();
+
+        if (start.rightClickDown || end.rightClickDown || selectedForDelete)
+        {
+            line.color = removeColor;
+        }
+
+        line.SetWidth(lineWidth / Camera.main.orthographicSize);
+
         if (startPos != endPos)
         {
             DrawNoodle(noodlePath, new List<Vector3>
-            {
-                startPos.position,
-                endPos.position
-            });
+                {
+                    startPos.position,
+                    endPos.position
+                });
         }
         else
         {
-            lineRenderer.positionCount = 0;
+            line.points3.Clear();
         }
+
+        line.Draw3D();
+
+        lastStartPos = startPos;
+        lastEndPos = endPos;
+    }
+
+    private void UpdateSelection()
+    {
+        if (selectedForDelete && Input.GetMouseButtonUp(1))
+        {
+            start.Disconnect(end);
+        }
+
+        if (Input.GetMouseButton(1) && line.Selected(Input.mousePosition))
+        {
+            selectedForDelete = true;
+        }
+        else
+        {
+            selectedForDelete = false;
+        }
+    }
+
+    void OnDestroy()
+    {
+        VectorLine.Destroy(ref line);
     }
 
     private Transform GetPos(Node node)
@@ -51,7 +105,7 @@ public class Connection : MonoBehaviour
             Debug.Log("");
         }
 
-        return node.isVisible || node.deviceUI == null ? node.transform : node.deviceUI.transform;
+        return node.deviceUI == null || node.deviceUI.selected ? node.transform : node.deviceUI.transform;
     }
 
     private Vector2 CalculateBezierPoint(Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3, float t)
@@ -65,9 +119,12 @@ public class Connection : MonoBehaviour
         );
     }
 
-    private void DrawAAPolyLineNonAlloc(Vector3 vector3, Vector2 start_1)
+    internal void SetLineOn(bool currentValue)
     {
-        throw new NotImplementedException();
+        if (line != null)
+        {
+            line.color = currentValue ? onColor : color;
+        }
     }
 
     /// <summary> Draw a bezier from output to input in grid coordinates </summary>
@@ -114,45 +171,16 @@ public class Connection : MonoBehaviour
                     // Coloring and bezier drawing.
                     Vector2 bezierPrevious = point_a;
 
-                    lineRenderer.positionCount = division;
+                    var points = new Vector3[division];
                     for (int j = 1; j <= division; ++j)
                     {
                         Vector2 bezierNext = CalculateBezierPoint(point_a, tangent_a, tangent_b, point_b, j / (float)division);
-                        lineRenderer.SetPosition(j - 1, bezierPrevious);
+                        points[j - 1] = bezierPrevious;
                         bezierPrevious = bezierNext;
                     }
-                    lineRenderer.SetPosition(division - 1, bezierPrevious);
+                    points[division - 1] = bezierPrevious;
+                    line.points3 = points.ToList();
                     outputTangent = -inputTangent;
-                }
-                break;
-            case NoodlePath.Angled:
-                for (int i = 0; i < length - 1; i++)
-                {
-                    if (i == length - 1) continue; // Skip last index
-                    if (gridPoints[i].x <= gridPoints[i + 1].x - (50))
-                    {
-                        var midpoint = Vector3.Lerp(gridPoints[i], gridPoints[i + 1], 0.5f);
-                        Vector2 start_1 = gridPoints[i];
-                        Vector2 end_1 = gridPoints[i + 1];
-                        start_1.x = midpoint.x;
-                        end_1.x = midpoint.x;
-                        lineRenderer.positionCount = 4;
-                        lineRenderer.SetPositions(new Vector3[] { gridPoints[i], start_1, end_1, gridPoints[i + 1] });
-                    }
-                    else
-                    {
-                        var midpoint = Vector3.Lerp(gridPoints[i], gridPoints[i + 1], 0.5f);
-                        Vector2 start_1 = gridPoints[i];
-                        Vector2 end_1 = gridPoints[i + 1];
-                        start_1.x += offset;
-                        end_1.x -= offset;
-                        Vector2 start_2 = start_1;
-                        Vector2 end_2 = end_1;
-                        start_2.y = midpoint.y;
-                        end_2.y = midpoint.y;
-                        lineRenderer.positionCount = 6;
-                        lineRenderer.SetPositions(new Vector3[] { gridPoints[i], start_1, start_2, end_2, end_1, gridPoints[i + 1] });
-                    }
                 }
                 break;
         }
