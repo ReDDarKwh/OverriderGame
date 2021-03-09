@@ -7,6 +7,7 @@ public class GuardRobotAnimControl : MonoBehaviour
     public Animator animator;
     public Transform legs;
     public Action chasingAction;
+    public Action shootingAction;
     public SpriteRenderer[] gunSprites;
     public Creature creature;
     public float damping;
@@ -19,7 +20,8 @@ public class GuardRobotAnimControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetBool("Open", chasingAction.outputGate.currentValue);
+        animator.SetBool("Open", chasingAction.outputGate.currentValue || shootingAction.outputGate.currentValue);
+        creature.SetHacked(shootingAction.outputGate.currentValue && shootingAction.hacked);
 
         if (creature.nav.IsMoving())
         {

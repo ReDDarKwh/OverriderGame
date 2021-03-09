@@ -38,6 +38,6 @@ public class ShootingAction : Action
     private void Shoot()
     {
         var projectile = Instantiate(projectilePrefab, barrelPosition.position, transform.rotation);
-        projectile.GetComponent<Projectile>().ignoredCollider = ignoredCollider;
+        projectile.GetComponent<NoiseEmitter>().ignoredColliders = new Collider2D[] { ignoredCollider };
     }
 }

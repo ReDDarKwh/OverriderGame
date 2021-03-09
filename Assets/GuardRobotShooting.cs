@@ -11,6 +11,7 @@ public class GuardRobotShooting : MonoBehaviour
     public GameObject projectilePrefab;
     public SoundPreset shootingSound;
     public ParticleSystem particle;
+    public Collider2D ignoredCollider;
 
     public float shootOffset;
     public float shootSpeed;
@@ -50,6 +51,8 @@ public class GuardRobotShooting : MonoBehaviour
     public void Shoot()
     {
         var projectile = Instantiate(projectilePrefab, muzzle.position, muzzle.rotation);
+        projectile.GetComponent<NoiseEmitter>().ignoredColliders = new Collider2D[] { ignoredCollider };
+
         SoundManager.Instance.Make(shootingSound, transform.position);
         particle.Play();
     }

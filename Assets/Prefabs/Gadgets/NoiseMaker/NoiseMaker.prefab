@@ -193,9 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90d7d4cbdf0c884a9450436c86a5e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creature: {fileID: 0}
-  deadLayer: 
-  device: {fileID: 0}
   explodeEffect: {fileID: 8319351579001915392, guid: e93a4ba14ac1fb64b90c2290b10abd80,
     type: 3}
   deadBodyPrefab: {fileID: 0}
@@ -250,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundPresets:
   - {fileID: 11400000, guid: 238a423f29e5ba649b22c3ba868d2187, type: 2}
+  playOnStart: 0
 --- !u!114 &7032644804454462247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e7ed7e149dcdd41ae1da499943c5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteractionTime: 2
   onUsed:
     m_PersistentCalls:
       m_Calls:
@@ -304,6 +303,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5896636880886007397}
     m_Modifications:
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 963743710227341739, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: deviceName
@@ -367,6 +391,31 @@ PrefabInstance:
     - target: {fileID: 4089401180447782003, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475394379975237742, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475394379975237742, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475394379975237742, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475394379975237742, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4475394379975237742, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8008101631496523900, guid: 6e3ab18108021c44f8ff40f77330424b,

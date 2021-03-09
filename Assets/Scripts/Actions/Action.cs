@@ -17,6 +17,8 @@ public abstract class Action : MonoBehaviour
     internal abstract void OnStart();
     private bool isInitiated;
     internal IList<DataGate> dataGates = new List<DataGate>();
+    internal bool hacked;
+
     public event EventHandler AfterInit;
 
     public void Init()
@@ -59,6 +61,7 @@ public abstract class Action : MonoBehaviour
         if (inputGate.parents.Count == 0)
         {
             cGate.SetValue(false);
+            hacked = false;
         }
     }
     private void gate_ConnectedTo(object sender, EventArgs e)
@@ -66,6 +69,7 @@ public abstract class Action : MonoBehaviour
         if (inputGate.parents.Count == 1)
         {
             cGate.SetValue(true);
+            hacked = true;
         }
     }
     protected virtual void OnAfterInit(EventArgs e)

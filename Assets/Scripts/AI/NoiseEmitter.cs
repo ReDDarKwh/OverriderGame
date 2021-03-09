@@ -13,6 +13,7 @@ public class NoiseEmitter : MonoBehaviour
     public int maxTargets = 100;
     public ParticleSystem rippleEffect;
     public GameObject interactableObject;
+    public Collider2D[] ignoredColliders;
 
     public void EmitNoise()
     {
@@ -23,7 +24,7 @@ public class NoiseEmitter : MonoBehaviour
             rippleEffect.Emit(1);
         }
 
-        foreach (var collider in colliders.Take(maxTargets))
+        foreach (var collider in colliders.Take(maxTargets).Except(ignoredColliders))
         {
             if (noiseHeardEvent == "NoiseHeard")
             {

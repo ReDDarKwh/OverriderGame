@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Bolt;
 using UnityEngine;
@@ -38,6 +39,11 @@ public class Creature : MonoBehaviour
                 }
             }
         }
+    }
+
+    internal void SetHacked(bool hacked)
+    {
+        gameObject.layer = LayerMask.NameToLayer(hacked ? "HackedGuard" : "Guard");
     }
 
     public void AttackEnd()

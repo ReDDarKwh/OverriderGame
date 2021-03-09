@@ -10264,6 +10264,7 @@ MonoBehaviour:
   maxTargets: 100
   rippleEffect: {fileID: 0}
   interactableObject: {fileID: 0}
+  ignoredColliders: []
 --- !u!4 &867126251 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 155990524520608647, guid: a6bc9bb31b90a0e43b45ddd1233ea7f6,
@@ -10446,6 +10447,7 @@ MonoBehaviour:
   maxTargets: 100
   rippleEffect: {fileID: 0}
   interactableObject: {fileID: 0}
+  ignoredColliders: []
 --- !u!1001 &875613246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12123,6 +12125,7 @@ MonoBehaviour:
   maxTargets: 100
   rippleEffect: {fileID: 0}
   interactableObject: {fileID: 0}
+  ignoredColliders: []
 --- !u!1001 &940230827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12224,6 +12227,7 @@ MonoBehaviour:
   maxTargets: 100
   rippleEffect: {fileID: 0}
   interactableObject: {fileID: 0}
+  ignoredColliders: []
 --- !u!4 &944559236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6097169809152547391, guid: 9f388233a74af4248be8831fb5cdd981,
@@ -12600,6 +12604,7 @@ MonoBehaviour:
   maxTargets: 100
   rippleEffect: {fileID: 0}
   interactableObject: {fileID: 0}
+  ignoredColliders: []
 --- !u!1001 &986709280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17037,6 +17042,7 @@ MonoBehaviour:
   maxTargets: 100
   rippleEffect: {fileID: 0}
   interactableObject: {fileID: 0}
+  ignoredColliders: []
 --- !u!1001 &1235593502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21210,6 +21216,7 @@ MonoBehaviour:
   maxTargets: 100
   rippleEffect: {fileID: 0}
   interactableObject: {fileID: 0}
+  ignoredColliders: []
 --- !u!1001 &1634671724
 PrefabInstance:
   m_ObjectHideFlags: 0
