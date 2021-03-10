@@ -78,18 +78,21 @@ public class Connection : MonoBehaviour
 
     private void UpdateSelection()
     {
-        if (selectedForDelete && Input.GetMouseButtonUp(1))
+        if (start.deviceUI?.device.playerCanAccess ?? true)
         {
-            start.Disconnect(end);
-        }
+            if (selectedForDelete && Input.GetMouseButtonUp(1))
+            {
+                start.Disconnect(end);
+            }
 
-        if (Input.GetMouseButton(1) && line.Selected(Input.mousePosition))
-        {
-            selectedForDelete = true;
-        }
-        else
-        {
-            selectedForDelete = false;
+            if (Input.GetMouseButton(1) && line.Selected(Input.mousePosition))
+            {
+                selectedForDelete = true;
+            }
+            else
+            {
+                selectedForDelete = false;
+            }
         }
     }
 

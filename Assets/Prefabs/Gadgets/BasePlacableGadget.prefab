@@ -67,6 +67,9 @@ MonoBehaviour:
   gadgetLayer:
     serializedVersion: 2
     m_Bits: 524288
+  blockingLayers:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!114 &2743065138823457508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +129,6 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

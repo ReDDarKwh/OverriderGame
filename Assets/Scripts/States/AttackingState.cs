@@ -24,7 +24,10 @@ public class AttackingState : MonoBehaviour
         targetCreature = target.GetComponent<Creature>();
         targetPlayerController = target.GetComponent<PlayerController>();
 
-        creature.SetHacked(true);
+        if (target.layer == LayerMask.NameToLayer("Guard"))
+        {
+            creature.SetHacked(true);
+        }
 
         shootingAction.actionGate.SetValue(true);
     }

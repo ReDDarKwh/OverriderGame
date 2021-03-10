@@ -11,6 +11,7 @@ namespace Scripts.Gadgets.Modules
         public GameObject preview;
         public float range;
         public LayerMask gadgetLayer;
+        public LayerMask blockingLayers;
         internal Transform mousePos;
 
         void Start()
@@ -21,7 +22,16 @@ namespace Scripts.Gadgets.Modules
         void Update()
         {
             var centerToMouse = mousePos.position - transform.position;
-            preview.transform.position = transform.position + Vector3.ClampMagnitude(centerToMouse, range);
+            var hit = Physics2D.Raycast(transform.position, centerToMouse, centerToMouse.magnitude, blockingLayers);
+
+            if (hit.collider)
+            {
+                preview.transform.position = hit.point;
+            }
+            else
+            {
+                preview.transform.position = transform.position + Vector3.ClampMagnitude(centerToMouse, range);
+            }
 
             var collider = Physics2D.OverlapPoint(preview.transform.position, gadgetLayer);
 
@@ -32,7 +42,7 @@ namespace Scripts.Gadgets.Modules
                 attachedGadgetController.selection.enabled = true;
             }
 
-            if (Input.GetMouseButtonDown(0) && centerToMouse.magnitude < range)
+            if (Input.GetMouseButtonDown(0))
             {
                 if (collider != null)
                 {

@@ -11,6 +11,7 @@ public class TargetingAction : Action
     internal IEnumerable<Transform> targets;
     private Quaternion initialRotation;
     private DataGate targetsDataInput;
+    internal Transform target;
 
     internal override void OnStart()
     {
@@ -30,7 +31,7 @@ public class TargetingAction : Action
     // Update is called once per frame
     void Update()
     {
-        var target = targets?.FirstOrDefault();
+        target = targets?.FirstOrDefault();
         Quaternion desiredRotQ = Quaternion.identity;
         if (target != null)
         {
