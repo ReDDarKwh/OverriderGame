@@ -20,6 +20,7 @@ public class GotoState : MonoBehaviour
 
     public void StateEnter(Transform targetTransform, Vector3 targetPos, string settingName, bool lookAtTarget, string atPositionEventName = "isAtPosition")
     {
+
         if (moveSettingsRepo == null)
         {
             moveSettingsRepo = moveSettings.ToDictionary(x => x.name);
@@ -28,7 +29,6 @@ public class GotoState : MonoBehaviour
         this.lookAtTarget = lookAtTarget;
         this.atPositionEventName = atPositionEventName;
 
-        creature.nav.Stop();
         creature.nav.SetSpeed(moveSettingsRepo[settingName].moveSpeed);
 
         this.targetRange = moveSettingsRepo[settingName].targetRange;
@@ -50,17 +50,17 @@ public class GotoState : MonoBehaviour
 
     public void StateUpdate()
     {
-
-        var v = lookAtTarget ? ((isMovingObject ? targetTransform.position : targetPos) - transform.position) : creature.nav.GetDir();
-        Debug.Log(Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg);
-        creature.headDir = v;
+        CheckIsAtPosition(atPositionEventName);
 
         if (creature.nav.IsTargetUnreachable())
         {
             CustomEvent.Trigger(this.gameObject, "isUnreachable");
         }
-
-        CheckIsAtPosition(atPositionEventName);
+        else
+        {
+            var v = lookAtTarget ? ((isMovingObject ? targetTransform.position : targetPos) - transform.position) : creature.nav.GetDir();
+            creature.headDir = v;
+        }
     }
 
     private void CheckIsAtPosition(string atPositionEventName)

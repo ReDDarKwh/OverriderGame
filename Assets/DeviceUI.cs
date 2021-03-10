@@ -24,6 +24,7 @@ public class DeviceUI : MonoBehaviour
     public Canvas actionDisplayContainerCanvas;
     public Transform actionWindow;
     public Canvas actionDisplayCanvas;
+    public Canvas accessDeniedCanvas;
 
     internal bool disableLine;
     internal bool minimized;
@@ -173,17 +174,18 @@ public class DeviceUI : MonoBehaviour
 
             if (Network.Instance.lastDeviceMoved != gameObject.GetInstanceID())
             {
-                Network.Instance.baseDeviceSortingOrder += 2;
+                Network.Instance.baseDeviceSortingOrder += 4;
 
                 actionDisplayCanvas.sortingOrder = baseSortingOrder + Network.Instance.baseDeviceSortingOrder;
                 actionDisplayContainerCanvas.sortingOrder = baseSortingOrder + Network.Instance.baseDeviceSortingOrder;
+                accessDeniedCanvas.sortingOrder = baseSortingOrder + 2 + Network.Instance.baseDeviceSortingOrder;
 
                 foreach (var action in device.nodesPerAction)
                 {
                     foreach (var node in action.Value.Values)
                     {
                         node.nodeCanvas.overrideSorting = true;
-                        node.nodeCanvas.sortingOrder = baseSortingOrder + 2 + Network.Instance.baseDeviceSortingOrder;
+                        node.nodeCanvas.sortingOrder = baseSortingOrder + 1 + Network.Instance.baseDeviceSortingOrder;
                     }
                 }
 

@@ -13,7 +13,7 @@ public class PathFindingNav : Navigation
 
     public override Vector3 GetDir()
     {
-        return (!navMeshAgent.hasPath || navMeshAgent.pathPending) ? lastDesiredVelocity : navMeshAgent.velocity;
+        return (!navMeshAgent.hasPath || navMeshAgent.pathPending) ? lastDesiredVelocity : navMeshAgent.desiredVelocity;
     }
 
     public override void SetSpeed(float speed)
@@ -30,13 +30,19 @@ public class PathFindingNav : Navigation
     public override void SetTarget(Vector3 target)
     {
         navMeshAgent.isStopped = stopped = false;
+        Debug.Log("started");
         navMeshAgent.SetDestination(target);
     }
 
     public override void Stop()
     {
+        Debug.Log("stopped");
         navMeshAgent.isStopped = stopped = true;
         movingTarget = null;
+    }
+    public override void ClearPath()
+    {
+        navMeshAgent.ResetPath();
     }
 
     // Start is called before the first frame update
@@ -67,7 +73,7 @@ public class PathFindingNav : Navigation
             }
             else
             {
-                lastDesiredVelocity = navMeshAgent.velocity;
+                lastDesiredVelocity = navMeshAgent.desiredVelocity;
             }
         }
     }
@@ -113,5 +119,10 @@ public class PathFindingNav : Navigation
     public override bool IsTargetUnreachable()
     {
         return navMeshAgent.hasPath && navMeshAgent.path.status == NavMeshPathStatus.PathPartial;
+    }
+
+    public override bool PathComplete()
+    {
+        return navMeshAgent.path.status == NavMeshPathStatus.PathComplete;
     }
 }

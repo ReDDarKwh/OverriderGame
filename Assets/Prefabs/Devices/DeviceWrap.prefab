@@ -953,6 +953,7 @@ MonoBehaviour:
   actionDisplayContainerCanvas: {fileID: 3634802027296639367}
   actionWindow: {fileID: 5741856822046143449}
   actionDisplayCanvas: {fileID: 902342919566956359}
+  accessDeniedCanvas: {fileID: 783978195185327400}
 --- !u!1 &4089401182147920999
 GameObject:
   m_ObjectHideFlags: 0

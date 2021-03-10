@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af55e4da86f42b34784369bce4e0944b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 0
   rb: {fileID: 7917729047696385602}
   speed: 15
   ignoredCollider: {fileID: 0}
@@ -164,3 +164,4 @@ MonoBehaviour:
   maxTargets: 100
   rippleEffect: {fileID: 0}
   interactableObject: {fileID: 6453841275999851734}
+  ignoredColliders: []

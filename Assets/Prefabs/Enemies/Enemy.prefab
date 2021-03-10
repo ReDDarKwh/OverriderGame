@@ -527,7 +527,7 @@ MonoBehaviour:
     targetRange: 0.5
     moveSpeed: 1.5
   - name: investigatingNoise
-    targetRange: 1
+    targetRange: 0.5
     moveSpeed: 1.5
 --- !u!114 &2100702830022439322
 MonoBehaviour:
