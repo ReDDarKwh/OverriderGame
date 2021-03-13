@@ -25,8 +25,13 @@ public class DeviceUI : MonoBehaviour
     public Transform actionWindow;
     public Canvas actionDisplayCanvas;
     public Canvas accessDeniedCanvas;
+    public Button closeButton;
+    public Button anchorButton;
+    public bool disableLine;
+    public bool disableClose;
+    public bool disableAnchor;
+    public bool UIDestroyable;
 
-    internal bool disableLine;
     internal bool minimized;
     internal bool selected;
     internal bool isAnchored;
@@ -42,6 +47,14 @@ public class DeviceUI : MonoBehaviour
 
     void Start()
     {
+
+        if (!device.initiated)
+        {
+            device.Init();
+        }
+
+        mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
+        selected = disableClose;
         UpdateVisible();
 
         pos = actionWindow.transform.position;
@@ -61,7 +74,15 @@ public class DeviceUI : MonoBehaviour
             deviceCircle.SetActive(false);
         }
 
-        mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
+        if (disableClose && closeButton)
+        {
+            closeButton.gameObject.SetActive(false);
+        }
+
+        if (disableAnchor && anchorButton)
+        {
+            anchorButton.gameObject.SetActive(false);
+        }
     }
 
     void OnDestroy()
@@ -84,7 +105,7 @@ public class DeviceUI : MonoBehaviour
 
     void Update()
     {
-        if (isHovered)
+        if (isHovered && !disableClose)
         {
             selectionCircle.enabled = true;
             if (Input.GetMouseButtonDown(0))
@@ -172,7 +193,7 @@ public class DeviceUI : MonoBehaviour
         {
             diff = actionWindow.position - mousePos.transform.position;
 
-            if (Network.Instance.lastDeviceMoved != gameObject.GetInstanceID())
+            if (Network.Instance.lastDeviceMoved != this)
             {
                 Network.Instance.baseDeviceSortingOrder += 4;
 
@@ -189,7 +210,7 @@ public class DeviceUI : MonoBehaviour
                     }
                 }
 
-                Network.Instance.lastDeviceMoved = gameObject.GetInstanceID();
+                Network.Instance.lastDeviceMoved = this;
             }
         }
     }

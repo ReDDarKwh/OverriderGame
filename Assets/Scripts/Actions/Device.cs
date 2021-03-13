@@ -30,13 +30,23 @@ namespace Scripts.Actions
 
         private Dictionary<string, GameObject> currentActionDisplays = new Dictionary<string, GameObject>();
         private Transform mousePos;
+        internal bool initiated;
 
         // Start is called before the first frame update
         void Start()
         {
-            UpdateActionDisplays();
-            UpdateAccessLevel();
-            mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
+            Init();
+        }
+
+        public void Init()
+        {
+            if (!initiated)
+            {
+                UpdateActionDisplays();
+                UpdateAccessLevel();
+                mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
+                initiated = true;
+            }
         }
 
         internal void UpdateAccessLevel()

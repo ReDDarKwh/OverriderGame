@@ -24,6 +24,14 @@ namespace Scripts.Hacking
             StartCoroutine(DelayedLoad());
         }
 
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                Save();
+            }
+        }
+
         public void RunPreConnections()
         {
             foreach (var device in GetComponentsInChildren<Device>())

@@ -14,7 +14,7 @@ namespace Scripts.Hacking
         public static Network Instance = null;
 
         internal int accessLevel;
-        internal int lastDeviceMoved;
+        internal DeviceUI lastDeviceMoved;
         internal int baseDeviceSortingOrder;
         internal Node selectedNode;
 

@@ -43,8 +43,11 @@ public class SpottingAction : Action
         if (target == null)
             return null;
 
-        if (target.GetInstanceID() == parent.GetInstanceID())
-            return null;
+        if (parent != null)
+        {
+            if (target.GetInstanceID() == parent.GetInstanceID())
+                return null;
+        }
 
         var EnemyToTargetVec = target.transform.position - transform.position;
 

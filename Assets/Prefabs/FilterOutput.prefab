@@ -111,7 +111,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0.16568318}
+  m_SizeDelta: {x: 0, y: 0.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8934446532052244860
 MonoBehaviour:
@@ -145,7 +145,6 @@ MonoBehaviour:
     m_Bits: 0
   guards: {fileID: 9198737827884952030}
   player: {fileID: 8724694211130370066}
-  dead: {fileID: 0}
 --- !u!1 &3096269671897298060
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +983,7 @@ PrefabInstance:
     - target: {fileID: 2942535031108555949, guid: a46e1658d7663a54787f5809a20b3cfd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2942535031108555949, guid: a46e1658d7663a54787f5809a20b3cfd,
         type: 3}
