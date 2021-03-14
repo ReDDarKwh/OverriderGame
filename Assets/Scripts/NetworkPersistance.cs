@@ -156,7 +156,7 @@ namespace Scripts.Hacking
                 if (!connectedNodes.Contains(c))
                 {
                     connectedNodes.Add(c);
-                    network.Connect(node, Connect(childSavedNode, savedNodeRepo, connectedNodes));
+                    network.Connect(node, Connect(childSavedNode, savedNodeRepo, connectedNodes), false);
                 }
             }
 

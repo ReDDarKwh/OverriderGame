@@ -6,13 +6,18 @@ using UnityEngine;
 
 namespace Scripts.Hacking
 {
-    public class DataGate : AbstractGate
+    public class DataGate : OrGate
     {
         public DataGateType dataGateType;
         public string name;
         public DataType dataType = DataType.GameObjects;
         public bool saveData;
         private object data;
+
+        public DataGate()
+        {
+            currentValue = true;
+        }
 
         public override bool CanConnect(AbstractGate gate)
         {
@@ -51,11 +56,6 @@ namespace Scripts.Hacking
         {
             this.data = data;
             UpdateValue();
-        }
-
-        public override void UpdateValue()
-        {
-            BroadcastValue(true);
         }
 
         public enum DataGateType

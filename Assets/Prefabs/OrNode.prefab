@@ -152,10 +152,11 @@ MonoBehaviour:
   nodeCanvas: {fileID: 4932025156246674099}
   hoverColor: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
   selectedColor: {r: 0, g: 0.62122846, b: 1, a: 1}
-  onColor: {r: 1, g: 0.7413453, b: 0, a: 1}
+  onColor: {r: 1, g: 0.8705883, b: 0, a: 1}
   offColor: {r: 1, g: 1, b: 1, a: 1}
   errorColor: {r: 0.6886792, g: 0.27612138, b: 0.27612138, a: 1}
   disabledColor: {r: 0.518, g: 0.518, b: 0.518, a: 1}
+  deconnectedSound: {fileID: 11400000, guid: 92067fb7a0caf044fa3a5ffb30cd3316, type: 2}
 --- !u!1 &3482293927732933189
 GameObject:
   m_ObjectHideFlags: 0

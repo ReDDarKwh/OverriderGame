@@ -61,6 +61,6 @@ public class FilterOutputDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        ioDisplay.node.gate.SetValue(this.mask != 0);
     }
 }

@@ -23,6 +23,7 @@ namespace Scripts.Hacking
         public Color offColor;
         public Color errorColor;
         public Color disabledColor;
+        public SoundPreset deconnectedSound;
 
         internal AbstractGate gate;
         internal string nodeId;
@@ -123,7 +124,7 @@ namespace Scripts.Hacking
                     else if (maxOutputs > 0)
                     {
                         Network.Instance.selectedNode = this;
-                        Network.Instance.ConnectionStart(this);
+                        Network.Instance.ConnectionStart(this, true);
                     }
                 }
                 else
@@ -138,6 +139,7 @@ namespace Scripts.Hacking
             var pointerEvent = (PointerEventData)eventData;
             if (pointerEvent.button == PointerEventData.InputButton.Right && rightClickDown)
             {
+                deconnectedSound.Play(transform.position);
                 DisconnectAll(true);
                 rightClickDown = false;
             }

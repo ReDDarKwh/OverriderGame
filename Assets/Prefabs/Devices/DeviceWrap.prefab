@@ -1046,6 +1046,7 @@ MonoBehaviour:
   actionDisplayContainer: {fileID: 8747885469652518358}
   preconnections: []
   accessLevel: 0
+  deconnectedSound: {fileID: 11400000, guid: 92067fb7a0caf044fa3a5ffb30cd3316, type: 2}
 --- !u!114 &8355662138841550960
 MonoBehaviour:
   m_ObjectHideFlags: 0

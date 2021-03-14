@@ -646,6 +646,7 @@ MonoBehaviour:
     type: 3}
   poolSize: 100
   poolParent: {fileID: 919852761}
+  fadeSpeed: 0.6
 --- !u!114 &68017253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,7 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundPresets:
-  - {fileID: 11400000, guid: ce3b3e0c33ea0824ca1fd8226ca96e75, type: 2}
+  - {fileID: 11400000, guid: e0ddb592b795adb45a96519b07f1db70, type: 2}
   playOnStart: 0
 --- !u!114 &68017256
 MonoBehaviour:
@@ -20948,6 +20949,7 @@ MonoBehaviour:
   offColor: {r: 0, g: 0, b: 0, a: 0}
   errorColor: {r: 0, g: 0, b: 0, a: 0}
   disabledColor: {r: 0, g: 0, b: 0, a: 0}
+  deconnectedSound: {fileID: 0}
 --- !u!1001 &1535352611
 PrefabInstance:
   m_ObjectHideFlags: 0

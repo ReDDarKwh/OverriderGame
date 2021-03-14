@@ -15,6 +15,7 @@ public class FilterAction : Action
             saveData = true,
             dataType = DataGate.DataType.Filters
         };
+        filtersDataInput.SetValue(true);
         dataGates.Add(filtersDataInput);
     }
 }

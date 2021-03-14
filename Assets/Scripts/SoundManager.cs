@@ -13,8 +13,10 @@ public class SoundManager : MonoBehaviour
     public GameObject soundPrefab;
     public int poolSize;
     public Transform poolParent;
+    public float fadeSpeed;
     private HashSet<AudioSource> activeSources = new HashSet<AudioSource>();
     private Stack<AudioSource> pool = new Stack<AudioSource>();
+    private HashSet<AudioSource> fadeOutList = new HashSet<AudioSource>();
 
     // Initialize the singleton instance.
     private void Awake()
@@ -119,6 +121,42 @@ public class SoundManager : MonoBehaviour
             if (source != null)
             {
                 Stop(source);
+            }
+        }
+
+        foreach (var source in fadeOutList.ToList())
+        {
+            if (source == null)
+            {
+                fadeOutList.Remove(source);
+                continue;
+            }
+
+            source.volume -= fadeSpeed * Time.unscaledDeltaTime;
+
+            if (source.volume <= 0)
+            {
+                Stop(source);
+                fadeOutList.Remove(source);
+            }
+        }
+    }
+
+    public void FadeOut(AudioSource source)
+    {
+        if (source)
+        {
+            fadeOutList.Add(source);
+        }
+    }
+
+    public void FadeOut(IEnumerable<AudioSource> sources)
+    {
+        if (sources != null)
+        {
+            foreach (var source in sources)
+            {
+                FadeOut(source);
             }
         }
     }

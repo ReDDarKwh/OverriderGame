@@ -39,25 +39,30 @@ namespace Scripts.Hacking
             }
         }
 
-        public void DeselectSelectedNode(bool destroyConnection = true)
+        public void DeselectSelectedNode(bool destroyConnection = true, bool makeSound = false)
         {
             selectedNode = null;
             if (destroyConnection)
             {
+                if (makeSound)
+                {
+                    connection.PlayDeconnectedSound();
+                }
                 Destroy(connection.gameObject);
             }
             connection = null;
         }
 
-        internal void Connect(Node from, Node to)
+        internal void Connect(Node from, Node to, bool soundOn)
         {
-            ConnectionStart(from);
+            ConnectionStart(from, soundOn);
             ConnectionEnd(from, to);
         }
 
-        internal void ConnectionStart(Node from)
+        internal void ConnectionStart(Node from, bool soundOn)
         {
             connection = Instantiate(connectionPrefab, transform).GetComponent<Connection>();
+            connection.soundOn = soundOn;
             connection.start = from;
             connection.end = mousePosNode;
         }
@@ -65,6 +70,7 @@ namespace Scripts.Hacking
         internal void ConnectionEnd(Node from, Node to)
         {
             var connected = from.Connect(to, connection);
+            connection.Connected();
             DeselectSelectedNode(!connected);
         }
 
@@ -75,7 +81,7 @@ namespace Scripts.Hacking
             {
                 if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(1))
                 {
-                    DeselectSelectedNode();
+                    DeselectSelectedNode(true, true);
                 }
 
                 if (Input.GetKeyDown(KeyCode.Q))
@@ -86,7 +92,7 @@ namespace Scripts.Hacking
                 if (Input.GetKeyDown(KeyCode.Delete))
                 {
                     selectedNode.Remove();
-                    DeselectSelectedNode();
+                    DeselectSelectedNode(true, true);
                 }
             }
         }

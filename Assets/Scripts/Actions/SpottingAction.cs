@@ -29,6 +29,7 @@ public class SpottingAction : Action
             .Select(x => TargetInView(x.gameObject))
             .Where(x => x != null);
         intrudersDataOutput.SetData(targets == null ? null : targets);
+        intrudersDataOutput.SetValue(targets != null && targets.Count() > 0);
         actionGate.SetValue(targets.Count() != 0);
 
         if (fieldOfView != null)

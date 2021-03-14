@@ -21,6 +21,7 @@ namespace Scripts.Actions
         public RectTransform actionDisplayContainer;
         public Preconnection[] preconnections;
         public int accessLevel;
+        public SoundPreset deconnectedSound;
 
         internal bool playerCanAccess = true;
         internal Device parentDevice;
@@ -76,11 +77,15 @@ namespace Scripts.Actions
 
         public void DisconnectAll(bool nodesOnly)
         {
-            foreach (var action in nodesPerAction)
+            if (playerCanAccess)
             {
-                foreach (var node in action.Value.Values)
+                deconnectedSound.Play(transform.position);
+                foreach (var action in nodesPerAction)
                 {
-                    node.DisconnectAll(nodesOnly);
+                    foreach (var node in action.Value.Values)
+                    {
+                        node.DisconnectAll(nodesOnly);
+                    }
                 }
             }
         }
@@ -159,7 +164,7 @@ namespace Scripts.Actions
             {
                 var fromNode = nodesPerAction[preconnection.fromAction][preconnection.fromNodeName];
                 var toNode = nodesPerAction[preconnection.toAction][preconnection.toNodeName];
-                Network.Instance.Connect(fromNode, toNode);
+                Network.Instance.Connect(fromNode, toNode, false);
             }
         }
 

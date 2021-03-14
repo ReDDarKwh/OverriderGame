@@ -1,0 +1,45 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="sci-fi_power_up_object_01_data" version="1.3.0" audacityversion="2.4.2" sel0="0.0000000000" sel1="0.9158333300" vpos="0" h="0.0000000000" zoom="404.2682926829" rate="48000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="taser_stun_gun_zap_electricity_03" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="16464">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808b68.au" len="16464" min="-0.945099" max="0.800293" rms="0.058753"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="taser_stun_gun_zap_electricity_03" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="16464">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808ae5.au" len="16464" min="-0.8815" max="0.701233" rms="0.058204"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="sci-fi_shield_power_deflect_block_01" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="48000" gain="0.063096" pan="0.0" colorindex="0">
+		<waveclip offset="0.09583333" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="39360">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808067.au" len="39360" min="-0.999084" max="0.999969" rms="0.226775"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="sci-fi_shield_power_deflect_block_01" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="48000" gain="0.063096" pan="0.0" colorindex="0">
+		<waveclip offset="0.09583333" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="39360">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808d6e.au" len="39360" min="-1.0" max="0.999969" rms="0.193058"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

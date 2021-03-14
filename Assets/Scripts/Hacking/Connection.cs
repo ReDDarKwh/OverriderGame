@@ -6,8 +6,18 @@ using UnityEngine;
 using Vectrosity;
 using System.Linq;
 
+
+
 public class Connection : MonoBehaviour
 {
+    [System.Serializable]
+    public struct electricHumSetting
+    {
+        public SoundPreset electricHumSound;
+        public bool changePitch;
+        internal AudioSource audioSource;
+    }
+
     public float offset = 25;
     public float disFromEnd;
     public NoodlePath noodlePath;
@@ -20,6 +30,20 @@ public class Connection : MonoBehaviour
     public Color onColor;
     public Color removeColor;
     public Material lineMaterial;
+    public electricHumSetting[] electricHumSounds;
+    public SoundPreset connectedSound;
+    public SoundPreset connectedStartSound;
+    public SoundPreset deconnectedSound;
+    public Vector2 electricHumPitchMinMax;
+    public Vector2 electricHumDistanceMinMax;
+    public bool soundOn;
+    public ParticleSystem sparksEffect;
+    public ParticleSystem connectionEffect;
+    public GameObject connectionDotPrefab;
+
+    public float dotInterval;
+
+    private float lastDotTime;
 
     internal VectorLine line;
     internal Node end;
@@ -27,6 +51,7 @@ public class Connection : MonoBehaviour
     private Transform lastStartPos;
     private Transform lastEndPos;
     private bool selectedForDelete;
+    private IEnumerable<electricHumSetting> electricHum;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +62,38 @@ public class Connection : MonoBehaviour
         line.maxWeldDistance = lineMaxWeldDistance;
         line.color = color;
         line.material = lineMaterial;
+        if (soundOn)
+        {
+            connectedStartSound.Play(transform.position);
+            electricHum = electricHumSounds.Select(x =>
+                new electricHumSetting
+                {
+                    audioSource = x.electricHumSound.Play(end.transform.position),
+                    electricHumSound = x.electricHumSound,
+                    changePitch = x.changePitch
+                }
+            ).ToList();
+        }
+    }
+
+    public void Connected()
+    {
+        if (soundOn)
+        {
+            SoundManager.Instance.FadeOut(electricHum.Select(x => x.audioSource));
+            electricHum = null;
+            connectedSound.Play(lastEndPos.position);
+        }
+
+        sparksEffect.Stop();
+        connectionEffect.Play();
+    }
+
+    public void PlayDeconnectedSound()
+    {
+        SoundManager.Instance.FadeOut(electricHum?.Select(x => x.audioSource));
+        electricHum = null;
+        deconnectedSound.Play(lastEndPos.position);
     }
 
     // Update is called once per frame
@@ -45,10 +102,31 @@ public class Connection : MonoBehaviour
         var startPos = GetPos(start);
         var endPos = GetPos(end);
 
-        transform.position = startPos.position;
+        if (electricHum != null)
+        {
+            foreach (var sounds in electricHum)
+            {
+                sounds.audioSource.transform.position = endPos.position;
+                if (sounds.changePitch)
+                {
+                    sounds.audioSource.pitch = sounds.electricHumSound.pitch + Mathf.Lerp(
+                        electricHumPitchMinMax.x, electricHumPitchMinMax.y,
+                        Mathf.InverseLerp(
+                            electricHumDistanceMinMax.x,
+                            electricHumDistanceMinMax.y,
+                            (startPos.position - endPos.position).magnitude
+                        )
+                    );
+                }
+            }
+        }
+
+        transform.position = endPos.position;
 
         SetLineOn(start.gate.currentValue);
         UpdateSelection();
+
+
 
         if (start.rightClickDown || end.rightClickDown || selectedForDelete)
         {
@@ -64,6 +142,18 @@ public class Connection : MonoBehaviour
                     startPos.position,
                     endPos.position
                 });
+
+            if (start.gate.currentValue)
+            {
+                if (Time.unscaledTime - lastDotTime > dotInterval)
+                {
+                    lastDotTime = Time.unscaledTime;
+                    var dot = Instantiate(connectionDotPrefab, startPos.position, Quaternion.identity).GetComponent<ConnectionDot>();
+                    dot.line = line;
+                    dot.gate = start.gate;
+                    dot.connection = this;
+                }
+            }
         }
         else
         {
@@ -82,6 +172,7 @@ public class Connection : MonoBehaviour
         {
             if (selectedForDelete && Input.GetMouseButtonUp(1))
             {
+                PlayDeconnectedSound();
                 start.Disconnect(end);
             }
 
@@ -98,6 +189,10 @@ public class Connection : MonoBehaviour
 
     void OnDestroy()
     {
+        if (electricHum != null)
+        {
+            SoundManager.Instance.FadeOut(electricHum.Select(x => x.audioSource));
+        }
         VectorLine.Destroy(ref line);
     }
 
