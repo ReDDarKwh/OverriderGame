@@ -621,6 +621,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5394983135458890893, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
+      propertyPath: dirt
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394983135458890893, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
       propertyPath: health
       value: 40
       objectReference: {fileID: 0}
@@ -804,6 +809,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8043777202155113503, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8043777202155113503, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
@@ -832,6 +842,31 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8177162935840504934, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8177162935840504934, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8177162935840504934, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8177162935840504934, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8177162935840504934, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8679969798129333970, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: unsureSound
@@ -844,6 +879,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: edfbca86571d73645a7c06eab86b2876,
         type: 2}
+    - target: {fileID: 8776981300429851546, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: sceneName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776981300429851546, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: saveIdentification
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
 --- !u!95 &2153806797725953415 stripped

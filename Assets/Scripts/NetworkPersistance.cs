@@ -9,82 +9,16 @@ using System.Reflection;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
 using Scripts.Actions;
+using Lowscope.Saving;
 
 namespace Scripts.Hacking
 {
-    public class NetworkPersistance : MonoBehaviour
+    public class NetworkPersistance : MonoBehaviour, ISaveable
     {
         public Network network;
         private string path;
-        private Dictionary<string, Node> levelNodesRepo = new Dictionary<string, Node>();
+        private Dictionary<string, Node> levelNodesRepo;
         public GameObject[] nodePrefabs;
-
-        void Start()
-        {
-            StartCoroutine(DelayedLoad());
-        }
-
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.F1))
-            {
-                Save();
-            }
-        }
-
-        public void RunPreConnections()
-        {
-            foreach (var device in GetComponentsInChildren<Device>())
-            {
-                device.ExecutePreConnection();
-            }
-        }
-
-        public IEnumerator DelayedLoad()
-        {
-            yield return new WaitForSeconds(0.5f);
-            path = Application.dataPath + $"/LevelData/{SceneManager.GetActiveScene().name}.json";
-            var levelNodes = network.GetComponentsInChildren<Node>();
-            foreach (var node in levelNodes)
-            {
-                levelNodesRepo.Add(node.nodeId, node);
-            }
-
-            yield return new WaitForSeconds(0.5f);
-            Load();
-        }
-
-        public void Save()
-        {
-            var nodes = network.GetComponentsInChildren<Node>();
-            var savedNodes = nodes.Select(x =>
-            {
-                return new SavedNode
-                {
-                    id = x.nodeId,
-                    gateType = (int)x.gateType,
-                    pos = new float[] { x.transform.position.x, x.transform.position.y },
-                    connections = x
-                    .gate
-                    .children
-                    .Where(c => c.node != null)
-                    .Select(c =>
-                    {
-                        return c.node.nodeId;
-                    })
-                    .ToArray(),
-                    data = GetGateData(x.gate)
-                };
-            });
-
-            var saveData = new SavedGame { nodes = savedNodes.ToArray() };
-
-            using (StreamWriter file = File.CreateText(path))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(file, saveData);
-            }
-        }
 
         private object GetGateData(AbstractGate x)
         {
@@ -98,22 +32,6 @@ namespace Scripts.Hacking
                 }
             }
             return null;
-        }
-
-        public void Load()
-        {
-            using (StreamReader file = File.OpenText(path))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                var container = (SavedGame)serializer.Deserialize(file, typeof(SavedGame));
-                var savedNodeRepo = container.nodes.ToDictionary(x => x.id);
-                var connectedNodes = new HashSet<Tuple<SavedNode, SavedNode>>();
-
-                foreach (var savedNode in container.nodes)
-                {
-                    Connect(savedNode, savedNodeRepo, connectedNodes);
-                }
-            }
         }
 
         private Node Connect(SavedNode savedNode, Dictionary<string, SavedNode> savedNodeRepo, HashSet<Tuple<SavedNode, SavedNode>> connectedNodes)
@@ -161,6 +79,64 @@ namespace Scripts.Hacking
             }
 
             return node;
+        }
+
+        public string OnSave()
+        {
+            var nodes = network.GetComponentsInChildren<Node>();
+            var savedNodes = nodes.Select(x =>
+            {
+                return new SavedNode
+                {
+                    id = x.nodeId,
+                    gateType = (int)x.gateType,
+                    pos = new float[] { x.transform.position.x, x.transform.position.y },
+                    connections = x
+                    .gate
+                    .children
+                    .Where(c => c.node != null)
+                    .Select(c =>
+                    {
+                        return c.node.nodeId;
+                    })
+                    .ToArray(),
+                    data = GetGateData(x.gate)
+                };
+            });
+
+            var saveData = new SavedGame { nodes = savedNodes.ToArray() };
+
+            return JsonUtility.ToJson(saveData);
+        }
+
+        public void OnLoad(string data)
+        {
+            StartCoroutine(Load(data));
+        }
+        private IEnumerator Load(string data)
+        {
+            yield return new WaitForSeconds(0.1f);
+
+            var levelNodes = network.GetComponentsInChildren<Node>();
+            levelNodesRepo = new Dictionary<string, Node>();
+            foreach (var node in levelNodes)
+            {
+                levelNodesRepo.Add(node.nodeId, node);
+            }
+
+            var container = JsonUtility.FromJson<SavedGame>(data);
+            var savedNodeRepo = container.nodes.ToDictionary(x => x.id);
+            var connectedNodes = new HashSet<Tuple<SavedNode, SavedNode>>();
+
+            foreach (var savedNode in container.nodes)
+            {
+                Connect(savedNode, savedNodeRepo, connectedNodes);
+            }
+        }
+
+        public bool OnSaveCondition()
+        {
+            return true;
         }
     }
 }

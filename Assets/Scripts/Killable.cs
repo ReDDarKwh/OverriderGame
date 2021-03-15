@@ -11,10 +11,16 @@ public class Killable : MonoBehaviour
     public bool dead;
     public event EventHandler hasDied;
     public UnityEvent OnDied;
+    public DirtCreator dirt;
 
     internal void InflictDamage(float damage, DamageType damageType = DamageType.Unknown)
     {
         health -= damage;
+
+        if (dirt)
+        {
+            dirt.Run();
+        }
 
         if (health <= 0 && !dead)
         {

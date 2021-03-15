@@ -95,6 +95,20 @@ namespace Scripts.Hacking
                     DeselectSelectedNode(true, true);
                 }
             }
+
+            if (Debug.isDebugBuild)
+            {
+                if (Input.GetKeyDown(KeyCode.U))
+                {
+                    UpdateAccessLevels(100);
+                }
+
+                if (Input.GetKeyDown(KeyCode.I))
+                {
+                    lastDeviceMoved?.device.ExecutePreConnection();
+                }
+            }
+
         }
     }
 }

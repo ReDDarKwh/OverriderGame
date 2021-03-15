@@ -97,6 +97,11 @@ namespace Scripts.Hacking
 
         public void OnClick(BaseEventData eventData)
         {
+            if (!accessible)
+            {
+                return;
+            }
+
             var pointerEvent = (PointerEventData)eventData;
 
             if (moving)
@@ -136,6 +141,11 @@ namespace Scripts.Hacking
 
         public void OnUnClick(BaseEventData eventData)
         {
+            if (!accessible)
+            {
+                return;
+            }
+
             var pointerEvent = (PointerEventData)eventData;
             if (pointerEvent.button == PointerEventData.InputButton.Right && rightClickDown)
             {
@@ -162,7 +172,7 @@ namespace Scripts.Hacking
 
             nodeCanvas.enabled = deviceUI?.selected ?? true;
 
-            if (deviceUI && !deviceUI.selected)
+            if (deviceUI && !deviceUI.selected || !accessible)
             {
                 return;
             }
@@ -295,6 +305,8 @@ namespace Scripts.Hacking
                 connectedToInUI = connectionsTo.Count > 0;
             }
         }
+
+
     }
 }
 

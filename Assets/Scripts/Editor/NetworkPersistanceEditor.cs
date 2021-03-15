@@ -10,21 +10,6 @@ public class NetworkPersistanceEditor : Editor
     {
         NetworkPersistance np = (NetworkPersistance)target;
 
-        if (GUILayout.Button("Save"))
-        {
-            np.Save();
-        }
-
-        if (GUILayout.Button("Load"))
-        {
-            np.Load();
-        }
-
-        if (GUILayout.Button("Run Preconnections"))
-        {
-            np.RunPreConnections();
-        }
-
         base.OnInspectorGUI();
     }
 }

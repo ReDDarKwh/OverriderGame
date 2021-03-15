@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace Scripts.Hacking
 {
@@ -16,6 +17,11 @@ namespace Scripts.Hacking
             {
                 g.SetActive(false);
             }
+
+            // foreach (var node in GetNodeHackUIs())
+            // {
+            //     node.Hide();
+            // }
         }
 
         public override void Show()
@@ -26,6 +32,16 @@ namespace Scripts.Hacking
             {
                 g.SetActive(true);
             }
+
+            // foreach (var node in GetNodeHackUIs())
+            // {
+            //     node.Show();
+            // }
+        }
+
+        private NodeHackUI[] GetNodeHackUIs()
+        {
+            return GetComponentsInChildren<NodeHackUI>();
         }
 
     }

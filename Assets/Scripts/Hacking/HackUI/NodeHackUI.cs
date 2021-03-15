@@ -6,12 +6,10 @@ namespace Scripts.Hacking
 
         public override void Hide()
         {
-
         }
 
         public override void Show()
         {
-
         }
     }
 }

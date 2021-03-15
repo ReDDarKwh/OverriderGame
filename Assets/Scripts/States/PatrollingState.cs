@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Bolt;
+using Lowscope.Saving;
 using UnityEngine;
 
-public class PatrollingState : MonoBehaviour
+public class PatrollingState : MonoBehaviour, ISaveable
 {
     public Creature creature;
     public Transform[] waypoints;
@@ -60,5 +61,20 @@ public class PatrollingState : MonoBehaviour
 
     public void StateExit()
     {
+    }
+
+    public string OnSave()
+    {
+        return JsonUtility.ToJson(currentPoint);
+    }
+
+    public void OnLoad(string data)
+    {
+        currentPoint = JsonUtility.FromJson<int>(data);
+    }
+
+    public bool OnSaveCondition()
+    {
+        return true;
     }
 }
