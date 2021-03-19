@@ -15,7 +15,7 @@ public class SaveStateMachine : MonoBehaviour, ISaveable
             Variables.Object(this.gameObject).Set(d.Key, d.Value);
         }
 
-        CustomEvent.Trigger(gameObject, "reset");
+
     }
 
     public string OnSave()

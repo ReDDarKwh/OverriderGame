@@ -1,42 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &244494008661872414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9141818575880698257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3596759f023f1174bbf93c317947cc37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundPresets:
-  - {fileID: 11400000, guid: 2dc132c1b0d764941aff1a041110892c, type: 2}
-  - {fileID: 11400000, guid: 8d0e651fffcd7f74d912504987bc3863, type: 2}
-  playOnStart: 0
---- !u!114 &3320939876119720560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9141818575880698257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 999973b8889dddc4aa177311109aa709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2153806797725953415}
-  legs: {fileID: 2194962639186348336}
-  chasingAction: {fileID: 7330610687330716812}
-  shootingAction: {fileID: 7802956113085898650}
-  gunSprites:
-  - {fileID: 5234683861627056678}
-  - {fileID: 4141550097710595820}
-  creature: {fileID: 6087539044931724858}
-  damping: 15
 --- !u!1 &5621988653933686798
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,6 +466,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &244494008661872414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141818575880698257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3596759f023f1174bbf93c317947cc37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundPresets:
+  - {fileID: 11400000, guid: 2dc132c1b0d764941aff1a041110892c, type: 2}
+  - {fileID: 11400000, guid: 8d0e651fffcd7f74d912504987bc3863, type: 2}
+  playOnStart: 0
+--- !u!114 &3320939876119720560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9141818575880698257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999973b8889dddc4aa177311109aa709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2153806797725953415}
+  legs: {fileID: 2194962639186348336}
+  chasingAction: {fileID: 7330610687330716812}
+  shootingAction: {fileID: 7802956113085898650}
+  gunSprites:
+  - {fileID: 5234683861627056678}
+  - {fileID: 4141550097710595820}
+  creature: {fileID: 6087539044931724858}
+  damping: 15
 --- !u!1001 &320157195362117338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -517,6 +517,11 @@ PrefabInstance:
     - target: {fileID: 1416289386, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 181068534373585647, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: cachedSaveableComponents.Array.data[2].identifier
+      value: PatrollingState-ca839
       objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
@@ -551,7 +556,7 @@ PrefabInstance:
     - target: {fileID: 1891062268300944313, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: guns.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891062268300944313, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
@@ -715,18 +720,17 @@ PrefabInstance:
         type: 3}
       propertyPath: creature
       value: 
-      objectReference: {fileID: 6087539044931724858}
+      objectReference: {fileID: 0}
     - target: {fileID: 6725844347703517082, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: chasingSound
       value: 
-      objectReference: {fileID: 11400000, guid: 4b4ddebf2ce109045a28622afa53f389,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6725844347703517082, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: chasingAction
       value: 
-      objectReference: {fileID: 7330610687330716812}
+      objectReference: {fileID: 0}
     - target: {fileID: 6985325684398336663, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -871,14 +875,12 @@ PrefabInstance:
         type: 3}
       propertyPath: unsureSound
       value: 
-      objectReference: {fileID: 11400000, guid: 233b969e7395fc74099a0e1845a38d74,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8679969798129333970, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: scanningSound
       value: 
-      objectReference: {fileID: 11400000, guid: edfbca86571d73645a7c06eab86b2876,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8776981300429851546, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: sceneName

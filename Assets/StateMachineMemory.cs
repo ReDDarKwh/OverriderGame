@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Bolt;
+using Lowscope.Saving;
 using UnityEngine;
 
 public class StateMachineMemory : MonoBehaviour
 {
-    private Dictionary<string, object> vals = new Dictionary<string, object>(); 
+    private Dictionary<string, object> vals = new Dictionary<string, object>();
 
     public void Set(string name, object value)
     {
@@ -41,4 +43,5 @@ public class StateMachineMemory : MonoBehaviour
             vals.Remove(name);
         }
     }
+
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Bolt;
+using Scripts.StateMachine;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +12,7 @@ public class Killable : MonoBehaviour
     public event EventHandler hasDied;
     public UnityEvent OnDied;
     public DirtCreator dirt;
+    public StateMachine stateMachine;
 
     internal void InflictDamage(float damage, DamageType damageType = DamageType.Unknown)
     {
@@ -22,10 +23,13 @@ public class Killable : MonoBehaviour
             dirt.Run();
         }
 
-        if (health <= 0 && !dead)
+        if (health <= 0)
         {
             dead = true;
-            CustomEvent.Trigger(gameObject, "Died", damageType);
+            if (stateMachine)
+            {
+                stateMachine.TriggerEvent("Died", new EventMessage { data = damageType });
+            }
             OnDied.Invoke();
             OnDeath(EventArgs.Empty);
         }

@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 181068534373585647, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: cachedSaveableComponents.Array.data[2].identifier
+      value: PatrollingState-8ee46
+      objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -60,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: moveSettings.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
