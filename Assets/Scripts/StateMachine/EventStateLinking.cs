@@ -10,9 +10,6 @@ namespace Scripts.StateMachine
     [System.Serializable]
     public class EventStateLinking
     {
-        [System.NonSerialized]
-        public IEnumerable<string> tagNames; // state name or tag.
-        public IEnumerable<BaseState> states;
         public BaseEvent triggeredOn;
         public string eventName;
         public bool invert = false;

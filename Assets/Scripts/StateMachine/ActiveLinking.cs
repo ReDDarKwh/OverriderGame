@@ -8,7 +8,7 @@ namespace Scripts.StateMachine
         public IEnumerable<EventStateLinking> links;
         public BaseState state;
         public Dictionary<string, System.Object> linkingProperties;
-        public float timeStarted;
+        internal Dictionary<string, EventStateLinking> linksByEventName;
 
         public T GetValueOrDefault<T>(string key, T @default = default(T))
         {

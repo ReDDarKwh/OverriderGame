@@ -16,57 +16,39 @@ namespace Scripts.StateMachine
             new Dictionary<BaseState, List<UnityEvent>>();
         private Dictionary<BaseState, List<StateMachineEventWithActiveLinking>> EnterSubs =
             new Dictionary<BaseState, List<StateMachineEventWithActiveLinking>>();
-        private LinkRepo stateLinkers;
-        private Dictionary<BaseState, ActiveLinking> activeStates =
-            new Dictionary<BaseState, ActiveLinking>();
-
+        private ActiveLinking activeLinking;
         public BaseState entryState;
-        public List<SMGraph> stateMachineGraphs;
+        public StateGraph stateMachineGraph;
         public bool debugShowStates = false;
-
-        public IEnumerable<BaseState> GetActiveStates()
-        {
-            return activeStates.Keys.ToList();
-        }
 
         public void Start()
         {
-            stateLinkers = GenerateLinkRepo(stateMachineGraphs);
         }
 
         public void Update()
         {
-            var pendingActions = new Queue<Tuple<BaseState, EventStateLinking>>();
-
-            if (activeStates.Count < 1 && stateLinkers != null)
+            if (activeLinking == null)
             {
-                StartState(entryState, null, false);
+                StartState(stateMachineGraph.current, null, false);
             }
 
-            foreach (var linking in activeStates)
+            activeLinking.state.StateUpdate(this, activeLinking);
+            AfterUpdate(activeLinking);
+
+            foreach (var link in activeLinking.links)
             {
-                foreach (var link in linking.Value.links)
+                EventMessage message;
+
+                if (link.triggeredOn.continousCheck &&
+                    (link.invert ?
+                        !link.triggeredOn.Check(gameObject, activeLinking, out message) :
+                        link.triggeredOn.Check(gameObject, activeLinking, out message)
+                    ))
                 {
-                    EventMessage message;
-                    if (link.triggeredOn.continousCheck && link.triggeredOn.Check(gameObject, linking.Value, out message))
-                    {
-                        link.eventResponse = message;
-                        pendingActions.Enqueue(new Tuple<BaseState, EventStateLinking>(linking.Key, link));
-                    }
+                    link.eventResponse = message;
+                    ExecuteEventAction(activeLinking.state, link);
+                    break;
                 }
-            }
-
-            // update the active states
-            foreach (var state in activeStates.Keys)
-            {
-                state.StateUpdate(this, activeStates[state]);
-                AfterUpdate(activeStates[state]);
-            }
-
-            while (pendingActions.Count > 0)
-            {
-                var action = pendingActions.Dequeue();
-                ExecuteEventAction(action.Item1, action.Item2);
             }
         }
 
@@ -131,76 +113,26 @@ namespace Scripts.StateMachine
         public void TriggerEvent(string eventName, EventMessage message)
         {
             var pendingActions = new Queue<Tuple<BaseState, EventStateLinking>>();
-            foreach (var linking in activeStates)
-            {
-                foreach (var link in linking.Value.links)
-                {
-                    if (link.eventName == eventName)
-                    {
-                        link.eventResponse = message;
-                        pendingActions.Enqueue(new Tuple<BaseState, EventStateLinking>(linking.Value.state, link));
-                    }
-                }
-            }
 
-            while (pendingActions.Count > 0)
+            if (activeLinking != null && activeLinking.linksByEventName.ContainsKey(eventName))
             {
-                var action = pendingActions.Dequeue();
-                ExecuteEventAction(action.Item1, action.Item2);
+                ExecuteEventAction(activeLinking.state, activeLinking.linksByEventName[eventName]);
             }
         }
 
         private void ExecuteEventAction(BaseState fromState, EventStateLinking e)
         {
-            switch (e.action.actionType)
+            EndState(fromState);
+            if (e.action.nextState != null)
             {
-                case EventActionType.TRANSITION:
-                case EventActionType.TRANSITION_OVERRIDE:
-
-                    EndState(fromState);
-
-                    if (e.action.transitionToState != null)
-                        StartState(e.action.transitionToState, e, e.action.actionType == EventActionType.TRANSITION_OVERRIDE);
-
-                    foreach (var s in e.action.addStates)
-                    {
-                        StartState(s, e, e.action.actionType == EventActionType.TRANSITION_OVERRIDE);
-                    }
-                    break;
-
-                case EventActionType.REMOVE:
-                    EndState(fromState);
-                    break;
-
-                case EventActionType.ADD:
-                case EventActionType.ADD_OVERRIDE:
-
-                    if (e.action.transitionToState != null)
-                        StartState(e.action.transitionToState, e, e.action.actionType == EventActionType.ADD_OVERRIDE);
-                    foreach (var s in e.action.addStates)
-                    {
-                        StartState(s, e, e.action.actionType == EventActionType.ADD_OVERRIDE);
-                    }
-                    break;
-            }
-        }
-
-        private void clearActiveState()
-        {
-            foreach (var entry in activeStates)
-            {
-                foreach (var l in entry.Value.links)
-                {
-                    Destroy(l.triggeredOn);
-                }
-                EndState(entry.Value.state);
+                StartState(e.action.nextState, e, true);
             }
         }
 
         private class LinkRepo
         {
-            public Dictionary<BaseState, IEnumerable<EventStateLinking>> LinksByState { get; set; }
-            public Dictionary<string, IEnumerable<EventStateLinking>> LinksByTag { get; set; }
+            public BaseState startState;
+            public Dictionary<string, IEnumerable<EventStateLinking>> linksByState { get; set; }
         }
 
         private class EventLinkingGroups
@@ -211,113 +143,21 @@ namespace Scripts.StateMachine
             public EventActionType actionType { get; set; }
         }
 
-        class LinkerGroupEqualityComparer : IEqualityComparer<EventLinkingGroups>
+        private IEnumerable<EventStateLinking> GenerateLinkRepo(StateNode stateNode)
         {
-            public bool Equals(EventLinkingGroups g1, EventLinkingGroups g2)
-            {
-                return g1.states.Select(x => x.stateName).SequenceEqual(g2.states.Select(x => x.stateName)) &&
-                g1.tagnames.SequenceEqual(g2.tagnames) &&
-                g1.actionType.Equals(g2.actionType) &&
-                g1.triggerName.Equals(g2.triggerName);
-            }
-
-            public int GetHashCode(EventLinkingGroups g)
-            {
-                return
-                g.actionType.GetHashCode() ^
-                g.states.Select(x => x.stateName).Aggregate(0, (a, b) => a ^ b.GetHashCode()) ^
-                g.tagnames.Aggregate(0, (a, b) => a ^ b.GetHashCode()) ^
-                g.triggerName.GetHashCode();
-            }
+            return null;
         }
 
-        private LinkRepo GenerateLinkRepo(List<SMGraph> stateMachineGraphs)
+        public void StartState(StateNode stateToSwitchTo, EventStateLinking e, bool doAnOverride)
         {
-            // triggers need to be instantiated to work. 
-            // Remaking the link dictionnary requires to remove previously created triggers.
-            // else memory leak
-            clearActiveState();
-            var groups =
-             stateMachineGraphs
-             .SelectMany(x =>
 
-                 x.nodes
-                    .Where(n => n is LinkNode)
-                    .Select(n => n as LinkNode)
-                    .Select(n => new EventStateLinking
-                    {
-                        states = n.GetInputValues<IEnumerable<string>>("from", new List<string>())
-                        .SelectMany(p => p.Select(s => (BaseState)GetComponent(s))),
-                        tagNames = n.GetInputValue<IEnumerable<string>>("tags"),
-                        eventName = n.eventName,
-                        triggeredOn = (BaseEvent)ScriptableObject.CreateInstance(n.trigger),
-                        action = new EventAction
-                        {
-                            actionType = EventActionType.TRANSITION_OVERRIDE,
-                            addStates = n.Outputs
-                            .ElementAt(0)
-                            .GetConnections()
-                            .SelectMany(c => (c.node as StateNode).states.Select(s => (BaseState)GetComponent(s)))
-                        }
-                    })
-            )
+            var state = (BaseState)GetComponent(stateToSwitchTo.state);
 
-            // only take the last version of same linker between graphs (so we get overrides)
-            .GroupBy(x => new EventLinkingGroups
-            {
-                states = x.states ?? new List<BaseState>(),
-                tagnames = x.tagNames ?? new List<string>(),
-                triggerName = x.triggeredOn.name,
-                actionType = x.action.actionType
-            }, new LinkerGroupEqualityComparer());
-
-            var allLinks = groups.Select(x => x.Last())
-            .GroupBy(x => x.tagNames != null)
-            .ToDictionary(k => k.Key, v => v.AsEnumerable());
-
-            var linkByState = allLinks.ContainsKey(false) ? allLinks[false] : new List<EventStateLinking>();
-            var linkByTag = allLinks.ContainsKey(true) ? allLinks[true] : new List<EventStateLinking>();
-
-            return new LinkRepo
-            {
-                LinksByState = linkByState.SelectMany(x => x.states.Select((s) =>
-                {
-                    x.states = new List<BaseState> { s };
-                    return x;
-                }))
-                .GroupBy(x => x.states.First())
-                .ToDictionary(k => k.Key, v => v.AsEnumerable()),
-
-                LinksByTag = linkByTag.SelectMany(x => x.tagNames.Select((t) =>
-                {
-                    x.tagNames = new List<string> { t };
-                    return x;
-                }))
-                .GroupBy(x => x.tagNames.First()).ToDictionary(k => k.Key, v => v.AsEnumerable())
-            };
-        }
-
-        private IEnumerable<EventStateLinking> GetLinkersForTags(IEnumerable<string> tags, Dictionary<string, IEnumerable<EventStateLinking>> links)
-        {
-            var result = new List<EventStateLinking>();
-
-            foreach (var tag in tags)
-            {
-                if (stateLinkers.LinksByTag.ContainsKey(tag))
-                {
-                    result.AddRange(links[tag]);
-                }
-            }
-            return result;
-        }
-
-        public void StartState(BaseState stateToSwitchTo, EventStateLinking e, bool doAnOverride)
-        {
-            if (activeStates.ContainsKey(stateToSwitchTo))
+            if (activeLinking.state == state)
             {
                 if (doAnOverride)
                 {
-                    EndState(stateToSwitchTo);
+                    EndState(activeLinking.state);
                 }
                 else
                 {
@@ -325,30 +165,43 @@ namespace Scripts.StateMachine
                 }
             }
 
-            activeStates[stateToSwitchTo] = new ActiveLinking()
-            {
-                links = (stateLinkers.LinksByState.ContainsKey(stateToSwitchTo) ?
-                stateLinkers.LinksByState[stateToSwitchTo] : new List<EventStateLinking>())
-                .Concat(GetLinkersForTags(stateToSwitchTo.tags, stateLinkers.LinksByTag)),
+            var links = stateToSwitchTo
+                .GetOutputPort("exit")
+                .GetConnections()
+                .Select(x => x.node as LinkNode)
+                .Select(x => new EventStateLinking
+                {
+                    triggeredOn = (BaseEvent)GetComponent(x.trigger),
+                    eventName = x.triggerName,
+                    invert = x.invert,
+                    action = new EventAction
+                    {
+                        nextState = ((StateNode)(x.GetOutputPort("to").GetConnection(0).node))
+                    }
+                });
 
+            activeLinking = new ActiveLinking()
+            {
+                links = links,
+                linksByEventName = links.ToDictionary(k => k.eventName, v => v),
                 linkingProperties = new Dictionary<string, object>(),
-                timeStarted = Time.time,
-                state = stateToSwitchTo
+                state = state
             };
-            stateToSwitchTo.Enter(this, e?.eventResponse, activeStates[stateToSwitchTo]);
-            AfterEnter(activeStates[stateToSwitchTo]);
 
-            foreach (var link in activeStates[stateToSwitchTo].links)
+            state.Enter(this, e?.eventResponse, activeLinking);
+            AfterEnter(activeLinking);
+
+            foreach (var link in activeLinking.links)
             {
-                link.triggeredOn.Init(activeStates[stateToSwitchTo]);
+                link.triggeredOn.Init(activeLinking);
             }
         }
 
         public void EndState(BaseState state)
         {
-            if (activeStates.ContainsKey(state))
+            if (activeLinking.state == state)
             {
-                activeStates.Remove(state);
+                activeLinking = null;
                 state.Leave(this);
                 AfterLeave(state);
             }

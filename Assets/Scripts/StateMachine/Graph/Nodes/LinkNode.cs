@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using XNode;
 
-
 namespace Scripts.StateMachine.Graph
 {
-    public class StateNode : Node
+    public class LinkNode : Node
     {
-        [Output] public List<string> states;
-        [Input] public List<LinkNode> links;
-
         // Use this for initialization
+        [Input(ShowBackingValue.Never, ConnectionType.Multiple)] public List<string> from;
+        [Output(ShowBackingValue.Never, ConnectionType.Override)] public List<BaseState> to;
+
+        [HideInInspector]
+        public string trigger;
+        public string triggerName;
+        public bool invert;
+
         protected override void Init()
         {
             base.Init();
@@ -20,12 +24,8 @@ namespace Scripts.StateMachine.Graph
         // Return the correct value of an output port when requested
         public override object GetValue(NodePort port)
         {
-            if (port.fieldName == "states")
-            {
-                return states;
-            }
-
-            return null;
+            return this;
         }
     }
 }
+

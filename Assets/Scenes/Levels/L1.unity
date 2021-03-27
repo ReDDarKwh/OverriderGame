@@ -19513,8 +19513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entryState: {fileID: 1268278628}
-  stateMachineGraphs:
-  - {fileID: 11400000, guid: 165c3480406864c428c3fc7ac274cf68, type: 2}
+  stateMachineGraph: {fileID: 0}
   debugShowStates: 0
 --- !u!1001 &1278921607
 PrefabInstance:

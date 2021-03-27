@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Scripts.StateMachine.Graph;
 using UnityEngine;
 
 
@@ -19,13 +20,8 @@ namespace Scripts.StateMachine
     [System.Serializable]
     public class EventAction
     {
-        public EventActionType actionType = EventActionType.TRANSITION;
-
         [System.NonSerialized]
-        public BaseState transitionToState;
-        [System.NonSerialized]
-        public IEnumerable<BaseState> addStates;
-
+        public StateNode nextState;
         [System.NonSerialized]
         public BaseState fromState;
     }
