@@ -3,38 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-
-public class OpeningAction : Action
+namespace Scripts.Actions
 {
-    public DoorSettings[] doors;
-    public float movingSpeed;
-    private Vector3[] doorStartPos;
-    private float pos;
-
-    internal bool IsDoorClosing()
+    public class OpeningAction : Action
     {
-        return !outputGate.currentValue && pos > 0;
-    }
+        public DoorSettings[] doors;
+        public float movingSpeed;
+        private Vector3[] doorStartPos;
+        private float pos;
 
-    internal override void OnStart()
-    {
-        doorStartPos = doors.Select(x => x.door.position).ToArray();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        pos = Mathf.Clamp(pos + Time.deltaTime * movingSpeed * (outputGate.currentValue ? 1 : -1), 0, 1);
-        for (var i = 0; i < doors.Count(); i++)
+        internal bool IsDoorClosing()
         {
-            var doorData = doors[i];
+            return !outputGate.currentValue && pos > 0;
+        }
 
-            doorData.door.transform.position = Vector3.Lerp(doorStartPos[i],
-                doorStartPos[i] + doorData.openPositionOffset,
-                Mathf.SmoothStep(0.0f, 1.0f, pos)
-            );
-            doorData.doorCollider.enabled = !outputGate.currentValue;
+        internal override void OnStart()
+        {
+            doorStartPos = doors.Select(x => x.door.position).ToArray();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            pos = Mathf.Clamp(pos + Time.deltaTime * movingSpeed * (outputGate.currentValue ? 1 : -1), 0, 1);
+            for (var i = 0; i < doors.Count(); i++)
+            {
+                var doorData = doors[i];
+
+                doorData.door.transform.position = Vector3.Lerp(doorStartPos[i],
+                    doorStartPos[i] + doorData.openPositionOffset,
+                    Mathf.SmoothStep(0.0f, 1.0f, pos)
+                );
+                doorData.doorCollider.enabled = !outputGate.currentValue;
+            }
         }
     }
 }
-

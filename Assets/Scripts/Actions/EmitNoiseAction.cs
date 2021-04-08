@@ -2,30 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmitNoiseAction : Action
+namespace Scripts.Actions
 {
-    public NoiseEmitter noiseEmitter;
-    public float emissionInterval;
-    public SoundPlayer player;
-    private float lastEmission;
-
-    internal override void OnStart()
+    public class EmitNoiseAction : Action
     {
-    }
+        public NoiseEmitter noiseEmitter;
+        public float emissionInterval;
+        public SoundPlayer player;
+        private float lastEmission;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Time.time - lastEmission > emissionInterval)
+        internal override void OnStart()
         {
-            if (outputGate.currentValue)
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (Time.time - lastEmission > emissionInterval)
             {
-                lastEmission = Time.time;
-                if (player)
+                if (outputGate.currentValue)
                 {
-                    player.Play();
+                    lastEmission = Time.time;
+                    if (player)
+                    {
+                        player.Play();
+                    }
+                    noiseEmitter.EmitNoise();
                 }
-                noiseEmitter.EmitNoise();
             }
         }
     }

@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using Scripts.Actions;
 using Scripts.Hacking;
 using UnityEngine;
-using Vectrosity;
 
-public class LaserEmitter : Action
+public class LaserEmitter : Scripts.Actions.Action
 {
     public LayerMask collisionLayers;
     public LayerMask baseCollisionLayers;

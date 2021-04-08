@@ -3,41 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ShootingAction : Action
+namespace Scripts.Actions
 {
-    public GameObject projectilePrefab;
-    public Transform barrelPosition;
-    public Collider2D ignoredCollider;
-
-    public float shootInterval;
-    private float lastShot;
-    private float time;
-
-    internal override void OnStart()
+    public class ShootingAction : Action
     {
-    }
+        public GameObject projectilePrefab;
+        public Transform barrelPosition;
+        public Collider2D ignoredCollider;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (outputGate.currentValue)
+        public float shootInterval;
+        private float lastShot;
+        private float time;
+
+        internal override void OnStart()
         {
-            time += Time.deltaTime;
-            if (time - lastShot > shootInterval)
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (outputGate.currentValue)
             {
-                lastShot = time;
-                Shoot();
+                time += Time.deltaTime;
+                if (time - lastShot > shootInterval)
+                {
+                    lastShot = time;
+                    Shoot();
+                }
+            }
+            else
+            {
+                lastShot = float.MinValue;
             }
         }
-        else
-        {
-            lastShot = float.MinValue;
-        }
-    }
 
-    private void Shoot()
-    {
-        var projectile = Instantiate(projectilePrefab, barrelPosition.position, transform.rotation);
-        projectile.GetComponent<NoiseEmitter>().ignoredColliders = new Collider2D[] { ignoredCollider };
+        private void Shoot()
+        {
+            var projectile = Instantiate(projectilePrefab, barrelPosition.position, transform.rotation);
+            projectile.GetComponent<NoiseEmitter>().ignoredColliders = new Collider2D[] { ignoredCollider };
+        }
     }
 }

@@ -1,8 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Scripts.Hacking;
+using Scripts.Actions;
+using System;
+using Action = Scripts.Actions.Action;
 
 public class ActionPulseModifier : MonoBehaviour
 {

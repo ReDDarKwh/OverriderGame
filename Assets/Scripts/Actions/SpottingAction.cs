@@ -4,139 +4,142 @@ using System.Linq;
 using Scripts.Hacking;
 using UnityEngine;
 
-public class SpottingAction : Action
+namespace Scripts.Actions
 {
-    public float VisionRadius;
-    public int VisionAngle;
-    public LayerMask ViewBlockingLayers;
-    public LayerMask TargetLayers;
-    public FieldOfView fieldOfView;
-    public DataGate intrudersDataOutput;
-    public bool disableFilterInput;
-    public string intrudersDataOutputName = "Intruders";
-    public string filterDataInputName = "Filter";
-    public GameObject parent;
-
-    private DataGate filterDataInput;
-
-
-
-    // Update is called once per frame
-    void Update()
+    public class SpottingAction : Action
     {
-        var targets = GetTargetsInViewRange()
-            .Where(x => x != null)
-            .Select(x => TargetInView(x.gameObject))
-            .Where(x => x != null);
-        intrudersDataOutput.SetData(targets == null ? null : targets);
-        intrudersDataOutput.SetValue(targets != null && targets.Count() > 0);
-        actionGate.SetValue(targets.Count() != 0);
+        public float VisionRadius;
+        public int VisionAngle;
+        public LayerMask ViewBlockingLayers;
+        public LayerMask TargetLayers;
+        public FieldOfView fieldOfView;
+        public DataGate intrudersDataOutput;
+        public bool disableFilterInput;
+        public string intrudersDataOutputName = "Intruders";
+        public string filterDataInputName = "Filter";
+        public GameObject parent;
 
-        if (fieldOfView != null)
+        private DataGate filterDataInput;
+
+
+
+        // Update is called once per frame
+        void Update()
         {
-            fieldOfView.viewAngle = VisionAngle;
-            fieldOfView.viewRadius = VisionRadius;
+            var targets = GetTargetsInViewRange()
+                .Where(x => x != null)
+                .Select(x => TargetInView(x.gameObject))
+                .Where(x => x != null);
+            intrudersDataOutput.SetData(targets == null ? null : targets);
+            intrudersDataOutput.SetValue(targets != null && targets.Count() > 0);
+            actionGate.SetValue(targets.Count() != 0);
+
+            if (fieldOfView != null)
+            {
+                fieldOfView.viewAngle = VisionAngle;
+                fieldOfView.viewRadius = VisionRadius;
+            }
         }
-    }
 
-    public GameObject TargetInView(GameObject target)
-    {
-        if (target == null)
-            return null;
-
-        if (parent != null)
+        public GameObject TargetInView(GameObject target)
         {
-            if (target.GetInstanceID() == parent.GetInstanceID())
+            if (target == null)
                 return null;
+
+            if (parent != null)
+            {
+                if (target.GetInstanceID() == parent.GetInstanceID())
+                    return null;
+            }
+
+            var EnemyToTargetVec = target.transform.position - transform.position;
+
+            // if is in view cone
+            if (!(Quaternion.Angle(transform.rotation,
+                Quaternion.LookRotation(Vector3.forward,
+                Quaternion.Euler(0, 0, 90) * EnemyToTargetVec)
+                ) < VisionAngle / 2))
+                return null;
+
+            // if not blocked by any walls
+            var hit = Physics2D.Raycast(
+                transform.position,
+                EnemyToTargetVec,
+                EnemyToTargetVec.magnitude,
+                ViewBlockingLayers
+            );
+
+            return hit.collider == null ? target : null;
         }
 
-        var EnemyToTargetVec = target.transform.position - transform.position;
-
-        // if is in view cone
-        if (!(Quaternion.Angle(transform.rotation,
-            Quaternion.LookRotation(Vector3.forward,
-            Quaternion.Euler(0, 0, 90) * EnemyToTargetVec)
-            ) < VisionAngle / 2))
-            return null;
-
-        // if not blocked by any walls
-        var hit = Physics2D.Raycast(
-            transform.position,
-            EnemyToTargetVec,
-            EnemyToTargetVec.magnitude,
-            ViewBlockingLayers
-        );
-
-        return hit.collider == null ? target : null;
-    }
-
-    public IList<Collider2D> GetTargetsInViewRange()
-    {
-        var mask = filterDataInput.GetSingleData<int>();
-        return Physics2D.OverlapCircleAll(
-            transform.position,
-            VisionRadius,
-            mask == 0 ? (int)TargetLayers : mask
-        );
-    }
-
-    private Collider2D GetClosestTargetInViewRange()
-    {
-        var targets = GetTargetsInViewRange();
-        return targets.OrderBy(x => (transform.position - x.transform.position).magnitude)
-        .FirstOrDefault();
-    }
-
-    public GameObject ClosestTargetInView()
-    {
-        return TargetInView(GetClosestTargetInViewRange()?.gameObject);
-    }
-
-    internal override void OnStart()
-    {
-        disableInput = true;
-
-        intrudersDataOutput = new DataGate
+        public IList<Collider2D> GetTargetsInViewRange()
         {
-            name = intrudersDataOutputName,
-            dataGateType = DataGate.DataGateType.Output
-        };
-
-        dataGates.Add(intrudersDataOutput);
-
-        filterDataInput = new DataGate
-        {
-            name = filterDataInputName,
-            dataGateType = DataGate.DataGateType.Input,
-            dataType = DataGate.DataType.Filters
-        };
-
-        if (!disableFilterInput)
-        {
-            dataGates.Add(filterDataInput);
+            var mask = filterDataInput.GetSingleData<int>();
+            return Physics2D.OverlapCircleAll(
+                transform.position,
+                VisionRadius,
+                mask == 0 ? (int)TargetLayers : mask
+            );
         }
 
-        if (fieldOfView != null)
+        private Collider2D GetClosestTargetInViewRange()
         {
-            fieldOfView.viewAngle = VisionAngle;
-            fieldOfView.viewRadius = VisionRadius;
-            fieldOfView.obstacleMask = ViewBlockingLayers;
+            var targets = GetTargetsInViewRange();
+            return targets.OrderBy(x => (transform.position - x.transform.position).magnitude)
+            .FirstOrDefault();
         }
-    }
 
-    void OnDisable()
-    {
-        if (fieldOfView != null)
+        public GameObject ClosestTargetInView()
         {
-            fieldOfView.gameObject.SetActive(false);
+            return TargetInView(GetClosestTargetInViewRange()?.gameObject);
         }
-    }
 
-    void OnEnable()
-    {
-        if (fieldOfView != null)
+        internal override void OnStart()
         {
-            fieldOfView.gameObject.SetActive(true);
+            disableInput = true;
+
+            intrudersDataOutput = new DataGate
+            {
+                name = intrudersDataOutputName,
+                dataGateType = DataGate.DataGateType.Output
+            };
+
+            dataGates.Add(intrudersDataOutput);
+
+            filterDataInput = new DataGate
+            {
+                name = filterDataInputName,
+                dataGateType = DataGate.DataGateType.Input,
+                dataType = DataGate.DataType.Filters
+            };
+
+            if (!disableFilterInput)
+            {
+                dataGates.Add(filterDataInput);
+            }
+
+            if (fieldOfView != null)
+            {
+                fieldOfView.viewAngle = VisionAngle;
+                fieldOfView.viewRadius = VisionRadius;
+                fieldOfView.obstacleMask = ViewBlockingLayers;
+            }
+        }
+
+        void OnDisable()
+        {
+            if (fieldOfView != null)
+            {
+                fieldOfView.gameObject.SetActive(false);
+            }
+        }
+
+        void OnEnable()
+        {
+            if (fieldOfView != null)
+            {
+                fieldOfView.gameObject.SetActive(true);
+            }
         }
     }
 }

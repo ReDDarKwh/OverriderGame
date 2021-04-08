@@ -3,34 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ExplodingAction : Action
+namespace Scripts.Actions
 {
-    public Killable parentToDestroy;
-    public Animator animator;
-
-    private bool isExploded;
-
-    internal override void OnStart()
+    public class ExplodingAction : Action
     {
-    }
+        public Killable parentToDestroy;
+        public Animator animator;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (isExploded)
+        private bool isExploded;
+
+        internal override void OnStart()
         {
-            return;
         }
 
-        if (outputGate.currentValue)
+        // Update is called once per frame
+        void Update()
         {
-            animator.SetTrigger("Explode");
-        }
-    }
+            if (isExploded)
+            {
+                return;
+            }
 
-    public void Explode()
-    {
-        isExploded = true;
-        parentToDestroy.InflictDamage(int.MaxValue, DamageType.Explosion);
+            if (outputGate.currentValue)
+            {
+                animator.SetTrigger("Explode");
+            }
+        }
+
+        public void Explode()
+        {
+            isExploded = true;
+            parentToDestroy.InflictDamage(int.MaxValue, DamageType.Explosion);
+        }
     }
 }

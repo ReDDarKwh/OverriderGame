@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Scripts.Actions;
 using UnityEngine;
 
 public class GuardRobotAnimControl : MonoBehaviour
@@ -14,7 +15,6 @@ public class GuardRobotAnimControl : MonoBehaviour
 
     void Start()
     {
-
     }
 
     // Update is called once per frame

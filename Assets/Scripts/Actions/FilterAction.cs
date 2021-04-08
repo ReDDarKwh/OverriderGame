@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using Scripts.Hacking;
 using UnityEngine;
 
-public class FilterAction : Action
+namespace Scripts.Actions
 {
-    private DataGate filtersDataInput;
-    internal override void OnStart()
+    public class FilterAction : Action
     {
-        filtersDataInput = new DataGate
+        private DataGate filtersDataInput;
+        internal override void OnStart()
         {
-            name = "filter",
-            dataGateType = DataGate.DataGateType.Filter,
-            saveData = true,
-            dataType = DataGate.DataType.Filters
-        };
-        filtersDataInput.SetValue(true);
-        dataGates.Add(filtersDataInput);
+            filtersDataInput = new DataGate
+            {
+                name = "filter",
+                dataGateType = DataGate.DataGateType.Filter,
+                saveData = true,
+                dataType = DataGate.DataType.Filters
+            };
+            filtersDataInput.SetValue(true);
+            dataGates.Add(filtersDataInput);
+        }
     }
 }

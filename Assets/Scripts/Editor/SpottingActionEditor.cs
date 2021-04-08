@@ -3,6 +3,7 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections;
+using Scripts.Actions;
 
 [CustomEditor(typeof(SpottingAction))]
 public class SpottingActionEditor : Editor

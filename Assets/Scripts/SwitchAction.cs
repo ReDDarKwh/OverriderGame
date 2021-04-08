@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchAction : Action
+public class SwitchAction : Scripts.Actions.Action
 {
     public float onTime;
     private float lastOnTime;
@@ -19,10 +19,7 @@ public class SwitchAction : Action
 
     internal override void OnStart()
     {
-
     }
-
-
     void Update()
     {
         if (Time.time - lastOnTime > onTime && actionGate.currentValue)

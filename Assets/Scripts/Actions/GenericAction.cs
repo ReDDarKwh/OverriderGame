@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using Scripts.Hacking;
 using UnityEngine;
 
-public class GenericAction : Action
+namespace Scripts.Actions
 {
-    private DataGate genericDataOutput;
-    internal override void OnStart()
+    public class GenericAction : Action
     {
-        genericDataOutput = new DataGate { name = "Device", dataGateType = DataGate.DataGateType.Output };
-        dataGates.Add(genericDataOutput);
-        genericDataOutput.SetData(new List<GameObject> { gameObject });
+        private DataGate genericDataOutput;
+        internal override void OnStart()
+        {
+            genericDataOutput = new DataGate { name = "Device", dataGateType = DataGate.DataGateType.Output };
+            dataGates.Add(genericDataOutput);
+            genericDataOutput.SetData(new List<GameObject> { gameObject });
+        }
     }
 }

@@ -6,74 +6,77 @@ using UnityEngine;
 using System.Linq;
 using Bolt;
 
-public class AlarmAction : Action
+namespace Scripts.Actions
 {
-    public ExternalLogicAction activate;
-    public ExternalLogicAction desactivate;
-    public Animator animator;
-    public GameObject alternativeTarget;
-    public Enemy[] assignedGuards;
-    private DataGate targetsDataInput;
-
-
-    internal override void OnStart()
+    public class AlarmAction : Action
     {
-        var alarmManager = GameObject.FindGameObjectWithTag("SceneManager")
-             .GetComponent<AlarmManager>();
+        public ExternalLogicAction activate;
+        public ExternalLogicAction desactivate;
+        public Animator animator;
+        public GameObject alternativeTarget;
+        public Enemy[] assignedGuards;
+        private DataGate targetsDataInput;
 
-        alarmManager.gate.Connect(this.actionGate);
 
-        activate.outputGate.ValueHasChanged += (object sender, EventArgs args) =>
+        internal override void OnStart()
         {
-            if (activate.outputGate.currentValue)
+            var alarmManager = GameObject.FindGameObjectWithTag("SceneManager")
+                .GetComponent<AlarmManager>();
+
+            alarmManager.gate.Connect(this.actionGate);
+
+            activate.outputGate.ValueHasChanged += (object sender, EventArgs args) =>
             {
-                alarmManager.gate.SetValue(true);
-            }
-        };
+                if (activate.outputGate.currentValue)
+                {
+                    alarmManager.gate.SetValue(true);
+                }
+            };
 
-        desactivate.outputGate.ValueHasChanged += (object sender, EventArgs args) =>
-        {
-            if (desactivate.outputGate.currentValue)
+            desactivate.outputGate.ValueHasChanged += (object sender, EventArgs args) =>
             {
-                alarmManager.gate.SetValue(false);
-            }
-        };
+                if (desactivate.outputGate.currentValue)
+                {
+                    alarmManager.gate.SetValue(false);
+                }
+            };
 
-        targetsDataInput = new DataGate { name = "targets" };
-        dataGates.Add(targetsDataInput);
+            targetsDataInput = new DataGate { name = "targets" };
+            dataGates.Add(targetsDataInput);
 
-        activate.outputGate.ValueHasChanged += (object sender, EventArgs args) =>
-        {
-            AttractClosestGuard();
-        };
-    }
-
-    private void AttractClosestGuard()
-    {
-        var target = targetsDataInput.GetData<GameObject>().FirstOrDefault() ?? alternativeTarget;
-
-        var minDis = float.MaxValue;
-        Enemy minEnemy = null;
-        foreach (var guard in assignedGuards.Where(x => x != null))
-        {
-            float magnitude = (transform.position - guard.transform.position).magnitude;
-            if (magnitude < minDis && guard.gameObject != target)
+            activate.outputGate.ValueHasChanged += (object sender, EventArgs args) =>
             {
-                minEnemy = guard;
-                minDis = magnitude;
-            }
+                AttractClosestGuard();
+            };
         }
 
-        if (minEnemy != null)
+        private void AttractClosestGuard()
         {
-            CustomEvent.Trigger(minEnemy.gameObject, "NoiseHeard", target.transform.position);
+            var target = targetsDataInput.GetData<GameObject>().FirstOrDefault() ?? alternativeTarget;
+
+            var minDis = float.MaxValue;
+            Enemy minEnemy = null;
+            foreach (var guard in assignedGuards.Where(x => x != null))
+            {
+                float magnitude = (transform.position - guard.transform.position).magnitude;
+                if (magnitude < minDis && guard.gameObject != target)
+                {
+                    minEnemy = guard;
+                    minDis = magnitude;
+                }
+            }
+
+            if (minEnemy != null)
+            {
+                CustomEvent.Trigger(minEnemy.gameObject, "NoiseHeard", target.transform.position);
+            }
+
         }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        animator.SetBool("Active", outputGate.currentValue);
+        // Update is called once per frame
+        void Update()
+        {
+            animator.SetBool("Active", outputGate.currentValue);
+        }
     }
 }

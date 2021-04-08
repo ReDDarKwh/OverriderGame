@@ -6,6 +6,7 @@ using System.Linq;
 using Scripts.AI;
 using Bolt;
 using UnityEngine.AI;
+using Scripts.Actions;
 
 public class Enemy : MonoBehaviour
 {

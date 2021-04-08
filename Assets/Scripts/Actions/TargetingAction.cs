@@ -4,64 +4,67 @@ using System.Linq;
 using Scripts.Hacking;
 using UnityEngine;
 
-public class TargetingAction : Action
+namespace Scripts.Actions
 {
-    public float damping;
-    public float bulletSpeed;
-    internal IEnumerable<Transform> targets;
-    private Quaternion initialRotation;
-    private DataGate targetsDataInput;
-    internal Transform target;
-
-    internal override void OnStart()
+    public class TargetingAction : Action
     {
-        initialRotation = transform.rotation;
+        public float damping;
+        public float bulletSpeed;
+        internal IEnumerable<Transform> targets;
+        private Quaternion initialRotation;
+        private DataGate targetsDataInput;
+        internal Transform target;
 
-        targetsDataInput = new DataGate { name = "targets" };
-        dataGates.Add(targetsDataInput);
-
-        targetsDataInput.ValueHasChanged += targetsDataInput_ValueChanged;
-    }
-
-    private void targetsDataInput_ValueChanged(object sender, System.EventArgs e)
-    {
-        this.targets = targetsDataInput.GetData<GameObject>().Select(x => x.transform);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        target = targets?.FirstOrDefault();
-        Quaternion desiredRotQ = Quaternion.identity;
-        if (target != null)
+        internal override void OnStart()
         {
-            var bulletTravelTime = (target.transform.position - transform.position).magnitude / bulletSpeed;
-            var turretToTarget = target.transform.position + (GetTargetDirection(target).normalized * bulletTravelTime) - transform.position;
-            desiredRotQ = Quaternion.LookRotation(Vector3.forward, turretToTarget) * Quaternion.Euler(0, 0, 90);
-            actionGate.SetValue(true);
-        }
-        else
-        {
-            desiredRotQ = initialRotation;
-            actionGate.SetValue(false);
+            initialRotation = transform.rotation;
+
+            targetsDataInput = new DataGate { name = "targets" };
+            dataGates.Add(targetsDataInput);
+
+            targetsDataInput.ValueHasChanged += targetsDataInput_ValueChanged;
         }
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotQ, Time.deltaTime * damping);
-    }
-
-    Vector3 GetTargetDirection(Transform target)
-    {
-        var targetCreature = target.GetComponent<Creature>();
-        var targetPlayerController = target.GetComponent<PlayerController>();
-
-        if (targetPlayerController != null)
+        private void targetsDataInput_ValueChanged(object sender, System.EventArgs e)
         {
-            return targetPlayerController.vel;
+            targets = targetsDataInput.GetData<GameObject>().Select(x => x.transform);
         }
-        else if (targetCreature != null)
+
+        // Update is called once per frame
+        void Update()
         {
-            return targetCreature.headDir;
+            target = targets?.FirstOrDefault();
+            Quaternion desiredRotQ = Quaternion.identity;
+            if (target != null)
+            {
+                var bulletTravelTime = (target.transform.position - transform.position).magnitude / bulletSpeed;
+                var turretToTarget = target.transform.position + GetTargetDirection(target).normalized * bulletTravelTime - transform.position;
+                desiredRotQ = Quaternion.LookRotation(Vector3.forward, turretToTarget) * Quaternion.Euler(0, 0, 90);
+                actionGate.SetValue(true);
+            }
+            else
+            {
+                desiredRotQ = initialRotation;
+                actionGate.SetValue(false);
+            }
+
+            transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotQ, Time.deltaTime * damping);
         }
-        return Vector3.zero;
+
+        Vector3 GetTargetDirection(Transform target)
+        {
+            var targetCreature = target.GetComponent<Creature>();
+            var targetPlayerController = target.GetComponent<PlayerController>();
+
+            if (targetPlayerController != null)
+            {
+                return targetPlayerController.vel;
+            }
+            else if (targetCreature != null)
+            {
+                return targetCreature.headDir;
+            }
+            return Vector3.zero;
+        }
     }
 }
