@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Hsm;
+using Scripts.States;
 
-public class EnemyHSM : HierarchicalStateMachine
+public class EnemyHSM : HSM
 {
-    public override Sub Init(StateMachine sm)
+    public override void Init(StateMachine sm, HSM root)
     {
+        var alive = new EnemyAliveSuperState(sm, root, "alive");
+        var dead = AddState(root.GetComponent<EmptyState>(), "dead");
 
-        return null;
+        alive.sub.AddHandler("died", dead);
     }
 }
