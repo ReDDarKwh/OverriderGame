@@ -12,7 +12,7 @@ public class StateAdapter
         this.state.OnEnter((source, target, data) =>
         {
             state.isRunning = true;
-            state.StateEnter();
+            state.StateEnter(data);
             this.state.owner.HandleEvent("stateEnter");
         });
         this.state.OnExit((source, target, data) =>

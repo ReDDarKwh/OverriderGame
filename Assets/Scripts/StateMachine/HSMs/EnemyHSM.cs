@@ -9,7 +9,7 @@ public class EnemyHSM : HSM
     public override void Init(StateMachine sm, HSM root)
     {
         var alive = new EnemyAliveSuperState(sm, root, "alive");
-        var dead = AddState(root.GetComponent<EmptyState>(), "dead");
+        var dead = AddState(root.GetComponent<DeadState>(), "dead");
 
         alive.sub.AddHandler("died", dead);
     }

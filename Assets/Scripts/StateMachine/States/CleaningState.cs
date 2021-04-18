@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Bolt;
 using Scripts.Actions;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace Scripts.States
         private float alpha;
         private Color baseColor;
 
-        public override void StateEnter()
+        public override void StateEnter(Dictionary<string, object> evtData)
         {
             target = Variables.Object(gameObject).Get<GameObject>("target");
             isCleaningDirt = dirtLayer == (dirtLayer | 1 << target.layer);

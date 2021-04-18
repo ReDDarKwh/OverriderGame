@@ -9,7 +9,7 @@ class EnemyAliveSuperState : SuperState
     public override void Init(StateMachine sm, HSM root)
     {
         var perceptive = new PerceptiveSuperState(sm, root, "perceptive");
-        var enemyAlert = new EnemyAlertSuperState(sm, root, "enemyAlive");
+        var enemyAlert = new EnemyAlertSuperState(sm, root, "enemyAlert");
 
         perceptive.sub.AddHandler("isAlert", perceptive.sub);
         enemyAlert.sub.AddHandler("update", perceptive.sub, EventRepo.targetOutOfTargetList);

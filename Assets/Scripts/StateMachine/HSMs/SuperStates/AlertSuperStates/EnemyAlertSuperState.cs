@@ -1,4 +1,5 @@
 using Hsm;
+using Scripts.States;
 
 class EnemyAlertSuperState : SuperState
 {
@@ -8,6 +9,6 @@ class EnemyAlertSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
-        throw new System.NotImplementedException();
+        var dead = AddState(root.GetComponent<EmptyState>(), "alert");
     }
 }

@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void OnDead(DamageType deathDamageType)
+    public void OnDead()
     {
         anim.SetInteger("Mode", 0);
         spriteRenderer.sortingOrder = 9;

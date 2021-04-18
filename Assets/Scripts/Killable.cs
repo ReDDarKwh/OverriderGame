@@ -12,6 +12,8 @@ public class Killable : MonoBehaviour
     public UnityEvent OnDied;
     public DirtCreator dirt;
 
+    public HSM stateMachine;
+
 
     internal void InflictDamage(float damage, DamageType damageType = DamageType.Unknown)
     {
@@ -25,10 +27,11 @@ public class Killable : MonoBehaviour
         if (health <= 0)
         {
             dead = true;
-            // if (stateMachine)
-            // {
-            //     stateMachine.TriggerEvent("Died", new EventMessage { data = damageType });
-            // }
+            if (stateMachine)
+            {
+                stateMachine.TriggerEvent("died", new Dictionary<string, object> { { "damageType", damageType } });
+            }
+
             OnDied.Invoke();
             OnDeath(EventArgs.Empty);
         }

@@ -1,4 +1,5 @@
-﻿using Scripts.Actions;
+﻿using System.Collections.Generic;
+using Scripts.Actions;
 using UnityEngine;
 
 namespace Scripts.States
@@ -19,7 +20,7 @@ namespace Scripts.States
             }
         }
 
-        public override void StateEnter()
+        public override void StateEnter(Dictionary<string, object> evtData)
         {
             if (chasingAction != null)
             {

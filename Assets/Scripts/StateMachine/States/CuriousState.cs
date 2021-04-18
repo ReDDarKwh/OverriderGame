@@ -8,7 +8,7 @@ namespace Scripts.States
     public class CuriousState : AbstractState
     {
         private GameObject target;
-        public override void StateEnter()
+        public override void StateEnter(Dictionary<string, object> evtData)
         {
             target = Variables.Object(gameObject).Get<GameObject>("target");
 

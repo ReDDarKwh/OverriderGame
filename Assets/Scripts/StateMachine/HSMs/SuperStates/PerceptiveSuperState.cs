@@ -1,4 +1,5 @@
 using Hsm;
+using Scripts.States;
 
 class PerceptiveSuperState : SuperState
 {
@@ -9,6 +10,6 @@ class PerceptiveSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
-        throw new System.NotImplementedException();
+        var dead = AddState(root.GetComponent<EmptyState>(), "perceptive");
     }
 }

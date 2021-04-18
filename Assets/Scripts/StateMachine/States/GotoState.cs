@@ -20,7 +20,7 @@ namespace Scripts.States
         private Dictionary<string, MoveSetting> moveSettingsRepo;
         private string atPositionEventName;
 
-        public override void StateEnter()
+        public override void StateEnter(Dictionary<string, object> evtData)
         {
         }
 
