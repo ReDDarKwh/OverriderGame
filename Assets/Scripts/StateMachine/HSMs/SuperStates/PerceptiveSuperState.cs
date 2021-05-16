@@ -10,6 +10,14 @@ class PerceptiveSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
-        var dead = AddState(root.GetComponent<EmptyState>(), "perceptive");
+        var idle = AddState(root.GetComponent<EmptyState>(), "idle");
+        var unsure = AddState(root.GetComponent<UnsureState>(), "unsure");
+        var curious = AddState(root.GetComponent<CuriousState>(), "curious");
+
+
+
+        idle.AddHandler("update", unsure, EventRepo.targetInTargetList);
+        unsure.AddHandler("update", curious, EventRepo.targetOutOfTargetList);
+
     }
 }
