@@ -10,6 +10,6 @@ class GotoSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
-
+        var go = AddState(root.GetComponent<GotoState>(), "goto");
     }
 }

@@ -3,31 +3,35 @@ using System.Collections.Generic;
 using Scripts.States;
 using UnityEngine;
 
-public class DeadState : AbstractState
+
+namespace Scripts.States
 {
-    public GameObject explodeEffect;
-    public GameObject deadBodyPrefab;
-
-    // Start is called before the first frame update
-    public override void StateEnter(Dictionary<string, object> evtData)
+    public class DeadState : AbstractState
     {
-        if ((DamageType)evtData["damageType"] == DamageType.Explosion)
+        public GameObject explodeEffect;
+        public GameObject deadBodyPrefab;
+
+        // Start is called before the first frame update
+        public override void StateEnter(Dictionary<string, object> evtData)
         {
-            Instantiate(explodeEffect, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            if ((DamageType)evtData["damageType"] == DamageType.Explosion)
+            {
+                Instantiate(explodeEffect, transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                Instantiate(deadBodyPrefab, transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
         }
-        else
+
+        public override void StateExit()
         {
-            Instantiate(deadBodyPrefab, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
         }
-    }
 
-    public override void StateExit()
-    {
-    }
-
-    public override void StateUpdate()
-    {
+        public override void StateUpdate()
+        {
+        }
     }
 }

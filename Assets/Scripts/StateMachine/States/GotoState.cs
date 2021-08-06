@@ -10,34 +10,34 @@ namespace Scripts.States
     {
         public Creature creature;
         public MoveSetting[] moveSettings;
+
         private bool lookAtTarget;
         private Vector3 targetPos;
         private Transform targetTransform;
-
         private bool isMovingObject;
         private float targetRange;
-
         private Dictionary<string, MoveSetting> moveSettingsRepo;
         private string atPositionEventName;
 
+
+
         public override void StateEnter(Dictionary<string, object> evtData)
         {
-        }
+            var gotoSettingsName = memory.Get<string>("gotoSettingsName");
+            var targetTransform = memory.Get<Transform>("targetTransform");
+            var targetPos = memory.Get<Vector3>("targetPos");
 
-        public void StateEnter(Transform targetTransform, Vector3 targetPos, string settingName, bool lookAtTarget, string atPositionEventName = "isAtPosition")
-        {
+            this.lookAtTarget = false;
+            this.atPositionEventName = "isAtPosition";
 
             if (moveSettingsRepo == null)
             {
                 moveSettingsRepo = moveSettings.ToDictionary(x => x.name);
             }
 
-            this.lookAtTarget = lookAtTarget;
-            this.atPositionEventName = atPositionEventName;
+            creature.nav.SetSpeed(moveSettingsRepo[gotoSettingsName].moveSpeed);
+            targetRange = moveSettingsRepo[gotoSettingsName].targetRange;
 
-            creature.nav.SetSpeed(moveSettingsRepo[settingName].moveSpeed);
-
-            targetRange = moveSettingsRepo[settingName].targetRange;
             if (targetTransform != null)
             {
                 this.targetTransform = targetTransform;
@@ -60,7 +60,7 @@ namespace Scripts.States
 
             if (creature.nav.IsTargetUnreachable())
             {
-                CustomEvent.Trigger(gameObject, "isUnreachable");
+                root.TriggerEvent("isUnreachable");
             }
             else
             {
@@ -73,7 +73,7 @@ namespace Scripts.States
         {
             if ((transform.position - (isMovingObject ? targetTransform.position : targetPos)).magnitude < targetRange)
             {
-                CustomEvent.Trigger(gameObject, atPositionEventName);
+                root.TriggerEvent(atPositionEventName);
             }
         }
 
@@ -82,7 +82,6 @@ namespace Scripts.States
             creature.nav.Stop();
             targetTransform = null;
         }
-
 
     }
 }

@@ -25,6 +25,9 @@ namespace Hsm
 
         public bool performTransition(Dictionary<string, object> data)
         {
+
+            data["state"] = sourceState;
+
             if (!_canPerformTransition(data))
             {
                 return false;

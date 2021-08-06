@@ -20,20 +20,11 @@ public class StateMachineMemory : MonoBehaviour
         }
     }
 
-    public object Get(string name, bool remove = true)
+    public T Get<T>(string name, bool remove = true)
     {
-        if (!vals.ContainsKey(name))
-        {
-            return null;
-        }
-
-        var val = vals[name];
-
-        if (remove)
-        {
-            vals.Remove(name);
-        }
-        return val;
+        object result;
+        var found = vals.TryGetValue(name, out result);
+        return found ? (T)result : default(T);
     }
 
     public void Delete(string name)

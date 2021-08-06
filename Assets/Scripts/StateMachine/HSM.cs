@@ -9,7 +9,7 @@ public abstract class HSM : MonoBehaviour
 {
     protected StateMachine stateMachine;
     private Dictionary<string, object> updateData;
-    public string currentState;
+    public List<string> currentState;
 
     void Start()
     {
@@ -25,7 +25,7 @@ public abstract class HSM : MonoBehaviour
     {
         stateMachine.HandleEvent("update", updateData);
 
-        currentState = stateMachine.currentState.id;
+        currentState = stateMachine.GetActiveStateConfiguration();
     }
 
     public void TriggerEvent(string evtName, Dictionary<string, object> data)

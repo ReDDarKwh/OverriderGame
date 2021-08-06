@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Scripts.States;
 using UnityEngine;
 
 namespace Hsm
@@ -81,6 +82,12 @@ namespace Hsm
             return state;
         }
 
+        public static T AddUpdateHandler<T>(this T state, State target, Func<Dictionary<string, object>, bool> guard) where T : State
+        {
+            state.createHandler("update", target, TransitionKind.External, null, guard);
+            return state;
+        }
+
         public static T AddHandler<T>(this T state, string eventName, State target, TransitionKind kind, Func<Dictionary<string, object>, bool> guard) where T : State
         {
             state.createHandler(eventName, target, kind, null, guard);
@@ -106,6 +113,7 @@ namespace Hsm
         public Action<Dictionary<string, object>> exitActionWithData = null;
         public Action<State, State, Dictionary<string, object>> exitActionWithStatesAndData = null;
         public Dictionary<string, List<Handler>> handlers = new Dictionary<string, List<Handler>>();
+        public AbstractState logicState { get; internal set; }
 
         public State(string pId)
         {

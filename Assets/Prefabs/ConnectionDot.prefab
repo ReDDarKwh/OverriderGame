@@ -95,3 +95,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dotSpeed: 1
+  spriteRenderer: {fileID: 3805313776865093437}

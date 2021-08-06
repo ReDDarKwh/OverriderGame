@@ -1,5 +1,6 @@
 ﻿using Hsm;
 using Scripts.States;
+using UnityEngine;
 
 public class StateAdapter
 {
@@ -9,10 +10,13 @@ public class StateAdapter
     {
         this.state = new State(name);
 
+        this.state.logicState = state;
+
         this.state.OnEnter((source, target, data) =>
         {
             state.isRunning = true;
             state.StateEnter(data);
+            state.enterTime = Time.time;
             this.state.owner.HandleEvent("stateEnter");
         });
         this.state.OnExit((source, target, data) =>

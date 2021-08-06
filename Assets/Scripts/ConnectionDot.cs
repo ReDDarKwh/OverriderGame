@@ -7,6 +7,7 @@ using Vectrosity;
 public class ConnectionDot : MonoBehaviour
 {
     public float dotSpeed;
+    public SpriteRenderer spriteRenderer;
     internal VectorLine line;
     internal AbstractGate gate;
     internal Connection connection;
@@ -18,11 +19,21 @@ public class ConnectionDot : MonoBehaviour
         if (progress > 1 || !gate.currentValue || connection == null)
         {
             Destroy(this.gameObject);
+            spriteRenderer.enabled = false;
         }
         else
         {
             progress += dotSpeed * Time.unscaledDeltaTime;
-            transform.position = line.points3[Mathf.RoundToInt(Mathf.Lerp(0, line.points3.Count - 1, progress))];
+
+            var index = Mathf.RoundToInt(Mathf.Lerp(0, line.points3.Count - 1, progress));
+            if (index > -1 && index < line.points3.Count)
+            {
+                transform.position = line.points3[index];
+            }
+            else
+            {
+                spriteRenderer.enabled = false;
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Bolt;
+using Hsm;
 using Scripts.Actions;
 using UnityEngine;
 
@@ -17,14 +18,22 @@ static class EventRepo
         return (T)Variables.Object(GetRoot(data).gameObject).Get(variableName);
     }
 
-    public static readonly Func<Dictionary<string, object>, bool> targetOutOfTargetList = (Dictionary<string, object> data) =>
+    public static readonly Func<Dictionary<string, object>, bool> TargetOutOfTargetList = (Dictionary<string, object> data) =>
     {
         var target = GetVar<GameObject>("target", data);
         return !GetVar<ExternalLogicAction>("chasingAction", data).dataInputs["Targets"].Contains(target);
     };
 
-    public static readonly Func<Dictionary<string, object>, bool> targetInTargetList = (Dictionary<string, object> data) =>
+    public static readonly Func<Dictionary<string, object>, bool> TargetInTargetList = (Dictionary<string, object> data) =>
     {
         return GetVar<ExternalLogicAction>("chasingAction", data).dataInputsHasData["Targets"];
     };
+
+    internal static Func<Dictionary<string, object>, bool> Timeout(float v)
+    {
+        return (Dictionary<string, object> data) =>
+        {
+            return ((Hsm.State)data["state"]).logicState.getStateRunTime() > v;
+        };
+    }
 }

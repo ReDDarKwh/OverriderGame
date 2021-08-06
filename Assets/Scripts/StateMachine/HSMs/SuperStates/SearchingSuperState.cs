@@ -10,6 +10,11 @@ class SearchingSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
+        var start = AddState(root.GetComponent<SearchingState>(), "searchStart");
+        var go = new GotoSuperState(sm, root, "goto");
+        var lookAround = AddState(root.GetComponent<LookAroundState>(), "lookaround");
 
+        start.AddHandler("done", go.sub);
+        go.sub.AddHandler("isAtPosition", lookAround);
     }
 }

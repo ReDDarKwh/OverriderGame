@@ -13,11 +13,12 @@ class PerceptiveSuperState : SuperState
         var idle = AddState(root.GetComponent<EmptyState>(), "idle");
         var unsure = AddState(root.GetComponent<UnsureState>(), "unsure");
         var curious = AddState(root.GetComponent<CuriousState>(), "curious");
+        var searching = new SearchingSuperState(sm, root, "searching");
 
+        idle.AddUpdateHandler(unsure, EventRepo.TargetInTargetList);
+        unsure.AddUpdateHandler(curious, EventRepo.TargetOutOfTargetList);
+        curious.AddUpdateHandler(searching.sub, EventRepo.Timeout(5));
 
-
-        idle.AddHandler("update", unsure, EventRepo.targetInTargetList);
-        unsure.AddHandler("update", curious, EventRepo.targetOutOfTargetList);
-
+        searching.sub.AddHandler("searchDone", idle);
     }
 }

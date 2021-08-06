@@ -77,7 +77,7 @@ namespace Hsm
 
         public void HandleEvent(string evt)
         {
-            HandleEvent(evt, null);
+            HandleEvent(evt, new Dictionary<string, object> { });
         }
 
         public void HandleEvent(string evt, Dictionary<string, object> data)

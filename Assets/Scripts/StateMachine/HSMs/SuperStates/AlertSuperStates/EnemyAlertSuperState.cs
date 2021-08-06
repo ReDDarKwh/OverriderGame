@@ -9,6 +9,6 @@ class EnemyAlertSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
-        var dead = AddState(root.GetComponent<EmptyState>(), "alert");
+        var alert = AddState(root.GetComponent<EmptyState>(), "alert");
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq;
 using Scripts.Actions;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace Scripts.States
 {
@@ -14,6 +15,7 @@ namespace Scripts.States
         public SoundPreset unsureSound;
         public SoundPreset scanningSound;
         private AudioSource scanningAudio;
+        private IEnumerator coroutine;
 
         public void MakeSound()
         {
@@ -24,12 +26,38 @@ namespace Scripts.States
             }
         }
 
-        public void StateEnter(bool randomTargetSelection = false)
+        public override void StateUpdate()
         {
+            if (target)
+            {
+                creature.headDir = target.transform.position - transform.position;
+            }
+        }
+
+        public override void StateExit()
+        {
+            if (scanningAudio)
+            {
+                SoundManager.Instance.Stop(scanningAudio);
+            }
+
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+                coroutine = null;
+            }
+        }
+
+        public override void StateEnter(Dictionary<string, object> evtData)
+        {
+
+            MakeSound();
+
             var lastTarget = Variables.Object(gameObject).Get<GameObject>("target");
 
-            if (randomTargetSelection)
+            if (false)
             {
+                // TODO: Make random selection work for cleaning bot
                 var i = 0;
                 do
                 {
@@ -50,26 +78,16 @@ namespace Scripts.States
             }
 
             Variables.Object(gameObject).Set("target", target);
+
+            coroutine = WaitAndAlert((float)Variables.Object(gameObject).Get("unsureTime"), (HSM)evtData["root"]);
+            StartCoroutine(coroutine);
+
         }
 
-        public override void StateUpdate()
+        public IEnumerator WaitAndAlert(float waitTime, HSM hsm)
         {
-            if (target)
-            {
-                creature.headDir = target.transform.position - transform.position;
-            }
-        }
-
-        public override void StateExit()
-        {
-            if (scanningAudio)
-            {
-                SoundManager.Instance.Stop(scanningAudio);
-            }
-        }
-
-        public override void StateEnter(Dictionary<string, object> evtData)
-        {
+            yield return new WaitForSeconds(waitTime);
+            hsm.TriggerEvent("isAlert");
         }
     }
 }
