@@ -6,11 +6,15 @@ namespace Scripts.States
 {
     public class ChasingState : AbstractState
     {
-        public Creature creature;
         public ExternalLogicAction chasingAction;
-        public float chasingSpeed;
         public SoundPreset chasingSound;
         public NoiseEmitter chasingNoise;
+
+        public override void Init()
+        {
+            base.Init();
+            memory.Set("chasingAction", chasingAction);
+        }
 
         public void MakeChasingSound()
         {
@@ -27,10 +31,14 @@ namespace Scripts.States
                 chasingAction.actionGate.SetValue(true);
             }
 
+            SetUpGoto(null, memory.Get<GameObject>("target", false)?.transform, "chasing", true);
+
             if (chasingNoise)
             {
                 chasingNoise.EmitNoise();
             }
+
+            root.TriggerEvent("done");
         }
 
         public override void StateUpdate()

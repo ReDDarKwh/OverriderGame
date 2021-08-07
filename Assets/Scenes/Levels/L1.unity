@@ -18618,7 +18618,7 @@ PrefabInstance:
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: moveSettings.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
@@ -18627,12 +18627,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
+      propertyPath: moveSettings.Array.data[1].name
+      value: chasing
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
       propertyPath: moveSettings.Array.data[0].moveSpeed
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
+      propertyPath: moveSettings.Array.data[1].moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
       propertyPath: moveSettings.Array.data[0].targetRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: moveSettings.Array.data[1].targetRange
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2490535789703305076, guid: 07d7b830d55fc444495a8d5f2cb65199,
@@ -18742,9 +18757,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725844347703517082, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
+      propertyPath: creature
+      value: 
+      objectReference: {fileID: 180873436}
+    - target: {fileID: 6725844347703517082, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
       propertyPath: chasingNoise
       value: 
       objectReference: {fileID: 573573935}
+    - target: {fileID: 6725844347703517082, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: chasingAction
+      value: 
+      objectReference: {fileID: 1238924932}
     - target: {fileID: 6725844347703517083, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: creature
@@ -18960,6 +18985,7 @@ PrefabInstance:
     - {fileID: 6725844347703517087, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
     - {fileID: 181068534373585647, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
     - {fileID: 1919713273088463961, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
+    - {fileID: 0}
     - {fileID: 1325969491194499124, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
 --- !u!4 &1168809613 stripped

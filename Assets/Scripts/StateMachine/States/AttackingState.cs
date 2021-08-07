@@ -20,7 +20,7 @@ namespace Scripts.States
 
         public override void StateEnter(Dictionary<string, object> evtData)
         {
-            target = Variables.Object(gameObject).Get<GameObject>("target");
+            target = memory.Get<GameObject>("target", false);
             targetCreature = target.GetComponent<Creature>();
             targetPlayerController = target.GetComponent<PlayerController>();
 
@@ -41,7 +41,7 @@ namespace Scripts.States
 
             if ((target.transform.position - transform.position).magnitude > attackRangePlusBuffer)
             {
-                CustomEvent.Trigger(gameObject, "targetOutOfAttackRange");
+                root.TriggerEvent("targetOutOfAttackRange");
             }
             creature.headDir = target.transform.position - transform.position;
 

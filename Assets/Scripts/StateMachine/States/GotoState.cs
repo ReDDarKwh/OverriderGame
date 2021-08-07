@@ -19,15 +19,13 @@ namespace Scripts.States
         private Dictionary<string, MoveSetting> moveSettingsRepo;
         private string atPositionEventName;
 
-
-
         public override void StateEnter(Dictionary<string, object> evtData)
         {
             var gotoSettingsName = memory.Get<string>("gotoSettingsName");
             var targetTransform = memory.Get<Transform>("targetTransform");
             var targetPos = memory.Get<Vector3>("targetPos");
 
-            this.lookAtTarget = false;
+            this.lookAtTarget = memory.Get<bool>("lookAtTarget");
             this.atPositionEventName = "isAtPosition";
 
             if (moveSettingsRepo == null)
@@ -82,6 +80,5 @@ namespace Scripts.States
             creature.nav.Stop();
             targetTransform = null;
         }
-
     }
 }

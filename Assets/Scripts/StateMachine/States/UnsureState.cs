@@ -53,7 +53,7 @@ namespace Scripts.States
 
             MakeSound();
 
-            var lastTarget = Variables.Object(gameObject).Get<GameObject>("target");
+            var lastTarget = memory.Get<GameObject>("target");
 
             if (false)
             {
@@ -77,11 +77,10 @@ namespace Scripts.States
                 CustomEvent.Trigger(gameObject, "NoNewTarget");
             }
 
-            Variables.Object(gameObject).Set("target", target);
+            memory.Set("target", target);
 
-            coroutine = WaitAndAlert((float)Variables.Object(gameObject).Get("unsureTime"), (HSM)evtData["root"]);
+            coroutine = WaitAndAlert(memory.Get<float>("unsureTime"), (HSM)evtData["root"]);
             StartCoroutine(coroutine);
-
         }
 
         public IEnumerator WaitAndAlert(float waitTime, HSM hsm)

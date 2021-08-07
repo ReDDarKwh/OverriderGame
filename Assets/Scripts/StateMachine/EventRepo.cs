@@ -15,7 +15,7 @@ static class EventRepo
 
     private static T GetVar<T>(string variableName, Dictionary<string, object> data)
     {
-        return (T)Variables.Object(GetRoot(data).gameObject).Get(variableName);
+        return GetRoot(data).GetComponent<StateMachineMemory>().Get<T>(variableName, false);
     }
 
     public static readonly Func<Dictionary<string, object>, bool> TargetOutOfTargetList = (Dictionary<string, object> data) =>

@@ -22,6 +22,7 @@ namespace Scripts.States
         public abstract void StateEnter(Dictionary<string, object> evtData);
         public abstract void StateUpdate();
         public abstract void StateExit();
+        public virtual void Init() { }
 
         public float getStateRunTime()
         {
@@ -32,6 +33,8 @@ namespace Scripts.States
         {
             memory = GetComponent<StateMachineMemory>();
             root = GetComponent<HSM>();
+
+            Init();
         }
 
         void Update()
@@ -54,11 +57,23 @@ namespace Scripts.States
             return GetVar<HSM>("root", data);
         }
 
+        protected void SetUpGoto(Vector3? targetPos, Transform targetTransform, string gotoSettingsName, bool lookAtTarget)
+        {
+            if (targetPos != null)
+            {
+                memory.Set("targetPos", targetPos.Value);
+            }
+            memory.Set("targetTransform", targetTransform);
+            memory.Set("gotoSettingsName", gotoSettingsName);
+            memory.Set("lookAtTarget", lookAtTarget);
+        }
+
         public IEnumerator WaitAndTrigger(float waitTime, HSM hsm)
         {
             yield return new WaitForSeconds(waitTime);
             hsm.TriggerEvent("searchDone");
         }
+
 
     }
 }
