@@ -45,18 +45,6 @@ namespace Scripts.States
             }
         }
 
-        protected T GetVar<T>(string variableName, Dictionary<string, object> data)
-        {
-            object result;
-            var found = data.TryGetValue(variableName, out result);
-            return found ? (T)result : default(T);
-        }
-
-        protected HSM GetRoot(Dictionary<string, object> data)
-        {
-            return GetVar<HSM>("root", data);
-        }
-
         protected void SetUpGoto(Vector3? targetPos, Transform targetTransform, string gotoSettingsName, bool lookAtTarget)
         {
             if (targetPos != null)
@@ -68,10 +56,10 @@ namespace Scripts.States
             memory.Set("lookAtTarget", lookAtTarget);
         }
 
-        public IEnumerator WaitAndTrigger(float waitTime, HSM hsm)
+        public IEnumerator WaitAndTrigger(float waitTime, HSM hsm, string eventName)
         {
             yield return new WaitForSeconds(waitTime);
-            hsm.TriggerEvent("searchDone");
+            hsm.TriggerEvent(eventName);
         }
 
 

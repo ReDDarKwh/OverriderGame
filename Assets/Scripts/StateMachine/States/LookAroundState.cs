@@ -12,6 +12,7 @@ namespace Scripts.States
         public float relativeMaxAngle;
         public float unsureTime;
         private Quaternion startRotation;
+        private Coroutine waitCoroutine;
         private Quaternion minRotation;
         private Quaternion maxRotation;
         private Quaternion targetRotation;
@@ -20,11 +21,12 @@ namespace Scripts.States
         public override void StateEnter(Dictionary<string, object> evtData)
         {
             startRotation = Quaternion.LookRotation(Vector3.forward, creature.headDir) * Quaternion.Euler(0, 0, 90);
-            StartCoroutine(WaitAndTrigger(unsureTime, root));
+            waitCoroutine = StartCoroutine(WaitAndTrigger(unsureTime, root, "searchDone"));
         }
 
         public override void StateExit()
         {
+            StopCoroutine(waitCoroutine);
         }
 
         public override void StateUpdate()

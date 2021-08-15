@@ -24,15 +24,17 @@ public class StateMachineMemory : MonoBehaviour
     {
         object result;
         var found = vals.TryGetValue(name, out result);
+
+        if(remove){
+            Delete(name);
+        }
+
         return found ? (T)result : default(T);
     }
 
     public void Delete(string name)
     {
-        if (vals.ContainsKey(name))
-        {
-            vals.Remove(name);
-        }
+        vals.Remove(name);
     }
 
 }

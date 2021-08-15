@@ -18,6 +18,5 @@ class EnemyAlertSuperState : SuperState
 
         attacking.AddUpdateHandler(go.sub, EventRepo.TargetOutOfTargetList);
         attacking.AddHandler("targetOutOfAttackRange", go.sub);
-
     }
 }

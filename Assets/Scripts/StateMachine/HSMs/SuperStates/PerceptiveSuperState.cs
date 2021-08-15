@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Hsm;
 using Scripts.States;
+using UnityEngine;
 
 class PerceptiveSuperState : SuperState
 {
@@ -19,6 +21,14 @@ class PerceptiveSuperState : SuperState
         unsure.AddUpdateHandler(curious, EventRepo.TargetOutOfTargetList);
         curious.AddUpdateHandler(searching.sub, EventRepo.Timeout(5));
 
+        idle.AddEnterHandler(searching.sub, EventRepo.HasTarget, (Dictionary<string, object> data) => {
+            var memory = HSM.GetRoot(data).memory;
+            var target = memory.Get<GameObject>("target");
+            memory.Set("targetPos", target.transform.position);
+        });
+
         searching.sub.AddHandler("searchDone", idle);
+        searching.sub.AddUpdateHandler(unsure, EventRepo.TargetInTargetList);
+
     }
 }

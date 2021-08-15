@@ -69,11 +69,11 @@ public class WorkshopCameraController : MonoBehaviour
             ZoomOrthoCamera(cam.ScreenToWorldPoint(Input.mousePosition), -1);
         }
 
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(2) || Input.GetMouseButtonDown(1))
         {
             lastPosition = cam.ScreenToWorldPoint(Input.mousePosition);
         }
-        else if (Input.GetMouseButton(2))
+        else if (Input.GetMouseButton(2) || Input.GetMouseButton(1))
         {
             var difference = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             transform.position = lastPosition - difference;

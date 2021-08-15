@@ -18,13 +18,18 @@ static class EventRepo
         return GetRoot(data).GetComponent<StateMachineMemory>().Get<T>(variableName, false);
     }
 
-    public static readonly Func<Dictionary<string, object>, bool> TargetOutOfTargetList = (Dictionary<string, object> data) =>
+    public static Func<Dictionary<string, object>, bool> TargetOutOfTargetList = (Dictionary<string, object> data) =>
     {
         var target = GetVar<GameObject>("target", data);
         return !GetVar<ExternalLogicAction>("chasingAction", data).dataInputs["Targets"].Contains(target);
     };
 
-    public static readonly Func<Dictionary<string, object>, bool> TargetInTargetList = (Dictionary<string, object> data) =>
+    public static Func<Dictionary<string, object>, bool> HasTarget = (Dictionary<string, object> data) =>
+    {
+        return GetVar<GameObject>("target", data) != null;
+    };
+
+    public static Func<Dictionary<string, object>, bool> TargetInTargetList = (Dictionary<string, object> data) =>
     {
         return GetVar<ExternalLogicAction>("chasingAction", data).dataInputsHasData["Targets"];
     };

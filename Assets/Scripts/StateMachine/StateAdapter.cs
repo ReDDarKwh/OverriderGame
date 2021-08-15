@@ -1,4 +1,5 @@
-﻿using Hsm;
+﻿using System.Collections.Generic;
+using Hsm;
 using Scripts.States;
 using UnityEngine;
 
@@ -17,7 +18,9 @@ public class StateAdapter
             state.isRunning = true;
             state.StateEnter(data);
             state.enterTime = Time.time;
-            this.state.owner.HandleEvent("stateEnter");
+            this.state.owner.HandleEvent("enter", 
+                new Dictionary<string, object>(){{"root", state.GetComponent<HSM>()}}
+                );
         });
         this.state.OnExit((source, target, data) =>
         {

@@ -15,7 +15,7 @@ namespace Scripts.States
         public SoundPreset unsureSound;
         public SoundPreset scanningSound;
         private AudioSource scanningAudio;
-        private IEnumerator coroutine;
+        private Coroutine coroutine;
 
         public void MakeSound()
         {
@@ -78,15 +78,9 @@ namespace Scripts.States
             }
 
             memory.Set("target", target);
-
-            coroutine = WaitAndAlert(memory.Get<float>("unsureTime"), (HSM)evtData["root"]);
-            StartCoroutine(coroutine);
+             
+            coroutine = StartCoroutine(WaitAndTrigger(memory.Get<float>("unsureTime"), (HSM)evtData["root"], "isAlert"));
         }
-
-        public IEnumerator WaitAndAlert(float waitTime, HSM hsm)
-        {
-            yield return new WaitForSeconds(waitTime);
-            hsm.TriggerEvent("isAlert");
-        }
+    
     }
 }
