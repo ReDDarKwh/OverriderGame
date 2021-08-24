@@ -94,7 +94,7 @@ namespace Hsm
             return state;
         }
 
-        public static T AddDoneHandler<T>(this T state, State target, Func<Dictionary<string, object>, bool> guard, Action<Dictionary<string, object>> action = null) where T : State
+        public static T AddInstantHandler<T>(this T state, State target, Func<Dictionary<string, object>, bool> guard, Action<Dictionary<string, object>> action = null) where T : State
         {
             state.createHandler("done", target, TransitionKind.External, action, guard);
             return state;
