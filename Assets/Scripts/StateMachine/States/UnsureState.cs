@@ -14,6 +14,7 @@ namespace Scripts.States
         private GameObject target;
         public SoundPreset unsureSound;
         public SoundPreset scanningSound;
+        public float defaultUnsureTime;
         private AudioSource scanningAudio;
         private Coroutine coroutine;
 
@@ -79,7 +80,11 @@ namespace Scripts.States
 
             memory.Set("target", target);
              
-            coroutine = StartCoroutine(WaitAndTrigger(memory.Get<float>("unsureTime"), (HSM)evtData["root"], "isAlert"));
+            var memuUnsureTime = memory.Get<float>("unsureTime");
+
+            coroutine = StartCoroutine(
+                WaitAndTrigger(memuUnsureTime == 0? defaultUnsureTime : memuUnsureTime, (HSM)evtData["root"], "isAlert")
+            );
         }
     
     }
