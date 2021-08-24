@@ -12,7 +12,6 @@ class InteractSuperState : SuperState
         var start = AddState(root.GetComponent<InstantState>(), "start");
         var go = new GotoSuperState(sm, root, "goto");
 
-        start.AddDoneHandler(go.sub, null, (data) => {});
-
+        start.AddInstantHandler(go.sub, null, (data) => {});
     }
 }
