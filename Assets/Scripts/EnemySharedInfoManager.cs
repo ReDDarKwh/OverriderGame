@@ -11,12 +11,12 @@ public class EnemySharedInfoManager : MonoBehaviour
         return investigatedObjects.Contains(o);
     }
 
-    public void AddInvestigedObject(GameObject o)
+    public void AddInvestigatedObject(GameObject o)
     {
         investigatedObjects.Add(o);
     }
 
-    public void RemoveInvestigedObject(GameObject o)
+    public void RemoveInvestigatedObject(GameObject o)
     {
         investigatedObjects.Remove(o);
     }

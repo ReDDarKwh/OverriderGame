@@ -22,7 +22,7 @@ public class Investigator : MonoBehaviour
 
         if (!investigated)
         {
-            sharedInfoManager.AddInvestigedObject(gameObject);
+            sharedInfoManager.AddInvestigatedObject(gameObject);
             investigatedObjects.Add(gameObject);
         }
 
@@ -33,7 +33,7 @@ public class Investigator : MonoBehaviour
     {
         foreach (var io in investigatedObjects)
         {
-            sharedInfoManager.RemoveInvestigedObject(io);
+            sharedInfoManager.RemoveInvestigatedObject(io);
         }
     }
 
