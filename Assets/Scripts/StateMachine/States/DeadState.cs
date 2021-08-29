@@ -12,9 +12,9 @@ namespace Scripts.States
         public GameObject deadBodyPrefab;
 
         // Start is called before the first frame update
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
-            if ((DamageType)evtData["damageType"] == DamageType.Explosion)
+            if ((DamageType)memory.Get<DamageType>("damageType") == DamageType.Explosion)
             {
                 Instantiate(explodeEffect, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);

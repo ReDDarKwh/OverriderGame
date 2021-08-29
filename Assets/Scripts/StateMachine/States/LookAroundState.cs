@@ -18,7 +18,7 @@ namespace Scripts.States
         private Quaternion targetRotation;
         private float time;
 
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
             startRotation = Quaternion.LookRotation(Vector3.forward, creature.headDir) * Quaternion.Euler(0, 0, 90);
             waitCoroutine = StartCoroutine(WaitAndTrigger(unsureTime, root, "searchDone"));

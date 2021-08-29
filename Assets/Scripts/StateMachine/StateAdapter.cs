@@ -7,25 +7,20 @@ public class StateAdapter
 {
     private State state;
 
-    public StateAdapter(AbstractState state, string name)
+    public StateAdapter(AbstractState abstractState, string name)
     {
         this.state = new State(name);
 
-        this.state.logicState = state;
+        this.state.logicState = abstractState;
 
         this.state.OnEnter((source, target, data) =>
         {
-            state.isRunning = true;
-            state.StateEnter(data);
-            state.enterTime = Time.time;
-            this.state.owner.HandleEvent("enter", 
-                new Dictionary<string, object>(){{"root", state.GetComponent<HSM>()}}
-                );
+            abstractState.enterTime = Time.time;
+            abstractState.isActive = true;
         });
         this.state.OnExit((source, target, data) =>
         {
-            state.isRunning = false;
-            state.StateExit();
+            abstractState.isActive = false;
         });
     }
 

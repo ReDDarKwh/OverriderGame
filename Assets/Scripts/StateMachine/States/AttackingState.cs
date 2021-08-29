@@ -18,7 +18,7 @@ namespace Scripts.States
         private Rigidbody2D targetRb;
         public float attackRangePlusBuffer;
 
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
             target = memory.Get<GameObject>("target", false);
             targetCreature = target.GetComponent<Creature>();

@@ -18929,6 +18929,7 @@ PrefabInstance:
     - {fileID: 1919713273088463961, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
     - {fileID: 0}
     - {fileID: 1325969491194499124, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
+    - {fileID: 5114566019477768657, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
 --- !u!4 &1168809613 stripped
 Transform:
@@ -19000,6 +19001,19 @@ MonoBehaviour:
   relativeMinAngle: 20
   relativeMaxAngle: 20
   unsureTime: 5
+--- !u!114 &1168809624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168809614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04097b5581ec71644893ff7d4c6a0b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creature: {fileID: 180873436}
 --- !u!114 &1168809633
 MonoBehaviour:
   m_ObjectHideFlags: 0

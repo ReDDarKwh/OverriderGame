@@ -59,7 +59,7 @@ namespace Scripts.States
             return true;
         }
 
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
             // if (stationnaryTransform)
             // {

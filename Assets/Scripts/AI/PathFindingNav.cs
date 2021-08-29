@@ -30,13 +30,11 @@ public class PathFindingNav : Navigation
     public override void SetTarget(Vector3 target)
     {
         navMeshAgent.isStopped = stopped = false;
-        Debug.Log("started");
         navMeshAgent.SetDestination(target);
     }
 
     public override void Stop()
     {
-        Debug.Log("stopped");
         navMeshAgent.isStopped = stopped = true;
         movingTarget = null;
     }

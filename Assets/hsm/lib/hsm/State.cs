@@ -82,9 +82,9 @@ namespace Hsm
             return state;
         }
 
-        public static T AddUpdateHandler<T>(this T state, State target, Func<Dictionary<string, object>, bool> guard) where T : State
+        public static T AddUpdateHandler<T>(this T state, State target, Func<Dictionary<string, object>, bool> guard, Action<Dictionary<string, object>> action = null) where T : State
         {
-            state.createHandler("update", target, TransitionKind.External, null, guard);
+            state.createHandler("update", target, TransitionKind.External, action, guard);
             return state;
         }
 

@@ -9,7 +9,7 @@ namespace Scripts.States
     public class SearchingState : AbstractState
     {
         public float unsureTime;
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
             memory.Set("unsureTime", unsureTime);
             memory.Set("gotoSettingsName", "searching");

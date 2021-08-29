@@ -1,0 +1,39 @@
+using System.Collections.Generic;
+using Hsm;
+using Scripts.States;
+using UnityEngine;
+
+class InvestigatingNoiseSuperState : SuperState
+{
+
+    public InvestigatingNoiseSuperState(StateMachine sm, HSM root, string name) : base(sm, root, name)
+    {
+    }
+
+    public override void Init(StateMachine sm, HSM root)
+    {
+        var start = AddState(root.GetComponent<IntriguedState>(), "start");
+        var go = new GotoSuperState(sm, root, "goto");
+        var lookingAround = AddState(root.GetComponent<LookAroundState>(), "lookingAround");
+        
+        start.AddUpdateHandler(go.sub, EventRepo.Timeout(1), (Dictionary<string, object> data) => {
+            var memory = HSM.GetRoot(data).memory;
+            var pos = memory.Get<Vector3>("targetPos", false);
+            HSM.SetUpGoto(
+                memory,
+                pos,
+                null,
+                "investigating",
+                false
+            );
+        });
+
+        go.sub.AddHandler("isAtPosition", lookingAround);
+        lookingAround.AddHandler("noiseHeard", start, TransitionKind.External, (Dictionary<string, object> data) =>
+        {
+            var memory = HSM.GetRoot(data).memory;
+            var pos = HSM.GetVar<Vector3>("subject", data);
+            memory.Set("targetPos", pos);
+        });
+    }
+}

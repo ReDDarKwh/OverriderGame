@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,12 +15,13 @@ namespace Scripts.States
         public HSM root;
 
 
-        internal bool isRunning;
+        internal bool isActive;
 
         [System.NonSerialized]
         public float enterTime;
+        private bool isRunning;
 
-        public abstract void StateEnter(Dictionary<string, object> evtData);
+        public abstract void StateEnter();
         public abstract void StateUpdate();
         public abstract void StateExit();
         public virtual void Init() { }
@@ -33,16 +35,29 @@ namespace Scripts.States
         {
             memory = GetComponent<StateMachineMemory>();
             root = GetComponent<HSM>();
-
             Init();
         }
 
         void Update()
         {
-            if (isRunning)
+            if (isActive)
             {
-                StateUpdate();
+                if(!isRunning){
+                    StateEnter();
+                    PostStateEnter();
+                    isRunning = true;
+                } else {
+                    StateUpdate();  
+                }
+            } else if(isRunning){
+                StateExit();
+                isRunning = false;
             }
+        }
+
+        private void PostStateEnter()
+        {
+            root.TriggerEvent("enter");
         }
 
         public IEnumerator WaitAndTrigger(float waitTime, HSM hsm, string eventName)
@@ -50,7 +65,6 @@ namespace Scripts.States
             yield return new WaitForSeconds(waitTime);
             hsm.TriggerEvent(eventName);
         }
-
 
     }
 }

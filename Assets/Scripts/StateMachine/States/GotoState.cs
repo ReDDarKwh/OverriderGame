@@ -19,7 +19,7 @@ namespace Scripts.States
         private Dictionary<string, MoveSetting> moveSettingsRepo;
         private string atPositionEventName;
 
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
             var gotoSettingsName = memory.Get<string>("gotoSettingsName");
             var targetTransform = memory.Get<Transform>("targetTransform");
@@ -77,8 +77,8 @@ namespace Scripts.States
 
         public override void StateExit()
         {
-            creature.nav.Stop();
             targetTransform = null;
+            creature.nav.Stop();
         }
     }
 }

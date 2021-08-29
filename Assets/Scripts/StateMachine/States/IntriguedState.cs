@@ -9,7 +9,7 @@ namespace Scripts.States
     {
         public Creature creature;
         
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
             creature.headDir = memory.Get<Vector3>("targetPos", false) - transform.position;
         }

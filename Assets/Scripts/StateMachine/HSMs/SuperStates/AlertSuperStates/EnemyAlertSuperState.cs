@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using Hsm;
 using Scripts.States;
+using UnityEngine;
 
 class EnemyAlertSuperState : SuperState
 {
@@ -16,7 +19,16 @@ class EnemyAlertSuperState : SuperState
         chasing.AddHandler("done", go.sub);
         go.sub.AddHandler("isAtPosition", attacking);
 
-        attacking.AddUpdateHandler(go.sub, EventRepo.TargetOutOfTargetList);
-        attacking.AddHandler("targetOutOfAttackRange", go.sub);
+        attacking.AddUpdateHandler(go.sub, EventRepo.TargetOutOfTargetList, SetUpChase());
+        attacking.AddHandler("targetOutOfAttackRange", go.sub, TransitionKind.External, SetUpChase());
+    }
+
+    private static Action<Dictionary<string, object>> SetUpChase()
+    {
+        return (Dictionary<string, object> data) =>
+        {
+            var memory = HSM.GetRoot(data).memory;
+            HSM.SetUpGoto(memory, null, memory.Get<GameObject>("target", false)?.transform, "chasing", true);
+        };
     }
 }

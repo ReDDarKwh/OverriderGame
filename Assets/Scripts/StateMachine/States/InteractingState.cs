@@ -18,7 +18,7 @@ namespace Scripts.States
             interactor = GetComponent<Interactor>();
         }
 
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
             var interactable = memory.Get<GameObject>("interactionObject", true).GetComponent<Interactable>();
             coroutine = StartCoroutine(Interact(interactable.InteractionTime, interactable));

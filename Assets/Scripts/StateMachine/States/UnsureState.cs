@@ -49,7 +49,7 @@ namespace Scripts.States
             }
         }
 
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
 
             MakeSound();
@@ -83,7 +83,7 @@ namespace Scripts.States
             var memuUnsureTime = memory.Get<float>("unsureTime");
 
             coroutine = StartCoroutine(
-                WaitAndTrigger(memuUnsureTime == 0? defaultUnsureTime : memuUnsureTime, (HSM)evtData["root"], "isAlert")
+                WaitAndTrigger(memuUnsureTime == 0? defaultUnsureTime : memuUnsureTime, root, "isAlert")
             );
         }
     

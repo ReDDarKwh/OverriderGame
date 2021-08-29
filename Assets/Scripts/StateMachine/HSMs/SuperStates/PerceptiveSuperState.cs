@@ -16,7 +16,9 @@ class PerceptiveSuperState : SuperState
         var unsure = AddState(root.GetComponent<UnsureState>(), "unsure");
         var curious = AddState(root.GetComponent<CuriousState>(), "curious");
         var searching = new SearchingSuperState(sm, root, "searching");
-        var interact = new InteractSuperState(sm, root, "interact");
+        var investigatingObject = new InvestigatingObjectSuperState(sm, root, "investigatingObject");
+        var investigatingNoise = new InvestigatingNoiseSuperState(sm, root, "investigatingNoise");
+        
 
         idle.AddUpdateHandler(unsure, EventRepo.TargetInTargetList);
         unsure.AddUpdateHandler(curious, EventRepo.TargetOutOfTargetList);
@@ -29,11 +31,12 @@ class PerceptiveSuperState : SuperState
             memory.Set("targetPos", target.transform.position);
         });
 
-        idle.AddHandler("objectNoiseHeard", interact.sub, TransitionKind.External, (Dictionary<string, object> data) =>
+        idle.AddHandler("objectNoiseHeard", investigatingObject.sub, TransitionKind.External, (Dictionary<string, object> data) =>
         {
             var memory = HSM.GetRoot(data).memory;
             var interactable = HSM.GetVar<GameObject>("subject", data);
             memory.Set("interactionObject", interactable);
+            memory.Set("targetPos", interactable.transform.position);
         },
         (Dictionary<string, object> data) =>
         {
@@ -42,11 +45,18 @@ class PerceptiveSuperState : SuperState
             return investigator.CanBeInvestigated(interactable);
         });
 
-        interact.sub.AddHandler("interactionDone", idle);
-        interact.sub.AddUpdateHandler(unsure, EventRepo.TargetInTargetList);
+        investigatingObject.sub.AddHandler("interactionDone", idle);
+        investigatingObject.sub.AddUpdateHandler(unsure, EventRepo.TargetInTargetList);
 
-        idle.AddHandler("noiseHeard", )
+        idle.AddHandler("noiseHeard", investigatingNoise.sub, (Dictionary<string, object> data) =>
+        {
+            var memory = HSM.GetRoot(data).memory;
+            var pos = HSM.GetVar<Vector3>("subject", data);
+            memory.Set("targetPos", pos);
+        });
 
+        investigatingNoise.sub.AddHandler("searchDone", idle);
+        investigatingNoise.sub.AddUpdateHandler(unsure, EventRepo.TargetInTargetList);
 
         searching.sub.AddHandler("searchDone", idle);
         searching.sub.AddUpdateHandler(unsure, EventRepo.TargetInTargetList);

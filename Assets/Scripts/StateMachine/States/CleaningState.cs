@@ -18,7 +18,7 @@ namespace Scripts.States
         private float alpha;
         private Color baseColor;
 
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
             target = Variables.Object(gameObject).Get<GameObject>("target");
             isCleaningDirt = dirtLayer == (dirtLayer | 1 << target.layer);

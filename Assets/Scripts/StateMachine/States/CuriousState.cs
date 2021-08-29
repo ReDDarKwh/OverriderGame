@@ -9,14 +9,9 @@ namespace Scripts.States
     {
         private GameObject target;
 
-        public override void StateEnter(Dictionary<string, object> evtData)
+        public override void StateEnter()
         {
-            target = Variables.Object(gameObject).Get<GameObject>("target");
-
-            if (target)
-            {
-                Variables.Object(gameObject).Set("lastTargetPos", target.transform.position);
-            }
+            target = memory.Get<GameObject>("target");
 
             memory.Set("targetPos", target.transform.position);
         }
