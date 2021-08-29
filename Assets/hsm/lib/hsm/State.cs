@@ -15,14 +15,14 @@ namespace Hsm
             return state;
         }
 
-        public static T OnEnter<T>(this T state, Action<Dictionary<string, object>> action) where T : State
+        public static T OnEnter<T>(this T state, Action<EventData> action) where T : State
         {
             state.enterActionWithData = action;
             state.enterAction = null;
             return state;
         }
 
-        public static T OnEnter<T>(this T state, Action<State, State, Dictionary<string, object>> action) where T : State
+        public static T OnEnter<T>(this T state, Action<State, State, EventData> action) where T : State
         {
             state.enterActionWithStatesAndData = action;
             state.enterActionWithData = null;
@@ -37,14 +37,14 @@ namespace Hsm
             return state;
         }
 
-        public static T OnExit<T>(this T state, Action<Dictionary<string, object>> action) where T : State
+        public static T OnExit<T>(this T state, Action<EventData> action) where T : State
         {
             state.exitActionWithData = action;
             state.exitAction = null;
             return state;
         }
 
-        public static T OnExit<T>(this T state, Action<State, State, Dictionary<string, object>> action) where T : State
+        public static T OnExit<T>(this T state, Action<State, State, EventData> action) where T : State
         {
             state.exitActionWithStatesAndData = action;
             state.exitActionWithData = null;
@@ -64,43 +64,43 @@ namespace Hsm
             return state;
         }
 
-        public static T AddHandler<T>(this T state, string eventName, State target, Action<Dictionary<string, object>> action) where T : State
+        public static T AddHandler<T>(this T state, string eventName, State target, Action<EventData> action) where T : State
         {
             state.createHandler(eventName, target, TransitionKind.External, action, null);
             return state;
         }
 
-        public static T AddHandler<T>(this T state, string eventName, State target, TransitionKind kind, Action<Dictionary<string, object>> action) where T : State
+        public static T AddHandler<T>(this T state, string eventName, State target, TransitionKind kind, Action<EventData> action) where T : State
         {
             state.createHandler(eventName, target, kind, action, null);
             return state;
         }
 
-        public static T AddHandler<T>(this T state, string eventName, State target, Func<Dictionary<string, object>, bool> guard) where T : State
+        public static T AddHandler<T>(this T state, string eventName, State target, Func<EventData, bool> guard) where T : State
         {
             state.createHandler(eventName, target, TransitionKind.External, null, guard);
             return state;
         }
 
-        public static T AddUpdateHandler<T>(this T state, State target, Func<Dictionary<string, object>, bool> guard, Action<Dictionary<string, object>> action = null) where T : State
+        public static T AddUpdateHandler<T>(this T state, State target, Func<EventData, bool> guard, Action<EventData> action = null) where T : State
         {
             state.createHandler("update", target, TransitionKind.External, action, guard);
             return state;
         }
 
-        public static T AddEnterHandler<T>(this T state, State target, Func<Dictionary<string, object>, bool> guard, Action<Dictionary<string, object>> action = null) where T : State
+        public static T AddEnterHandler<T>(this T state, State target, Func<EventData, bool> guard, Action<EventData> action = null) where T : State
         {
             state.createHandler("enter", target, TransitionKind.External, action, guard);
             return state;
         }
 
-        public static T AddHandler<T>(this T state, string eventName, State target, TransitionKind kind, Func<Dictionary<string, object>, bool> guard) where T : State
+        public static T AddHandler<T>(this T state, string eventName, State target, TransitionKind kind, Func<EventData, bool> guard) where T : State
         {
             state.createHandler(eventName, target, kind, null, guard);
             return state;
         }
 
-        public static T AddHandler<T>(this T state, string eventName, State target, TransitionKind kind, Action<Dictionary<string, object>> action, Func<Dictionary<string, object>, bool> guard) where T : State
+        public static T AddHandler<T>(this T state, string eventName, State target, TransitionKind kind, Action<EventData> action, Func<EventData, bool> guard) where T : State
         {
             state.createHandler(eventName, target, kind, action, guard);
             return state;
@@ -113,11 +113,11 @@ namespace Hsm
         public string id;
         public StateMachine owner;
         public Action enterAction = null;
-        public Action<Dictionary<string, object>> enterActionWithData = null;
-        public Action<State, State, Dictionary<string, object>> enterActionWithStatesAndData = null;
+        public Action<EventData> enterActionWithData = null;
+        public Action<State, State, EventData> enterActionWithStatesAndData = null;
         public Action exitAction = null;
-        public Action<Dictionary<string, object>> exitActionWithData = null;
-        public Action<State, State, Dictionary<string, object>> exitActionWithStatesAndData = null;
+        public Action<EventData> exitActionWithData = null;
+        public Action<State, State, EventData> exitActionWithStatesAndData = null;
         public Dictionary<string, List<Handler>> handlers = new Dictionary<string, List<Handler>>();
         public AbstractState logicState { get; internal set; }
 
@@ -126,7 +126,7 @@ namespace Hsm
             id = pId;
         }
 
-        public virtual void Enter(State sourceState, State targetstate, Dictionary<string, object> data)
+        public virtual void Enter(State sourceState, State targetstate, EventData data)
         {
             if (enterAction != null)
             {
@@ -142,7 +142,7 @@ namespace Hsm
             }
         }
 
-        public virtual void Exit(State sourceState, State targetstate, Dictionary<string, object> data)
+        public virtual void Exit(State sourceState, State targetstate, EventData data)
         {
             if (exitAction != null)
             {
@@ -158,7 +158,7 @@ namespace Hsm
             }
         }
 
-        public void createHandler(string eventName, State target, TransitionKind kind, Action<Dictionary<string, object>> action, Func<Dictionary<string, object>, bool> guard)
+        public void createHandler(string eventName, State target, TransitionKind kind, Action<EventData> action, Func<EventData, bool> guard)
         {
             Handler handler = new Handler(target, kind, action, guard);
             if (!handlers.ContainsKey(eventName))

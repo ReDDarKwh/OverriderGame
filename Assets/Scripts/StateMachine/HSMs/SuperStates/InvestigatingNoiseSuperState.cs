@@ -16,7 +16,7 @@ class InvestigatingNoiseSuperState : SuperState
         var go = new GotoSuperState(sm, root, "goto");
         var lookingAround = AddState(root.GetComponent<LookAroundState>(), "lookingAround");
         
-        start.AddUpdateHandler(go.sub, EventRepo.Timeout(1), (Dictionary<string, object> data) => {
+        start.AddUpdateHandler(go.sub, EventRepo.Timeout(1), (EventData data) => {
             var memory = HSM.GetRoot(data).memory;
             var pos = memory.Get<Vector3>("targetPos", false);
             HSM.SetUpGoto(
@@ -29,7 +29,7 @@ class InvestigatingNoiseSuperState : SuperState
         });
 
         go.sub.AddHandler("isAtPosition", lookingAround);
-        lookingAround.AddHandler("noiseHeard", start, TransitionKind.External, (Dictionary<string, object> data) =>
+        lookingAround.AddHandler("noiseHeard", start, TransitionKind.External, (EventData data) =>
         {
             var memory = HSM.GetRoot(data).memory;
             var pos = HSM.GetVar<Vector3>("subject", data);

@@ -24,21 +24,21 @@ class PerceptiveSuperState : SuperState
         unsure.AddUpdateHandler(curious, EventRepo.TargetOutOfTargetList);
         curious.AddUpdateHandler(searching.sub, EventRepo.Timeout(5));
 
-        idle.AddEnterHandler(searching.sub, EventRepo.HasTarget, (Dictionary<string, object> data) =>
+        idle.AddEnterHandler(searching.sub, EventRepo.HasTarget, (EventData data) =>
         {
             var memory = HSM.GetRoot(data).memory;
             var target = memory.Get<GameObject>("target");
             memory.Set("targetPos", target.transform.position);
         });
 
-        idle.AddHandler("objectNoiseHeard", investigatingObject.sub, TransitionKind.External, (Dictionary<string, object> data) =>
+        idle.AddHandler("objectNoiseHeard", investigatingObject.sub, TransitionKind.External, (EventData data) =>
         {
             var memory = HSM.GetRoot(data).memory;
             var interactable = HSM.GetVar<GameObject>("subject", data);
             memory.Set("interactionObject", interactable);
             memory.Set("targetPos", interactable.transform.position);
         },
-        (Dictionary<string, object> data) =>
+        (EventData data) =>
         {
             var investigator = HSM.GetRoot(data).GetComponent<Investigator>();
             var interactable = HSM.GetVar<GameObject>("subject", data);
@@ -48,7 +48,7 @@ class PerceptiveSuperState : SuperState
         investigatingObject.sub.AddHandler("interactionDone", idle);
         investigatingObject.sub.AddUpdateHandler(unsure, EventRepo.TargetInTargetList);
 
-        idle.AddHandler("noiseHeard", investigatingNoise.sub, (Dictionary<string, object> data) =>
+        idle.AddHandler("noiseHeard", investigatingNoise.sub, (EventData data) =>
         {
             var memory = HSM.GetRoot(data).memory;
             var pos = HSM.GetVar<Vector3>("subject", data);

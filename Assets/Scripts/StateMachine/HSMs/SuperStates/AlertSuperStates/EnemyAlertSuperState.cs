@@ -23,9 +23,9 @@ class EnemyAlertSuperState : SuperState
         attacking.AddHandler("targetOutOfAttackRange", go.sub, TransitionKind.External, SetUpChase());
     }
 
-    private static Action<Dictionary<string, object>> SetUpChase()
+    private static Action<EventData> SetUpChase()
     {
-        return (Dictionary<string, object> data) =>
+        return (EventData data) =>
         {
             var memory = HSM.GetRoot(data).memory;
             HSM.SetUpGoto(memory, null, memory.Get<GameObject>("target", false)?.transform, "chasing", true);

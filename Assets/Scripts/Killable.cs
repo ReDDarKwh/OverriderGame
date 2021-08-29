@@ -29,7 +29,7 @@ public class Killable : MonoBehaviour
             dead = true;
             if (stateMachine)
             {
-                stateMachine.TriggerEvent("died", new Dictionary<string, object> { { "damageType", damageType } });
+                stateMachine.TriggerEvent("died", new EventData { { "damageType", damageType } });
             }
 
             OnDied.Invoke();

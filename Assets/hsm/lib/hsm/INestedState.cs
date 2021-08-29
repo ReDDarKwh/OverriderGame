@@ -3,7 +3,7 @@
 namespace Hsm {
 
 	interface INestedState {
-		bool Handle(string evt, Dictionary<string, object> data);
+		bool Handle(string evt, EventData data);
 		List<string> getActiveStateConfiguration();
 	}
 

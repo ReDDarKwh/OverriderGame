@@ -9,22 +9,22 @@ using System.Linq;
 public abstract class HSM : MonoBehaviour
 {
     protected StateMachine stateMachine;
-    private Dictionary<string, object> baseData;
+    private EventData baseData;
     public List<string> currentState;
     internal StateMachineMemory memory;
 
-    public static T GetVar<T>(string variableName, Dictionary<string, object> data)
+    public static T GetVar<T>(string variableName, EventData data)
     {
         object result;
         var found = data.TryGetValue(variableName, out result);
         return found ? (T)result : default(T);
     }
-    public static HSM GetRoot(Dictionary<string, object> data)
+    public static HSM GetRoot(EventData data)
     {
         return GetVar<HSM>("root", data);
     }
 
-    public static void SetUpGoto(StateMachineMemory memory, Vector3? targetPos, Transform targetTransform, string gotoSettingsName, bool lookAtTarget)
+    public static void SetUpGoto(StateMachineMemory memory, Vector3? targetPos, Transform targetTransform, string gotoSettingsName, bool lookAtTarget, string positionEventName = "cleanUpGoto")
     {
         if (targetPos != null)
         {
@@ -33,6 +33,7 @@ public abstract class HSM : MonoBehaviour
         memory.Set("targetTransform", targetTransform);
         memory.Set("gotoSettingsName", gotoSettingsName);
         memory.Set("lookAtTarget", lookAtTarget);
+        memory.Set("positionEventName", positionEventName);
     }
 
     void Start()
@@ -41,7 +42,7 @@ public abstract class HSM : MonoBehaviour
         Init(stateMachine, this);
         stateMachine.Setup();
 
-        baseData = new Dictionary<string, object>();
+        baseData = new EventData();
         baseData.Add("root", this);
 
         memory = GetComponent<StateMachineMemory>();
@@ -52,10 +53,10 @@ public abstract class HSM : MonoBehaviour
 
         currentState = stateMachine.GetActiveStateConfiguration();
     }
-    public void TriggerEvent(string evtName, Dictionary<string, object> data)
+    public void TriggerEvent(string evtName, EventData data)
     {
         stateMachine.HandleEvent(evtName, 
-            data.Concat(baseData).ToDictionary(x => x.Key, x => x.Value)
+            new EventData(data.Concat(baseData).ToDictionary(x => x.Key, x => x.Value))
         );
     }
     public void TriggerEvent(string evtName)

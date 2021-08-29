@@ -52,7 +52,7 @@ namespace Hsm
             Setup(null);
         }
 
-        public void Setup(Dictionary<string, object> data)
+        public void Setup(EventData data)
         {
             if (states.Count == 0)
             {
@@ -61,7 +61,7 @@ namespace Hsm
             EnterState(null, initialState, data);
         }
 
-        public void TearDown(Dictionary<string, object> data)
+        public void TearDown(EventData data)
         {
             currentState.Exit(currentState, null, data);
             currentState = null;
@@ -77,10 +77,10 @@ namespace Hsm
 
         public void HandleEvent(string evt)
         {
-            HandleEvent(evt, new Dictionary<string, object> { });
+            HandleEvent(evt, new EventData { });
         }
 
-        public void HandleEvent(string evt, Dictionary<string, object> data)
+        public void HandleEvent(string evt, EventData data)
         {
             Event myEvent = new Event(evt, data);
             eventQueue.Enqueue(myEvent);
@@ -101,7 +101,7 @@ namespace Hsm
             eventInProgress = false;
         }
 
-        public bool Handle(string evt, Dictionary<string, object> data)
+        public bool Handle(string evt, EventData data)
         {
             // check if current state is a (nested) statemachine, if so, give it the event.
             // if it handles the event, stop processing here.
@@ -135,7 +135,7 @@ namespace Hsm
             return false;
         }
 
-        public void SwitchState(State sourceState, State targetState, Action<Dictionary<string, object>> action, Dictionary<string, object> data)
+        public void SwitchState(State sourceState, State targetState, Action<EventData> action, EventData data)
         {
             currentState.Exit(sourceState, targetState, data);
             if (action != null)
@@ -145,7 +145,7 @@ namespace Hsm
             EnterState(sourceState, targetState, data);
         }
 
-        public void EnterState(State sourceState, State targetState, Dictionary<string, object> data)
+        public void EnterState(State sourceState, State targetState, EventData data)
         {
             var targetPath = targetState.owner.GetPath();
             var targetLevel = targetPath.Count;

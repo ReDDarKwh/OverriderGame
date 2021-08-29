@@ -11,8 +11,8 @@ namespace Hsm
         private State sourceState;
         private State targetState;
         private TransitionKind kind;
-        private Action<Dictionary<string, object>> action;
-        private Func<Dictionary<string, object>, bool> guard;
+        private Action<EventData> action;
+        private Func<EventData, bool> guard;
 
         public Transition(State sourceState, Handler handler)
         {
@@ -23,7 +23,7 @@ namespace Hsm
             this.guard = handler.guard;
         }
 
-        public bool performTransition(Dictionary<string, object> data)
+        public bool performTransition(EventData data)
         {
 
             data["state"] = sourceState;
@@ -46,7 +46,7 @@ namespace Hsm
             }
         }
 
-        private bool _performInternalTransition(Dictionary<string, object> data)
+        private bool _performInternalTransition(EventData data)
         {
             if (action != null)
             {
@@ -55,7 +55,7 @@ namespace Hsm
             return true;
         }
 
-        private bool _performLocalTransition(Dictionary<string, object> data)
+        private bool _performLocalTransition(EventData data)
         {
             if (targetState == null)
             {
@@ -72,7 +72,7 @@ namespace Hsm
             return true;
         }
 
-        private bool _performExternalTransition(Dictionary<string, object> data)
+        private bool _performExternalTransition(EventData data)
         {
             if (targetState == null)
             {
@@ -83,7 +83,7 @@ namespace Hsm
             return true;
         }
 
-        private bool _canPerformTransition(Dictionary<string, object> data)
+        private bool _canPerformTransition(EventData data)
         {
             return (guard == null || guard.Invoke(data));
         }

@@ -37,10 +37,10 @@ public class SwitchTrigger : MonoBehaviour
         if (!interactable)
             return;
 
-        var creature = collider.GetComponent<Creature>();
-        if (creature)
+        var hsm = collider.GetComponent<HSM>();
+        if (hsm)
         {
-            CustomEvent.Trigger(collider.gameObject, "ActivateSwitchRequested", interactable.gameObject, doorController);
+            hsm.TriggerEvent("activateSwitchRequested", new EventData{{"switch", interactable.gameObject}, {"doorController", doorController}});
         }
     }
 }

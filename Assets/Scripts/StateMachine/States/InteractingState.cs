@@ -20,7 +20,8 @@ namespace Scripts.States
 
         public override void StateEnter()
         {
-            var interactable = memory.Get<GameObject>("interactionObject", true).GetComponent<Interactable>();
+            var key = memory.Get<string>("interactableName");
+            var interactable = memory.Get<GameObject>(key == null? "interactionObject" : key).GetComponent<Interactable>();
             coroutine = StartCoroutine(Interact(interactable.InteractionTime, interactable));
         }
 

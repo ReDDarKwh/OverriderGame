@@ -31,20 +31,20 @@ public class NoiseEmitter : MonoBehaviour
 
         foreach (var collider in colliders.Take(maxTargets).Except(ignoredColliders))
         {
-
             var hsm = collider.GetComponent<HSM>();
-
-            if (noiseHeardEvent == NoiseEmitterEvents.noiseHeard)
-            {
-                hsm.TriggerEvent(noiseHeardEvent.ToString(), 
-                    new Dictionary<string, object>{{"subject", interactableObject.transform.position}}
-                );
-            }
-            else
-            {
-                hsm.TriggerEvent(noiseHeardEvent.ToString(), 
-                    new Dictionary<string, object>{{"subject", interactableObject}}
-                );
+            if(hsm != null){
+                if (noiseHeardEvent == NoiseEmitterEvents.noiseHeard)
+                {
+                    hsm.TriggerEvent(noiseHeardEvent.ToString(), 
+                        new EventData{{"subject", interactableObject.transform.position}}
+                    );
+                }
+                else
+                {
+                    hsm.TriggerEvent(noiseHeardEvent.ToString(), 
+                        new EventData{{"subject", interactableObject}}
+                    );
+                }
             }
         }
     }

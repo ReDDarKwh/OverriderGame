@@ -33,7 +33,7 @@ namespace Hsm
             }
         }
 
-        public bool Handle(string evt, Dictionary<string, object> data)
+        public bool Handle(string evt, EventData data)
         {
             bool handled = false;
             foreach (var submachine in _submachines)
@@ -46,7 +46,7 @@ namespace Hsm
             return handled;
         }
 
-        public override void Enter(State sourceState, State targetstate, Dictionary<string, object> data)
+        public override void Enter(State sourceState, State targetstate, EventData data)
         {
             base.Enter(sourceState, targetstate, data);
             foreach (var submachine in _submachines)
@@ -62,7 +62,7 @@ namespace Hsm
             }
         }
 
-        public override void Exit(State sourceState, State targetstate, Dictionary<string, object> data)
+        public override void Exit(State sourceState, State targetstate, EventData data)
         {
             foreach (var submachine in _submachines)
             {

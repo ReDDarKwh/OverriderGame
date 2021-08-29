@@ -19,7 +19,7 @@ namespace UnitTesting
             {
                 this.id = pId;
             }
-            public override void Enter(State sourceState, State targetstate, Dictionary<string, object> data)
+            public override void Enter(State sourceState, State targetstate, EventData data)
             {
                 string s = id + ":entered";
                 if (data != null && data.ContainsKey("foo"))
@@ -29,7 +29,7 @@ namespace UnitTesting
                 log.Add(s);
                 base.Enter(sourceState, targetstate, data);
             }
-            public override void Exit(State sourceState, State targetstate, Dictionary<string, object> data)
+            public override void Exit(State sourceState, State targetstate, EventData data)
             {
                 string s = id + ":exited";
                 if (data != null && data.ContainsKey("foo"))
@@ -47,7 +47,7 @@ namespace UnitTesting
             {
                 this.id = pId;
             }
-            public override void Enter(State sourceState, State targetstate, Dictionary<string, object> data)
+            public override void Enter(State sourceState, State targetstate, EventData data)
             {
                 string s = id + ":entered";
                 if (data != null && data.ContainsKey("foo"))
@@ -57,7 +57,7 @@ namespace UnitTesting
                 log.Add(s);
                 base.Enter(sourceState, targetstate, data);
             }
-            public override void Exit(State sourceState, State targetstate, Dictionary<string, object> data)
+            public override void Exit(State sourceState, State targetstate, EventData data)
             {
                 base.Exit(sourceState, targetstate, data);
                 string s = id + ":exited";
@@ -75,7 +75,7 @@ namespace UnitTesting
             {
                 this.id = pId;
             }
-            public override void Enter(State sourceState, State targetstate, Dictionary<string, object> data)
+            public override void Enter(State sourceState, State targetstate, EventData data)
             {
                 string s = id + ":entered";
                 if (data != null && data.ContainsKey("foo"))
@@ -85,7 +85,7 @@ namespace UnitTesting
                 log.Add(s);
                 base.Enter(sourceState, targetstate, data);
             }
-            public override void Exit(State sourceState, State targetstate, Dictionary<string, object> data)
+            public override void Exit(State sourceState, State targetstate, EventData data)
             {
                 base.Exit(sourceState, targetstate, data);
                 string s = id + ":exited";
@@ -225,7 +225,7 @@ namespace UnitTesting
 
             log.Clear();
 
-            Dictionary<string, object> data = new Dictionary<string, object>();
+            EventData data = new EventData();
             data["foo"] = "bar";
             sm.HandleEvent("T5", data);
             Expect(sm.currentState.id, Is.EqualTo("b"));
@@ -315,7 +315,7 @@ namespace UnitTesting
 
             log.Clear();
 
-            Dictionary<string, object> data = new Dictionary<string, object>();
+            EventData data = new EventData();
             data["foo"] = "bar";
             sm.HandleEvent("T8", data);
 
@@ -364,7 +364,7 @@ namespace UnitTesting
 
             log.Clear();
 
-            Dictionary<string, object> data = new Dictionary<string, object>
+            EventData data = new EventData
             {
                 {"v", "foobar"}
             };

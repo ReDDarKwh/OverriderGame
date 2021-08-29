@@ -8,10 +8,10 @@ namespace Hsm {
 
 		public State targetState;
 		public TransitionKind kind;
-		public Action<Dictionary<string, object>> action;
-		public Func<Dictionary<string, object>, bool> guard;
+		public Action<EventData> action;
+		public Func<EventData, bool> guard;
 		
-		public Handler(State targetState, TransitionKind kind, Action<Dictionary<string, object>> action, Func<Dictionary<string, object>, bool> guard) {
+		public Handler(State targetState, TransitionKind kind, Action<EventData> action, Func<EventData, bool> guard) {
 			this.targetState = targetState;
 			this.kind = kind;
 			this.action = action;

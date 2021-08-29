@@ -49,7 +49,7 @@ namespace UnitTesting {
 			Expect(state.enterActionWithData, Is.EqualTo(null));
 			Expect(state.enterActionWithStatesAndData, Is.EqualTo(null));
 			
-			state.Enter(state, state, new Dictionary<string, object>{{"value", "crocodile"}});
+			state.Enter(state, state, new EventData{{"value", "crocodile"}});
 			Expect(called, Is.True);
 		}
 
@@ -63,7 +63,7 @@ namespace UnitTesting {
 			Expect(state.enterActionWithData, Is.Not.EqualTo(null));
 			Expect(state.enterActionWithStatesAndData, Is.EqualTo(null));
 
-			state.Enter(state, state, new Dictionary<string, object>{{"value", "crocodile"}});
+			state.Enter(state, state, new EventData{{"value", "crocodile"}});
 			Expect(called, Is.EqualTo("crocodile"));
 		}
 
@@ -77,7 +77,7 @@ namespace UnitTesting {
 			Expect(state.enterActionWithData, Is.EqualTo(null));
 			Expect(state.enterActionWithStatesAndData, Is.Not.EqualTo(null));
 
-			state.Enter(state, state, new Dictionary<string, object>{{"value", "crocodile"}});
+			state.Enter(state, state, new EventData{{"value", "crocodile"}});
 			Expect(called, Is.EqualTo("crocodile"));
 		}
 

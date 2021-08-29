@@ -14,18 +14,18 @@ namespace Hsm
             _submachine.container = this;
         }
 
-        public bool Handle(string evt, Dictionary<string, object> data)
+        public bool Handle(string evt, EventData data)
         {
             return _submachine.Handle(evt, data);
         }
 
-        public override void Enter(State sourceState, State targetstate, Dictionary<string, object> data)
+        public override void Enter(State sourceState, State targetstate, EventData data)
         {
             base.Enter(sourceState, targetstate, data);
             _submachine.EnterState(sourceState, targetstate, data);
         }
 
-        public override void Exit(State sourceState, State targetstate, Dictionary<string, object> data)
+        public override void Exit(State sourceState, State targetstate, EventData data)
         {
             _submachine.TearDown(data);
             base.Exit(sourceState, targetstate, data);

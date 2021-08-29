@@ -21,12 +21,12 @@ namespace Scripts.States
 
         public override void StateEnter()
         {
-            var gotoSettingsName = memory.Get<string>("gotoSettingsName");
-            var targetTransform = memory.Get<Transform>("targetTransform");
+            var gotoSettingsName = memory.Get<string>("gotoSettingsName", false);
+            var targetTransform = memory.Get<Transform>("targetTransform", false);
             var targetPos = memory.Get<Vector3>("targetPos");
 
-            this.lookAtTarget = memory.Get<bool>("lookAtTarget");
-            this.atPositionEventName = "isAtPosition";
+            this.lookAtTarget = memory.Get<bool>("lookAtTarget", false);
+            this.atPositionEventName = memory.Get<string>("positionEventName", false);
 
             if (moveSettingsRepo == null)
             {
