@@ -6955,22 +6955,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479932249}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: sceneName
-      value: TitleTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: saveIdentification
-      value: L1-Enemy (4)-f42a3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[3].identifier
-      value: PatrollingState-5bccb
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[5].identifier
-      value: StateMachineMemory-17fb9
-      objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -8608,22 +8592,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479932249}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: sceneName
-      value: TitleTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: saveIdentification
-      value: L1-Enemy-effce
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[3].identifier
-      value: PatrollingState-2e896
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[5].identifier
-      value: StateMachineMemory-0be64
-      objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -10790,22 +10758,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479932249}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: sceneName
-      value: TitleTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: saveIdentification
-      value: L1-Enemy (2)-4a6ac
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[3].identifier
-      value: PatrollingState-5aa36
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[5].identifier
-      value: StateMachineMemory-10b15
-      objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -14884,7 +14836,7 @@ MonoBehaviour:
   layersThatCanHear:
     serializedVersion: 2
     m_Bits: 0
-  noiseHeardEvent: NoiseHeard
+  noiseHeardEvent: 0
   noiseRadius: 0.2
   maxTargets: 100
   rippleEffect: {fileID: 0}
@@ -15079,7 +15031,7 @@ MonoBehaviour:
   layersThatCanHear:
     serializedVersion: 2
     m_Bits: 0
-  noiseHeardEvent: NoiseHeard
+  noiseHeardEvent: 0
   noiseRadius: 0.2
   maxTargets: 100
   rippleEffect: {fileID: 0}
@@ -16937,7 +16889,7 @@ MonoBehaviour:
   layersThatCanHear:
     serializedVersion: 2
     m_Bits: 0
-  noiseHeardEvent: NoiseHeard
+  noiseHeardEvent: 0
   noiseRadius: 0.2
   maxTargets: 100
   rippleEffect: {fileID: 0}
@@ -17045,7 +16997,7 @@ MonoBehaviour:
   layersThatCanHear:
     serializedVersion: 2
     m_Bits: 0
-  noiseHeardEvent: NoiseHeard
+  noiseHeardEvent: 0
   noiseRadius: 0.2
   maxTargets: 100
   rippleEffect: {fileID: 0}
@@ -17422,7 +17374,7 @@ MonoBehaviour:
   layersThatCanHear:
     serializedVersion: 2
     m_Bits: 0
-  noiseHeardEvent: NoiseHeard
+  noiseHeardEvent: 0
   noiseRadius: 0.2
   maxTargets: 100
   rippleEffect: {fileID: 0}
@@ -21795,30 +21747,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479932249}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: sceneName
-      value: L1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: saveIdentification
-      value: L1-Enemy-0ac3e
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[2].identifier
-      value: PatrollingState-c5ef3
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[3].identifier
-      value: PatrollingState-cde85
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[5].identifier
-      value: StateMachineMemory-2b7f0
-      objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -22294,7 +22222,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5114566019477768657, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07d7b830d55fc444495a8d5f2cb65199, type: 3}
 --- !u!4 &1168809613 stripped
 Transform:
@@ -22346,9 +22275,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1168809614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 605812908b2e8a64782c7fa59c10f6a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 04097b5581ec71644893ff7d4c6a0b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  creature: {fileID: 180873436}
 --- !u!114 &1168809623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22711,7 +22641,7 @@ MonoBehaviour:
   layersThatCanHear:
     serializedVersion: 2
     m_Bits: 0
-  noiseHeardEvent: NoiseHeard
+  noiseHeardEvent: 0
   noiseRadius: 0.2
   maxTargets: 100
   rippleEffect: {fileID: 0}
@@ -23117,22 +23047,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479932249}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: sceneName
-      value: TitleTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: saveIdentification
-      value: L1-Enemy (3)-316a5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[3].identifier
-      value: PatrollingState-bc7d6
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[5].identifier
-      value: StateMachineMemory-7736e
-      objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -27328,22 +27242,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479932249}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: sceneName
-      value: TitleTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: saveIdentification
-      value: L1-Enemy (6)-61b80
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[3].identifier
-      value: PatrollingState-c548b
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[5].identifier
-      value: StateMachineMemory-0b328
-      objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -28292,22 +28190,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479932249}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: sceneName
-      value: TitleTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: saveIdentification
-      value: L1-Enemy (5)-d4e6c
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[3].identifier
-      value: PatrollingState-5cf89
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[5].identifier
-      value: StateMachineMemory-dbcea
-      objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -29148,7 +29030,7 @@ MonoBehaviour:
   layersThatCanHear:
     serializedVersion: 2
     m_Bits: 0
-  noiseHeardEvent: NoiseHeard
+  noiseHeardEvent: 0
   noiseRadius: 0.2
   maxTargets: 100
   rippleEffect: {fileID: 0}
@@ -30054,22 +29936,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479932249}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: sceneName
-      value: TitleTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: saveIdentification
-      value: L1-Enemy-10d9a
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[3].identifier
-      value: PatrollingState-97e27
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cachedSaveableComponents.Array.data[5].identifier
-      value: StateMachineMemory-7a8aa
-      objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_AnchorMax.y

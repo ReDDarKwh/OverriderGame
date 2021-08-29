@@ -45,6 +45,9 @@ class PerceptiveSuperState : SuperState
         interact.sub.AddHandler("interactionDone", idle);
         interact.sub.AddUpdateHandler(unsure, EventRepo.TargetInTargetList);
 
+        idle.AddHandler("noiseHeard", )
+
+
         searching.sub.AddHandler("searchDone", idle);
         searching.sub.AddUpdateHandler(unsure, EventRepo.TargetInTargetList);
 
