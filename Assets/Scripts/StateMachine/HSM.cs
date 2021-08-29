@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using Hsm;
 using Scripts.States;
 using UnityEngine;
+using System.Linq;
 
 public abstract class HSM : MonoBehaviour
 {
     protected StateMachine stateMachine;
-    private Dictionary<string, object> updateData;
+    private Dictionary<string, object> baseData;
     public List<string> currentState;
     internal StateMachineMemory memory;
 
@@ -22,30 +23,44 @@ public abstract class HSM : MonoBehaviour
     {
         return GetVar<HSM>("root", data);
     }
+
+    public static void SetUpGoto(StateMachineMemory memory, Vector3? targetPos, Transform targetTransform, string gotoSettingsName, bool lookAtTarget)
+    {
+        if (targetPos != null)
+        {
+            memory.Set("targetPos", targetPos.Value);
+        }
+        memory.Set("targetTransform", targetTransform);
+        memory.Set("gotoSettingsName", gotoSettingsName);
+        memory.Set("lookAtTarget", lookAtTarget);
+    }
+
     void Start()
     {
         stateMachine = new StateMachine();
         Init(stateMachine, this);
         stateMachine.Setup();
 
-        updateData = new Dictionary<string, object>();
-        updateData.Add("root", this);
+        baseData = new Dictionary<string, object>();
+        baseData.Add("root", this);
 
         memory = GetComponent<StateMachineMemory>();
     }
     void Update()
     {
-        stateMachine.HandleEvent("update", updateData);
+        stateMachine.HandleEvent("update", baseData);
 
         currentState = stateMachine.GetActiveStateConfiguration();
     }
     public void TriggerEvent(string evtName, Dictionary<string, object> data)
     {
-        stateMachine.HandleEvent(evtName, data);
+        stateMachine.HandleEvent(evtName, 
+            data.Concat(baseData).ToDictionary(x => x.Key, x => x.Value)
+        );
     }
     public void TriggerEvent(string evtName)
     {
-        stateMachine.HandleEvent(evtName);
+        stateMachine.HandleEvent(evtName, baseData);
     }
     public State AddState(AbstractState state, string name)
     {

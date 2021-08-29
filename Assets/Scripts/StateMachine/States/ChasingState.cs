@@ -31,7 +31,7 @@ namespace Scripts.States
                 chasingAction.actionGate.SetValue(true);
             }
 
-            SetUpGoto(null, memory.Get<GameObject>("target", false)?.transform, "chasing", true);
+            HSM.SetUpGoto(memory, null, memory.Get<GameObject>("target", false)?.transform, "chasing", true);
 
             if (chasingNoise)
             {

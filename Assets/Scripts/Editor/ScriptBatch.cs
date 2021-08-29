@@ -1,7 +1,6 @@
 ﻿
 // C# example.
 using UnityEditor;
-using UnityEditor;
 using System.Diagnostics;
 
 public class ScriptBatch

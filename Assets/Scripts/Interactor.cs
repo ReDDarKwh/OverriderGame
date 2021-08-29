@@ -8,9 +8,10 @@ public class Interactor : MonoBehaviour
 {
     public Animator animator;
     public Creature creature;
-    public void InteractWith(GameObject interactable)
+    
+    public void InteractWith(Interactable interactable)
     {
-        var i = interactable.GetComponent<Interactable>();
+        var i = interactable;
         if (i != null)
         {
             if (creature)

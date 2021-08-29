@@ -8,12 +8,17 @@ using System.Linq;
 public class NoiseEmitter : MonoBehaviour
 {
     public LayerMask layersThatCanHear;
-    public string noiseHeardEvent = "NoiseHeard";
+    public NoiseEmitterEvents noiseHeardEvent = NoiseEmitterEvents.noiseHeard;
     public float noiseRadius = 10;
     public int maxTargets = 100;
     public ParticleSystem rippleEffect;
     public GameObject interactableObject;
     public Collider2D[] ignoredColliders;
+
+    public enum NoiseEmitterEvents {
+        noiseHeard,
+        objectNoiseHeard
+    }
 
     public void EmitNoise()
     {
@@ -26,13 +31,20 @@ public class NoiseEmitter : MonoBehaviour
 
         foreach (var collider in colliders.Take(maxTargets).Except(ignoredColliders))
         {
-            if (noiseHeardEvent == "NoiseHeard")
+
+            var hsm = collider.GetComponent<HSM>();
+
+            if (noiseHeardEvent == NoiseEmitterEvents.noiseHeard)
             {
-                CustomEvent.Trigger(collider.gameObject, noiseHeardEvent, interactableObject.transform.position);
+                hsm.TriggerEvent(noiseHeardEvent.ToString(), 
+                    new Dictionary<string, object>{{"subject", interactableObject.transform.position}}
+                );
             }
             else
             {
-                CustomEvent.Trigger(collider.gameObject, noiseHeardEvent, interactableObject);
+                hsm.TriggerEvent(noiseHeardEvent.ToString(), 
+                    new Dictionary<string, object>{{"subject", interactableObject}}
+                );
             }
         }
     }

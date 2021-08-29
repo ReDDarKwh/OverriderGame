@@ -45,17 +45,6 @@ namespace Scripts.States
             }
         }
 
-        protected void SetUpGoto(Vector3? targetPos, Transform targetTransform, string gotoSettingsName, bool lookAtTarget)
-        {
-            if (targetPos != null)
-            {
-                memory.Set("targetPos", targetPos.Value);
-            }
-            memory.Set("targetTransform", targetTransform);
-            memory.Set("gotoSettingsName", gotoSettingsName);
-            memory.Set("lookAtTarget", lookAtTarget);
-        }
-
         public IEnumerator WaitAndTrigger(float waitTime, HSM hsm, string eventName)
         {
             yield return new WaitForSeconds(waitTime);

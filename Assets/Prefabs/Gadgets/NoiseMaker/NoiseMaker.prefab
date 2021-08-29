@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 896281460711478618}
   - component: {fileID: -4312008987662555675}
   - component: {fileID: -8823910404124834861}
-  - component: {fileID: 3260506490234186509}
-  - component: {fileID: 461258907190310460}
-  - component: {fileID: 2943507381650644849}
+  - component: {fileID: 9221781890777949436}
+  - component: {fileID: -6485823199786333252}
+  - component: {fileID: 1722496304713606085}
   m_Layer: 21
   m_Name: NoiseMaker
   m_TagString: Untagged
@@ -153,7 +153,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dirt: {fileID: 0}
-  stateMachine: {fileID: 3260506490234186509}
+  stateMachine: {fileID: 9221781890777949436}
 --- !u!114 &896281460711478618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +206,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.21541357
---- !u!114 &3260506490234186509
+--- !u!114 &9221781890777949436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,14 +215,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5896636880886007396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6986f8d1e4794b74eab8d82b0d126519, type: 3}
+  m_Script: {fileID: 11500000, guid: a4be511d3e6f6a34383b70ead1368564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryState: {fileID: 2943507381650644849}
-  stateMachineGraphs:
-  - {fileID: 11400000, guid: 165c3480406864c428c3fc7ac274cf68, type: 2}
-  debugShowStates: 0
---- !u!114 &461258907190310460
+  currentState: []
+--- !u!114 &-6485823199786333252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,31 +228,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 5896636880886007396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de694f993963b004a94ddd7e84c72ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: d595b73f06f0fdd42a54c60f4203d921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tags:
-  - global
-  stateName: DeadState
+--- !u!114 &1722496304713606085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5896636880886007396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3879f03fbd12bd4ebedef419d13d362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   explodeEffect: {fileID: 8319351579001915392, guid: e93a4ba14ac1fb64b90c2290b10abd80,
     type: 3}
-  deadBodyPrefab: {fileID: 8319351579001915392, guid: e93a4ba14ac1fb64b90c2290b10abd80,
-    type: 3}
---- !u!114 &2943507381650644849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5896636880886007396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3d50d62f1fb84840be7327f5be1aa32, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tags:
-  - global
-  stateName: 
+  deadBodyPrefab: {fileID: 0}
 --- !u!114 &5992203634340359696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,7 +679,7 @@ PrefabInstance:
     - target: {fileID: 5070161490328133897, guid: 2d2c4c2207900a548ad249c662a44ee6,
         type: 3}
       propertyPath: noiseHeardEvent
-      value: ObjectNoiseHeard
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5070161490328133897, guid: 2d2c4c2207900a548ad249c662a44ee6,
         type: 3}

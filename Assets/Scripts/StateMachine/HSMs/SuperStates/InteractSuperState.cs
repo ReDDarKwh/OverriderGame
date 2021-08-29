@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Hsm;
 using Scripts.States;
+using UnityEngine;
 
 class InteractSuperState : SuperState
 {
@@ -9,9 +11,24 @@ class InteractSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
-        var start = AddState(root.GetComponent<InstantState>(), "start");
+        var start = AddState(root.GetComponent<EmptyState>(), "start");
         var go = new GotoSuperState(sm, root, "goto");
+        var interacting = AddState(root.GetComponent<InteractingState>(), "interacting");
 
-        start.AddInstantHandler(go.sub, null, (data) => {});
+        start.AddEnterHandler(go.sub, null, (data) =>
+        {
+            var memory = HSM.GetRoot(data).memory;
+            var interactionObject = memory.Get<GameObject>("interactionObject", false).GetComponent<Interactable>();
+            HSM.SetUpGoto(
+                memory,
+                null,
+                interactionObject.interactionPos == null ? interactionObject.transform : interactionObject.interactionPos,
+                "investigating",
+                false
+            );
+        });
+
+        go.sub.AddHandler("isAtPosition", interacting);
+
     }
 }
