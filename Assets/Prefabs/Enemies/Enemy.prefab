@@ -190,7 +190,6 @@ GameObject:
   - component: {fileID: 7473415128989248738}
   - component: {fileID: 2369176284625806879}
   - component: {fileID: 1742297655901097447}
-  - component: {fileID: 5114566019477768657}
   - component: {fileID: 8117612748395765497}
   m_Layer: 13
   m_Name: Enemy
@@ -478,8 +477,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38fc8256ca8d3a148acf28e239533d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creature: {fileID: 0}
-  moveSettings: []
+  creature: {fileID: 5767463812728996064}
+  moveSettings:
+  - name: searching
+    targetRange: 1
+    moveSpeed: 1
+  - name: chasing
+    targetRange: 1
+    moveSpeed: 1
+  - name: investigating
+    targetRange: 1
+    moveSpeed: 1
+  - name: switch
+    targetRange: 0.3
+    moveSpeed: 1
+  - name: patrolling
+    targetRange: 0.2
+    moveSpeed: 1
 --- !u!114 &1742297655901097447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,25 +509,12 @@ MonoBehaviour:
   layersThatCanHear:
     serializedVersion: 2
     m_Bits: 0
-  noiseHeardEvent: NoiseHeard
+  noiseHeardEvent: 0
   noiseRadius: 2.73
   maxTargets: 100
   rippleEffect: {fileID: 0}
   interactableObject: {fileID: 6725844347703517079}
   ignoredColliders: []
---- !u!114 &5114566019477768657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6725844347703517079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d41ca0381d0fc4f92befcb575acb94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creature: {fileID: 5767463812728996064}
 --- !u!114 &8117612748395765497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,15 +1061,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e3ab18108021c44f8ff40f77330424b, type: 3}
---- !u!4 &2777979766958130287 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4089401180447782003, guid: 6e3ab18108021c44f8ff40f77330424b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2183442437897465884}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2777979767576163449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4089401182147920997, guid: 6e3ab18108021c44f8ff40f77330424b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2183442437897465884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2777979766958130287 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4089401180447782003, guid: 6e3ab18108021c44f8ff40f77330424b,
     type: 3}
   m_PrefabInstance: {fileID: 2183442437897465884}
   m_PrefabAsset: {fileID: 0}

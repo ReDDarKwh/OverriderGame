@@ -9,14 +9,8 @@ namespace Scripts.States
 {
     public class InteractingState : AbstractState
     {
-        private Interactor interactor;
+        public Interactor interactor;
         private Coroutine coroutine;
-
-        public override void Init()
-        {
-            base.Init();
-            interactor = GetComponent<Interactor>();
-        }
 
         public override void StateEnter()
         {

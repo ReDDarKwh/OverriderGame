@@ -9,13 +9,6 @@ namespace Scripts.States
         public ExternalLogicAction chasingAction;
         public SoundPreset chasingSound;
         public NoiseEmitter chasingNoise;
-
-        public override void Init()
-        {
-            base.Init();
-            memory.Set("chasingAction", chasingAction);
-        }
-
         public void MakeChasingSound()
         {
             if (chasingSound)

@@ -21,7 +21,7 @@ namespace Scripts.States
         public override void StateEnter()
         {
             startRotation = Quaternion.LookRotation(Vector3.forward, creature.headDir) * Quaternion.Euler(0, 0, 90);
-            waitCoroutine = StartCoroutine(WaitAndTrigger(unsureTime, root, "searchDone"));
+            waitCoroutine = StartCoroutine(WaitAndTrigger(unsureTime, "searchDone"));
         }
 
         public override void StateExit()

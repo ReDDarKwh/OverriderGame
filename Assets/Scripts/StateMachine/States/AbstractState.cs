@@ -14,9 +14,6 @@ namespace Scripts.States
         [System.NonSerialized]
         public HSM root;
 
-
-        internal bool isActive;
-
         [System.NonSerialized]
         public float enterTime;
         private bool isRunning;
@@ -24,7 +21,25 @@ namespace Scripts.States
         public abstract void StateEnter();
         public abstract void StateUpdate();
         public abstract void StateExit();
-        public virtual void Init() { }
+
+        public void PreEnterState(){
+            enabled = true;
+            enterTime = Time.time;
+            StateEnter();
+            if(root == null){
+                Start();
+            }
+            root.TriggerEvent("enter");
+        }
+        
+        void Update(){
+            StateUpdate();
+        }
+
+        public void PreExitState(){
+            enabled = false;
+            StateExit();
+        }
 
         public float getStateRunTime()
         {
@@ -35,37 +50,14 @@ namespace Scripts.States
         {
             memory = GetComponent<StateMachineMemory>();
             root = GetComponent<HSM>();
-            Init();
+            enabled = false;
         }
 
-        void Update()
-        {
-            if (isActive)
-            {
-                if(!isRunning){
-                    StateEnter();
-                    PostStateEnter();
-                    isRunning = true;
-                } else {
-                    StateUpdate();  
-                }
-            } else if(isRunning){
-                StateExit();
-                isRunning = false;
-            }
-        }
-
-        private void PostStateEnter()
-        {
-            root.TriggerEvent("enter");
-        }
-
-        public IEnumerator WaitAndTrigger(float waitTime, HSM hsm, string eventName)
+        public IEnumerator WaitAndTrigger(float waitTime, string eventName)
         {
             yield return new WaitForSeconds(waitTime);
-            hsm.TriggerEvent(eventName);
+            root.TriggerEvent(eventName);
         }
-
     }
 }
 

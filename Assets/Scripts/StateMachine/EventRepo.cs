@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Bolt;
 using Hsm;
 using Scripts.Actions;
+using Scripts.States;
 using UnityEngine;
 
 static class EventRepo
@@ -21,7 +22,7 @@ static class EventRepo
     public static Func<EventData, bool> TargetOutOfTargetList = (EventData data) =>
     {
         var target = GetVar<GameObject>("target", data);
-        return !GetVar<ExternalLogicAction>("chasingAction", data).dataInputs["Targets"].Contains(target);
+        return !data.Root.GetComponent<ChasingState>().chasingAction.dataInputs["Targets"].Contains(target);
     };
 
     public static Func<EventData, bool> HasTarget = (EventData data) =>
@@ -31,7 +32,7 @@ static class EventRepo
 
     public static Func<EventData, bool> TargetInTargetList = (EventData data) =>
     {
-        return GetVar<ExternalLogicAction>("chasingAction", data).dataInputsHasData["Targets"];
+        return data.Root.GetComponent<ChasingState>().chasingAction.dataInputsHasData["Targets"];
     };
 
     internal static Func<EventData, bool> Timeout(float v)

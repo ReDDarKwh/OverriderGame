@@ -14,6 +14,7 @@ class GotoSuperState : SuperState
     {
         var go = AddState(root.GetComponent<GotoState>(), "goto");
         var interactingWithDoorSwitch = new OpeningSwitchDoorSuperState(sm, root, "interactingWithDoorSwitch");
+        var interactionBuffer = AddState(root.GetComponent<EmptyState>(), "interactionBuffer");
         var cleanUp = AddState(root.GetComponent<EmptyState>(), "cleanUp");
 
         go.AddHandler("activateSwitchRequested", interactingWithDoorSwitch.sub, TransitionKind.External,
@@ -39,10 +40,12 @@ class GotoSuperState : SuperState
             return false;
         });
 
-        interactingWithDoorSwitch.sub.AddHandler("interactionDone", go, TransitionKind.External, (EventData data) =>
+        interactingWithDoorSwitch.sub.AddHandler("interactionDone", interactionBuffer, TransitionKind.External, (EventData data) =>
         {
             RestorePreviousGoto(data);
         });
+
+        interactionBuffer.AddUpdateHandler(go, EventRepo.Timeout(0.5f));
 
         interactingWithDoorSwitch.sub.AddUpdateHandler(go, (EventData data) =>
         {
@@ -52,10 +55,22 @@ class GotoSuperState : SuperState
             RestorePreviousGoto(data);
         });
 
-        go.AddHandler("cleanUpGoto", cleanUp, TransitionKind.External, (EventData data) => {
-            data.Memory.Delete("doorController");
+        go.AddHandler("cleanUpGoto", cleanUp, TransitionKind.External, (EventData data) =>
+        {
+            CleanUp(data);
             data.Root.TriggerEvent("isAtPosition");
         });
+
+        go.AddHandler("isUnreachable", cleanUp, TransitionKind.External, (EventData data) => {
+            CleanUp(data);
+            data.Root.TriggerEvent("isStuck");
+        });
+
+    }
+
+    private static void CleanUp(EventData data)
+    {
+        data.Memory.Delete("doorController");
     }
 
     private static void RestorePreviousGoto(EventData data)

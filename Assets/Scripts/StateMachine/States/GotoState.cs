@@ -54,8 +54,6 @@ namespace Scripts.States
 
         public override void StateUpdate()
         {
-            CheckIsAtPosition(atPositionEventName);
-
             if (creature.nav.IsTargetUnreachable())
             {
                 root.TriggerEvent("isUnreachable");
@@ -65,6 +63,8 @@ namespace Scripts.States
                 var v = lookAtTarget ? (isMovingObject ? targetTransform.position : targetPos) - transform.position : creature.nav.GetDir();
                 creature.headDir = v;
             }
+
+            CheckIsAtPosition(atPositionEventName);
         }
 
         private void CheckIsAtPosition(string atPositionEventName)

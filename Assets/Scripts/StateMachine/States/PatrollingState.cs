@@ -15,7 +15,7 @@ namespace Scripts.States
         public GameObject waypointPrefab;
         internal int currentPoint = -1;
 
-        void Init()
+        public void Init()
         {
             if (stationnaryTransform)
             {
@@ -61,23 +61,27 @@ namespace Scripts.States
 
         public override void StateEnter()
         {
-            // if (stationnaryTransform)
-            // {
-            //     if (waypoints.Count() == 0)
-            //     {
-            //         Init();
-            //     }
-            //     return GetNextPoint();
-            // }
-            // else
-            // {
-            //     if (waypoints.Count() > 0)
-            //     {
-            //         return GetNextPoint();
-            //     }
-            // }
+            Vector3 nextPoint = Vector3.zero;
 
-            // return null;
+            if (stationnaryTransform)
+            {
+                if (waypoints.Count() == 0)
+                {
+                    Init();
+                }
+                nextPoint = GetNextPoint();
+
+            }
+            else
+            {
+                if (waypoints.Count() > 0)
+                {
+                    nextPoint = GetNextPoint();
+                }
+            }
+
+            HSM.SetUpGoto(memory == null? GetComponent<StateMachineMemory>() : memory, nextPoint, null, "patrolling", false);
+            (root == null? GetComponent<HSM>(): root).TriggerEvent("hasPatrolPoint");
         }
     }
 }

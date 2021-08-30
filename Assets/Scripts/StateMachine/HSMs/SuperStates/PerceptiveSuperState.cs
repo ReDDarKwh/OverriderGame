@@ -12,7 +12,7 @@ class PerceptiveSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
-        var idle = AddState(root.GetComponent<EmptyState>(), "idle");
+        var idle = new IdleSuperState(sm, root, "idle").sub;
         var unsure = AddState(root.GetComponent<UnsureState>(), "unsure");
         var curious = AddState(root.GetComponent<CuriousState>(), "curious");
         var searching = new SearchingSuperState(sm, root, "searching");

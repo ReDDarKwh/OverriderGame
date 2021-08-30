@@ -10,17 +10,16 @@ public class StateAdapter
     public StateAdapter(AbstractState abstractState, string name)
     {
         this.state = new State(name);
-
         this.state.logicState = abstractState;
 
         this.state.OnEnter((source, target, data) =>
         {
-            abstractState.enterTime = Time.time;
-            abstractState.isActive = true;
+            abstractState.PreEnterState();
         });
+
         this.state.OnExit((source, target, data) =>
         {
-            abstractState.isActive = false;
+            abstractState.PreExitState();
         });
     }
 

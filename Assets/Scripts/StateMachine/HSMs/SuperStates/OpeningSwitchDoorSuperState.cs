@@ -17,6 +17,7 @@ class OpeningSwitchDoorSuperState : SuperState
 
         start.AddEnterHandler(go, null, (EventData data) =>
         {
+            Debug.Log("opening door");
             HSM.SetUpGoto(data.Memory, null,
             data.Memory.Get<GameObject>("switch", false).transform, 
             "switch", true, "isAtSwitch");

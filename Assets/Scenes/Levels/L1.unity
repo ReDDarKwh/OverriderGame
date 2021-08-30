@@ -18534,73 +18534,8 @@ PrefabInstance:
       objectReference: {fileID: 1168809635}
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
-      propertyPath: creature
-      value: 
-      objectReference: {fileID: 180873436}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[0].name
-      value: searching
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[1].name
-      value: chasing
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[2].name
-      value: investigating
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[3].name
-      value: switch
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[0].moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[1].moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[2].moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[3].moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[0].targetRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[1].targetRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
-      propertyPath: moveSettings.Array.data[2].targetRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
-        type: 3}
       propertyPath: moveSettings.Array.data[3].targetRange
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2490535789703305076, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
@@ -18650,7 +18585,7 @@ PrefabInstance:
     - target: {fileID: 6725844347703517074, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.022
+      value: -6.233
       objectReference: {fileID: 0}
     - target: {fileID: 6725844347703517074, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
@@ -18900,7 +18835,7 @@ PrefabInstance:
     - target: {fileID: 8679969798129333970, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: defaultUnsureTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8776981300429851546, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
@@ -18999,6 +18934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea3ed6e74e4ac24784c91ba0cea30a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactor: {fileID: 1168809627}
 --- !u!114 &1168809623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19029,6 +18965,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creature: {fileID: 180873436}
+--- !u!114 &1168809627 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2719842466777164584, guid: 07d7b830d55fc444495a8d5f2cb65199,
+    type: 3}
+  m_PrefabInstance: {fileID: 1168809612}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168809614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3897c2b29a829a14bbfda1998b9b5a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1168809633
 MonoBehaviour:
   m_ObjectHideFlags: 0

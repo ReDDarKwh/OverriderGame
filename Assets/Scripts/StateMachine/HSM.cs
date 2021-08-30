@@ -41,27 +41,31 @@ public abstract class HSM : MonoBehaviour
         stateMachine = new StateMachine();
         Init(stateMachine, this);
         stateMachine.Setup();
-
-        baseData = new EventData();
-        baseData.Add("root", this);
-
         memory = GetComponent<StateMachineMemory>();
     }
+
+    private EventData GetBaseData(){
+        if(baseData == null){
+            baseData = new EventData{{"root" , this}};
+        }
+        return baseData;  
+    }
+
     void Update()
     {
-        stateMachine.HandleEvent("update", baseData);
-
+        stateMachine.HandleEvent("update", GetBaseData());
         currentState = stateMachine.GetActiveStateConfiguration();
     }
+
     public void TriggerEvent(string evtName, EventData data)
     {
         stateMachine.HandleEvent(evtName, 
-            new EventData(data.Concat(baseData).ToDictionary(x => x.Key, x => x.Value))
+            new EventData(data.Concat(GetBaseData()).ToDictionary(x => x.Key, x => x.Value))
         );
     }
     public void TriggerEvent(string evtName)
     {
-        stateMachine.HandleEvent(evtName, baseData);
+        stateMachine.HandleEvent(evtName, GetBaseData());
     }
     public State AddState(AbstractState state, string name)
     {
