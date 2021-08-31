@@ -119,6 +119,8 @@ namespace Hsm
         public Action<EventData> exitActionWithData = null;
         public Action<State, State, EventData> exitActionWithStatesAndData = null;
         public Dictionary<string, List<Handler>> handlers = new Dictionary<string, List<Handler>>();
+        public float enterTime;
+
         public AbstractState logicState { get; internal set; }
 
         public State(string pId)
@@ -128,6 +130,7 @@ namespace Hsm
 
         public virtual void Enter(State sourceState, State targetstate, EventData data)
         {
+            enterTime = Time.time;
             if (enterAction != null)
             {
                 enterAction.Invoke();

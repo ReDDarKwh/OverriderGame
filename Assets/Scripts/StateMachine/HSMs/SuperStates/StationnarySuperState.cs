@@ -20,7 +20,7 @@ class StationnarySuperState : SuperState
         start.AddHandler("hasPatrolPoint", go.sub);
 
         go.sub.AddHandler("isAtPosition", atPos, TransitionKind.External, (EventData data) => {
-            data.Root.GetComponent<PatrollingState>().AtStationnaryOutpost();
+            root.GetComponent<PatrollingState>().AtStationnaryOutpost();
         });
 
         go.sub.AddHandler("isStuck", stuck);

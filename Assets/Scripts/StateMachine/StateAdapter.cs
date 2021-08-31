@@ -9,15 +9,15 @@ public class StateAdapter
 
     public StateAdapter(AbstractState abstractState, string name)
     {
-        this.state = new State(name);
-        this.state.logicState = abstractState;
+        state = new State(name);
+        state.logicState = abstractState;
 
-        this.state.OnEnter((source, target, data) =>
+        state.OnEnter((source, target, data) =>
         {
             abstractState.PreEnterState();
         });
 
-        this.state.OnExit((source, target, data) =>
+        state.OnExit((source, target, data) =>
         {
             abstractState.PreExitState();
         });

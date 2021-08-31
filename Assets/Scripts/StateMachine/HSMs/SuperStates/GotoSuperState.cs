@@ -21,21 +21,21 @@ class GotoSuperState : SuperState
         (EventData data) =>
         {
             var s = data.GetVar<GameObject>("switch");
-            data.Memory.Set("switch", s);
-            data.Memory.Set("doorController", HSM.GetVar<DoorController>("doorController", data));
+            root.memory.Set("switch", s);
+            root.memory.Set("doorController", HSM.GetVar<DoorController>("doorController", data));
 
-            data.Memory.Set("oldGotoSettingsName", data.Memory.Get<string>("gotoSettingsName"));
-            data.Memory.Set("oldTargetPos", data.Memory.Get<Vector3?>("targetPos"));
-            data.Memory.Set("oldTargetTransform", data.Memory.Get<Transform>("targetTransform"));
-            data.Memory.Set("oldLookAtTarget", data.Memory.Get<bool>("lookAtTarget"));
-            data.Memory.Set("oldPositionEventName", data.Memory.Get<string>("positionEventName"));
+            root.memory.Set("oldGotoSettingsName", root.memory.Get<string>("gotoSettingsName"));
+            root.memory.Set("oldTargetPos", root.memory.Get<Vector3?>("targetPos"));
+            root.memory.Set("oldTargetTransform", root.memory.Get<Transform>("targetTransform"));
+            root.memory.Set("oldLookAtTarget", root.memory.Get<bool>("lookAtTarget"));
+            root.memory.Set("oldPositionEventName", root.memory.Get<string>("positionEventName"));
         },
         (EventData data) =>
         {
             var doorController = data.GetVar<DoorController>("doorController");
             if (!doorController.openingAction.outputGate.currentValue)
             {
-                var pathFindingNav = data.Root.GetComponent<PathFindingNav>();
+                var pathFindingNav = root.GetComponent<PathFindingNav>();
                 return pathFindingNav.IsGoingThroughDoor(doorController);
             }
             return false;
@@ -50,7 +50,7 @@ class GotoSuperState : SuperState
 
         interactingWithDoorSwitch.sub.AddUpdateHandler(go, (EventData data) =>
         {
-            return data.Memory.Get<DoorController>("doorController", false).openingAction.outputGate.currentValue;
+            return root.memory.Get<DoorController>("doorController", false).openingAction.outputGate.currentValue;
         }, (EventData data) =>
         {
             RestorePreviousGoto(data);
@@ -59,14 +59,13 @@ class GotoSuperState : SuperState
         go.AddHandler("cleanUpGoto", cleanUp, TransitionKind.External, (EventData data) =>
         {
             CleanUp(data);
-            data.Root.TriggerEvent("isAtPosition");
+            root.TriggerEvent("isAtPosition");
         });
 
         go.AddHandler("isUnreachable", cleanUp, TransitionKind.External, (EventData data) => {
             CleanUp(data);
-            data.Root.TriggerEvent("isStuck");
+            root.TriggerEvent("isStuck");
         });
-
     }
 
     private static void CleanUp(EventData data)

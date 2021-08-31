@@ -31,7 +31,9 @@ namespace Scripts.States
 
         public override void StateEnter()
         {
-            root.TriggerEvent("flee", new EventData{{"hidingPosition", GetHiddingSpot(memory.Get<GameObject>("target").transform)}});
+            root.TriggerEvent("flee", 
+                new EventData{{"hiddingPosition", GetHiddingSpot(memory.Get<GameObject>("target", false).transform)}
+            });
         }
 
         public override void StateUpdate()

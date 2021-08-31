@@ -16,11 +16,11 @@ class IdleSuperState : SuperState
         var stationnary = new StationnarySuperState(sm, root, "stationnary");
 
         start.AddEnterHandler(patrolling.sub, (EventData data) => {
-            return data.Root.GetComponent<PatrollingState>().stationnaryTransform == null;
+            return root.GetComponent<PatrollingState>().stationnaryTransform == null;
         });
 
         start.AddEnterHandler(stationnary.sub, (EventData data) => {
-            return data.Root.GetComponent<PatrollingState>().stationnaryTransform != null;
+            return root.GetComponent<PatrollingState>().stationnaryTransform != null;
         });
     }
 }

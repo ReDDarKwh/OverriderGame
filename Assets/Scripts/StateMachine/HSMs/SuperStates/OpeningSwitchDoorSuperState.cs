@@ -18,14 +18,14 @@ class OpeningSwitchDoorSuperState : SuperState
         start.AddEnterHandler(go, null, (EventData data) =>
         {
             Debug.Log("opening door");
-            HSM.SetUpGoto(data.Memory, null,
-            data.Memory.Get<GameObject>("switch", false).transform, 
+            HSM.SetUpGoto(root.memory, null,
+            root.memory.Get<GameObject>("switch", false).transform, 
             "switch", true, "isAtSwitch");
         });
 
         go.AddHandler("isAtSwitch", interacting, TransitionKind.External, 
         (EventData data) => {
-            data.Memory.Set("interactableName", "switch");
+            root.memory.Set("interactableName", "switch");
         });
     }
 }

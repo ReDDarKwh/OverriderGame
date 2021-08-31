@@ -5,29 +5,19 @@ using Hsm;
 using Scripts.Actions;
 using Scripts.States;
 using UnityEngine;
+using System.Linq;
 
 static class EventRepo
 {
-
-    private static HSM GetRoot(EventData data)
-    {
-        return (HSM)data["root"];
-    }
-
-    private static T GetVar<T>(string variableName, EventData data)
-    {
-        return GetRoot(data).GetComponent<StateMachineMemory>().Get<T>(variableName, false);
-    }
-
     public static Func<EventData, bool> TargetOutOfTargetList = (EventData data) =>
     {
-        var target = GetVar<GameObject>("target", data);
+        var target = data.Memory.Get<GameObject>("target", false);
         return !data.Root.GetComponent<ChasingState>().chasingAction.dataInputs["Targets"].Contains(target);
     };
 
     public static Func<EventData, bool> HasTarget = (EventData data) =>
     {
-        return GetVar<GameObject>("target", data) != null;
+        return data.Memory.Get<GameObject>("target", false) != null;
     };
 
     public static Func<EventData, bool> TargetInTargetList = (EventData data) =>
@@ -39,7 +29,15 @@ static class EventRepo
     {
         return (EventData data) =>
         {
-            return ((Hsm.State)data["state"]).logicState.getStateRunTime() > v;
+            return Time.time - data.GetVar<Hsm.State>("state").enterTime > v;
+        };
+    }
+
+    internal static Func<EventData, bool> Concat(params Func<EventData, bool>[] guards)
+    {
+        return (EventData data) =>
+        {
+            return guards.All(x => x.Invoke(data));
         };
     }
 }
