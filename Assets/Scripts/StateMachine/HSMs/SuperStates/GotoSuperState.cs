@@ -70,6 +70,8 @@ class GotoSuperState : SuperState
 
     private static void CleanUp(EventData data)
     {
+        data.Memory.Delete("targetPos");
+        data.Memory.Delete("targetTransform");
         data.Memory.Delete("doorController");
     }
 

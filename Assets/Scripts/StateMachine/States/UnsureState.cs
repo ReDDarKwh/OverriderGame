@@ -80,10 +80,10 @@ namespace Scripts.States
 
             memory.Set("target", target);
              
-            var memuUnsureTime = memory.Get<float>("unsureTime");
+            var unsureTime = memory.Get<float?>("unsureTime");
 
             coroutine = StartCoroutine(
-                WaitAndTrigger(memuUnsureTime == 0? defaultUnsureTime : memuUnsureTime, "isAlert")
+                WaitAndTrigger(unsureTime == null? defaultUnsureTime : unsureTime.Value, "isAlert")
             );
         }
     

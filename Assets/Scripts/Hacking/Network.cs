@@ -105,7 +105,9 @@ namespace Scripts.Hacking
 
                 if (Input.GetKeyDown(KeyCode.I))
                 {
-                    lastDeviceMoved?.device.ExecutePreConnection();
+                    foreach(var device in GetComponentsInChildren<Device>()){
+                        device.ExecutePreConnection();
+                    }
                 }
             }
 

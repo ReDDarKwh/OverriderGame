@@ -19,7 +19,6 @@ class EnemyAlertSuperState : SuperState
         chasing.AddHandler("done", go.sub);
         go.sub.AddHandler("isAtPosition", attacking);
 
-        attacking.AddUpdateHandler(go.sub, EventRepo.TargetOutOfTargetList, SetUpChase());
         attacking.AddHandler("targetOutOfAttackRange", go.sub, TransitionKind.External, SetUpChase());
     }
 

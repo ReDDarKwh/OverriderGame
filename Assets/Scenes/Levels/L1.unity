@@ -19144,7 +19144,6 @@ GameObject:
   - component: {fileID: 1268278634}
   - component: {fileID: 1268278633}
   - component: {fileID: 1268278635}
-  - component: {fileID: 1268278636}
   - component: {fileID: 1268278628}
   - component: {fileID: 1268278627}
   m_Layer: 8
@@ -19241,9 +19240,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1268278622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de694f993963b004a94ddd7e84c72ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: a4be511d3e6f6a34383b70ead1368564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: []
 --- !u!114 &1268278628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19253,9 +19253,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1268278622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3d50d62f1fb84840be7327f5be1aa32, type: 3}
+  m_Script: {fileID: 11500000, guid: e3879f03fbd12bd4ebedef419d13d362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explodeEffect: {fileID: 0}
+  deadBodyPrefab: {fileID: 7312900889949615281, guid: 3e45a5e4712a9fa4a8345a9f226ad7ff,
+    type: 3}
 --- !u!114 &1268278629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19299,7 +19302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58074716555ecc43b9a8c6639db1ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100000000
   dead: 0
   OnDied:
     m_PersistentCalls:
@@ -19316,7 +19319,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   dirt: {fileID: 1268278635}
-  stateMachine: {fileID: 0}
+  stateMachine: {fileID: 1268278627}
 --- !u!114 &1268278632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19383,18 +19386,6 @@ MonoBehaviour:
   manual: 1
   time: 0
   range: 0.2
---- !u!114 &1268278636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268278622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6986f8d1e4794b74eab8d82b0d126519, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1278921607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27437,7 +27428,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2023774441}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1902762946
+--- !u!114 &1902762969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

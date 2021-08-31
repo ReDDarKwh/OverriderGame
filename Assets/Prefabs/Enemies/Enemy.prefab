@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08d4e952eba1ad4c83141143a1d07dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curiousTime: 1
 --- !u!114 &8679969798129333970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,8 +355,8 @@ MonoBehaviour:
   shootingAction: {fileID: 466547867553926064}
   guns:
   - {fileID: 195791851}
-  bulletSpeed: 1
-  attackRangePlusBuffer: 10
+  bulletSpeed: 15
+  attackRangePlusBuffer: 2.5
 --- !u!114 &2861525003701565247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  creature: {fileID: 0}
+  creature: {fileID: 5767463812728996064}
 --- !u!114 &4016200958806998589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,20 +483,20 @@ MonoBehaviour:
   creature: {fileID: 5767463812728996064}
   moveSettings:
   - name: searching
-    targetRange: 1
-    moveSpeed: 1
+    targetRange: 0.5
+    moveSpeed: 1.5
   - name: chasing
-    targetRange: 1
-    moveSpeed: 1
+    targetRange: 2
+    moveSpeed: 2
   - name: investigating
-    targetRange: 1
-    moveSpeed: 1
+    targetRange: 0.5
+    moveSpeed: 1.5
   - name: switch
     targetRange: 0.5
     moveSpeed: 1
   - name: patrolling
     targetRange: 0.2
-    moveSpeed: 1
+    moveSpeed: 0.5
 --- !u!114 &1742297655901097447
 MonoBehaviour:
   m_ObjectHideFlags: 0

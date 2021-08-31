@@ -42,7 +42,6 @@ public class Enemy : MonoBehaviour
         {
             spotting.VisionRadius = alertSpottingRadius;
             spotting.VisionAngle = alertSpottingAngle;
-            Variables.Object(gameObject).Set("unsureTime", alertUnSureTime);
             alert = true;
         }
     }

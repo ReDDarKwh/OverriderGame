@@ -7,6 +7,7 @@ namespace Scripts.States
 {
     public class CuriousState : AbstractState
     {
+        public float curiousTime;
         private GameObject target;
 
         public override void StateEnter()

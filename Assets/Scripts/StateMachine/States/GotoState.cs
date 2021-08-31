@@ -57,6 +57,7 @@ namespace Scripts.States
             if (creature.nav.IsTargetUnreachable())
             {
                 root.TriggerEvent("isUnreachable");
+                return;
             }
             else
             {
