@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 6725844347703517072}
   - component: {fileID: 6725844347703517083}
   - component: {fileID: 6725844347703517082}
-  - component: {fileID: 6725844347703517086}
   - component: {fileID: 5767463812728996064}
   - component: {fileID: 2490535789703305076}
   - component: {fileID: 8679969798129333970}
@@ -191,6 +190,14 @@ GameObject:
   - component: {fileID: 2369176284625806879}
   - component: {fileID: 1742297655901097447}
   - component: {fileID: 8117612748395765497}
+  - component: {fileID: 8846784824198261850}
+  - component: {fileID: 1551009004965999882}
+  - component: {fileID: 4024938974870423637}
+  - component: {fileID: 2834028936942814584}
+  - component: {fileID: 1233895051775454099}
+  - component: {fileID: 6337914471636476364}
+  - component: {fileID: 128254120699631626}
+  - component: {fileID: 3386556007646536247}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Untagged
@@ -266,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad725aa75ac13348aec78f9b97682ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creature: {fileID: 0}
+  creature: {fileID: 5767463812728996064}
   waypoints: []
   stationnaryTransform: {fileID: 0}
   waypointPrefab: {fileID: 0}
@@ -282,26 +289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e852a91e4159d469da83c99090562f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chasingAction: {fileID: 0}
+  chasingAction: {fileID: 7046693956010093142}
   chasingSound: {fileID: 0}
-  chasingNoise: {fileID: 0}
---- !u!114 &6725844347703517086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6725844347703517079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1465209106, guid: c8d0ad23af520fe46aabe2b1fecf6462, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data:
-    _json: '{"declarations":{"collection":{"$content":[{"name":"spottingAction","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"target","value":null,"$version":"A"},{"name":"lastTargetPos","value":{"x":0.0,"y":0.0,"z":0.0,"$type":"UnityEngine.Vector3"},"$version":"A"},{"name":"deathDamageType","value":{"$content":"Unknown","$type":"DamageType"},"$version":"A"},{"name":"chasingAction","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"investigationObject","value":null,"$version":"A"},{"name":"investigatedMovingObject","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"unsureTime","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"switch","value":null,"$version":"A"},{"name":"doorController","value":null,"$version":"A"},{"name":"patrolPoint","value":{"x":0.0,"y":0.0,"z":0.0,"$type":"UnityEngine.Vector3"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
-    _objectReferences:
-    - {fileID: 1108686864222151840}
-    - {fileID: 7046693956010093142}
+  chasingNoise: {fileID: 1742297655901097447}
 --- !u!114 &5767463812728996064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,11 +333,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a26a5f4c91f1c9469464c23ccea7474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chasingAction: {fileID: 0}
-  creature: {fileID: 0}
+  chasingAction: {fileID: 7046693956010093142}
+  creature: {fileID: 5767463812728996064}
   unsureSound: {fileID: 0}
   scanningSound: {fileID: 0}
-  defaultUnsureTime: 0
+  defaultUnsureTime: 1
 --- !u!114 &1891062268300944313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,11 +350,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c180651084c935d4e93b61e71036c55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creature: {fileID: 0}
-  shootingAction: {fileID: 0}
-  guns: []
-  bulletSpeed: 0
-  attackRangePlusBuffer: 0
+  creature: {fileID: 5767463812728996064}
+  shootingAction: {fileID: 466547867553926064}
+  guns:
+  - {fileID: 195791851}
+  bulletSpeed: 1
+  attackRangePlusBuffer: 10
 --- !u!114 &2861525003701565247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,9 +437,20 @@ MonoBehaviour:
   dead: 0
   OnDied:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6725844347703517072}
+        m_MethodName: OnDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dirt: {fileID: 8117612748395765497}
-  stateMachine: {fileID: 0}
+  stateMachine: {fileID: 8846784824198261850}
 --- !u!58 &7473415128989248738
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -489,7 +491,7 @@ MonoBehaviour:
     targetRange: 1
     moveSpeed: 1
   - name: switch
-    targetRange: 0.3
+    targetRange: 0.5
     moveSpeed: 1
   - name: patrolling
     targetRange: 0.2
@@ -508,9 +510,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layersThatCanHear:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   noiseHeardEvent: 0
-  noiseRadius: 2.73
+  noiseRadius: 2
   maxTargets: 100
   rippleEffect: {fileID: 0}
   interactableObject: {fileID: 6725844347703517079}
@@ -534,6 +536,115 @@ MonoBehaviour:
   manual: 1
   time: 0
   range: 0.2
+--- !u!114 &8846784824198261850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6768d12a80722934396d62565aa4ef8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: []
+--- !u!114 &1551009004965999882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3879f03fbd12bd4ebedef419d13d362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explodeEffect: {fileID: 8319351579001915392, guid: dd6be1f719329c64899a13664c62551a,
+    type: 3}
+  deadBodyPrefab: {fileID: 7312900889949615281, guid: 3e45a5e4712a9fa4a8345a9f226ad7ff,
+    type: 3}
+--- !u!114 &4024938974870423637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea3ed6e74e4ac24784c91ba0cea30a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactor: {fileID: 2719842466777164584}
+--- !u!114 &2834028936942814584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473aff53f475fd4438e3b4b50319e32e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creature: {fileID: 5767463812728996064}
+  speed: 1
+  relativeMinAngle: 20
+  relativeMaxAngle: 20
+  unsureTime: 3
+--- !u!114 &1233895051775454099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04097b5581ec71644893ff7d4c6a0b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creature: {fileID: 5767463812728996064}
+--- !u!114 &6337914471636476364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d595b73f06f0fdd42a54c60f4203d921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &128254120699631626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a13297890ba59845be141860a2a5ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unsureTime: 0.5
+--- !u!114 &3386556007646536247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71529b1b7efcebb43904b4bf32505e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8713028075916982006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,15 +1172,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e3ab18108021c44f8ff40f77330424b, type: 3}
---- !u!4 &2777979767576163449 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4089401182147920997, guid: 6e3ab18108021c44f8ff40f77330424b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2183442437897465884}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2777979766958130287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4089401180447782003, guid: 6e3ab18108021c44f8ff40f77330424b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2183442437897465884}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2777979767576163449 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4089401182147920997, guid: 6e3ab18108021c44f8ff40f77330424b,
     type: 3}
   m_PrefabInstance: {fileID: 2183442437897465884}
   m_PrefabAsset: {fileID: 0}

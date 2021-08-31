@@ -23,25 +23,27 @@ namespace Scripts.States
         public abstract void StateExit();
 
         public void PreEnterState(){
-            enabled = true;
+            isRunning = true;
             enterTime = Time.time;
-            StateEnter();
             if(root == null){
                 Start();
             }
+            StateEnter();
             root.TriggerEvent("enter");
         }
         
         void Update(){
-            StateUpdate();
+            if(isRunning){
+                StateUpdate();
+            }
         }
 
         public void PreExitState(){
-            enabled = false;
+            isRunning = false;
             StateExit();
         }
 
-        public float getStateRunTime()
+        public float getStateRunTime()  
         {
             return Time.time - enterTime;
         }
@@ -50,7 +52,6 @@ namespace Scripts.States
         {
             memory = GetComponent<StateMachineMemory>();
             root = GetComponent<HSM>();
-            enabled = false;
         }
 
         public IEnumerator WaitAndTrigger(float waitTime, string eventName)

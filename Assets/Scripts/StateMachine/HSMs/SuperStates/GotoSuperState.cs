@@ -25,6 +25,7 @@ class GotoSuperState : SuperState
             data.Memory.Set("doorController", HSM.GetVar<DoorController>("doorController", data));
 
             data.Memory.Set("oldGotoSettingsName", data.Memory.Get<string>("gotoSettingsName"));
+            data.Memory.Set("oldTargetPos", data.Memory.Get<Vector3?>("targetPos"));
             data.Memory.Set("oldTargetTransform", data.Memory.Get<Transform>("targetTransform"));
             data.Memory.Set("oldLookAtTarget", data.Memory.Get<bool>("lookAtTarget"));
             data.Memory.Set("oldPositionEventName", data.Memory.Get<string>("positionEventName"));
@@ -75,7 +76,8 @@ class GotoSuperState : SuperState
 
     private static void RestorePreviousGoto(EventData data)
     {
-        HSM.SetUpGoto(data.Memory, null,
+        HSM.SetUpGoto(data.Memory, 
+                    data.Memory.Get<Vector3?>("oldTargetPos"),
                     data.Memory.Get<Transform>("oldTargetTransform"),
                     data.Memory.Get<string>("oldGotoSettingsName"),
                     data.Memory.Get<bool>("oldLookAtTarget"),

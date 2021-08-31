@@ -555,8 +555,13 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: c6b3ba999f5c20e41bdeb6c2ed14313d, type: 2}
     - target: {fileID: 1891062268300944313, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
+      propertyPath: shootingAction
+      value: 
+      objectReference: {fileID: 7802956113085898650}
+    - target: {fileID: 1891062268300944313, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
       propertyPath: guns.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1891062268300944313, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
@@ -730,7 +735,7 @@ PrefabInstance:
         type: 3}
       propertyPath: chasingAction
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7330610687330716812}
     - target: {fileID: 6985325684398336663, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_LocalRotation.w

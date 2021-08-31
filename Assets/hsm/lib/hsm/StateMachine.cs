@@ -82,6 +82,8 @@ namespace Hsm
 
         public void HandleEvent(string evt, EventData data)
         {
+            //if(evt != "update")Debug.Log(evt);
+            
             Event myEvent = new Event(evt, data);
             eventQueue.Enqueue(myEvent);
 

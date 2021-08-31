@@ -23,7 +23,7 @@ namespace Scripts.States
         {
             var gotoSettingsName = memory.Get<string>("gotoSettingsName", false);
             var targetTransform = memory.Get<Transform>("targetTransform", false);
-            var targetPos = memory.Get<Vector3>("targetPos");
+            var targetPos = memory.Get<Vector3>("targetPos", false);
 
             this.lookAtTarget = memory.Get<bool>("lookAtTarget", false);
             this.atPositionEventName = memory.Get<string>("positionEventName", false);

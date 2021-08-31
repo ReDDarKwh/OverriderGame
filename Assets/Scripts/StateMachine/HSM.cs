@@ -38,10 +38,10 @@ public abstract class HSM : MonoBehaviour
 
     void Start()
     {
+        memory = GetComponent<StateMachineMemory>();
         stateMachine = new StateMachine();
         Init(stateMachine, this);
         stateMachine.Setup();
-        memory = GetComponent<StateMachineMemory>();
     }
 
     private EventData GetBaseData(){
