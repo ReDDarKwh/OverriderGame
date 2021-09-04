@@ -5,8 +5,9 @@ using Hsm;
 using Scripts.States;
 using UnityEngine;
 using System.Linq;
+using Lowscope.Saving;
 
-public abstract class HSM : MonoBehaviour
+public abstract class HSM : MonoBehaviour, ISaveable
 {
     protected StateMachine stateMachine;
     private EventData baseData;
@@ -74,4 +75,19 @@ public abstract class HSM : MonoBehaviour
         return s;
     }
     public abstract void Init(StateMachine sm, HSM root);
+
+    public string OnSave()
+    {
+        //JsonUtility.ToJson()
+        return null;
+    }
+
+    public void OnLoad(string data)
+    {
+    }
+
+    public bool OnSaveCondition()
+    {
+        return true;
+    }
 }

@@ -113,6 +113,7 @@ namespace Scripts.Hacking
         {
             StartCoroutine(Load(data));
         }
+        
         private IEnumerator Load(string data)
         {
             yield return new WaitForSeconds(0.1f);
