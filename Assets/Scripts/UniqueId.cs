@@ -40,10 +40,16 @@
      static Dictionary<string, UniqueId> allGuids = new Dictionary<string, UniqueId> ();
  
      public string uniqueId;
- 
-     // Only compile the code in an editor build
-     #if UNITY_EDITOR
- 
+
+    // Only compile the code in an editor build
+#if UNITY_EDITOR
+
+    void Start(){
+        var sharedInfoManager = GameObject.FindGameObjectWithTag("SceneManager")
+        .GetComponent<EnemySharedInfoManager>();
+        sharedInfoManager.objectRepo.Add(uniqueId, gameObject);
+    }
+
      // Whenever something changes in the editor (note the [ExecuteInEditMode])
      void Update(){
          // Don't do anything when running the game

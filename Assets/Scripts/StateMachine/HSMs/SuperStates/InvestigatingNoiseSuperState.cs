@@ -33,7 +33,7 @@ class InvestigatingNoiseSuperState : SuperState
         {
             var memory = HSM.GetRoot(data).memory;
             var pos = HSM.GetVar<Vector3>("subject", data);
-            memory.Set("targetPos", pos);
+            memory.Set("targetPos", pos, MemoryType.Value);
         });
     }
 }

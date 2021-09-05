@@ -78,7 +78,7 @@ namespace Scripts.States
                 CustomEvent.Trigger(gameObject, "NoNewTarget");
             }
 
-            memory.Set("target", target);
+            memory.Set("target", target, MemoryType.GameObject);
              
             var unsureTime = memory.Get<float?>("unsureTime");
 

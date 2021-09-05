@@ -13,6 +13,7 @@ public abstract class HSM : MonoBehaviour, ISaveable
     private EventData baseData;
     public List<string> currentState;
     internal StateMachineMemory memory;
+    private EnemySharedInfoManager sharedInfoManager;
 
     public static T GetVar<T>(string variableName, EventData data)
     {
@@ -29,12 +30,12 @@ public abstract class HSM : MonoBehaviour, ISaveable
     {
         if (targetPos != null)
         {
-            memory.Set("targetPos", targetPos.Value);
+            memory.Set("targetPos", targetPos.Value, MemoryType.Value);
         }
-        memory.Set("targetTransform", targetTransform);
-        memory.Set("gotoSettingsName", gotoSettingsName);
-        memory.Set("lookAtTarget", lookAtTarget);
-        memory.Set("positionEventName", positionEventName);
+        memory.Set("targetTransform", targetTransform, MemoryType.Component);
+        memory.Set("gotoSettingsName", gotoSettingsName, MemoryType.Value);
+        memory.Set("lookAtTarget", lookAtTarget, MemoryType.Value);
+        memory.Set("positionEventName", positionEventName, MemoryType.Value);
     }
 
     void Start()
@@ -43,6 +44,9 @@ public abstract class HSM : MonoBehaviour, ISaveable
         stateMachine = new StateMachine();
         Init(stateMachine, this);
         stateMachine.Setup();
+
+        sharedInfoManager = GameObject.FindGameObjectWithTag("SceneManager")
+        .GetComponent<EnemySharedInfoManager>();
     }
 
     private EventData GetBaseData(){

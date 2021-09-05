@@ -12,6 +12,7 @@ public class Creature : MonoBehaviour
     public Navigation nav;
     public Killable killable;
     public float damping = 7;
+    public UniqueId uniqueId;
 
     [System.NonSerialized]
     public bool canLock;

@@ -17,7 +17,7 @@ class TargetAlertSuperState : SuperState
         var fleeing = new FleeingSuperState(sm, root, "fleeing").sub;
 
         start.AddEnterHandler(interacting, null, (EventData data) => {
-            root.memory.Set("interactionObject", ((TargetHSM)root).alertSwitch);
+            root.memory.Set("interactionObject", ((TargetHSM)root).alertSwitch, MemoryType.GameObject);
         });
 
         interacting.AddHandler("interactionDone", fleeing);

@@ -29,7 +29,7 @@ class PerceptiveSuperState : SuperState
         },
         (EventData data) => {
             var target = root.memory.Get<GameObject>("target");
-            root.memory.Set("targetPos", target.transform.position);
+            root.memory.Set("targetPos", target.transform.position, MemoryType.Value);
         });
 
         unsure.AddUpdateHandler(curious, EventRepo.TargetOutOfTargetList);
@@ -38,15 +38,15 @@ class PerceptiveSuperState : SuperState
         idle.AddEnterHandler(searching.sub, EventRepo.HasTarget, (EventData data) =>
         {
             var target = root.memory.Get<GameObject>("target");
-            root.memory.Set("targetPos", target.transform.position);
+            root.memory.Set("targetPos", target.transform.position, MemoryType.Value);
         });
 
         idle.AddHandler("objectNoiseHeard", investigatingObject.sub, TransitionKind.External, (EventData data) =>
         {
             var memory = HSM.GetRoot(data).memory;
             var interactable = HSM.GetVar<GameObject>("subject", data);
-            memory.Set("interactionObject", interactable);
-            memory.Set("targetPos", interactable.transform.position);
+            memory.Set("interactionObject", interactable, MemoryType.GameObject);
+            memory.Set("targetPos", interactable.transform.position, MemoryType.Value);
         },
         (EventData data) =>
         {
@@ -62,7 +62,7 @@ class PerceptiveSuperState : SuperState
         {
             var memory = HSM.GetRoot(data).memory;
             var pos = HSM.GetVar<Vector3>("subject", data);
-            memory.Set("targetPos", pos);
+            memory.Set("targetPos", pos, MemoryType.Value);
         });
 
         investigatingNoise.sub.AddHandler("searchDone", idle);
@@ -70,7 +70,7 @@ class PerceptiveSuperState : SuperState
 
         searching.sub.AddHandler("searchDone", idle);
         searching.sub.AddUpdateHandler(unsure, EventRepo.TargetInTargetList, (EventData data) => {
-            root.memory.Set("unsureTime", 0.0f);
+            root.memory.Set("unsureTime", 0.0f, MemoryType.Value);
         });
 
     }

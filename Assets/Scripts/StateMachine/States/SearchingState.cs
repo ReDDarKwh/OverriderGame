@@ -11,8 +11,8 @@ namespace Scripts.States
         public float unsureTime;
         public override void StateEnter()
         {
-            memory.Set("unsureTime", unsureTime);
-            memory.Set("gotoSettingsName", "searching");
+            memory.Set("unsureTime", unsureTime, MemoryType.Value);
+            memory.Set("gotoSettingsName", "searching", MemoryType.Value);
             root.TriggerEvent("done");
         }
 

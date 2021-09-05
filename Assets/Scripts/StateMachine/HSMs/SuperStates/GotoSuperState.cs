@@ -21,14 +21,14 @@ class GotoSuperState : SuperState
         (EventData data) =>
         {
             var s = data.GetVar<GameObject>("switch");
-            root.memory.Set("switch", s);
-            root.memory.Set("doorController", HSM.GetVar<DoorController>("doorController", data));
+            root.memory.Set("switch", s, MemoryType.GameObject);
+            root.memory.Set("doorController", HSM.GetVar<DoorController>("doorController", data), MemoryType.Component);
 
-            root.memory.Set("oldGotoSettingsName", root.memory.Get<string>("gotoSettingsName"));
-            root.memory.Set("oldTargetPos", root.memory.Get<Vector3?>("targetPos"));
-            root.memory.Set("oldTargetTransform", root.memory.Get<Transform>("targetTransform"));
-            root.memory.Set("oldLookAtTarget", root.memory.Get<bool>("lookAtTarget"));
-            root.memory.Set("oldPositionEventName", root.memory.Get<string>("positionEventName"));
+            root.memory.Set("oldGotoSettingsName", root.memory.Get<string>("gotoSettingsName"), MemoryType.Value);
+            root.memory.Set("oldTargetPos", root.memory.Get<Vector3?>("targetPos"), MemoryType.Value);
+            root.memory.Set("oldTargetTransform", root.memory.Get<Transform>("targetTransform"), MemoryType.Component);
+            root.memory.Set("oldLookAtTarget", root.memory.Get<bool>("lookAtTarget"), MemoryType.Value);
+            root.memory.Set("oldPositionEventName", root.memory.Get<string>("positionEventName"), MemoryType.Value);
         },
         (EventData data) =>
         {

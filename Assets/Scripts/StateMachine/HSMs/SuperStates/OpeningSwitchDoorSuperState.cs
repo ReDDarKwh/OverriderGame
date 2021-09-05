@@ -25,7 +25,7 @@ class OpeningSwitchDoorSuperState : SuperState
 
         go.AddHandler("isAtSwitch", interacting, TransitionKind.External, 
         (EventData data) => {
-            root.memory.Set("interactableName", "switch");
+            root.memory.Set("interactableName", "switch", MemoryType.Value);
         });
     }
 }

@@ -14,7 +14,7 @@ namespace Scripts.States
         {
             target = memory.Get<GameObject>("target");
 
-            memory.Set("targetPos", target.transform.position);
+            memory.Set("targetPos", target.transform.position, MemoryType.Value);
         }
 
         public override void StateExit()
