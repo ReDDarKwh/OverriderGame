@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Bolt;
 using Scripts.Actions;
 using UnityEngine;
 
@@ -20,7 +19,7 @@ namespace Scripts.States
 
         public override void StateEnter()
         {
-            target = Variables.Object(gameObject).Get<GameObject>("target");
+            //target = Variables.Object(gameObject).Get<GameObject>("target");
             isCleaningDirt = dirtLayer == (dirtLayer | 1 << target.layer);
             animator.SetBool("Washing", true);
 
@@ -55,7 +54,7 @@ namespace Scripts.States
                 }
 
                 cleaningAction.actionGate.SetValue(false);
-                CustomEvent.Trigger(gameObject, "CleanDone");
+                //CustomEvent.Trigger(gameObject, "CleanDone");
             }
         }
 

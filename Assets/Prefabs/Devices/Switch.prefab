@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 4295983865210312306}
   - component: {fileID: 4373818247106391183}
   - component: {fileID: 5483629005321924417}
+  - component: {fileID: 2962649747024813558}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -327,6 +328,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 653b299d9edc0c847b3d5e08cfe34da1, type: 2}
   - {fileID: 11400000, guid: b12989c42072baf498f034e406405db2, type: 2}
   playOnStart: 0
+--- !u!114 &2962649747024813558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8017124398312231228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06913b2b40f38c64b9b28b32dfaeb1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: Switch_7761bb4b-3dee-4de1-96c4-23e7f0bae9a9
 --- !u!1 &9051389437459904685
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +494,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458872107460082566, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: sceneName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458872107460082566, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: saveIdentification
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8008101631496523900, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}

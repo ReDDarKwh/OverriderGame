@@ -1,8 +1,10 @@
 
+using System.Collections.Generic;
+
 [System.Serializable]
 public class SavedHSM {
-
-    public string path;
+    public List<string> path;
+    public List<SavedMemory> memory;
 }
 
 [System.Serializable]
@@ -10,6 +12,7 @@ public class SavedMemory {
     public string key;
     public object value;
     public string uniqueId;
+    public MemoryType memType;
 }
 
 [System.Serializable]

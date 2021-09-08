@@ -1,4 +1,3 @@
-using Bolt;
 using UnityEngine;
 using System.Linq;
 using Scripts.Actions;
@@ -59,13 +58,13 @@ namespace Scripts.States
             if (false)
             {
                 // TODO: Make random selection work for cleaning bot
-                var i = 0;
-                do
-                {
-                    target = chasingAction.dataInputs["Targets"].ElementAt(Random.Range(0, chasingAction.dataInputs["Targets"].Count));
-                    i++;
-                }
-                while (lastTarget == target && i < 10);
+                // var i = 0;
+                // do
+                // {
+                //     target = chasingAction.dataInputs["Targets"].ElementAt(Random.Range(0, chasingAction.dataInputs["Targets"].Count));
+                //     i++;
+                // }
+                // while (lastTarget == target && i < 10);
             }
             else
             {
@@ -75,7 +74,7 @@ namespace Scripts.States
             if (lastTarget == target)
             {
                 // for cleaning bot
-                CustomEvent.Trigger(gameObject, "NoNewTarget");
+                //CustomEvent.Trigger(gameObject, "NoNewTarget");
             }
 
             memory.Set("target", target, MemoryType.GameObject);

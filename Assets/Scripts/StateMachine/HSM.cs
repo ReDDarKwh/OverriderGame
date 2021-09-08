@@ -6,6 +6,7 @@ using Scripts.States;
 using UnityEngine;
 using System.Linq;
 using Lowscope.Saving;
+using Newtonsoft.Json;
 
 public abstract class HSM : MonoBehaviour, ISaveable
 {
@@ -82,12 +83,18 @@ public abstract class HSM : MonoBehaviour, ISaveable
 
     public string OnSave()
     {
-        //JsonUtility.ToJson()
-        return null;
+        var s = new SavedHSM{path = stateMachine.GetActiveStateConfiguration(), memory = memory.OnSave()};
+        return JsonConvert.SerializeObject(s);
     }
 
     public void OnLoad(string data)
     {
+        var s = JsonConvert.DeserializeObject<SavedHSM>(data);
+        var path = new Stack<string>(s.path);
+        var state = stateMachine.GetStateByPath(path);
+        memory.OnLoad(s.memory);
+        stateMachine.TearDown(GetBaseData());
+        stateMachine.EnterState(null, state, GetBaseData());
     }
 
     public bool OnSaveCondition()

@@ -8,7 +8,7 @@ public class SaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SaveMaster.SetSlot()
+        SaveMaster.SetSlot(0, false);
     }
 
     // Update is called once per frame
@@ -17,6 +17,7 @@ public class SaveManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F5))
         {
             SaveMaster.SyncSave();
+            SaveMaster.WriteActiveSaveToDisk();
         }
 
         if (Input.GetKeyDown(KeyCode.F9))

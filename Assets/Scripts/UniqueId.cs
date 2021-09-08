@@ -42,13 +42,18 @@
      public string uniqueId;
 
     // Only compile the code in an editor build
-#if UNITY_EDITOR
-
     void Start(){
         var sharedInfoManager = GameObject.FindGameObjectWithTag("SceneManager")
         .GetComponent<EnemySharedInfoManager>();
-        sharedInfoManager.objectRepo.Add(uniqueId, gameObject);
+        
+        if(sharedInfoManager.objectRepo.ContainsKey(uniqueId)){
+            sharedInfoManager.objectRepo[uniqueId] = gameObject;
+        } else {
+            sharedInfoManager.objectRepo.Add(uniqueId, gameObject);
+        }
     }
+
+#if UNITY_EDITOR
 
      // Whenever something changes in the editor (note the [ExecuteInEditMode])
      void Update(){

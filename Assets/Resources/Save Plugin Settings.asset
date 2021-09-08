@@ -25,9 +25,9 @@ MonoBehaviour:
   gameObjectGuidLength: 5
   componentGuidLength: 5
   cleanSavedPrefabsOnSlotSwitch: 1
-  loadDefaultSlotOnStart: 1
+  loadDefaultSlotOnStart: 0
   defaultSlot: 0
-  useHotkeys: 1
+  useHotkeys: 0
   saveAndWriteToDiskKey: 283
   syncSaveGameKey: 286
   syncLoadGameKey: 290

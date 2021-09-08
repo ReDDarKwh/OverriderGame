@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Hsm
 {
@@ -15,6 +16,7 @@ namespace Hsm
         private bool eventInProgress = false;
 
         private Queue<Event> eventQueue = new Queue<Event>();
+        private Dictionary<string, State> statesByIds;
 
         public StateMachine(List<State> pStates)
         {
@@ -58,6 +60,8 @@ namespace Hsm
             {
                 throw new UnityException("StateMachine.setup: Must have states!");
             }
+
+            statesByIds = states.ToDictionary(x => x.id, x => x);
             EnterState(null, initialState, data);
         }
 
@@ -195,6 +199,18 @@ namespace Hsm
             return states;
         }
 
+        public State GetStateByPath(Stack<string> path){
+            var id = path.Pop();
+            var state = states.First(x => x.id == id);
+
+            if (state is Sub)
+            {
+                Sub nested = currentState as Sub;
+                return nested._submachine.GetStateByPath(path);
+            } else {
+                return state;
+            }
+        }
     }
 }
 

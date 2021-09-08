@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Scripts.Hacking;
 using UnityEngine;
 using System.Linq;
-using Bolt;
 
 namespace Scripts.Actions
 {
@@ -68,7 +67,7 @@ namespace Scripts.Actions
 
             if (minEnemy != null)
             {
-                CustomEvent.Trigger(minEnemy.gameObject, "NoiseHeard", target.transform.position);
+                //CustomEvent.Trigger(minEnemy.gameObject, "NoiseHeard", target.transform.position);
             }
 
         }
