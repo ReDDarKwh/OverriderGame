@@ -90,7 +90,7 @@ public abstract class HSM : MonoBehaviour, ISaveable
     public void OnLoad(string data)
     {
         var s = JsonConvert.DeserializeObject<SavedHSM>(data);
-        var path = new Stack<string>(s.path);
+        var path = new Stack<string>(s.path.ToArray().Reverse());
         var state = stateMachine.GetStateByPath(path);
         memory.OnLoad(s.memory);
         stateMachine.TearDown(GetBaseData());

@@ -43,7 +43,13 @@ public class StateMachineMemory : MonoBehaviour
             Delete(name);
         }
 
-        return found ? (T)result.Value : default(T);
+        if(result == null){
+            Debug.Log(name + " Not found");
+        } else {
+            Debug.Log(result.Value);
+        }
+
+        return found ? result?.Value == null? default(T) : (T)result.Value : default(T);
     }
 
     public void Delete(string name)
@@ -98,7 +104,7 @@ public class StateMachineMemory : MonoBehaviour
 
         foreach(var sd in savedData){
             object val = null;
-            if(sd.uniqueId != null)
+            if(!string.IsNullOrEmpty(sd.uniqueId))
             {
                 val = GetRef(sd);
             }

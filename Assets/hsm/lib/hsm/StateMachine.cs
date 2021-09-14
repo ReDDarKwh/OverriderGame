@@ -201,7 +201,11 @@ namespace Hsm
 
         public State GetStateByPath(Stack<string> path){
             var id = path.Pop();
-            var state = states.First(x => x.id == id);
+            var state = states.FirstOrDefault(x => x.id == id);
+
+            if(state == null){
+
+            }
 
             if (state is Sub)
             {

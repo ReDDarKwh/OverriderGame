@@ -32,6 +32,10 @@ namespace Scripts.States
                 moveSettingsRepo = moveSettings.ToDictionary(x => x.name);
             }
 
+            if(gotoSettingsName == null){
+
+            }
+
             creature.nav.SetSpeed(moveSettingsRepo[gotoSettingsName].moveSpeed);
             targetRange = moveSettingsRepo[gotoSettingsName].targetRange;
 
