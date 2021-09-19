@@ -22,14 +22,14 @@ MonoBehaviour:
   autoSaveOnSlotSwitch: 0
   resetSaveableIdOnDuplicate: 1
   resetSaveableIdOnNewScene: 0
-  gameObjectGuidLength: 5
-  componentGuidLength: 5
+  gameObjectGuidLength: 6
+  componentGuidLength: 6
   cleanSavedPrefabsOnSlotSwitch: 1
   loadDefaultSlotOnStart: 0
   defaultSlot: 0
-  useHotkeys: 0
-  saveAndWriteToDiskKey: 283
-  syncSaveGameKey: 286
+  useHotkeys: 1
+  saveAndWriteToDiskKey: 286
+  syncSaveGameKey: 0
   syncLoadGameKey: 290
   wipeActiveSceneData: 287
   showSaveFileUtilityLog: 1

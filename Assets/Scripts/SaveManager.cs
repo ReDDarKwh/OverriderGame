@@ -14,15 +14,15 @@ public class SaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F5))
-        {
-            SaveMaster.SyncSave();
-            SaveMaster.WriteActiveSaveToDisk();
-        }
+        // if (Input.GetKeyDown(KeyCode.F5))
+        // {
+        //     SaveMaster.SyncSave();
+        //     SaveMaster.WriteActiveSaveToDisk();
+        // }
 
-        if (Input.GetKeyDown(KeyCode.F9))
-        {
-            SaveMaster.SyncLoad();
-        }
+        // if (Input.GetKeyDown(KeyCode.F9))
+        // {
+        //     SaveMaster.SyncLoad();
+        // }
     }
 }

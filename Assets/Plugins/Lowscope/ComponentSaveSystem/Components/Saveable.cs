@@ -366,10 +366,10 @@ namespace Lowscope.Saving.Components
         // Request is sent by the Save System
         public void OnSaveRequest(SaveGame saveGame)
         {
-            if (!hasIdentification)
-            {
-                return;
-            }
+            // if (!hasIdentification)
+            // {
+            //     return;
+            // }
 
             int componentCount = saveableComponentIDs.Count;
 

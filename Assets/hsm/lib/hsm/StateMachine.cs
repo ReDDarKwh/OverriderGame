@@ -209,7 +209,7 @@ namespace Hsm
 
             if (state is Sub)
             {
-                Sub nested = currentState as Sub;
+                Sub nested = state as Sub;
                 return nested._submachine.GetStateByPath(path);
             } else {
                 return state;

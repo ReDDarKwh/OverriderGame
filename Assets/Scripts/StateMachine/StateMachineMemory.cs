@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Lowscope.Saving;
 using Newtonsoft.Json;
@@ -42,14 +43,15 @@ public class StateMachineMemory : MonoBehaviour
         if(remove){
             Delete(name);
         }
-
-        if(result == null){
-            Debug.Log(name + " Not found");
-        } else {
-            Debug.Log(result.Value);
+        
+        T r = default(T);
+        try{
+            r = found ? result?.Value == null? default(T) : (T)result.Value : default(T);
+        } catch (Exception ex){
+            throw ex;
         }
 
-        return found ? result?.Value == null? default(T) : (T)result.Value : default(T);
+        return r;
     }
 
     public void Delete(string name)
@@ -65,12 +67,13 @@ public class StateMachineMemory : MonoBehaviour
 
             string uniqueId = "";
             object val = null;
+            MemoryType memtype = memItem.Value.MemoryType;
 
             if(memItem.Value.Value != null){
                 if(memItem.Value.MemoryType == MemoryType.Component){
                     var component = (Component)memItem.Value.Value;
                     if(component != null){
-                        uniqueId = component.GetComponent<UniqueId>().uniqueId + "/" + component.GetType().ToString();
+                        uniqueId = component.GetComponent<UniqueId>().uniqueId + "/" + component.GetType().Name;
                     }
                 } else if(memItem.Value.MemoryType == MemoryType.GameObject){
                     var gameObject = (GameObject)memItem.Value.Value;
@@ -78,9 +81,10 @@ public class StateMachineMemory : MonoBehaviour
                         uniqueId = gameObject.GetComponent<UniqueId>().uniqueId;
                     }
                 } else {
-                    if(memItem.Value.Value is Vector3){
+                    if(memItem.Value.MemoryType == MemoryType.Vector || memItem.Value.Value is Vector3){
                         var vec = (Vector3)memItem.Value.Value;
                         val = new SavedVec{x = vec.x, y = vec.y, z = vec.z};
+                        memtype = MemoryType.Vector;
                     } else {
                         val = memItem.Value.Value;
                     }
@@ -91,7 +95,7 @@ public class StateMachineMemory : MonoBehaviour
                 key = memItem.Key, 
                 value = val, 
                 uniqueId = uniqueId,
-                memType = memItem.Value.MemoryType
+                memType = memtype
             });
         }
 
@@ -109,9 +113,9 @@ public class StateMachineMemory : MonoBehaviour
                 val = GetRef(sd);
             }
             else {
-                if(sd.value is SavedVec){
-                    var vec = (SavedVec)sd.value;
-                    val = new Vector3(vec.x, vec.y, vec.z);
+                if(sd.memType == MemoryType.Vector){
+                    var vec = (dynamic)sd.value;
+                    val = new Vector3((float)vec.x, (float)vec.y, (float)vec.z);
                 } else {
                     val = sd.value;
                 }

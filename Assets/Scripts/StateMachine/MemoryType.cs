@@ -4,6 +4,7 @@
 
         Value,
         Component,
-        GameObject
+        GameObject,
+        Vector
     }
 
