@@ -7,7 +7,6 @@ public abstract class Navigation : MonoBehaviour
     internal bool stopped;
 
     public abstract Vector3 GetDir();
-    public abstract bool PathComplete();
     public abstract bool IsTargetUnreachable();
     public abstract bool IsMoving();
     public abstract void Stop();

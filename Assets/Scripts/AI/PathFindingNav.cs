@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PathFindingNav : Navigation
 {
-    public NavMeshAgent navMeshAgent;
+    public IAstarAI ai;
+    public Seeker seeker;
     public float refreshDis;
     public LayerMask doorLayer;
     private Transform movingTarget;
@@ -13,12 +15,12 @@ public class PathFindingNav : Navigation
 
     public override Vector3 GetDir()
     {
-        return (!navMeshAgent.hasPath || navMeshAgent.pathPending) ? lastDesiredVelocity : navMeshAgent.desiredVelocity;
+        return ai.desiredVelocity;
     }
 
     public override void SetSpeed(float speed)
     {
-        navMeshAgent.speed = speed;
+        ai.maxSpeed = speed;
     }
 
     public override void SetTarget(Transform target)
@@ -29,59 +31,56 @@ public class PathFindingNav : Navigation
 
     public override void SetTarget(Vector3 target)
     {
-        navMeshAgent.isStopped = stopped = false;
-        navMeshAgent.SetDestination(target);
+        ai.isStopped = stopped = false;
+        ai.destination = target;
     }
 
     public override void Stop()
     {
-        navMeshAgent.isStopped = stopped = true;
+        ai.isStopped = stopped = true;
         movingTarget = null;
     }
+
     public override void ClearPath()
     {
-        navMeshAgent.ResetPath();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        navMeshAgent.autoBraking = false;
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updateUpAxis = false;
-        navMeshAgent.autoRepath = false;
+        ai = GetComponent<IAstarAI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (movingTarget != null && navMeshAgent.hasPath)
+        if (movingTarget != null && ai.hasPath)
         {
-            if ((navMeshAgent.destination - movingTarget.position).magnitude > refreshDis)
+            if ((ai.destination - movingTarget.position).magnitude > refreshDis)
             {
                 SetTarget(movingTarget);
             }
         }
 
-        if (navMeshAgent.hasPath)
-        {
-            if (navMeshAgent.pathStatus == NavMeshPathStatus.PathPartial)
-            {
-                navMeshAgent.velocity = Vector3.zero;
-            }
-            else
-            {
-                lastDesiredVelocity = navMeshAgent.desiredVelocity;
-            }
-        }
+        // if (navMeshAgent.hasPath)
+        // {
+        //     if (navMeshAgent.path == NavMeshPathStatus.PathPartial)
+        //     {
+        //         navMeshAgent.velocity = Vector3.zero;
+        //     }
+        //     else
+        //     {
+        //         lastDesiredVelocity = navMeshAgent.desiredVelocity;
+        //     }
+        // }
     }
 
     public bool IsGoingThroughDoor(DoorController doorController)
     {
-        if (this.navMeshAgent.hasPath)
+        if (this.ai.hasPath)
         {
             var lastCorner = transform.position;
-            foreach (var c in this.navMeshAgent.path.corners)
+            foreach (var c in this.seeker.GetCurrentPath().vectorPath)
             {
                 var hit = Physics2D.Linecast(lastCorner, c, doorLayer);
                 if (hit.collider != null)
@@ -101,26 +100,22 @@ public class PathFindingNav : Navigation
 
     void OnEnable()
     {
-        navMeshAgent.enabled = true;
+        ai.canMove = true;
     }
 
     void OnDisable()
     {
-        navMeshAgent.enabled = false;
+        ai.canMove = false;
     }
 
     public override bool IsMoving()
     {
-        return (navMeshAgent.hasPath && !navMeshAgent.pathPending && !stopped);
+        return (ai.hasPath && !ai.pathPending && !stopped);
     }
 
     public override bool IsTargetUnreachable()
     {
-        return navMeshAgent.hasPath && navMeshAgent.path.status == NavMeshPathStatus.PathPartial;
+        return false;
     }
 
-    public override bool PathComplete()
-    {
-        return navMeshAgent.path.status == NavMeshPathStatus.PathComplete;
-    }
 }
