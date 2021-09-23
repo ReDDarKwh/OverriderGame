@@ -11,10 +11,18 @@ public class DoorController : MonoBehaviour
     public NavMeshObstacle obstacle;
     public float lockTime;
     private float lockStartTime;
+    public LayerMask doorLayerMask;
 
     void Start()
     {
 
+        var gg = AstarPath.active.data.gridGraph;
+
+        gg.GetNodes(node => {
+            // TODO : Find nodes
+
+            Physics2D.OverlapPoint((Vector3)node.position, doorLayerMask);
+        });
     }
 
     internal void SetIsLocked()

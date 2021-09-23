@@ -12,6 +12,22 @@ public class PathFindingNav : Navigation
     public LayerMask doorLayer;
     private Transform movingTarget;
     private Vector3 lastDesiredVelocity;
+    public HashSet<GraphNode> blockedNodes = new HashSet<GraphNode>();
+
+    private CoolTraversalProvider traversalProvider;
+
+    public class CoolTraversalProvider : ITraversalProvider {
+
+        public HashSet<GraphNode> blockedNodes;
+
+        public bool CanTraverse (Path path, GraphNode node) {
+            return !blockedNodes.Contains(node) && node.Walkable && (path.enabledTags >> (int)node.Tag & 0x1) != 0;
+        }
+
+        public uint GetTraversalCost (Path path, GraphNode node) {
+            return DefaultITraversalProvider.GetTraversalCost(path, node);
+        }
+    }
 
     public override Vector3 GetDir()
     {
@@ -49,6 +65,13 @@ public class PathFindingNav : Navigation
     void Start()
     {
         ai = GetComponent<IAstarAI>();
+        traversalProvider = new CoolTraversalProvider(){
+            blockedNodes = blockedNodes
+        };
+        
+        seeker.preProcessPath = (Path p) => {
+            p.traversalProvider = traversalProvider;
+        };
     }
 
     // Update is called once per frame
