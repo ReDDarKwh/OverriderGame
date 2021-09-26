@@ -22,7 +22,7 @@ public class Interactor : MonoBehaviour
             {
                 animator.SetTrigger("Interact");
             }
-            i.Use();
+            i.Use(creature);
         }
     }
 }

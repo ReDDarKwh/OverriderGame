@@ -14253,12 +14253,12 @@ PrefabInstance:
     - target: {fileID: 5836506802272855404, guid: ca6a1c5d20ee9324b87df5a447091852,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.458
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 5836506802272855404, guid: ca6a1c5d20ee9324b87df5a447091852,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.827
+      value: -4.59
       objectReference: {fileID: 0}
     - target: {fileID: 5836506802272855404, guid: ca6a1c5d20ee9324b87df5a447091852,
         type: 3}
@@ -18781,6 +18781,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2861525003701565247, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
+      propertyPath: ai
+      value: 
+      objectReference: {fileID: 1168809618}
+    - target: {fileID: 2861525003701565247, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
       propertyPath: seeker
       value: 
       objectReference: {fileID: 1168809620}
@@ -19199,7 +19204,7 @@ MonoBehaviour:
   endReachedDistance: 0.2
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
+  whenCloseToDestination: 1
   constrainInsideGraph: 0
 --- !u!114 &1168809619
 MonoBehaviour:
@@ -19208,7 +19213,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168809617}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
   m_Name: 
@@ -19711,7 +19716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268278622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.57, y: 10.22, z: 0}
+  m_LocalPosition: {x: -1.72, y: -0.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 591007832}
@@ -29910,7 +29915,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2025144501}
-  - component: {fileID: 2025144500}
   - component: {fileID: 2025144502}
   m_Layer: 0
   m_Name: NavMesh
@@ -29919,39 +29923,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2025144500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025144499}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 148387606d0ccd84fa326ca211f274ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 1
-  m_OverrideByGrid: 0
-  m_UseMeshPrefab: {fileID: 0}
-  m_CompressBounds: 0
-  m_OverrideVector: {x: 1, y: 1, z: 1}
-  m_DefaultArea: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.05333333
-  m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: d536372d26e6eb342bf81912c223c418, type: 2}
 --- !u!4 &2025144501
 Transform:
   m_ObjectHideFlags: 0

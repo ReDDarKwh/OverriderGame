@@ -313,6 +313,16 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.12702915
       objectReference: {fileID: 0}
+    - target: {fileID: 3689620148433642071, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
+        type: 3}
+      propertyPath: doorColliders.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689620148433642071, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
+        type: 3}
+      propertyPath: doorColliders.Array.data[1]
+      value: 
+      objectReference: {fileID: 255170172}
     - target: {fileID: 4125028539202827114, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
         type: 3}
       propertyPath: sceneName

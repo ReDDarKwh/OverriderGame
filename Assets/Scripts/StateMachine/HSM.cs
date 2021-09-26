@@ -99,6 +99,6 @@ public abstract class HSM : MonoBehaviour, ISaveable
 
     public bool OnSaveCondition()
     {
-        return true;
+        return memory != null;
     }
 }

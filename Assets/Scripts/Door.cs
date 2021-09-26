@@ -14,9 +14,9 @@ public class Door : MonoBehaviour
     public float doorDamage;
     public bool disableTouchLock;
 
-    internal void SetIsLocked()
+    internal void SetIsLocked(Creature creature)
     {
-        doorController.SetIsLocked();
+        doorController.SetIsLocked(creature);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -34,7 +34,7 @@ public class Door : MonoBehaviour
         {
             if (AILayers == (AILayers | (1 << col.collider.gameObject.layer)))
             {
-                SetIsLocked();
+                SetIsLocked(col.gameObject.GetComponent<Creature>());
             }
         }
     }

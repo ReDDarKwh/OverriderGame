@@ -11,23 +11,23 @@ public class SwitchTrigger : MonoBehaviour
     {
         if (interactable)
         {
-            interactable.onUsed.AddListener(OnSwitchUsed);
+            interactable.onUsedWithCreature.AddListener(OnSwitchUsed);
         }
     }
 
-    void OnSwitchUsed()
+    void OnSwitchUsed(Creature creature)
     {
         //doorController.openingAction
-        StartCoroutine("CheckDoor");
+        StartCoroutine(CheckDoor(creature));
     }
 
-    IEnumerator CheckDoor()
+    IEnumerator CheckDoor(Creature creature)
     {
         yield return new WaitForSeconds(0.5f);
 
         if (!doorController.openingAction.outputGate.currentValue)
         {
-            doorController.SetIsLocked();
+            doorController.SetIsLocked(creature);
         }
     }
 

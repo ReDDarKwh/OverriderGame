@@ -19,7 +19,7 @@ public class PlayerInteractable : MonoBehaviour
         {
             if (!device || device.playerCanAccess)
             {
-                interactable.Use();
+                interactable.Use(null);
             }
             else
             {

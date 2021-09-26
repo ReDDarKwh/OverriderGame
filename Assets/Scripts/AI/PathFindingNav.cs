@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Linq;
+using System;
 
-public class PathFindingNav : Navigation
+public class PathFindingNav: MonoBehaviour
 {
-    public IAstarAI ai;
+    internal bool stopped;
+    public AIPath ai;
     public Seeker seeker;
     public float refreshDis;
     public LayerMask doorLayer;
@@ -14,14 +17,19 @@ public class PathFindingNav : Navigation
     private Vector3 lastDesiredVelocity;
     public HashSet<GraphNode> blockedNodes = new HashSet<GraphNode>();
 
+    public Dictionary<string, List<GraphNode>> blockedNodesGroups = new Dictionary<string, List<GraphNode>>();
+
     private CoolTraversalProvider traversalProvider;
+    private bool targetUnreachable;
 
     public class CoolTraversalProvider : ITraversalProvider {
-
-        public HashSet<GraphNode> blockedNodes;
+        public Func<HashSet<GraphNode>> GetBlockedNodes { get; internal set; }
 
         public bool CanTraverse (Path path, GraphNode node) {
-            return !blockedNodes.Contains(node) && node.Walkable && (path.enabledTags >> (int)node.Tag & 0x1) != 0;
+
+            var blockedNodes = GetBlockedNodes.Invoke();
+            var canTraverse = !blockedNodes.Contains(node) && node.Walkable && (path.enabledTags >> (int)node.Tag & 0x1) != 0;
+            return canTraverse;
         }
 
         public uint GetTraversalCost (Path path, GraphNode node) {
@@ -29,49 +37,55 @@ public class PathFindingNav : Navigation
         }
     }
 
-    public override Vector3 GetDir()
+    public Vector3 GetDir()
     {
         return ai.desiredVelocity;
     }
 
-    public override void SetSpeed(float speed)
+    public void SetSpeed(float speed)
     {
         ai.maxSpeed = speed;
     }
 
-    public override void SetTarget(Transform target)
+    public void SetTarget(Transform target)
     {
         movingTarget = target;
         SetTarget(movingTarget.position);
     }
 
-    public override void SetTarget(Vector3 target)
+    public void SetTarget(Vector3 target)
     {
         ai.isStopped = stopped = false;
         ai.destination = target;
     }
 
-    public override void Stop()
+    public void Stop()
     {
         ai.isStopped = stopped = true;
         movingTarget = null;
     }
 
-    public override void ClearPath()
+    public void ClearPath()
     {
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        ai = GetComponent<IAstarAI>();
         traversalProvider = new CoolTraversalProvider(){
-            blockedNodes = blockedNodes
+            GetBlockedNodes = () => {return blockedNodes;}
         };
         
-        seeker.preProcessPath = (Path p) => {
+        seeker.preProcessPath += (Path p) => {
             p.traversalProvider = traversalProvider;
         };
+
+        seeker.pathCallback += (Path p) => {
+            targetUnreachable = p.CompleteState == PathCompleteState.Error || p.CompleteState == PathCompleteState.Partial;
+        };
+    }
+
+    void OnDestroy(){
     }
 
     // Update is called once per frame
@@ -84,18 +98,6 @@ public class PathFindingNav : Navigation
                 SetTarget(movingTarget);
             }
         }
-
-        // if (navMeshAgent.hasPath)
-        // {
-        //     if (navMeshAgent.path == NavMeshPathStatus.PathPartial)
-        //     {
-        //         navMeshAgent.velocity = Vector3.zero;
-        //     }
-        //     else
-        //     {
-        //         lastDesiredVelocity = navMeshAgent.desiredVelocity;
-        //     }
-        // }
     }
 
     public bool IsGoingThroughDoor(DoorController doorController)
@@ -131,14 +133,35 @@ public class PathFindingNav : Navigation
         ai.canMove = false;
     }
 
-    public override bool IsMoving()
+    public bool IsMoving()
     {
         return (ai.hasPath && !ai.pathPending && !stopped);
     }
 
-    public override bool IsTargetUnreachable()
+    public bool IsTargetUnreachable()
     {
         return false;
+    }
+
+    private void UpdateBlockedNodes(){
+
+        blockedNodes = new HashSet<GraphNode>(
+            blockedNodesGroups.Values.SelectMany(x => x).Distinct()
+        );
+    }
+
+    internal void LockNodes(string groupId, List<GraphNode> nodesUnderDoor)
+    {
+        if(!blockedNodesGroups.ContainsKey(groupId)){
+            blockedNodesGroups.Add(groupId, nodesUnderDoor);
+        }
+        UpdateBlockedNodes();
+    }
+
+    internal void UnblockNodes(string groupId)
+    {
+        blockedNodesGroups.Remove(groupId);
+        UpdateBlockedNodes();
     }
 
 }

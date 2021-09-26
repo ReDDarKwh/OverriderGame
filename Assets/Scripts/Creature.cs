@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Pathfinding;
 using UnityEngine;
 
 public class Creature : MonoBehaviour
@@ -8,7 +9,7 @@ public class Creature : MonoBehaviour
     public MoveState moveState;
     public Transform body;
     public Vector3 headDir { get; set; }
-    public Navigation nav;
+    public PathFindingNav nav;
     public Killable killable;
     public float damping = 7;
     public UniqueId uniqueId;
