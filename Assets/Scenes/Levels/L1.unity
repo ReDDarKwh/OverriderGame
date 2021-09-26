@@ -18794,6 +18794,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2861525003701565247, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: doorLayer.m_Bits
+      value: 67108864
+      objectReference: {fileID: 0}
     - target: {fileID: 3386556007646536247, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_Enabled
@@ -19204,7 +19209,7 @@ MonoBehaviour:
   endReachedDistance: 0.2
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 1
+  whenCloseToDestination: 0
   constrainInsideGraph: 0
 --- !u!114 &1168809619
 MonoBehaviour:

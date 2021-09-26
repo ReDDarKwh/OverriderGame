@@ -24,7 +24,10 @@ public class DoorController : MonoBehaviour
         var gg = AstarPath.active.data.gridGraph;
 
         gg.GetNodes(node => {
-            if(doorColliders.Contains(Physics2D.OverlapPoint((Vector3)node.position, doorLayerMask))){
+
+            var col = Physics2D.OverlapPoint((Vector3)node.position, doorLayerMask)?.gameObject.GetComponent<Door>()?.doorController;
+
+            if(col != null && col == this){
                 nodesUnderDoor.Add(node);
             };
         });

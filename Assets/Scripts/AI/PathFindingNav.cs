@@ -83,6 +83,7 @@ public class PathFindingNav: MonoBehaviour
         seeker.pathCallback += (Path p) => {
             targetUnreachable = p.CompleteState == PathCompleteState.Error || p.CompleteState == PathCompleteState.Partial;
         };
+        
     }
 
     void OnDestroy(){
@@ -140,7 +141,7 @@ public class PathFindingNav: MonoBehaviour
 
     public bool IsTargetUnreachable()
     {
-        return false;
+        return !ai.pathPending && targetUnreachable;
     }
 
     private void UpdateBlockedNodes(){
