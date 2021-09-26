@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 8679969798129333970}
   - component: {fileID: 1891062268300944313}
   - component: {fileID: 2861525003701565247}
-  - component: {fileID: 955787581}
   - component: {fileID: 2719842466777164584}
   - component: {fileID: 4016200958806998589}
   - component: {fileID: 5394983135458890893}
@@ -200,6 +199,8 @@ GameObject:
   - component: {fileID: 3386556007646536247}
   - component: {fileID: 1018978207635606079}
   - component: {fileID: 8037328349493873468}
+  - component: {fileID: 9063174312630287883}
+  - component: {fileID: 6622381057551690531}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Untagged
@@ -372,33 +373,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4d7e29417b28548af8dc3400985224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 955787581}
+  ai: {fileID: 6622381057551690531}
+  seeker: {fileID: 9063174312630287883}
   refreshDis: 0.5
   doorLayer:
     serializedVersion: 2
-    m_Bits: 16384
---- !u!195 &955787581
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6725844347703517079}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 0.16
-  m_Speed: 1
-  m_Acceleration: 100000
-  avoidancePriority: 1
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 0
-  m_AutoRepath: 0
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 2
+    m_Bits: 67108864
+  targetUnreachableEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8846784824198261850}
+        m_MethodName: TriggerEvent
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: isUnreachable
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2719842466777164584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,6 +668,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2c7167844c4a445b275f02764b1d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9063174312630287883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 1
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -15
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &6622381057551690531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  radius: 0.07
+  height: 0.01
+  repathRate: 1
+  canSearch: 0
+  canMove: 1
+  maxSpeed: 0.5
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  orientation: 1
+  enableRotation: 0
+  targetCompatibility: {fileID: 0}
+  maxAcceleration: -2.5
+  rotationSpeed: 360
+  slowdownDistance: 0
+  pickNextWaypointDist: 0.26
+  endReachedDistance: 0.2
+  alwaysDrawGizmos: 1
+  slowWhenNotFacingTarget: 1
+  whenCloseToDestination: 0
+  constrainInsideGraph: 0
 --- !u!1 &8713028075916982006
 GameObject:
   m_ObjectHideFlags: 0

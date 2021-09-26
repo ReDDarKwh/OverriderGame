@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
 using System;
+using UnityEngine.Events;
 
 public class PathFindingNav: MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class PathFindingNav: MonoBehaviour
     public Seeker seeker;
     public float refreshDis;
     public LayerMask doorLayer;
+    public UnityEvent targetUnreachableEvent;
+
     private Transform movingTarget;
     private Vector3 lastDesiredVelocity;
     public HashSet<GraphNode> blockedNodes = new HashSet<GraphNode>();
@@ -57,6 +60,7 @@ public class PathFindingNav: MonoBehaviour
     {
         ai.isStopped = stopped = false;
         ai.destination = target;
+        ai.SearchPath();
     }
 
     public void Stop()
@@ -82,6 +86,10 @@ public class PathFindingNav: MonoBehaviour
 
         seeker.pathCallback += (Path p) => {
             targetUnreachable = p.CompleteState == PathCompleteState.Error || p.CompleteState == PathCompleteState.Partial;
+
+            if(targetUnreachable){
+                targetUnreachableEvent.Invoke();
+            }
         };
         
     }
@@ -137,11 +145,6 @@ public class PathFindingNav: MonoBehaviour
     public bool IsMoving()
     {
         return (ai.hasPath && !ai.pathPending && !stopped);
-    }
-
-    public bool IsTargetUnreachable()
-    {
-        return !ai.pathPending && targetUnreachable;
     }
 
     private void UpdateBlockedNodes(){

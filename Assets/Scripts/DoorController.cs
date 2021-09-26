@@ -50,12 +50,19 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var removeQueue = new List<Creature>();
+        
         foreach(var keyval in lockedCreatures){
 
             if (Time.time - keyval.Value > lockTime)
             {
                 keyval.Key.nav.UnblockNodes(uniqueId.uniqueId);
+                removeQueue.Add(keyval.Key);
             }
+        }
+
+        foreach(var r in removeQueue){
+            lockedCreatures.Remove(r);
         }
     }
 }

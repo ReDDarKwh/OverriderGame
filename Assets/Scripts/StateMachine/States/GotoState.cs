@@ -57,16 +57,8 @@ namespace Scripts.States
 
         public override void StateUpdate()
         {
-            if (creature.nav.IsTargetUnreachable())
-            {
-                root.TriggerEvent("isUnreachable");
-                return;
-            }
-            else
-            {
-                var v = lookAtTarget ? (isMovingObject ? targetTransform.position : targetPos) - transform.position : creature.nav.GetDir();
-                creature.headDir = v;
-            }
+            var v = lookAtTarget ? (isMovingObject ? targetTransform.position : targetPos) - transform.position : creature.nav.GetDir();
+            creature.headDir = v;
 
             CheckIsAtPosition(atPositionEventName);
         }
@@ -79,10 +71,17 @@ namespace Scripts.States
             }
         }
 
+        private void CleanUpMemory()
+        {
+            memory.Delete("targetPos");
+            memory.Delete("targetTransform");
+        }
+
         public override void StateExit()
         {
             targetTransform = null;
             creature.nav.Stop();
+            CleanUpMemory();
         }
     }
 }
