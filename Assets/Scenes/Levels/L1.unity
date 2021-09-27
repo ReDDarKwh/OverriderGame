@@ -19691,6 +19691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: []
+  memory: {fileID: 0}
 --- !u!114 &1268278628
 MonoBehaviour:
   m_ObjectHideFlags: 0

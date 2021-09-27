@@ -10,10 +10,10 @@ using Newtonsoft.Json;
 
 public abstract class HSM : MonoBehaviour, ISaveable
 {
-    protected StateMachine stateMachine;
+    protected StateMachine stateMachine = new StateMachine();
     private EventData baseData;
     public List<string> currentState;
-    internal StateMachineMemory memory;
+    public StateMachineMemory memory;
     private EnemySharedInfoManager sharedInfoManager;
 
     public static T GetVar<T>(string variableName, EventData data)
@@ -41,11 +41,8 @@ public abstract class HSM : MonoBehaviour, ISaveable
 
     void Start()
     {
-        memory = GetComponent<StateMachineMemory>();
-        stateMachine = new StateMachine();
         Init(stateMachine, this);
         stateMachine.Setup();
-
         sharedInfoManager = GameObject.FindGameObjectWithTag("SceneManager")
         .GetComponent<EnemySharedInfoManager>();
     }
