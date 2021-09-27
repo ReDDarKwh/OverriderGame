@@ -11,6 +11,7 @@ public class DoorController : MonoBehaviour
     public OpeningAction openingAction;
     public NavMeshObstacle obstacle;
     public UniqueId uniqueId;
+    public float enemyNoticeDoorOpenDistance;
 
     public float lockTime;
     private float lockStartTime;
@@ -54,7 +55,9 @@ public class DoorController : MonoBehaviour
         
         foreach(var keyval in lockedCreatures){
 
-            if (Time.time - keyval.Value > lockTime)
+            //TODO: maybe add enemy line of sight door detection <---
+            if (Time.time - keyval.Value > lockTime || (openingAction.outputGate.currentValue &&
+            (keyval.Key.transform.position - transform.position).magnitude < enemyNoticeDoorOpenDistance))
             {
                 keyval.Key.nav.UnblockNodes(uniqueId.uniqueId);
                 removeQueue.Add(keyval.Key);
