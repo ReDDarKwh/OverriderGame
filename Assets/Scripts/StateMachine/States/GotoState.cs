@@ -71,17 +71,10 @@ namespace Scripts.States
             }
         }
 
-        private void CleanUpMemory()
-        {
-            memory.Delete("targetPos");
-            memory.Delete("targetTransform");
-        }
-
         public override void StateExit()
         {
             targetTransform = null;
             creature.nav.Stop();
-            CleanUpMemory();
         }
     }
 }

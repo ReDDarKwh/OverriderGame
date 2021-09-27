@@ -152,6 +152,8 @@ public class PathFindingNav: MonoBehaviour
         blockedNodes = new HashSet<GraphNode>(
             blockedNodesGroups.Values.SelectMany(x => x).Distinct()
         );
+
+        ai.SearchPath();
     }
 
     internal void LockNodes(string groupId, List<GraphNode> nodesUnderDoor)

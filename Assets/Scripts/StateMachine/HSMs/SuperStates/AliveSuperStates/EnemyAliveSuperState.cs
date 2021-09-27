@@ -12,6 +12,8 @@ class EnemyAliveSuperState : SuperState
         var enemyAlert = new EnemyAlertSuperState(sm, root, "enemyAlert");
 
         perceptive.sub.AddHandler("isAlert", enemyAlert.sub);
-        enemyAlert.sub.AddHandler("update", perceptive.sub, EventRepo.TargetOutOfTargetList);
+        enemyAlert.sub.AddUpdateHandler(perceptive.sub, EventRepo.TargetOutOfTargetList, (EventData data) => {
+            GotoSuperState.CleanUpMemory(data.Memory);
+        });
     }
 }

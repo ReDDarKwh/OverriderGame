@@ -124,6 +124,11 @@ PrefabInstance:
       propertyPath: moveSettings.Array.data[5].targetRange
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2861525003701565247, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: targetUnreachableEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3844326425507305194}
     - target: {fileID: 5394983135458890893, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: stateMachine

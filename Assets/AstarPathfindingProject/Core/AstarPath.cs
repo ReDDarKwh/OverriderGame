@@ -1126,7 +1126,7 @@ public class AstarPath : VersionedMonoBehaviour {
 
 	/// <summary>
 	/// Forces work items to complete in a single frame.
-	/// This will force all work items to run immidiately.
+	/// This will force all work items to run immediately.
 	/// This will force the pathfinding threads to finish calculating the path they are currently calculating (if any) and then pause.
 	/// When all threads have paused, work items will be executed (which can be e.g graph updates).
 	///

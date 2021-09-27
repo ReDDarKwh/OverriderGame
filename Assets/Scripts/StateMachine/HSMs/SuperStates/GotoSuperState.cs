@@ -58,12 +58,21 @@ class GotoSuperState : SuperState
 
         go.AddHandler("cleanUpGoto", cleanUp, TransitionKind.External, (EventData data) =>
         {
+            CleanUpMemory(data.Memory);
             root.TriggerEvent("isAtPosition");
         });
 
         go.AddHandler("isUnreachable", cleanUp, TransitionKind.External, (EventData data) => {
+            CleanUpMemory(data.Memory);
             root.TriggerEvent("isStuck");
         });
+    }
+            
+    public static void CleanUpMemory(StateMachineMemory memory)
+    {
+        memory.Delete("targetPos");
+        memory.Delete("targetTransform");
+        memory.Delete("doorController");
     }
 
     private static void RestorePreviousGoto(EventData data)
