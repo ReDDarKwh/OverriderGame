@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Pathfinding;
+using Scripts.Actions;
 using UnityEngine;
 
 public class Creature : MonoBehaviour
@@ -13,6 +14,7 @@ public class Creature : MonoBehaviour
     public Killable killable;
     public float damping = 7;
     public UniqueId uniqueId;
+    public SpottingAction spottingAction;
 
     [System.NonSerialized]
     public bool canLock;

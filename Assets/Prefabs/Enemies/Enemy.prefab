@@ -313,6 +313,7 @@ MonoBehaviour:
   killable: {fileID: 5394983135458890893}
   damping: 7
   uniqueId: {fileID: 1018978207635606079}
+  spottingAction: {fileID: 1108686864222151840}
 --- !u!114 &2490535789703305076
 MonoBehaviour:
   m_ObjectHideFlags: 0

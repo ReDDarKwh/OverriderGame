@@ -55,9 +55,12 @@ public class DoorController : MonoBehaviour
         
         foreach(var keyval in lockedCreatures){
 
-            //TODO: maybe add enemy line of sight door detection <---
-            if (Time.time - keyval.Value > lockTime || (openingAction.outputGate.currentValue &&
-            (keyval.Key.transform.position - transform.position).magnitude < enemyNoticeDoorOpenDistance))
+            if (Time.time - keyval.Value > lockTime || 
+                (
+                    openingAction.outputGate.currentValue &&  
+                    keyval.Key.spottingAction.TargetInView(this.gameObject) != null
+                )
+            )
             {
                 keyval.Key.nav.UnblockNodes(uniqueId.uniqueId);
                 removeQueue.Add(keyval.Key);

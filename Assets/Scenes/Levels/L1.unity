@@ -19608,7 +19608,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268278622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.72, y: -0.86, z: 0}
+  m_LocalPosition: {x: -0.54, y: 8.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 591007832}
@@ -19725,6 +19725,7 @@ MonoBehaviour:
   killable: {fileID: 1268278631}
   damping: 30
   uniqueId: {fileID: 0}
+  spottingAction: {fileID: 0}
 --- !u!114 &1268278630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25625,12 +25626,12 @@ PrefabInstance:
     - target: {fileID: 6725844347703517074, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.894
+      value: -2.14
       objectReference: {fileID: 0}
     - target: {fileID: 6725844347703517074, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.627
+      value: 11.22
       objectReference: {fileID: 0}
     - target: {fileID: 6725844347703517074, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
@@ -29946,7 +29947,7 @@ MonoBehaviour:
       type: 3}
     data_cachedStartup: 
     cacheStartup: 1
-  showNavGraphs: 1
+  showNavGraphs: 0
   showUnwalkableNodes: 1
   debugMode: 6
   debugFloor: 0

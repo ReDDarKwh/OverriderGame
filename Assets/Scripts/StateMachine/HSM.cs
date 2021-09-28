@@ -80,6 +80,10 @@ public abstract class HSM : MonoBehaviour, ISaveable
 
     public string OnSave()
     {
+        if( memory == null || stateMachine == null){
+            return null;
+        }
+
         var s = new SavedHSM{path = stateMachine.GetActiveStateConfiguration(), memory = memory.OnSave()};
         return JsonConvert.SerializeObject(s);
     }
