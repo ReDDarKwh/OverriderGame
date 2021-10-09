@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionName: Desactivate
-  disableOutput: 1
+  disableOutput: 0
   disableInput: 0
   dataInputsNames: []
 --- !u!114 &2321444168961613271
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionName: Activate
-  disableOutput: 1
+  disableOutput: 0
   disableInput: 0
   dataInputsNames: []
 --- !u!114 &4864143694349438116
@@ -324,7 +324,7 @@ PrefabInstance:
     - target: {fileID: 5070161490328133897, guid: 2d2c4c2207900a548ad249c662a44ee6,
         type: 3}
       propertyPath: noiseHeardEvent
-      value: ObjectNoiseHeard
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5070161490328133897, guid: 2d2c4c2207900a548ad249c662a44ee6,
         type: 3}
@@ -526,6 +526,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458872107460082566, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: sceneName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458872107460082566, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: saveIdentification
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8008101631496523900, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
