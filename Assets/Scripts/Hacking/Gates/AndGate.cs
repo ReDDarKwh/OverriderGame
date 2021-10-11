@@ -8,7 +8,7 @@ namespace Scripts.Hacking
     {
         public override void UpdateValue()
         {
-            var condition = parents.All(x => x.currentValue);
+            var condition = parents.Any() && parents.All(x => x.currentValue);
 
             if (currentValue != condition)
             {

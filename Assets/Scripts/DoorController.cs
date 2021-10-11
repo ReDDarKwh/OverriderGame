@@ -62,8 +62,8 @@ public class DoorController : MonoBehaviour
                 )
             )
             {
-                keyval.Key.nav.UnblockNodes(uniqueId.uniqueId);
                 removeQueue.Add(keyval.Key);
+                keyval.Key.nav.UnblockNodes(uniqueId.uniqueId);
             }
         }
 

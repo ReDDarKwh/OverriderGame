@@ -324,7 +324,7 @@ PrefabInstance:
     - target: {fileID: 5070161490328133897, guid: 2d2c4c2207900a548ad249c662a44ee6,
         type: 3}
       propertyPath: noiseHeardEvent
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5070161490328133897, guid: 2d2c4c2207900a548ad249c662a44ee6,
         type: 3}
