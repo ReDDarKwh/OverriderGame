@@ -77,7 +77,7 @@ public partial class PlayerController : MonoBehaviour
             creature.headDir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 
             creature.moveState = dir.magnitude == 0 ? MoveState.Idle : Input.GetAxisRaw("Run") == 1 ? MoveState.Run : MoveState.Walk;
-            anim.SetInteger("Mode", (int)creature.moveState);
+            //anim.SetInteger("Mode", (int)creature.moveState);
         }
     }
 
