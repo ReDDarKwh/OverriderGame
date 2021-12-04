@@ -56,5 +56,6 @@ public class ActionPulseModifier : MonoBehaviour
     {
         desactivate.actionGate.SetValue(false);
         desactivate.actionGate.SetValue(true);
+        desactivate.actionGate.SetValue(false);
     }
 }
