@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Lowscope.Saving.Data;
+using System.Text.RegularExpressions;
+using System;
 
 #if UNITY_WEBGL
 using System.Runtime.InteropServices;
@@ -36,6 +38,16 @@ namespace Lowscope.Saving.Core
             }
         }
 
+        private static string LevelDataPath
+        {
+            get
+            {
+                return string.Format("{0}/{1}",
+                    Application.streamingAssetsPath,
+                    "LevelData");
+            }
+        }
+
         private static void Log(string text)
         {
             if (debugMode)
@@ -61,23 +73,23 @@ namespace Lowscope.Saving.Core
                 Directory.CreateDirectory(DataPath);
             }
 
-            string[] filePaths = Directory.GetFiles(DataPath);
-
-            string[] savePaths = filePaths.Where(path => path.EndsWith(fileExtentionName)).ToArray();
+            string[] savePaths = Directory.GetFiles(DataPath)
+            .Concat(Directory.GetFiles(LevelDataPath))
+            .Where(path => path.EndsWith(fileExtentionName))
+            .ToArray();
 
             int pathCount = savePaths.Length;
 
             for (int i = 0; i < pathCount; i++)
             {
                 Log(string.Format("Found save file at: {0}", savePaths[i]));
+                
+                var fileName = Path.GetFileNameWithoutExtension(savePaths[i]);
+                var match = Regex.Match(fileName, "[0-9]+");
 
-                int getSlotNumber;
-
-                string fileName = savePaths[i].Substring(DataPath.Length + gameFileName.Length + 1);
-
-                if (int.TryParse(fileName.Substring(0, fileName.LastIndexOf(".")), out getSlotNumber))
+                if (match.Success)
                 {
-                    newSavePaths.Add(getSlotNumber, savePaths[i]);
+                    newSavePaths.Add(Convert.ToInt32(match.Value), savePaths[i]);
                 }
             }
 
@@ -187,7 +199,7 @@ namespace Lowscope.Saving.Core
 
         public static void WriteSave(SaveGame saveGame, int saveSlot)
         {
-            string savePath = string.Format("{0}/{1}{2}{3}", DataPath, gameFileName, saveSlot.ToString(), fileExtentionName);
+            string savePath = string.Format("{0}/{1}{2}{3}", saveSlot % 2 == 0? LevelDataPath : DataPath, gameFileName, saveSlot.ToString(), fileExtentionName);
 
             if (!cachedSavePaths.ContainsKey(saveSlot))
             {

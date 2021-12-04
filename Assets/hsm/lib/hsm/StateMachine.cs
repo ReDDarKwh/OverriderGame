@@ -67,8 +67,10 @@ namespace Hsm
 
         public void TearDown(EventData data)
         {
-            currentState.Exit(currentState, null, data);
-            currentState = null;
+            if(currentState != null){
+                currentState.Exit(currentState, null, data);
+                currentState = null;
+            }
         }
 
         public StateMachine AddState(State pState)

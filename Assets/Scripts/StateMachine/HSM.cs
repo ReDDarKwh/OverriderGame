@@ -15,6 +15,7 @@ public abstract class HSM : MonoBehaviour, ISaveable
     public List<string> currentState;
     public StateMachineMemory memory;
     private EnemySharedInfoManager sharedInfoManager;
+    private bool started;
 
     public static T GetVar<T>(string variableName, EventData data)
     {
@@ -41,10 +42,13 @@ public abstract class HSM : MonoBehaviour, ISaveable
 
     void Start()
     {
-        Init(stateMachine, this);
-        stateMachine.Setup();
-        sharedInfoManager = GameObject.FindGameObjectWithTag("SceneManager")
-        .GetComponent<EnemySharedInfoManager>();
+        if(started == false){
+            Init(stateMachine, this);
+            stateMachine.Setup();
+            sharedInfoManager = GameObject.FindGameObjectWithTag("SceneManager")
+            .GetComponent<EnemySharedInfoManager>();
+            started = true;
+        }
     }
 
     private EventData GetBaseData(){
@@ -90,8 +94,11 @@ public abstract class HSM : MonoBehaviour, ISaveable
 
     public void OnLoad(string data)
     {
+        Start();
+        
         var s = JsonConvert.DeserializeObject<SavedHSM>(data);
         var path = new Stack<string>(s.path.ToArray().Reverse());
+
         var state = stateMachine.GetStateByPath(path);
         memory.OnLoad(s.memory);
         stateMachine.TearDown(GetBaseData());

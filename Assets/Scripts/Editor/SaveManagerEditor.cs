@@ -3,17 +3,17 @@ using System.Collections;
 using UnityEditor;
 using Scripts.Hacking;
 
-[CustomEditor(typeof(SaveManager))]
+[CustomEditor(typeof(LevelEditorSaver))]
 public class SaveManagerEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
         
-        SaveManager saveManager = (SaveManager)target;
+        LevelEditorSaver saveManager = (LevelEditorSaver)target;
         if (GUILayout.Button("Save level"))
         {
-            
+            saveManager.SaveLevel();
         }
     }
 }

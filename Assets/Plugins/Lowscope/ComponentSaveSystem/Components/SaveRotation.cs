@@ -28,14 +28,19 @@ namespace Lowscope.Saving.Components
 
         public string OnSave()
         {
-            lastRotation = activeRotation;
-            return JsonUtility.ToJson(new SaveData() { rotation = this.transform.rotation.eulerAngles });
+            try{
+                lastRotation = activeRotation;
+                return JsonUtility.ToJson(new SaveData() { rotation = this.transform.rotation.eulerAngles });
+            }
+            catch (MissingReferenceException){
+                return "";
+            }
         }
 
         public bool OnSaveCondition()
         {
             activeRotation = this.transform.rotation.eulerAngles;
-            return lastRotation != activeRotation;
+            return this.gameObject.activeSelf && lastRotation != activeRotation ;
         }
     }
 }

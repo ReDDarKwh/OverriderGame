@@ -514,17 +514,17 @@ namespace Lowscope.Saving
         }
 
         /// <summary>
-        /// Remove saveable from the notification list. So it no longers recieves load/save requests.
+        /// Remove saveable from the notification list. So it no longers receives load/save requests.
         /// </summary>
         /// <param name="saveable"> Reference to the saveable that listens to the Save Master </param>
         public static void RemoveListener(Saveable saveable)
         {
             if (saveables.Remove(saveable))
             {
-                if (saveable != null && activeSaveGame != null)
-                {
-                    saveable.OnSaveRequest(activeSaveGame);
-                }
+                // if (saveable != null && activeSaveGame != null)
+                // {
+                //     saveable.OnSaveRequest(activeSaveGame);
+                // }
             }
         }
 

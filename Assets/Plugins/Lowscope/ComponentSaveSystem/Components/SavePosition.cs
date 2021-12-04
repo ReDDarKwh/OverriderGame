@@ -29,13 +29,18 @@ namespace Lowscope.Saving.Components
 
         public string OnSave()
         {
-            lastPosition = transform.position;
-            return JsonUtility.ToJson(new SaveData { position = lastPosition });
+            try{
+                lastPosition = transform.position;
+                return JsonUtility.ToJson(new SaveData { position = lastPosition });
+            }
+            catch (MissingReferenceException){
+                return "";
+            }
         }
 
         public bool OnSaveCondition()
         {
-            return lastPosition != transform.position;
+            return this.gameObject.activeSelf && lastPosition != transform.position;
         }
     }
 }
