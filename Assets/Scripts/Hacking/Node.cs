@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Lowscope.Saving;
 using Scripts.Actions;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Scripts.Hacking
 {
-    public class Node : MonoBehaviour
+    public class Node : MonoBehaviour 
     {
         public GateType gateType;
         public float boardcastDelay;
@@ -37,6 +38,13 @@ namespace Scripts.Hacking
         private NodeState currentState;
         private bool isHovered;
         internal bool rightClickDown;
+
+
+        [Serializable]
+        public struct SaveData
+        {
+            public bool gateValue;
+        }
 
         // Start is called before the first frame update
 
@@ -306,7 +314,20 @@ namespace Scripts.Hacking
             }
         }
 
+        public string OnSave()
+        {
+            return JsonUtility.ToJson(new SaveData{gateValue = gate.currentValue});
+        }
 
+        public void OnLoad(string data)
+        {
+            gate.currentValue = JsonUtility.FromJson<SaveData>(data).gateValue;      
+        }
+
+        public bool OnSaveCondition()
+        {
+            return this != null && this.gameObject.activeSelf;
+        }
     }
 }
 

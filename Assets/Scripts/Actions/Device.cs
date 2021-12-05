@@ -28,10 +28,10 @@ namespace Scripts.Actions
         internal AttachedGadgetController attachedGadgetController;
         internal bool isAttachedGadget;
         internal Dictionary<Action, Dictionary<string, Node>> nodesPerAction;
+        internal bool initiated;
 
         private Dictionary<string, GameObject> currentActionDisplays = new Dictionary<string, GameObject>();
         private Transform mousePos;
-        internal bool initiated;
 
         // Start is called before the first frame update
         void Start()
@@ -115,14 +115,14 @@ namespace Scripts.Actions
                     {
                         var inst = Instantiate(ActionNodePrefab, actionDisplayContainer);
                         var actionDisplay = inst.GetComponent<ActionNodeDisplay>();
-                        var actionid = deviceId.uniqueId + action.actionName;
+                        var actionId = deviceId.uniqueId + action.actionName;
 
                         currentActionDisplays.Add(action.actionName, inst.gameObject);
                         actionDisplay.name = action.actionName;
                         actionDisplay.device = parentDevice ?? this;
 
-                        actionDisplay.outputNode.Init(this, actionid + "output");
-                        actionDisplay.inputNode.Init(this, actionid + "input");
+                        actionDisplay.outputNode.Init(this, actionId + "output");
+                        actionDisplay.inputNode.Init(this, actionId + "input");
 
                         action.inputGate = actionDisplay.inputNode.gate;
                         action.outputGate = actionDisplay.outputNode.gate;
@@ -143,7 +143,7 @@ namespace Scripts.Actions
 
                         foreach (var dataGate in action.dataGates)
                         {
-                            dataNodes.Add(dataGate.name, actionDisplay.AddDataGate(dataGate, actionid));
+                            dataNodes.Add(dataGate.name, actionDisplay.AddDataGate(dataGate, actionId));
                         }
                     }
                 }

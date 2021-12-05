@@ -39,8 +39,11 @@ namespace Lowscope.Saving.Components
 
         public bool OnSaveCondition()
         {
-            activeRotation = this.transform.rotation.eulerAngles;
-            return this.gameObject.activeSelf && lastRotation != activeRotation ;
+            if(this != null){
+                activeRotation = this.transform.rotation.eulerAngles;
+            }
+
+            return this != null && this.gameObject.activeSelf;
         }
     }
 }

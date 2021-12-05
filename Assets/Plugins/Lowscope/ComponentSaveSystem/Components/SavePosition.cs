@@ -40,7 +40,7 @@ namespace Lowscope.Saving.Components
 
         public bool OnSaveCondition()
         {
-            return this.gameObject.activeSelf && lastPosition != transform.position;
+            return this != null && this.gameObject.activeSelf && lastPosition != transform.position;
         }
     }
 }

@@ -1,18 +1,38 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Lowscope.Saving;
 using Scripts.Actions;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Door : MonoBehaviour
 {
-
     public DoorController doorController;
     public OpeningAction openingAction;
     public LayerMask AILayers;
     public float doorDamage;
-    public bool disableTouchLock;
+    private bool disableTouchLock;
+
+    void Awake(){
+        SaveMaster.OnSlotChangeBegin += OnSlotChangeBegin;
+        SaveMaster.OnSlotChangeDone += OnSlotChangeDone;
+    }
+
+    private void OnSlotChangeDone(int obj)
+    {
+        disableTouchLock = false;  
+    }
+
+    private void OnSlotChangeBegin(int obj)
+    {
+        disableTouchLock = true;        
+    }
+
+    void OnDestroy(){
+        SaveMaster.OnSlotChangeBegin -= OnSlotChangeBegin;
+        SaveMaster.OnSlotChangeDone -= OnSlotChangeDone;
+    }
 
     internal void SetIsLocked(Creature creature)
     {

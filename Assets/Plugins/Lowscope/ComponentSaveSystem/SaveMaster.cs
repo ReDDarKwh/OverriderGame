@@ -301,6 +301,15 @@ namespace Lowscope.Saving
             activeSlot = slot;
             activeSaveGame = (saveGame == null) ? SaveFileUtility.LoadSave(slot, true) : saveGame;
 
+            // Dont create save instance manager if there are no saved instances in the scene.
+            if (!string.IsNullOrEmpty(activeSaveGame.Get(string.Format("SaveMaster-{0}-IM", SceneManager.GetActiveScene().name))))
+            {
+                if (!saveInstanceManagers.ContainsKey(SceneManager.GetActiveScene().GetHashCode()))
+                {
+                    SpawnInstanceManager(SceneManager.GetActiveScene());
+                }
+            }
+
             if (reloadSaveables)
             {
                 SyncLoad();

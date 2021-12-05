@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Lowscope.Saving;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelEditorSaver : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class LevelEditorSaver : MonoBehaviour
     }
 
     void Start(){
+        //SaveMaster.SpawnInstanceManager(SceneManager.GetActiveScene());
         SaveMaster.SetSlot(SlotNumber, true);
     }
 

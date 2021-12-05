@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using Scripts.Hacking;
 using UnityEngine;
 using System.Linq;
+using Lowscope.Saving;
 
 namespace Scripts.Actions
 {
-    public abstract class Action : MonoBehaviour
+    public abstract class Action : MonoBehaviour, ISaveable
     {
         public string actionName;
         public bool disableOutput;
@@ -22,6 +23,14 @@ namespace Scripts.Actions
         internal bool hacked;
 
         public event EventHandler AfterInit;
+
+
+        [Serializable]
+        public class SaveData
+        {
+            public bool inputGateValue;
+        }
+
 
         public void Init()
         {
@@ -58,6 +67,7 @@ namespace Scripts.Actions
 
             OnAfterInit(EventArgs.Empty);
         }
+
         private void gate_DisconnectedFrom(object sender, EventArgs e)
         {
             if (inputGate.parents.Count == 0)
@@ -66,6 +76,7 @@ namespace Scripts.Actions
                 hacked = false;
             }
         }
+
         private void gate_ConnectedTo(object sender, EventArgs e)
         {
             if (inputGate.parents.Count == 1)
@@ -74,10 +85,26 @@ namespace Scripts.Actions
                 hacked = true;
             }
         }
+        
         protected virtual void OnAfterInit(EventArgs e)
         {
             EventHandler handler = AfterInit;
             handler?.Invoke(this, e);
+        }
+
+        public virtual string OnSave()
+        {
+            return JsonUtility.ToJson(new SaveData { inputGateValue = inputGate?.currentValue ?? false });
+        }
+
+        public virtual void OnLoad(string data)
+        {
+            this.inputGate?.SetValue(JsonUtility.FromJson<SaveData>(data).inputGateValue);
+        }
+
+        public bool OnSaveCondition()
+        {
+            return this != null && this.gameObject.activeSelf;
         }
     }
 

@@ -77,7 +77,9 @@ public class PathFindingNav: MonoBehaviour
     void Start()
     {
         traversalProvider = new CoolTraversalProvider(){
-            GetBlockedNodes = () => {return blockedNodes;}
+            GetBlockedNodes = () => {
+                return blockedNodes;
+                }
         };
         
         seeker.preProcessPath += (Path p) => {

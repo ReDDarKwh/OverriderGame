@@ -67,6 +67,7 @@ MonoBehaviour:
   openingAction: {fileID: 8919092600668445285}
   obstacle: {fileID: 4398630482785621332}
   uniqueId: {fileID: 5068457013782638350}
+  enemyNoticeDoorOpenDistance: 0
   lockTime: 60
   doorLayerMask:
     serializedVersion: 2
@@ -171,6 +172,7 @@ GameObject:
   - component: {fileID: 3689620147346789886}
   - component: {fileID: 3689620147346789885}
   - component: {fileID: 3689620147346789884}
+  - component: {fileID: 7831113597745220309}
   m_Layer: 26
   m_Name: Door
   m_TagString: Untagged
@@ -261,7 +263,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 33562624
   doorDamage: 1000000
-  disableTouchLock: 0
 --- !u!61 &3689620147346789885
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -314,6 +315,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75230646, y: 0.0956707}
   m_EdgeRadius: 0
+--- !u!114 &7831113597745220309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689620147346789874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2c7167844c4a445b275f02764b1d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6411344215655945897
 GameObject:
   m_ObjectHideFlags: 0

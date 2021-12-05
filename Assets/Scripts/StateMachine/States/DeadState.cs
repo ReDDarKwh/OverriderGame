@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using Lowscope.Saving;
 using Scripts.States;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace Scripts.States
         public GameObject explodeEffect;
         public GameObject deadBodyPrefab;
 
+        public string deadBodyPrefabPath;
+
         // Start is called before the first frame update
         public override void StateEnter()
         {
@@ -21,7 +24,12 @@ namespace Scripts.States
             }
             else
             {
-                Instantiate(deadBodyPrefab, transform.position, Quaternion.identity);
+                //Instantiate(deadBodyPrefab, transform.position, Quaternion.identity);
+                
+                var inst = SaveMaster.SpawnSavedPrefab(Lowscope.Saving.Enums.InstanceSource.Resources, deadBodyPrefabPath);
+                inst.transform.position = transform.position;
+                inst.transform.rotation = Quaternion.identity;
+                
                 Destroy(this.gameObject);
             }
         }

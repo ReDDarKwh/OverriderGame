@@ -107,6 +107,6 @@ public abstract class HSM : MonoBehaviour, ISaveable
 
     public bool OnSaveCondition()
     {
-        return this.gameObject.activeSelf && memory != null && stateMachine != null;
+        return this != null && this.gameObject.activeSelf && memory != null && stateMachine != null;
     }
 }
