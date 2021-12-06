@@ -28,7 +28,7 @@ namespace Scripts.Actions
         [Serializable]
         public class SaveData
         {
-            public bool inputGateValue;
+            public bool outputGate;
         }
 
 
@@ -94,12 +94,12 @@ namespace Scripts.Actions
 
         public virtual string OnSave()
         {
-            return JsonUtility.ToJson(new SaveData { inputGateValue = inputGate?.currentValue ?? false });
+            return JsonUtility.ToJson(new SaveData { outputGate = outputGate?.currentValue ?? false });
         }
 
         public virtual void OnLoad(string data)
         {
-            this.inputGate?.SetValue(JsonUtility.FromJson<SaveData>(data).inputGateValue);
+            this.outputGate?.SetValue(JsonUtility.FromJson<SaveData>(data).outputGate);
         }
 
         public bool OnSaveCondition()

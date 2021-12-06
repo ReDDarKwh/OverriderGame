@@ -17,7 +17,6 @@ public class LevelEditorSaver : MonoBehaviour
     }
 
     void Start(){
-        //SaveMaster.SpawnInstanceManager(SceneManager.GetActiveScene());
         SaveMaster.SetSlot(SlotNumber, true);
     }
 

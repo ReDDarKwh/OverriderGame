@@ -32,7 +32,7 @@ namespace Scripts.Actions
             return JsonUtility.ToJson(
                 new OpeningSaveData { 
                     pos = pos, 
-                    inputGateValue = inputGate?.currentValue ?? false 
+                    outputGate = outputGate?.currentValue ?? false 
                 });
         }
 

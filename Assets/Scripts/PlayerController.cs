@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Lowscope.Saving;
 using UnityEngine;
 
 public partial class PlayerController : MonoBehaviour
@@ -22,10 +24,41 @@ public partial class PlayerController : MonoBehaviour
     private bool paused;
     private GameObject[] covers;
 
+    void Awake(){
+        SaveMaster.OnSlotChangeBegin += OnSlotChangeBegin;
+        SaveMaster.OnSlotChangeDone += OnSlotChangeDone;
+    }
+
+    private void OnSlotChangeDone(int obj)
+    {
+        Unpause();
+    }
+
+    private void OnSlotChangeBegin(int obj)
+    {
+        Pause();
+    }
+
+    void OnDestroy(){
+        SaveMaster.OnSlotChangeBegin -= OnSlotChangeBegin;
+        SaveMaster.OnSlotChangeDone -= OnSlotChangeDone;
+    }
 
     void Start()
     {
         covers = GameObject.FindGameObjectsWithTag("Cover");
+    }
+
+    public void Pause(){
+        Time.timeScale = 0.0f;
+        paused = true;
+        soundManager.PauseAll();
+    }
+
+    public void Unpause(){
+        Time.timeScale = 1.0f;
+        paused = false;
+        soundManager.PlayAll();
     }
 
     // Update is called once per frame
@@ -35,15 +68,11 @@ public partial class PlayerController : MonoBehaviour
         {
             if (!paused)
             {
-                Time.timeScale = 0.0f;
-                paused = true;
-                soundManager.PauseAll();
+                Pause();
             }
             else
             {
-                Time.timeScale = 1.0f;
-                paused = false;
-                soundManager.PlayAll();
+                Unpause();
             }
         }
 
