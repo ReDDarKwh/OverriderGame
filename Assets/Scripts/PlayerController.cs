@@ -17,63 +17,40 @@ public partial class PlayerController : MonoBehaviour
     public SoundManager soundManager;
     public string lowCoverLayerMask;
     public string coverLayerMask;
-
+    public PauseManager pauseManager;
+    public LevelMenuManager levelMenuManager;
+    
     internal Vector3 vel;
     private Vector3 dir;
     private float lastEmission;
-    private bool paused;
     private GameObject[] covers;
-
-    void Awake(){
-        SaveMaster.OnSlotChangeBegin += OnSlotChangeBegin;
-        SaveMaster.OnSlotChangeDone += OnSlotChangeDone;
-    }
-
-    private void OnSlotChangeDone(int obj)
-    {
-        Unpause();
-    }
-
-    private void OnSlotChangeBegin(int obj)
-    {
-        Pause();
-    }
-
-    void OnDestroy(){
-        SaveMaster.OnSlotChangeBegin -= OnSlotChangeBegin;
-        SaveMaster.OnSlotChangeDone -= OnSlotChangeDone;
-    }
-
+    
     void Start()
     {
         covers = GameObject.FindGameObjectsWithTag("Cover");
     }
 
-    public void Pause(){
-        Time.timeScale = 0.0f;
-        paused = true;
-        soundManager.PauseAll();
-    }
-
-    public void Unpause(){
-        Time.timeScale = 1.0f;
-        paused = false;
-        soundManager.PlayAll();
-    }
-
     // Update is called once per frame
     void Update()
     {
+        if(levelMenuManager.isPauseMenuDisplayed){
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!paused)
+            if (!pauseManager.isPaused)
             {
-                Pause();
+                pauseManager.Pause();
             }
             else
             {
-                Unpause();
+                pauseManager.Unpause();
             }
+        }
+
+        if (pauseManager.isPaused){
+            return;
         }
 
         if (creature.moveState != MoveState.Idle && Time.time - lastEmission > runNoiseEmissionInterval)
@@ -99,15 +76,9 @@ public partial class PlayerController : MonoBehaviour
             ChangeCover(false);
         }
 
-
-        if (!paused)
-        {
-            dir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-            creature.headDir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
-            creature.moveState = dir.magnitude == 0 ? MoveState.Idle : Input.GetAxisRaw("Run") == 1 ? MoveState.Run : MoveState.Walk;
-            //anim.SetInteger("Mode", (int)creature.moveState);
-        }
+        dir = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        creature.headDir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        creature.moveState = dir.magnitude == 0 ? MoveState.Idle : Input.GetAxisRaw("Run") == 1 ? MoveState.Run : MoveState.Walk;
     }
 
     private void ChangeCover(bool lower)

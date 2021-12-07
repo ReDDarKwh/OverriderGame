@@ -53,14 +53,17 @@ public class Connection : MonoBehaviour
     private bool selectedForDelete;
     private IEnumerable<electricHumSetting> electricHum;
 
+    private Color lineColor;
+
     // Start is called before the first frame update
     void Start()
     {
+        lineColor = UnityEngine.Random.ColorHSV(0, 1, 0.5f, 1);
+
         line = new VectorLine("ConnectionLine", new List<Vector3>(), lineWidth, lineDepth);
         line.joins = Joins.Weld;
         line.lineType = LineType.Continuous;
         line.maxWeldDistance = lineMaxWeldDistance;
-        line.color = color;
         line.material = lineMaterial;
         if (soundOn)
         {
@@ -131,6 +134,8 @@ public class Connection : MonoBehaviour
         if (start.rightClickDown || end.rightClickDown || selectedForDelete)
         {
             line.color = removeColor;
+        } else {
+            line.color = lineColor;
         }
 
         line.SetWidth(lineWidth / Camera.main.orthographicSize);
@@ -150,6 +155,7 @@ public class Connection : MonoBehaviour
                     lastDotTime = Time.unscaledTime;
                     var dot = Instantiate(connectionDotPrefab, startPos.position, Quaternion.identity).GetComponent<ConnectionDot>();
                     dot.line = line;
+                    dot.spriteRenderer.color = lineColor;
                     dot.gate = start.gate;
                     dot.connection = this;
                 }

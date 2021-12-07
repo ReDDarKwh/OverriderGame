@@ -23,6 +23,8 @@ class StationnarySuperState : SuperState
             root.GetComponent<PatrollingState>().AtStationnaryOutpost();
         });
 
+        atPos.AddUpdateHandler(start, EventRepo.Timeout(5));
+
         go.sub.AddHandler("isStuck", stuck);
         stuck.AddUpdateHandler(start, EventRepo.Timeout(5));
     }

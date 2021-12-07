@@ -6,8 +6,9 @@ using UnityEngine.AI;
 using System.Linq;
 using System;
 using UnityEngine.Events;
+using Lowscope.Saving;
 
-public class PathFindingNav: MonoBehaviour
+public class PathFindingNav: MonoBehaviour, ISaveable
 {
     internal bool stopped;
     public AIPath ai;
@@ -40,9 +41,18 @@ public class PathFindingNav: MonoBehaviour
         }
     }
 
+    [Serializable]
+    public struct SaveData
+    {
+        public Vector3 lastDesiredVelocity;
+    }
+
     public Vector3 GetDir()
     {
-        return ai.desiredVelocity;
+        if(IsMoving())
+            lastDesiredVelocity = ai.desiredVelocity;
+        
+        return lastDesiredVelocity;
     }
 
     public void SetSpeed(float speed)
@@ -172,4 +182,18 @@ public class PathFindingNav: MonoBehaviour
         UpdateBlockedNodes();
     }
 
+    public string OnSave()
+    {
+        return JsonUtility.ToJson(new SaveData { lastDesiredVelocity = lastDesiredVelocity });
+    }
+
+    public void OnLoad(string data)
+    {
+        lastDesiredVelocity = JsonUtility.FromJson<SaveData>(data).lastDesiredVelocity;
+    }
+
+    public bool OnSaveCondition()
+    {
+        return this != null && this.gameObject.activeSelf;
+    }
 }

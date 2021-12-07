@@ -279,12 +279,6 @@ namespace Lowscope.Saving
                 return;
             }
 
-            // Ensure the current game is saved, and write it to disk, if that is wanted behaviour.
-            if (SaveSettings.Get().autoSaveOnSlotSwitch && activeSaveGame != null)
-            {
-                WriteActiveSaveToDisk();
-            }
-
             if (SaveSettings.Get().cleanSavedPrefabsOnSlotSwitch)
             {
                 ClearActiveSavedPrefabs();

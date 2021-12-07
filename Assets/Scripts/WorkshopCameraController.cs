@@ -10,6 +10,7 @@ public class WorkshopCameraController : MonoBehaviour
     public float maxDistance = 20;
     public float minDistance = .6f;
     public Camera cam;
+    public LevelMenuManager levelMenuManager;
 
     private float xDeg = 0.0f;
     private float yDeg = 0.0f;
@@ -60,6 +61,10 @@ public class WorkshopCameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        if(levelMenuManager.isPauseMenuDisplayed){
+            return;
+        }
+
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             ZoomOrthoCamera(cam.ScreenToWorldPoint(Input.mousePosition), 1);
