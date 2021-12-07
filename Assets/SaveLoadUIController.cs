@@ -42,12 +42,12 @@ public class SaveLoadUIController : MonoBehaviour
         SaveMaster.DeleteSave(selectedSlot.slotNumber);
         SaveMaster.SetSlot(selectedSlot.slotNumber, false);
         SaveMaster.WriteActiveSaveToDisk();
-        SaveMaster.ClearSlot(true, false);
 
         UpdateDisplay(selectedSlot);
     }
 
     public void Load(){
+        SaveMaster.ClearActiveSavedPrefabs();
         SaveMaster.SetSlot(selectedSlot.slotNumber, false);
         SaveMaster.SyncLoad();
     }

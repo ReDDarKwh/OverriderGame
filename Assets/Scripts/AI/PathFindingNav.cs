@@ -18,13 +18,14 @@ public class PathFindingNav: MonoBehaviour, ISaveable
     public UnityEvent targetUnreachableEvent;
 
     private Transform movingTarget;
-    private Vector3 lastDesiredVelocity;
+    public Vector3 lastDesiredVelocity;
     public HashSet<GraphNode> blockedNodes = new HashSet<GraphNode>();
 
     public Dictionary<string, List<GraphNode>> blockedNodesGroups = new Dictionary<string, List<GraphNode>>();
 
     private CoolTraversalProvider traversalProvider;
     private bool targetUnreachable;
+    public bool IsMovingD;
 
     public class CoolTraversalProvider : ITraversalProvider {
         public Func<HashSet<GraphNode>> GetBlockedNodes { get; internal set; }
@@ -75,6 +76,7 @@ public class PathFindingNav: MonoBehaviour, ISaveable
 
     public void Stop()
     {
+        ai.SetPath(null);
         ai.isStopped = stopped = true;
         movingTarget = null;
     }
@@ -119,6 +121,8 @@ public class PathFindingNav: MonoBehaviour, ISaveable
                 SetTarget(movingTarget);
             }
         }
+
+        IsMovingD = IsMoving();
     }
 
     public bool IsGoingThroughDoor(DoorController doorController)
@@ -189,7 +193,13 @@ public class PathFindingNav: MonoBehaviour, ISaveable
 
     public void OnLoad(string data)
     {
+        ResetPathfinding();
         lastDesiredVelocity = JsonUtility.FromJson<SaveData>(data).lastDesiredVelocity;
+    }
+
+    public void ResetPathfinding(){
+        ai.enabled = false;
+        ai.enabled = true;
     }
 
     public bool OnSaveCondition()

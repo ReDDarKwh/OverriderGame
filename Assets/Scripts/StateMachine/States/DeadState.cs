@@ -20,18 +20,15 @@ namespace Scripts.States
             if ((DamageType)memory.Get<DamageType>("damageType") == DamageType.Explosion)
             {
                 Instantiate(explodeEffect, transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
             }
             else
             {
-                //Instantiate(deadBodyPrefab, transform.position, Quaternion.identity);
-                
                 var inst = SaveMaster.SpawnSavedPrefab(Lowscope.Saving.Enums.InstanceSource.Resources, deadBodyPrefabPath);
                 inst.transform.position = transform.position;
                 inst.transform.rotation = Quaternion.identity;
-                
-                Destroy(this.gameObject);
             }
+
+            this.gameObject.SetActive(false);
         }
 
         public override void StateExit()

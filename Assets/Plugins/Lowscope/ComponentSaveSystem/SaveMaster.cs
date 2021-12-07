@@ -814,7 +814,7 @@ namespace Lowscope.Saving
         /// <summary>
         /// Clean all currently saved prefabs. Useful when switching scenes.
         /// </summary>
-        private static void ClearActiveSavedPrefabs()
+        public static void ClearActiveSavedPrefabs()
         {
             int totalLoadedScenes = SceneManager.sceneCount;
 

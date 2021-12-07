@@ -394,6 +394,8 @@ MonoBehaviour:
           m_StringArgument: isUnreachable
           m_BoolArgument: 0
         m_CallState: 2
+  lastDesiredVelocity: {x: 0, y: 0, z: 0}
+  IsMovingD: 0
 --- !u!114 &2719842466777164584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,7 +852,7 @@ MonoBehaviour:
   VisionAngle: 51
   ViewBlockingLayers:
     serializedVersion: 2
-    m_Bits: 8404992
+    m_Bits: 75513856
   TargetLayers:
     serializedVersion: 2
     m_Bits: 33554688

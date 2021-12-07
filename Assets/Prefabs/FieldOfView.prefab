@@ -60,7 +60,7 @@ MonoBehaviour:
     m_Bits: 0
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 8404992
+    m_Bits: 75513856
   visibleTargets: []
   meshResolution: 1
   edgeResolveIterations: 4

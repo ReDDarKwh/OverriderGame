@@ -88,7 +88,7 @@ MonoBehaviour:
   VisionAngle: 57
   ViewBlockingLayers:
     serializedVersion: 2
-    m_Bits: 8404992
+    m_Bits: 75513856
   TargetLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -416,6 +416,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458872107460082566, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: sceneName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7458872107460082566, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: saveIdentification
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7563968158469420486, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}

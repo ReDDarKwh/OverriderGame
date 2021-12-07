@@ -54,6 +54,11 @@ public class FieldOfView : MonoBehaviour
         VectorLine.Destroy(ref line);
     }
 
+    void OnDisable()
+    {
+        VectorLine.Destroy(ref line);
+    }
+
     IEnumerator FindTargetsWithDelay(float delay)
     {
         while (true)

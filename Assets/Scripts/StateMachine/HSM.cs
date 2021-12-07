@@ -8,6 +8,7 @@ using System.Linq;
 using Lowscope.Saving;
 using Newtonsoft.Json;
 
+[RequireComponent(typeof(StateMachineMemory), typeof(EmptyState))]
 public abstract class HSM : MonoBehaviour, ISaveable
 {
     protected StateMachine stateMachine = new StateMachine();
