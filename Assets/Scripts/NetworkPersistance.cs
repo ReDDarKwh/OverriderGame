@@ -111,17 +111,11 @@ namespace Scripts.Hacking
 
         public void OnLoad(string data)
         {
-            StartCoroutine(Load(data));
-        }
-        
-        private IEnumerator Load(string data)
-        {
-            yield return new WaitForSeconds(0.1f);
-
             var levelNodes = network.GetComponentsInChildren<Node>();
             levelNodesRepo = new Dictionary<string, Node>();
             foreach (var node in levelNodes)
             {
+                node.DisconnectAll(true);
                 levelNodesRepo.Add(node.nodeId, node);
             }
 
@@ -134,7 +128,7 @@ namespace Scripts.Hacking
                 Connect(savedNode, savedNodeRepo, connectedNodes);
             }
         }
-
+        
         public bool OnSaveCondition()
         {
             return true;

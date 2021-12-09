@@ -24,13 +24,11 @@ namespace Scripts.Actions
 
         public event EventHandler AfterInit;
 
-
         [Serializable]
         public class SaveData
         {
             public bool outputGate;
         }
-
 
         public void Init()
         {

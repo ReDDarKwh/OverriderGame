@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Lowscope.Saving;
 using UnityEngine;
@@ -10,6 +11,37 @@ public class LevelEditorSaver : MonoBehaviour
 
     public int levelSceneId;
 
+    public static LevelEditorSaver Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    internal void ResetLevel()
+    {
+        StartCoroutine(LoadYourAsyncScene());
+    }
+
+    IEnumerator LoadYourAsyncScene()
+    {
+        SaveMaster.ClearSlot(false);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelSceneId);
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        yield return 0;
+        Load();
+    }
+
     private int SlotNumber
     {
         get
@@ -18,7 +50,9 @@ public class LevelEditorSaver : MonoBehaviour
         }
     }
 
-    void Start(){
+    IEnumerator Start(){
+        yield return 0;
+        yield return 0;
         Load();
     }
 

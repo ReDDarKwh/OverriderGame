@@ -48,7 +48,9 @@ namespace Scripts.Actions
 
             activate.outputGate.ValueHasChanged += (object sender, EventArgs args) =>
             {
-                AttractClosestGuard();
+                if(activate.outputGate.currentValue){
+                    AttractClosestGuard();
+                }
             };
 
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Lowscope.Saving;
@@ -13,6 +14,12 @@ namespace Scripts.States
         public Transform stationnaryTransform;
         public GameObject waypointPrefab;
         internal int currentPoint = -1;
+
+        [Serializable]
+        public struct SaveData
+        {
+            public int currentPoint;
+        }
 
         public void Init()
         {
@@ -45,12 +52,12 @@ namespace Scripts.States
 
         public string OnSave()
         {
-            return JsonUtility.ToJson(currentPoint);
+            return JsonUtility.ToJson(new SaveData { currentPoint = currentPoint });
         }
 
         public void OnLoad(string data)
         {
-            currentPoint = JsonUtility.FromJson<int>(data);
+            currentPoint = JsonUtility.FromJson<SaveData>(data).currentPoint;
         }
 
         public bool OnSaveCondition()

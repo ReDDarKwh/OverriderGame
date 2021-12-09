@@ -48,7 +48,7 @@ namespace Scripts.States
                 isMovingObject = false;
             }
 
-            CheckIsAtPosition(atPositionEventName);
+            //CheckIsAtPosition(atPositionEventName);
         }
 
         public override void StateUpdate()
