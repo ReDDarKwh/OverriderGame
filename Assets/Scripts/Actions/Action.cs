@@ -99,11 +99,10 @@ namespace Scripts.Actions
 
         public virtual void OnLoad(string data)
         {
-            Init();
             this.outputGate?.SetValue(JsonUtility.FromJson<SaveData>(data).outputGate);
         }
 
-        public bool OnSaveCondition()
+        public virtual bool OnSaveCondition()
         {
             return this != null && this.gameObject.activeSelf;
         }

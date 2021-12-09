@@ -20,6 +20,8 @@ public class GameOverMenuUIController : MonoBehaviour
             yield return null;
         }
 
+        yield return new WaitForEndOfFrame();
+
         GameObject.FindGameObjectWithTag("SceneManager")
             .GetComponent<LevelEditorSaver>().Load();
     }

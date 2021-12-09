@@ -16,7 +16,7 @@ public class SwitchAction : Scripts.Actions.Action, ISaveable
         public float timeOn;
     }
 
-    public void OnLoad(string data)
+    public override void OnLoad(string data)
     {
         base.OnLoad(data);
         var sd = JsonUtility.FromJson<SaveData>(data);
@@ -24,17 +24,12 @@ public class SwitchAction : Scripts.Actions.Action, ISaveable
         lastOnTime = Time.time - sd.timeOn;
     }
 
-    public string OnSave()
+    public override string OnSave()
     {
         return JsonUtility.ToJson(new SaveData {
                 isOn = actionGate.currentValue,
                 timeOn = Time.time - lastOnTime
             });
-    }
-
-    public bool OnSaveCondition()
-    {
-        return true;
     }
 
     public void Toggle()
