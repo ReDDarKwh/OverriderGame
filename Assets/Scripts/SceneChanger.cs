@@ -7,9 +7,9 @@ public class SceneChanger : MonoBehaviour
 {
     public int currentSceneId;
 
-    public void ChangeScene(int sceneId)
+    public AsyncOperation ChangeScene(int sceneId)
     {
-        SceneManager.LoadScene(sceneId);
+        return SceneManager.LoadSceneAsync(sceneId);
     }
 
     public Scene ChangeSceneAdditive(int sceneId)

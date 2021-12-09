@@ -134,7 +134,7 @@ PrefabInstance:
         type: 3}
       propertyPath: stateMachine
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3844326425507305194}
     - target: {fileID: 6725844347703517074, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_RootOrder

@@ -15,12 +15,15 @@ namespace Scripts.Actions
         public GameObject alternativeTarget;
         public Enemy[] assignedGuards;
         private DataGate targetsDataInput;
-
+        private EnemySharedInfoManager enemySharedInfoManager;
 
         internal override void OnStart()
         {
-            var alarmManager = GameObject.FindGameObjectWithTag("SceneManager")
-                .GetComponent<AlarmManager>();
+
+            var sceneManager = GameObject.FindGameObjectWithTag("SceneManager");
+            var alarmManager = sceneManager.GetComponent<AlarmManager>();
+            enemySharedInfoManager = sceneManager.GetComponent<EnemySharedInfoManager>();
+
 
             alarmManager.gate.Connect(this.actionGate);
 
@@ -47,6 +50,7 @@ namespace Scripts.Actions
             {
                 AttractClosestGuard();
             };
+
         }
 
         private void AttractClosestGuard()
@@ -55,7 +59,7 @@ namespace Scripts.Actions
 
             var minDis = float.MaxValue;
             Enemy minEnemy = null;
-            foreach (var guard in assignedGuards.Where(x => x != null))
+            foreach (var guard in enemySharedInfoManager.GetAllAliveEnemies())
             {
                 float magnitude = (transform.position - guard.transform.position).magnitude;
                 if (magnitude < minDis && guard.gameObject != target)
@@ -67,12 +71,11 @@ namespace Scripts.Actions
 
             if (minEnemy != null)
             {
-                //CustomEvent.Trigger(minEnemy.gameObject, "NoiseHeard", target.transform.position);
+                minEnemy.GetComponent<HSM>()
+                .TriggerEvent("noiseHeard", new EventData{{"subject", target.transform.position}});
             }
-
         }
 
-        // Update is called once per frame
         void Update()
         {
             animator.SetBool("Active", outputGate.currentValue);

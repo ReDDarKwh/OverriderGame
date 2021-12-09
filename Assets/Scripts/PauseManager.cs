@@ -3,10 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Lowscope.Saving;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PauseManager : MonoBehaviour
 {
     public SoundManager soundManager;
+
+    public Animator pauseFXAnim;
+
+    public Transform PauseTextContainer;
+
     private int paused;
 
     [System.NonSerialized]
@@ -28,6 +35,8 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 0.0f;
             isPaused = true;
             soundManager.PauseAll();
+            pauseFXAnim.SetBool("pause", true);
+            PauseTextContainer.gameObject.SetActive(true);
         }
     }
 
@@ -38,6 +47,8 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 1.0f;
             isPaused = false;
             soundManager.PlayAll();
+            pauseFXAnim.SetBool("pause", false);
+            PauseTextContainer.gameObject.SetActive(false);
         }
     }
 

@@ -16,6 +16,7 @@ class GotoSuperState : SuperState
         var interactingWithDoorSwitch = new OpeningSwitchDoorSuperState(sm, root, "interactingWithDoorSwitch");
         var interactionBuffer = AddState(root.GetComponent<EmptyState>(), "interactionBuffer");
         var cleanUp = AddState(root.GetComponent<EmptyState>(), "cleanUp");
+        var unreachable = AddState(root.GetComponent<EmptyState>(), "unreachable");
 
         go.AddHandler("activateSwitchRequested", interactingWithDoorSwitch.sub, TransitionKind.External,
         (EventData data) =>
@@ -62,7 +63,7 @@ class GotoSuperState : SuperState
             root.TriggerEvent("isAtPosition");
         });
 
-        go.AddHandler("isUnreachable", cleanUp, TransitionKind.External, (EventData data) => {
+        go.AddHandler("isUnreachable", unreachable, TransitionKind.External, (EventData data) => {
             CleanUpMemory(data.Memory);
             root.TriggerEvent("isStuck");
         });

@@ -532,6 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirtPrefab: {fileID: 4796623967758270831, guid: d706e6d2257250e4daa54254c01803b6,
     type: 3}
+  dirtPrefabPath: Dirt/Blood
   quantityMax: 1
   quantityMin: 1
   manual: 1

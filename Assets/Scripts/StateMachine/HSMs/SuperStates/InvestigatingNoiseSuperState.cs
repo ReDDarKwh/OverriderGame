@@ -29,6 +29,7 @@ class InvestigatingNoiseSuperState : SuperState
         });
 
         go.sub.AddHandler("isAtPosition", lookingAround);
+        go.sub.AddHandler("isStuck", lookingAround);
         lookingAround.AddHandler("noiseHeard", start, TransitionKind.External, (EventData data) =>
         {
             var memory = HSM.GetRoot(data).memory;

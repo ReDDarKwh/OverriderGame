@@ -99,6 +99,7 @@ namespace Scripts.Actions
 
         public virtual void OnLoad(string data)
         {
+            Init();
             this.outputGate?.SetValue(JsonUtility.FromJson<SaveData>(data).outputGate);
         }
 

@@ -23,9 +23,7 @@ namespace Scripts.States
             }
             else
             {
-                var inst = SaveMaster.SpawnSavedPrefab(Lowscope.Saving.Enums.InstanceSource.Resources, deadBodyPrefabPath);
-                inst.transform.position = transform.position;
-                inst.transform.rotation = Quaternion.identity;
+                SaveMaster.SpawnSavedPrefab(deadBodyPrefabPath, transform.position, Quaternion.identity);
             }
 
             this.gameObject.SetActive(false);

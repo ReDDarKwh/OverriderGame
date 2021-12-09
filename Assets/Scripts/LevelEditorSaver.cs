@@ -8,6 +8,8 @@ public class LevelEditorSaver : MonoBehaviour
 {
     public int levelNumber;
 
+    public int levelSceneId;
+
     private int SlotNumber
     {
         get
@@ -17,10 +19,17 @@ public class LevelEditorSaver : MonoBehaviour
     }
 
     void Start(){
-        SaveMaster.SetSlot(SlotNumber, true);
+        Load();
+    }
+
+    public void Load(){
+        SaveMaster.ClearActiveSavedPrefabs();
+        SaveMaster.SetSlot(SlotNumber, false);
+        SaveMaster.SyncLoad();
     }
 
     public void SaveLevel(){
+        SaveMaster.DeleteSave(SlotNumber);
         SaveMaster.SetSlot(SlotNumber, false);
         SaveMaster.WriteActiveSaveToDisk();
     }

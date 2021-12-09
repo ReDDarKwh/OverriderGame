@@ -104,6 +104,7 @@ public abstract class HSM : MonoBehaviour, ISaveable
         memory.OnLoad(s.memory);
         stateMachine.TearDown(GetBaseData());
         stateMachine.EnterState(null, state, GetBaseData());
+        
     }
 
     public bool OnSaveCondition()

@@ -668,6 +668,14 @@ namespace Lowscope.Saving
             return saveIM.SpawnObject(source, filePath).gameObject;
         }
 
+        public static GameObject SpawnSavedPrefab(string filePath, Vector3 position, Quaternion rotation)
+        {
+            var inst = SpawnSavedPrefab(InstanceSource.Resources, filePath);
+            inst.transform.position = position;
+            inst.transform.rotation = rotation;
+            return inst;
+        }
+
         /// <summary>
         /// Helper method for obtaining specific Saveable data.
         /// </summary>

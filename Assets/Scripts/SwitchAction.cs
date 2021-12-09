@@ -18,6 +18,7 @@ public class SwitchAction : Scripts.Actions.Action, ISaveable
 
     public void OnLoad(string data)
     {
+        base.OnLoad(data);
         var sd = JsonUtility.FromJson<SaveData>(data);
         actionGate.SetValue(sd.isOn);
         lastOnTime = Time.time - sd.timeOn;
