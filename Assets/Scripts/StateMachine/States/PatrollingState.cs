@@ -39,6 +39,9 @@ namespace Scripts.States
 
         public void AtStationnaryOutpost()
         {
+            if(waypoints.Count() == 0){
+                Init();
+            }
             creature.headDir = waypoints[0].right;
         }
 

@@ -111,11 +111,21 @@ namespace Scripts.Hacking
 
         public void OnLoad(string data)
         {
+            StartCoroutine(DelayedLoad(data));
+        }
+
+        private IEnumerator DelayedLoad(string data)
+        {
+            yield return 0;
             var levelNodes = network.GetComponentsInChildren<Node>();
             levelNodesRepo = new Dictionary<string, Node>();
             foreach (var node in levelNodes)
             {
                 node.DisconnectAll(true);
+
+                if(String.IsNullOrEmpty(node.nodeId) || node.nodeId == "FilterDevice_3a427804-df1d-4687-9a3a-f202f8de7443filter"){
+                }
+
                 levelNodesRepo.Add(node.nodeId, node);
             }
 
@@ -128,7 +138,7 @@ namespace Scripts.Hacking
                 Connect(savedNode, savedNodeRepo, connectedNodes);
             }
         }
-        
+
         public bool OnSaveCondition()
         {
             return true;

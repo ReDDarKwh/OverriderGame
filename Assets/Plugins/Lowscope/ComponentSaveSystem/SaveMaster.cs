@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Lowscope.Saving.Components;
 using Lowscope.Saving.Core;
 using Lowscope.Saving.Data;
@@ -604,10 +605,10 @@ namespace Lowscope.Saving
             }
 
             int count = saveables.Count;
+            var priorityOrderSaveable = saveables.OrderBy(x => x.priority).ToArray();
 
-            for (int i = 0; i < count; i++)
-            {
-                saveables[i].OnLoadRequest(activeSaveGame);
+            foreach(var saveable in priorityOrderSaveable){
+                saveable.OnLoadRequest(activeSaveGame);
             }
         }
 
@@ -673,6 +674,15 @@ namespace Lowscope.Saving
             var inst = SpawnSavedPrefab(InstanceSource.Resources, filePath);
             inst.transform.position = position;
             inst.transform.rotation = rotation;
+            return inst;
+        }
+
+        public static GameObject SpawnSavedPrefab(string filePath, Vector3 position, Quaternion rotation, Transform parent)
+        {
+            var inst = SpawnSavedPrefab(InstanceSource.Resources, filePath);
+            inst.transform.position = position;
+            inst.transform.rotation = rotation;
+            inst.transform.SetParent(parent);
             return inst;
         }
 

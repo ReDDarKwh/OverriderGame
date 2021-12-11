@@ -110,7 +110,8 @@ namespace Scripts.Actions
             {
                 name = filterDataInputName,
                 dataGateType = DataGate.DataGateType.Input,
-                dataType = DataGate.DataType.Filters
+                dataType = DataGate.DataType.Filters,
+                maxInputs = 1
             };
 
             if (!disableFilterInput)

@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Lowscope.Saving;
 using Scripts.Hacking;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FilterOutputDisplay : MonoBehaviour
+public class FilterOutputDisplay : MonoBehaviour, ISaveable
 {
     public DataIoDisplay ioDisplay;
     public LayerMask mask;
     public Toggle guards;
     public Toggle player;
+
+     [Serializable]
+    public struct SaveData
+    {
+        public LayerMask mask;
+    }
 
     public void ToggleLayer(string mask)
     {
@@ -62,5 +69,21 @@ public class FilterOutputDisplay : MonoBehaviour
     void Update()
     {
         ioDisplay.node.gate.SetValue(this.mask != 0);
+    }
+
+    public string OnSave()
+    {
+        return JsonUtility.ToJson(new SaveData {mask = mask});
+    }
+
+    public void OnLoad(string data)
+    {
+        mask = JsonUtility.FromJson<SaveData>(data).mask;
+        UpdateUI();
+    }
+
+    public bool OnSaveCondition()
+    {
+        return true;
     }
 }

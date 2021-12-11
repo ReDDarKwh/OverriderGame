@@ -143,7 +143,7 @@ namespace Scripts.Actions
 
                         foreach (var dataGate in action.dataGates)
                         {
-                            dataNodes.Add(dataGate.name, actionDisplay.AddDataGate(dataGate, actionId));
+                            dataNodes.Add(dataGate.name, actionDisplay.AddDataInterface(dataGate, actionId));
                         }
                     }
                 }

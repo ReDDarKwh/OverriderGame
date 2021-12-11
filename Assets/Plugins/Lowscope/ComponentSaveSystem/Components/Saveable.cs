@@ -33,6 +33,9 @@ namespace Lowscope.Saving.Components
         private List<ISaveable> saveableComponentObjects = new List<ISaveable>();
 
         [SerializeField] private string saveIdentification;
+
+        [Tooltip("Higher is will run load later.")]
+        public int priority;
         public string SaveIdentification
         {
             get

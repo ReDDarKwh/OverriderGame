@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Lowscope.Saving;
+using Lowscope.Saving.Components;
 using Scripts.Actions;
 using Scripts.Hacking;
 using TMPro;
@@ -41,7 +43,7 @@ public class ActionNodeDisplay : MonoBehaviour
 
     }
 
-    internal Node AddDataGate(DataGate dataGate, string actionid)
+    internal Node AddDataInterface(DataGate dataGate, string actionid)
     {
         GameObject prefab = null;
         switch (dataGate.dataGateType)
@@ -68,6 +70,13 @@ public class ActionNodeDisplay : MonoBehaviour
         }
         inst.node.gate = dataGate;
         inst.node.Init(device, actionid + dataGate.name);
+        
+        if(dataGate.dataGateType == DataGate.DataGateType.Filter){
+            var s = inst.GetComponent<FilterOutputDisplay>();
+            string mono = (s as MonoBehaviour).name;
+            var ds = device.GetComponent<Saveable>();
+            ds.AddSaveableComponent(string.Format("Dyn-{0}-{1}", mono, device.deviceId), s, true);
+        }
 
         return inst.node;
     }

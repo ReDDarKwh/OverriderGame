@@ -24,7 +24,7 @@ MonoBehaviour:
   resetSaveableIdOnNewScene: 0
   gameObjectGuidLength: 6
   componentGuidLength: 6
-  cleanSavedPrefabsOnSlotSwitch: 1
+  cleanSavedPrefabsOnSlotSwitch: 0
   loadDefaultSlotOnStart: 0
   defaultSlot: 0
   useHotkeys: 1
