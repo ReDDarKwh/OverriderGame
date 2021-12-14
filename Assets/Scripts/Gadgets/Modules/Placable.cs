@@ -2,12 +2,15 @@
 using UnityEngine;
 using Scripts.Hacking;
 using Network = Scripts.Hacking.Network;
+using Lowscope.Saving;
+using System;
 
 namespace Scripts.Gadgets.Modules
 {
     public class Placable : GadgetModule
     {
         public GameObject prefab;
+        public string prefabPath;
         public GameObject preview;
         public float range;
         public LayerMask gadgetLayer;
@@ -26,7 +29,8 @@ namespace Scripts.Gadgets.Modules
 
             if (hit.collider)
             {
-                preview.transform.position = hit.point;
+                var centerToHit = hit.point - (Vector2)transform.position;
+                preview.transform.position = transform.position + Vector3.ClampMagnitude(centerToHit, range);
             }
             else
             {
@@ -50,7 +54,8 @@ namespace Scripts.Gadgets.Modules
                 }
                 else
                 {
-                    Instantiate(prefab, preview.transform.position, Quaternion.identity, Network.Instance.transform);
+                    var inst = SaveMaster.SpawnSavedPrefab(prefabPath, preview.transform.position, Quaternion.identity, Network.Instance.transform).GetComponentInChildren<UniqueId>();
+                    inst.uniqueId = Guid.NewGuid().ToString();
                 }
 
                 repo.SelectGadget(null);

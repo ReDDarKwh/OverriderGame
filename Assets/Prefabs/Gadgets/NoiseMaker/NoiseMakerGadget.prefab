@@ -171,6 +171,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5896636880886007396, guid: 371a18295e5e4d74ab8fb4db06df7e6c,
         type: 3}
+    - target: {fileID: 2743065138823457511, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: prefabPath
+      value: Gadgets/NoiseMaker
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19a23a06465da544798d285e44254062, type: 3}
 --- !u!4 &2805185379018616468 stripped

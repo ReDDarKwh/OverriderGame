@@ -36,7 +36,8 @@ public class Killable : MonoBehaviour, ISaveable
             dead = true;
             if (stateMachine)
             {
-                stateMachine.TriggerEvent("died", new EventData { { "damageType", damageType } });
+                stateMachine.memory.Set("damageType", damageType, MemoryType.Value);
+                stateMachine.TriggerEvent("died");
             }
 
             OnDied.Invoke();

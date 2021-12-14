@@ -497,6 +497,9 @@ MonoBehaviour:
   - name: patrolling
     targetRange: 0.2
     moveSpeed: 0.5
+  - name: investigatingNoise
+    targetRange: 1.5
+    moveSpeed: 1.5
 --- !u!114 &1742297655901097447
 MonoBehaviour:
   m_ObjectHideFlags: 0

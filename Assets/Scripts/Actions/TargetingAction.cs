@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using MoreLinq;
 using Scripts.Hacking;
 using UnityEngine;
 
@@ -33,7 +34,7 @@ namespace Scripts.Actions
         // Update is called once per frame
         void Update()
         {
-            target = targets?.FirstOrDefault();
+            target = (targets?.Any() ?? false)? targets?.MinBy(x => (transform.position - x.transform.position).sqrMagnitude) : null;
             Quaternion desiredRotQ = Quaternion.identity;
             if (target != null)
             {

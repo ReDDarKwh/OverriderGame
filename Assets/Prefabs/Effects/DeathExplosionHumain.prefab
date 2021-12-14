@@ -4867,9 +4867,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirtPrefab: {fileID: 4796623967758270831, guid: d706e6d2257250e4daa54254c01803b6,
     type: 3}
-  particle: {fileID: 8319351578849464477}
+  dirtPrefabPath: Dirt/Blood
   quantityMax: 2
   quantityMin: 5
+  manual: 0
   time: 0.1
   range: 1
 --- !u!1 &8319351579001915392

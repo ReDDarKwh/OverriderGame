@@ -16,7 +16,7 @@ namespace Scripts.Hacking
 
         public DataGate()
         {
-            currentValue = true;
+            currentValue = false;
         }
 
         public override bool CanConnect(AbstractGate gate)

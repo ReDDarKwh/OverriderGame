@@ -301,6 +301,7 @@ MonoBehaviour:
   - identifier: SavePosition-c6503
     monoBehaviour: {fileID: 3567035838633715092}
   saveIdentification: 
+  priority: 0
   sceneName: 
 --- !u!114 &3567035838633715092
 MonoBehaviour:

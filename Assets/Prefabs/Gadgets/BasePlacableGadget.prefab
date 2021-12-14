@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
+  prefabPath: 
   preview: {fileID: 8301162487101090761}
   range: 1
   gadgetLayer:
@@ -69,7 +70,7 @@ MonoBehaviour:
     m_Bits: 524288
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 67125248
 --- !u!114 &2743065138823457508
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 2743065138823457509, guid: 19a23a06465da544798d285e44254062,
         type: 3}
       propertyPath: m_Name
-      value: BasePlacableGadget
+      value: RemoteExplosiveGadget
       objectReference: {fileID: 0}
     - target: {fileID: 2743065138823457510, guid: 19a23a06465da544798d285e44254062,
         type: 3}
@@ -79,5 +79,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7857138177703079894, guid: 0f65e4d6ce8cb674ca9ebc0f55dc914d,
         type: 3}
+    - target: {fileID: 2743065138823457511, guid: 19a23a06465da544798d285e44254062,
+        type: 3}
+      propertyPath: prefabPath
+      value: Gadgets/RemoteExplosive
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19a23a06465da544798d285e44254062, type: 3}

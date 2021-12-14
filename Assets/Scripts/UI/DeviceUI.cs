@@ -93,6 +93,13 @@ public class DeviceUI : MonoBehaviour
         }
     }
 
+    void OnDisable(){
+        if (line != null)
+        {
+            line.gameObject.SetActive(false);
+        }
+    }
+
     public void OnHover()
     {
         isHovered = true;

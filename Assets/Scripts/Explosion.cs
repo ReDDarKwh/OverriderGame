@@ -7,6 +7,7 @@ public class Explosion : MonoBehaviour
 {
     public MilkShake.ShakePreset shakePreset;
     public SoundPreset explosionSound;
+    public NoiseEmitter noiseEmitter;
     public float damage;
     public float radius;
     public LayerMask affected;
@@ -15,6 +16,7 @@ public class Explosion : MonoBehaviour
     {
         MilkShake.Shaker.ShakeAll(shakePreset);
         SoundManager.Instance.Make(explosionSound, transform.position);
+        noiseEmitter.EmitNoise();
     }
 
     public void DealDamage()

@@ -23,7 +23,7 @@ class InvestigatingNoiseSuperState : SuperState
                 memory,
                 pos,
                 null,
-                "investigating",
+                "investigatingNoise",
                 false
             );
         });

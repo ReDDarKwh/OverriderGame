@@ -40,6 +40,11 @@ PrefabInstance:
       propertyPath: cachedSaveableComponents.Array.data[2].identifier
       value: PatrollingState-8ee46
       objectReference: {fileID: 0}
+    - target: {fileID: 1018978207635606079, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: uniqueId
+      value: Target Variant_d8ac5c61-d3e1-4b67-bec5-9b9913287b26
+      objectReference: {fileID: 0}
     - target: {fileID: 1374374796220567991, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -93,7 +98,7 @@ PrefabInstance:
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: moveSettings.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
@@ -107,6 +112,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
+      propertyPath: moveSettings.Array.data[6].name
+      value: investigatingNoise
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
       propertyPath: moveSettings.Array.data[4].moveSpeed
       value: 1
       objectReference: {fileID: 0}
@@ -117,6 +127,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
+      propertyPath: moveSettings.Array.data[6].moveSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
       propertyPath: moveSettings.Array.data[4].targetRange
       value: 0.2
       objectReference: {fileID: 0}
@@ -124,6 +139,11 @@ PrefabInstance:
         type: 3}
       propertyPath: moveSettings.Array.data[5].targetRange
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2369176284625806879, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: moveSettings.Array.data[6].targetRange
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2861525003701565247, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}

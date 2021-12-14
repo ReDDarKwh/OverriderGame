@@ -20533,7 +20533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: []
-  memory: {fileID: 0}
+  memory: {fileID: 1268278636}
 --- !u!114 &1268278628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20546,7 +20546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3879f03fbd12bd4ebedef419d13d362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeEffect: {fileID: 0}
+  explodeEffect: {fileID: 8319351579001915392, guid: dd6be1f719329c64899a13664c62551a,
+    type: 3}
   deadBodyPrefab: {fileID: 7312900889949615281, guid: 3e45a5e4712a9fa4a8345a9f226ad7ff,
     type: 3}
   deadBodyPrefabPath: DeadBodies/DeadBody
