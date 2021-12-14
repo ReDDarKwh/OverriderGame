@@ -22,7 +22,7 @@ public class Killable : MonoBehaviour, ISaveable
         public float health;
     }
 
-    internal void InflictDamage(float damage, DamageType damageType = DamageType.Unknown)
+    public void InflictDamage(float damage, DamageType damageType = DamageType.Unknown)
     {
         health -= damage;
 

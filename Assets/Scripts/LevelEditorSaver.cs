@@ -9,7 +9,7 @@ public class LevelEditorSaver : MonoBehaviour
 {
     public int levelNumber;
 
-    public int levelSceneId;
+    public string levelSceneName;
 
     public static LevelEditorSaver Instance;
 
@@ -33,7 +33,7 @@ public class LevelEditorSaver : MonoBehaviour
     IEnumerator LoadYourAsyncScene()
     {
         SaveMaster.ClearSlot(false);
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelSceneId);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelSceneName);
         while (!asyncLoad.isDone)
         {
             yield return null;

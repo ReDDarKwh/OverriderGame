@@ -281,9 +281,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1154350432}
-        m_MethodName: ChangeScene
-        m_Mode: 3
+      - m_Target: {fileID: 1154350433}
+        m_MethodName: Retry
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 1154350429}
   - component: {fileID: 1154350428}
   - component: {fileID: 1154350432}
+  - component: {fileID: 1154350433}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -441,6 +442,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500da09f6fa28c44b811a54cd7661f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSceneName: LevelOverScene
+--- !u!114 &1154350433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154350427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47e822f93865d0d428ed3f675e3ada9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneChanger: {fileID: 1154350432}
 --- !u!1 &1465457997
 GameObject:
   m_ObjectHideFlags: 0

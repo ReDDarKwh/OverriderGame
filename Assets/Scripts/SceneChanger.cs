@@ -5,26 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public int currentSceneId;
+    public string currentSceneName;
 
-    public AsyncOperation ChangeScene(int sceneId)
+    public AsyncOperation ChangeScene(string sceneName)
     {
-        return SceneManager.LoadSceneAsync(sceneId);
+        return SceneManager.LoadSceneAsync(sceneName);
     }
 
-    public Scene ChangeSceneAdditive(int sceneId)
+    public Scene ChangeSceneAdditive(string sceneName)
     {
-        return SceneManager.LoadScene(sceneId, new LoadSceneParameters{ loadSceneMode = LoadSceneMode.Additive });
+        return SceneManager.LoadScene(sceneName, new LoadSceneParameters{ loadSceneMode = LoadSceneMode.Additive });
     }
 
-    public void ChangeSceneAdditiveUI(int sceneId)
+    public void ChangeSceneAdditiveUI(string sceneName)
     {
-        SceneManager.LoadScene(sceneId, new LoadSceneParameters{ loadSceneMode = LoadSceneMode.Additive });
+        SceneManager.LoadScene(sceneName, new LoadSceneParameters{ loadSceneMode = LoadSceneMode.Additive });
     }
 
-    public void RemoveSceneAdditive(int sceneId)
+    public void RemoveSceneAdditive(string sceneName)
     {
-        SceneManager.UnloadSceneAsync(sceneId == -1? currentSceneId : sceneId, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
+        SceneManager.UnloadSceneAsync(sceneName == ""? currentSceneName : sceneName, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects);
     }
 
 }

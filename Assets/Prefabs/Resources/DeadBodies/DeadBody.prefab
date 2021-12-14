@@ -129,4 +129,5 @@ MonoBehaviour:
   - identifier: SaveRotation-bf5d95
     monoBehaviour: {fileID: 373361702743424651}
   saveIdentification: 
+  priority: 0
   sceneName: 

@@ -9,8 +9,8 @@ public class LevelMenuManager : MonoBehaviour
     public SoundManager soundManager;
     public SceneChanger sceneChanger;
     public PauseManager pauseManager;
-    public int pauseMenuSceneId;
-    public int menuSceneId;
+    public string pauseMenuSceneName;
+    public string menuSceneName;
 
     [System.NonSerialized]
     public bool isPauseMenuDisplayed;
@@ -36,8 +36,8 @@ public class LevelMenuManager : MonoBehaviour
     private void ShowPauseMenu()
     {
         pauseManager.Pause();
-        menuScene = sceneChanger.ChangeSceneAdditive(menuSceneId);
-        sceneChanger.ChangeSceneAdditive(pauseMenuSceneId);
+        menuScene = sceneChanger.ChangeSceneAdditive(menuSceneName);
+        sceneChanger.ChangeSceneAdditive(pauseMenuSceneName);
         isPauseMenuDisplayed = true;
     }
 

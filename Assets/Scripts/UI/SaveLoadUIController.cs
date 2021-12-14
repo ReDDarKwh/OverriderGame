@@ -53,7 +53,7 @@ public class SaveLoadUIController : MonoBehaviour
     }
 
     public void Exit(){
-        sceneChanger.RemoveSceneAdditive(-1);
+        sceneChanger.RemoveSceneAdditive("");
     }
 
     public void ConfirmSaveLoad(){

@@ -933,7 +933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500da09f6fa28c44b811a54cd7661f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSceneId: 0
+  currentSceneName: L1
 --- !u!114 &68017250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,13 +976,13 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 68017249}
           m_MethodName: ChangeSceneAdditiveUI
-          m_Mode: 3
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 1
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: LevelOverScene
             m_BoolArgument: 0
           m_CallState: 2
     target: {fileID: 0}
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNumber: 1
-  levelSceneId: 2
+  levelSceneName: L1
 --- !u!114 &68017258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1088,8 +1088,8 @@ MonoBehaviour:
   soundManager: {fileID: 68017252}
   sceneChanger: {fileID: 68017249}
   pauseManager: {fileID: 68017259}
-  pauseMenuSceneId: 4
-  menuSceneId: 5
+  pauseMenuSceneName: PauseScene
+  menuSceneName: MenuScene
 --- !u!114 &68017259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20603,13 +20603,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 68017249}
         m_MethodName: ChangeSceneAdditiveUI
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: GameOverScene
           m_BoolArgument: 0
         m_CallState: 2
   dirt: {fileID: 1268278635}

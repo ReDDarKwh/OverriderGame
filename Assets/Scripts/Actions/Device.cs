@@ -90,6 +90,17 @@ namespace Scripts.Actions
             }
         }
 
+        public void DisconnectAllForce()
+        {
+            foreach (var action in nodesPerAction)
+            {
+                foreach (var node in action.Value.Values)
+                {
+                    node.DisconnectAll();
+                }
+            }
+        }
+
         public void UpdateActionDisplays()
         {
             var nodesPerAction = new Dictionary<Action, Dictionary<string, Node>>();
@@ -176,6 +187,11 @@ namespace Scripts.Actions
             {
                 attachedGadgetController.DetachGadget();
             }
+        }
+
+        void OnDisable()
+        {
+            DisconnectAllForce();
         }
     }
 }

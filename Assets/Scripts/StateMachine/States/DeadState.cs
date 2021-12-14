@@ -23,7 +23,11 @@ namespace Scripts.States
             }
             else
             {
-                SaveMaster.SpawnSavedPrefab(deadBodyPrefabPath, transform.position, Quaternion.identity);
+                if(string.IsNullOrEmpty(deadBodyPrefabPath)){
+                    Instantiate(explodeEffect, transform.position, Quaternion.identity);
+                } else {
+                    SaveMaster.SpawnSavedPrefab(deadBodyPrefabPath, transform.position, Quaternion.identity);
+                }
             }
 
             this.gameObject.SetActive(false);

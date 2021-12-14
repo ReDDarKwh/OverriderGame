@@ -16,5 +16,7 @@ class SearchingSuperState : SuperState
 
         start.AddHandler("done", go.sub);
         go.sub.AddHandler("isAtPosition", lookAround);
+        go.sub.AddHandler("isStuck", lookAround);
+
     }
 }
