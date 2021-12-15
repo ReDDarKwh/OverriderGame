@@ -74,9 +74,12 @@ namespace Scripts.Hacking
             DeselectSelectedNode(!connected);
         }
 
+
         // Update is called once per frame
         void Update()
         {
+
+
             if (selectedNode != null)
             {
                 if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(1))
