@@ -129,16 +129,17 @@ namespace Scripts.Hacking
             {
                 if (pointerEvent.button == PointerEventData.InputButton.Left)
                 {
-                    if (Network.Instance.selectedNode)
-                    {
-                        Network.Instance.ConnectionEnd(Network.Instance.selectedNode, this);
-                        EventSystem.current.SetSelectedGameObject(null);
-                    }
-                    else if (maxOutputs > 0)
-                    {
-                        Network.Instance.selectedNode = this;
-                        Network.Instance.ConnectionStart(this, true);
-                    }
+                    // if (Network.Instance.selectedNode)
+                    // {
+                    //     Network.Instance.ConnectionEnd(Network.Instance.selectedNode, this);
+                    //     EventSystem.current.SetSelectedGameObject(null);
+                    // }
+                    // else if (maxOutputs > 0)
+                    // {
+                    //     Network.Instance.selectedNode = this;
+                    //     Network.Instance.ConnectionStart(this, true);
+                    // }
+
                 }
                 else
                 {
@@ -185,24 +186,25 @@ namespace Scripts.Hacking
                 return;
             }
 
-            SetState(gate.currentValue ? NodeState.On : NodeState.Off);
+            // SetState(gate.currentValue ? NodeState.On : NodeState.Off);
 
-            if (Network.Instance.selectedNode == this)
-            {
-                SetState(NodeState.Selected);
-            }
-            else
-            {
-                if (isHovered)
-                {
-                    SetState(NodeState.Hover);
-                }
+            // if (Network.Instance.selectedNode == this)
+            // {
+            //     SetState(NodeState.Selected);
+            // }
+            // else
+            // {
+            //     if (isHovered)
+            //     {
+            //         SetState(NodeState.Hover);
+            //     }
 
-                if (Network.Instance.selectedNode && !Network.Instance.selectedNode.gate.CanConnect(gate))
-                {
-                    SetState(isHovered ? NodeState.Error : NodeState.Disabled);
-                }
-            }
+            //     if (Network.Instance.selectedNode && !Network.Instance.selectedNode.gate.CanConnect(gate))
+            //     {
+            //         SetState(isHovered ? NodeState.Error : NodeState.Disabled);
+            //     }
+            // }
+
 
             if (moving)
             {

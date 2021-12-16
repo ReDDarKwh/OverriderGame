@@ -18,6 +18,17 @@ namespace Scripts.Hacking
 
         private VectorLine line;
         private Vector3 selectingTargetsStartPos;
+        
+        private float width;
+        private float height;
+        private Vector3 pos;
+
+        public Rect SelectionRect
+        {
+            get => new Rect(pos, new Vector2(Mathf.Abs(width), Mathf.Abs(height)));
+        }
+
+        public bool isSelecting;
 
         void Start(){
             line = new VectorLine("SelectionLine", new List<Vector3>(5), lineWidth, lineDepth);
@@ -30,28 +41,32 @@ namespace Scripts.Hacking
 
         void Update(){
 
-            line.SetWidth(lineWidth / Camera.main.orthographicSize);
-
             if (Input.GetMouseButtonDown(0))
             {
+                isSelecting = true;
                 selectingTargetsStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
 
             if (Input.GetMouseButton(0))
             {
+                line.SetWidth(lineWidth / Camera.main.orthographicSize);
                 var mousePosWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                var width = mousePosWorld.x - selectingTargetsStartPos.x;
-                var height = mousePosWorld.y - selectingTargetsStartPos.y;
-                var pos = new Vector3(width > 0 ? selectingTargetsStartPos.x : mousePosWorld.x, height > 0 ? selectingTargetsStartPos.y : mousePosWorld.y);
+                width = mousePosWorld.x - selectingTargetsStartPos.x;
+                height = mousePosWorld.y - selectingTargetsStartPos.y;
+                pos = new Vector3(width > 0 ? selectingTargetsStartPos.x : mousePosWorld.x, height > 0 ? selectingTargetsStartPos.y : mousePosWorld.y);
                 DrawSelectionSquare(width, height, pos);
+                line.Draw3D(); 
             }
 
             if (Input.GetMouseButtonUp(0))
             {
-                DrawSelectionSquare(0, 0, Vector3.zero);
+                isSelecting = false;
+                width = 0;
+                height = 0;
+                pos = Vector3.zero;
+                DrawSelectionSquare(width, height, pos);
+                line.Draw3D(); 
             }
-
-            line.Draw3D(); 
         }
 
         private void DrawSelectionSquare(float width, float height, Vector3 pos)
@@ -66,6 +81,5 @@ namespace Scripts.Hacking
         {
             line.MakeRect(new Rect(point, size));
         }
-
     }
 }

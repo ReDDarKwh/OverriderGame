@@ -12,11 +12,14 @@ namespace Scripts.Hacking
         public GameObject connectionPrefab;
         public Node mousePosNode;
         public static Network Instance = null;
+        public SelectionSquareUIController selectionController;
+        public LayerMask nodeLayerMask;
+
 
         internal int accessLevel;
         internal DeviceUI lastDeviceMoved;
         internal int baseDeviceSortingOrder;
-        internal Node selectedNode;
+        internal IEnumerable<Node> selectedNodes;
 
         private void Awake()
         {
@@ -39,9 +42,9 @@ namespace Scripts.Hacking
             }
         }
 
-        public void DeselectSelectedNode(bool destroyConnection = true, bool makeSound = false)
+        public void DeselectSelectedNodes(bool destroyConnection = true, bool makeSound = false)
         {
-            selectedNode = null;
+            selectedNodes = null;
             if (destroyConnection)
             {
                 if (makeSound)
@@ -71,31 +74,38 @@ namespace Scripts.Hacking
         {
             var connected = from.Connect(to, connection);
             connection.Connected();
-            DeselectSelectedNode(!connected);
+            DeselectSelectedNodes(!connected);
         }
 
+        private void RemoveSelectedNodes()
+        {
+            foreach(var selectedNode in selectedNodes){
+                selectedNode.Remove();
+            }
+            DeselectSelectedNodes(true, true);
+        }
 
         // Update is called once per frame
         void Update()
         {
 
+            if(selectionController.isSelecting){
+                
+                var selectedRect = selectionController.SelectionRect;
+                var cols = Physics2D.OverlapBoxAll(selectedRect.position, selectedRect.size, 0, nodeLayerMask);
+                selectedNodes = cols.Select(x => x.GetComponent<Node>());
+            }
 
-            if (selectedNode != null)
+            if (selectedNodes != null)
             {
                 if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(1))
                 {
-                    DeselectSelectedNode(true, true);
+                    DeselectSelectedNodes(true, true);
                 }
-
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    selectedNode.gate.SetValue(!selectedNode.gate.currentValue);
-                }
-
+              
                 if (Input.GetKeyDown(KeyCode.Delete))
                 {
-                    selectedNode.Remove();
-                    DeselectSelectedNode(true, true);
+                    RemoveSelectedNodes();
                 }
             }
 
@@ -113,7 +123,6 @@ namespace Scripts.Hacking
                     }
                 }
             }
-
         }
     }
 }
