@@ -89,13 +89,6 @@ namespace Scripts.Hacking
         void Update()
         {
 
-            if(selectionController.isSelecting){
-                
-                var selectedRect = selectionController.SelectionRect;
-                var cols = Physics2D.OverlapBoxAll(selectedRect.position, selectedRect.size, 0, nodeLayerMask);
-                selectedNodes = cols.Select(x => x.GetComponent<Node>());
-            }
-
             if (selectedNodes != null)
             {
                 if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(1))

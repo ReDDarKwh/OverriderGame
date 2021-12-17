@@ -6227,6 +6227,10 @@ MonoBehaviour:
   connectionPrefab: {fileID: 5592402402756229266, guid: e4f744486b6d7624d8bc8705dd9e5aa2,
     type: 3}
   mousePosNode: {fileID: 1528083886}
+  selectionController: {fileID: 479932252}
+  nodeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!4 &479932249
 Transform:
   m_ObjectHideFlags: 0
@@ -6739,6 +6743,9 @@ MonoBehaviour:
   lineMaxWeldDistance: 60
   lineMaterial: {fileID: 2100000, guid: 8e6e521184ac4f34a89b12af674d8775, type: 2}
   selectionBG: {fileID: 1124880981}
+  nodeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!4 &479955813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8062640577781362898, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,

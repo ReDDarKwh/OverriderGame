@@ -109,6 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2783620864916956752}
   - component: {fileID: 2783620864916956754}
+  - component: {fileID: 4413975433445389135}
   m_Layer: 10
   m_Name: OrNode
   m_TagString: HackUI
@@ -157,6 +158,22 @@ MonoBehaviour:
   errorColor: {r: 0.6886792, g: 0.27612138, b: 0.27612138, a: 1}
   disabledColor: {r: 0.518, g: 0.518, b: 0.518, a: 1}
   deconnectedSound: {fileID: 11400000, guid: 92067fb7a0caf044fa3a5ffb30cd3316, type: 2}
+--- !u!58 &4413975433445389135
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783620864916956780}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.15
 --- !u!1 &3482293927732933189
 GameObject:
   m_ObjectHideFlags: 0
