@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Scripts.Actions;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Scripts.Hacking
 {
@@ -117,5 +118,60 @@ namespace Scripts.Hacking
                 }
             }
         }
+
+        // EVENTS
+
+        internal void OnNodeClickDown(BaseEventData eventData, Node node)
+        {
+            Debug.Log("OnNodeClickDown");
+        }
+        internal void OnNodeClickUp(BaseEventData eventData, Node node)
+        {
+            Debug.Log("OnNodeClickUp");
+        }
+        internal void OnNodeHoverEnter(Node node)
+        {
+            Debug.Log("OnNodeHoverEnter");
+        }
+        internal void OnNodeHoverExit(Node node)
+        {
+            Debug.Log("OnNodeHoverExit");
+        }
+        internal void OnNodeBeginDrag(BaseEventData eventData, Node node)
+        {
+            Debug.Log("OnNodeBeginDrag");
+        }
+        internal void OnNodeDrag(BaseEventData eventData, Node node)
+        {
+            Debug.Log("OnNodeDrag");
+        }
+        internal void OnNodeEndDrag(BaseEventData eventData, Node node)
+        {
+            Debug.Log("OnNodeEndDrag");
+        }
+
+
+        public void OnBackgroundClickDown(BaseEventData eventData)
+        {
+            Debug.Log("OnBackgroundClickDown");
+        }
+        public void OnBackgroundClickUp(BaseEventData eventData)
+        {
+            Debug.Log("OnBackgroundClickUp");
+        }
+        public void OnBackgroundBeginDrag(BaseEventData eventData)
+        {
+            Debug.Log("OnBackgroundBeginDrag");
+        }
+        public void OnBackgroundDrag(BaseEventData eventData)
+        {
+            Debug.Log("OnBackgroundDrag");
+        }
+        public void OnBackgroundEndDrag(BaseEventData eventData)
+        {
+            Debug.Log("OnBackgroundEndDrag");
+        }
+
+
     }
 }

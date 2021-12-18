@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace Scripts.Hacking
 {
-    public class Node : MonoBehaviour 
+    public class Node : MonoBehaviour
     {
         public GateType gateType;
         public float boardcastDelay;
@@ -83,8 +83,6 @@ namespace Scripts.Hacking
             deviceUI = device?.GetComponent<DeviceUI>();
         }
 
-
-
         private void gate_ValueChange(object sender, EventArgs e)
         {
             if (gameObject.activeInHierarchy)
@@ -101,78 +99,6 @@ namespace Scripts.Hacking
         {
             yield return new WaitForSeconds(boardcastDelay);
             gate.Broadcast(gate.currentValue);
-        }
-
-        public void OnClick(BaseEventData eventData)
-        {
-            if (!accessible)
-            {
-                return;
-            }
-
-            var pointerEvent = (PointerEventData)eventData;
-
-            if (moving)
-            {
-                StartCoroutine(DisableMove());
-                return;
-            }
-
-            if (Input.GetKey(KeyCode.LeftControl))
-            {
-                if (!moving)
-                {
-                    moving = true;
-                }
-            }
-            else
-            {
-                if (pointerEvent.button == PointerEventData.InputButton.Left)
-                {
-                    // if (Network.Instance.selectedNode)
-                    // {
-                    //     Network.Instance.ConnectionEnd(Network.Instance.selectedNode, this);
-                    //     EventSystem.current.SetSelectedGameObject(null);
-                    // }
-                    // else if (maxOutputs > 0)
-                    // {
-                    //     Network.Instance.selectedNode = this;
-                    //     Network.Instance.ConnectionStart(this, true);
-                    // }
-
-                }
-                else
-                {
-                    rightClickDown = true;
-                }
-            }
-        }
-
-        public void OnUnClick(BaseEventData eventData)
-        {
-            if (!accessible)
-            {
-                return;
-            }
-
-            var pointerEvent = (PointerEventData)eventData;
-            if (pointerEvent.button == PointerEventData.InputButton.Right && rightClickDown)
-            {
-                deconnectedSound.Play(transform.position);
-                DisconnectAll(true);
-                rightClickDown = false;
-            }
-        }
-
-        public void OnHoverEnter()
-        {
-            isHovered = true;
-        }
-
-        public void OnHoverExit()
-        {
-            isHovered = false;
-            rightClickDown = false;
         }
 
         // Update is called once per frame
@@ -330,6 +256,44 @@ namespace Scripts.Hacking
         {
             return this != null && this.gameObject.activeSelf;
         }
+
+        
+        // EVENTS
+        public void OnClick(BaseEventData eventData)
+        {
+            Network.Instance.OnNodeClickDown(eventData, this);    
+        }
+
+        public void OnUnClick(BaseEventData eventData)
+        {
+            Network.Instance.OnNodeClickUp(eventData, this);    
+        }
+
+        public void OnHoverEnter()
+        {
+            Network.Instance.OnNodeHoverEnter(this);    
+        }
+
+        public void OnHoverExit()
+        {
+            Network.Instance.OnNodeHoverExit(this);     
+        }
+
+        public void OnBeginDrag(BaseEventData eventData)
+        {
+            Network.Instance.OnNodeBeginDrag(eventData, this);            
+        }
+
+        public void OnDrag(BaseEventData eventData)
+        {
+            Network.Instance.OnNodeDrag(eventData, this);   
+        }
+
+        public void OnEndDrag(BaseEventData eventData)
+        {
+            Network.Instance.OnNodeEndDrag(eventData, this);   
+        }
+
     }
 }
 

@@ -37,4 +37,5 @@ public class HackingHUDControl : MonoBehaviour
             Destroy(network.lastDeviceMoved.gameObject);
         }
     }
+
 }
