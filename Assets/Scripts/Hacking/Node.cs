@@ -14,6 +14,7 @@ namespace Scripts.Hacking
         public GateType gateType;
         public float boardcastDelay;
         public bool moving;
+        private Vector3 movingOffset;
         public int maxInputs = Int16.MaxValue;
         public int maxOutputs = Int16.MaxValue;
         public Image nodeImage;
@@ -109,6 +110,7 @@ namespace Scripts.Hacking
 
             if (deviceUI && !deviceUI.selected || !accessible)
             {
+                Network.Instance.DeselectNode(this);
                 return;
             }
 
@@ -134,7 +136,17 @@ namespace Scripts.Hacking
 
             if (moving)
             {
-                this.transform.position = mousePos.position;
+                this.transform.position = mousePos.position + movingOffset;
+            }
+        }
+
+        public void SetMoving(bool isMoving, Vector3 offset){
+
+            if(deviceUI != null){
+                deviceUI.SetIsMoving(isMoving);
+            } else {
+                moving = isMoving;
+                movingOffset = offset;
             }
         }
 

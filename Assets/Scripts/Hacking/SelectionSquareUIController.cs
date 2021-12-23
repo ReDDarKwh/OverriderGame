@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,22 +16,10 @@ namespace Scripts.Hacking
         public float lineMaxWeldDistance;
         public Material lineMaterial;
         public Transform selectionBG;
-
+        public Transform mousePos;
         private VectorLine line;
-        private Vector3 selectingTargetsStartPos;
-        
-        private float width;
-        private float height;
-        private Vector3 pos;
-
-        public Rect SelectionRect
-        {
-            get => new Rect(pos, new Vector2(Mathf.Abs(width), Mathf.Abs(height)));
-        }
-
-        private bool isSelecting;
-        public LayerMask nodeLayerMask;
-        internal IEnumerable<Node> selectedNodes;
+        private bool isVisible;
+        private Vector3 selectionStartPos;
 
         void Start(){
             line = new VectorLine("SelectionLine", new List<Vector3>(5), lineWidth, lineDepth);
@@ -42,17 +31,39 @@ namespace Scripts.Hacking
         }
 
         void Update(){
-
-
+            if(isVisible){
+                DrawSelectionSquare(selectionStartPos, mousePos.position);
+                line.Draw3D();
+            }
         }
 
-        
-        private void DrawSelectionSquare(float width, float height, Vector3 pos)
+        public Rect GetSelectionRect(Vector3 start, Vector3 end)
         {
-            selectionBG.position = pos + new Vector3(Mathf.Abs(width) / 2, Mathf.Abs(height) / 2);
-            selectionBG.localScale = new Vector3(width, height);
-            line.MakeRect(new Rect(pos, new Vector2(Mathf.Abs(width), Mathf.Abs(height))));
+            var width = end.x - start.x;
+            var height = end.y - start.y;
+            var pos = new Vector3(width > 0 ? start.x : end.x, height > 0 ? start.y : end.y);
+            return new Rect(pos, new Vector2(Mathf.Abs(width), Mathf.Abs(height)));
         }
-      
+        
+        private void DrawSelectionSquare(Vector3 start, Vector3 end)
+        {
+            var rect = GetSelectionRect(start, end);
+            selectionBG.position = (Vector3)(rect.position) + new Vector3(Mathf.Abs(rect.width) / 2, Mathf.Abs(rect.height) / 2);
+            selectionBG.localScale = new Vector3(rect.width, rect.height);
+            line.MakeRect(rect);
+        }
+
+        internal void Show()
+        {
+            isVisible = true;
+            selectionStartPos = mousePos.position;
+        }
+
+        internal void Hide()
+        {
+            isVisible = false;
+            DrawSelectionSquare(Vector3.zero, Vector3.zero);
+            line.Draw3D();
+        }
     }
 }

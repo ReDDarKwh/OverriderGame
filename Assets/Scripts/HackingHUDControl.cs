@@ -16,7 +16,7 @@ public class HackingHUDControl : MonoBehaviour
     public void CreateNode(GameObject nodePrefab)
     {
         var inst = Instantiate(nodePrefab, network.transform).GetComponent<Node>();
-        inst.moving = true;
+        inst.SetMoving(true, Vector3.zero);
         inst.Init(null, System.Guid.NewGuid().ToString());
     }
     public void CreateDevice(GameObject devicePrefab)

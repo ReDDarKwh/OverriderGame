@@ -21,6 +21,10 @@ namespace Scripts.Hacking
         internal DeviceUI lastDeviceMoved;
         internal int baseDeviceSortingOrder;
         internal IEnumerable<Node> selectedNodes;
+        private bool isSelectionDragStarted;
+        private Vector3 selectionStartPos;
+        private bool isDraggingNodesStarted;
+        private bool isConnecting;
 
         private void Awake()
         {
@@ -43,20 +47,7 @@ namespace Scripts.Hacking
             }
         }
 
-        public void DeselectSelectedNodes(bool destroyConnection = true, bool makeSound = false)
-        {
-            selectedNodes = null;
-            if (destroyConnection)
-            {
-                if (makeSound)
-                {
-                    connection.PlayDeconnectedSound();
-                }
-                Destroy(connection.gameObject);
-            }
-            connection = null;
-        }
-
+       
         internal void Connect(Node from, Node to, bool soundOn)
         {
             ConnectionStart(from, soundOn);
@@ -94,7 +85,7 @@ namespace Scripts.Hacking
             {
                 if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(1))
                 {
-                    DeselectSelectedNodes(true, true);
+                    //DeselectSelectedNodes(true, true);
                 }
               
                 if (Input.GetKeyDown(KeyCode.Delete))
@@ -119,59 +110,171 @@ namespace Scripts.Hacking
             }
         }
 
+        public void DeselectSelectedNodes(bool destroyConnection = true, bool makeSound = false)
+        {
+            // if (destroyConnection)
+            // {
+            //     if (makeSound)
+            //     {
+            //         connection.PlayDeconnectedSound();
+            //     }
+            //     Destroy(connection.gameObject);
+            // }
+            // connection = null;
+
+            if(selectedNodes != null){
+                foreach(var sn in selectedNodes){
+                    sn.SetState(NodeState.Off);
+                }
+            }
+
+            selectedNodes = null;
+        }
+
+        public void DeselectNode(Node node)
+        {
+            node.SetState(NodeState.Off);
+
+            if(selectedNodes != null){
+                selectedNodes = selectedNodes.Where(x => x != node).ToList();
+            }
+        }
+        
+        private void SelectNodes(IEnumerable<Node> nodes)
+        {
+            selectedNodes = nodes;
+            foreach (var sn in nodes)
+            {
+                sn.SetState(NodeState.Selected);
+            }
+        }
+
         // EVENTS
 
         internal void OnNodeClickDown(BaseEventData eventData, Node node)
         {
-            Debug.Log("OnNodeClickDown");
+            if(selectedNodes == null || !selectedNodes.Contains(node)){
+                DeselectSelectedNodes();
+                SelectNodes(new List<Node>(){node});
+            }
         }
+        
         internal void OnNodeClickUp(BaseEventData eventData, Node node)
         {
-            Debug.Log("OnNodeClickUp");
+            var pointerEvent = (PointerEventData)eventData;
+            if (pointerEvent.button == PointerEventData.InputButton.Left)
+            {
+                node.SetMoving(false, Vector3.zero);
+
+                if(isConnecting){
+                    foreach(var selectedNode in selectedNodes){
+                        Network.Instance.ConnectionEnd(selectedNode, node);
+                    }
+                    isConnecting = false;
+                }
+
+                foreach(var selectedNode in selectedNodes){
+                    selectedNode.SetMoving(false, Vector3.zero);
+                }
+
+                if(!isDraggingNodesStarted){
+                    DeselectSelectedNodes();
+                    SelectNodes(new List<Node>(){node});
+                }
+
+                isDraggingNodesStarted = false;
+            }
         }
+
         internal void OnNodeHoverEnter(Node node)
         {
             Debug.Log("OnNodeHoverEnter");
         }
+
         internal void OnNodeHoverExit(Node node)
         {
             Debug.Log("OnNodeHoverExit");
         }
+
         internal void OnNodeBeginDrag(BaseEventData eventData, Node node)
         {
-            Debug.Log("OnNodeBeginDrag");
-        }
-        internal void OnNodeDrag(BaseEventData eventData, Node node)
-        {
-            Debug.Log("OnNodeDrag");
-        }
-        internal void OnNodeEndDrag(BaseEventData eventData, Node node)
-        {
-            Debug.Log("OnNodeEndDrag");
+            var pointerEvent = (PointerEventData)eventData;
+            if (pointerEvent.button == PointerEventData.InputButton.Left)
+            {
+                
+                if(Input.GetKeyDown(KeyCode.LeftControl)){
+                    
+                    isDraggingNodesStarted = true;
+                    foreach(var selectedNode in selectedNodes){
+                        selectedNode.SetMoving(true, selectedNode.transform.position - mousePosNode.transform.position);
+                    }
+
+                } else {
+
+                    foreach(var selectedNode in selectedNodes){
+                        ConnectionStart(selectedNode, true);
+                    }
+
+                    isConnecting = true;
+                }
+            }
         }
 
+        internal void OnNodeDrag(BaseEventData eventData, Node node)
+        {
+        }
+
+        internal void OnNodeEndDrag(BaseEventData eventData, Node node)
+        {
+            var pointerEvent = (PointerEventData)eventData;
+            if (pointerEvent.button == PointerEventData.InputButton.Left)
+            {
+                
+            }
+        }
 
         public void OnBackgroundClickDown(BaseEventData eventData)
         {
-            Debug.Log("OnBackgroundClickDown");
         }
+        
         public void OnBackgroundClickUp(BaseEventData eventData)
         {
-            Debug.Log("OnBackgroundClickUp");
+            var pointerEvent = (PointerEventData)eventData;
+            if (pointerEvent.button == PointerEventData.InputButton.Left)
+            {
+                if(!isSelectionDragStarted){
+                    DeselectSelectedNodes();
+                }
+
+                isSelectionDragStarted = false;
+            }
         }
+
         public void OnBackgroundBeginDrag(BaseEventData eventData)
         {
-            Debug.Log("OnBackgroundBeginDrag");
+            var pointerEvent = (PointerEventData)eventData;
+            if (pointerEvent.button == PointerEventData.InputButton.Left)
+            {
+                isSelectionDragStarted = true;
+                selectionStartPos = mousePosNode.transform.position;
+                selectionController.Show();
+            }
         }
+
         public void OnBackgroundDrag(BaseEventData eventData)
         {
-            Debug.Log("OnBackgroundDrag");
+            if(isSelectionDragStarted)
+            {
+                var selectionRect = selectionController.GetSelectionRect(selectionStartPos, mousePosNode.transform.position);
+                DeselectSelectedNodes();
+                SelectNodes(Physics2D.OverlapBoxAll(selectionRect.position + selectionRect.size / 2, selectionRect.size, 0, nodeLayerMask)
+                .Select(x => x.GetComponent<Node>()).Where(x => x.deviceUI == null || x.deviceUI.selected));
+            }
         }
+
         public void OnBackgroundEndDrag(BaseEventData eventData)
         {
-            Debug.Log("OnBackgroundEndDrag");
+            selectionController.Hide();
         }
-
-
     }
 }

@@ -122,10 +122,6 @@ namespace Scripts.Hacking
             foreach (var node in levelNodes)
             {
                 node.DisconnectAll(true);
-
-                if(String.IsNullOrEmpty(node.nodeId) || node.nodeId == "FilterDevice_3a427804-df1d-4687-9a3a-f202f8de7443filter"){
-                }
-
                 levelNodesRepo.Add(node.nodeId, node);
             }
 
