@@ -26,6 +26,7 @@ namespace Scripts.Hacking
         public Color errorColor;
         public Color disabledColor;
         public SoundPreset deconnectedSound;
+        public EventTrigger evtTrigger;
 
         internal AbstractGate gate;
         internal string nodeId;
@@ -105,7 +106,6 @@ namespace Scripts.Hacking
         // Update is called once per frame
         void Update()
         {
-
             nodeCanvas.enabled = deviceUI?.selected ?? true;
 
             if (deviceUI && !deviceUI.selected || !accessible)
@@ -113,6 +113,7 @@ namespace Scripts.Hacking
                 Network.Instance.DeselectNode(this);
                 return;
             }
+
 
             // SetState(gate.currentValue ? NodeState.On : NodeState.Off);
 

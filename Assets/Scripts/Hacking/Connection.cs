@@ -83,7 +83,7 @@ public class Connection : MonoBehaviour
     {
         if (soundOn)
         {
-            SoundManager.Instance.FadeOut(electricHum.Select(x => x.audioSource));
+            SoundManager.Instance.FadeOut(electricHum?.Select(x => x.audioSource).ToList());
             electricHum = null;
             connectedSound.Play(lastEndPos.position);
         }

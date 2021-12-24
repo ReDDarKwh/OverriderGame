@@ -9,7 +9,6 @@ namespace Scripts.Hacking
 {
     public class Network : MonoBehaviour
     {
-        public Connection connection;
         public GameObject connectionPrefab;
         public Node mousePosNode;
         public static Network Instance = null;
@@ -23,8 +22,10 @@ namespace Scripts.Hacking
         internal IEnumerable<Node> selectedNodes;
         private bool isSelectionDragStarted;
         private Vector3 selectionStartPos;
-        private bool isDraggingNodesStarted;
+        private bool isNodeDragStarted;
         private bool isConnecting;
+        private Dictionary<Node, Connection> connectionBySelectedNode;
+        private Node selectedNodeFromHUD;
 
         private void Awake()
         {
@@ -50,31 +51,46 @@ namespace Scripts.Hacking
        
         internal void Connect(Node from, Node to, bool soundOn)
         {
-            ConnectionStart(from, soundOn);
-            ConnectionEnd(from, to);
+            ConnectionEnd(from, to, ConnectionStart(from, soundOn));
         }
 
-        internal void ConnectionStart(Node from, bool soundOn)
+        internal Connection ConnectionStart(Node from, bool soundOn)
         {
-            connection = Instantiate(connectionPrefab, transform).GetComponent<Connection>();
+            var connection = Instantiate(connectionPrefab, transform).GetComponent<Connection>();
             connection.soundOn = soundOn;
             connection.start = from;
             connection.end = mousePosNode;
+
+            return connection;
         }
 
-        internal void ConnectionEnd(Node from, Node to)
+        internal void ConnectionEnd(Node from, Node to, Connection connection)
         {
             var connected = from.Connect(to, connection);
             connection.Connected();
-            DeselectSelectedNodes(!connected);
+            DeselectSelectedNodes();
+            if(!connected){
+                RemoveConnection(connection);
+            }
+        }
+
+        private void RemoveConnection(Connection connection)
+        {
+            connection.PlayDeconnectedSound();
+            Destroy(connection.gameObject);
         }
 
         private void RemoveSelectedNodes()
         {
+            if(isConnecting){
+                RemoveConnections();
+            }
+
             foreach(var selectedNode in selectedNodes){
                 selectedNode.Remove();
             }
-            DeselectSelectedNodes(true, true);
+
+            selectedNodes = null;
         }
 
         // Update is called once per frame
@@ -86,6 +102,12 @@ namespace Scripts.Hacking
                 if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(1))
                 {
                     //DeselectSelectedNodes(true, true);
+                }
+
+                if(Input.GetMouseButtonUp(0) && selectedNodeFromHUD != null){
+
+                    NodeLeftClick(selectedNodeFromHUD);
+                    selectedNodeFromHUD = null;
                 }
               
                 if (Input.GetKeyDown(KeyCode.Delete))
@@ -110,18 +132,8 @@ namespace Scripts.Hacking
             }
         }
 
-        public void DeselectSelectedNodes(bool destroyConnection = true, bool makeSound = false)
+        public void DeselectSelectedNodes()
         {
-            // if (destroyConnection)
-            // {
-            //     if (makeSound)
-            //     {
-            //         connection.PlayDeconnectedSound();
-            //     }
-            //     Destroy(connection.gameObject);
-            // }
-            // connection = null;
-
             if(selectedNodes != null){
                 foreach(var sn in selectedNodes){
                     sn.SetState(NodeState.Off);
@@ -129,6 +141,14 @@ namespace Scripts.Hacking
             }
 
             selectedNodes = null;
+        }
+
+        public void RemoveConnections()
+        {
+            foreach(var c in connectionBySelectedNode.Values){
+                c.PlayDeconnectedSound();
+                Destroy(c.gameObject);
+            }            
         }
 
         public void DeselectNode(Node node)
@@ -153,37 +173,71 @@ namespace Scripts.Hacking
 
         internal void OnNodeClickDown(BaseEventData eventData, Node node)
         {
-            if(selectedNodes == null || !selectedNodes.Contains(node)){
-                DeselectSelectedNodes();
-                SelectNodes(new List<Node>(){node});
+            if (selectedNodes == null || !selectedNodes.Contains(node))
+            {
+                SelectNode(node, false);
             }
         }
-        
+
+        public void SelectNode(Node node, bool fromHUD)
+        {
+            DeselectSelectedNodes();
+            SelectNodes(new List<Node>() { node });
+            selectedNodeFromHUD = fromHUD? node : null;
+        }
+
         internal void OnNodeClickUp(BaseEventData eventData, Node node)
         {
             var pointerEvent = (PointerEventData)eventData;
             if (pointerEvent.button == PointerEventData.InputButton.Left)
             {
-                node.SetMoving(false, Vector3.zero);
+                NodeLeftClick(node);
+            }
 
-                if(isConnecting){
+            if (pointerEvent.button == PointerEventData.InputButton.Right)
+            {
+                if(selectedNodes != null){
                     foreach(var selectedNode in selectedNodes){
-                        Network.Instance.ConnectionEnd(selectedNode, node);
+                        selectedNode.DisconnectAll();
                     }
-                    isConnecting = false;
                 }
+            }
+        }
 
-                foreach(var selectedNode in selectedNodes){
+        private void NodeLeftClick(Node node)
+        {
+            node.SetMoving(false, Vector3.zero);
+
+            if (isConnecting)
+            {
+
+                foreach (var selectedNode in connectionBySelectedNode.Keys)
+                {
+                    Network.Instance.ConnectionEnd(selectedNode, node, connectionBySelectedNode[selectedNode]);
+                }
+                isConnecting = false;
+
+            }
+            else if (!isNodeDragStarted)
+            {
+                connectionBySelectedNode = new Dictionary<Node, Connection>();
+                foreach (var selectedNode in selectedNodes)
+                {
+                    connectionBySelectedNode.Add(selectedNode, ConnectionStart(selectedNode, true));
+                }
+                isConnecting = true;
+            }
+
+            if (selectedNodes != null)
+            {
+                foreach (var selectedNode in selectedNodes)
+                {
                     selectedNode.SetMoving(false, Vector3.zero);
                 }
-
-                if(!isDraggingNodesStarted){
-                    DeselectSelectedNodes();
-                    SelectNodes(new List<Node>(){node});
-                }
-
-                isDraggingNodesStarted = false;
             }
+
+            isNodeDragStarted = false;
+            isSelectionDragStarted = false;
         }
 
         internal void OnNodeHoverEnter(Node node)
@@ -201,22 +255,16 @@ namespace Scripts.Hacking
             var pointerEvent = (PointerEventData)eventData;
             if (pointerEvent.button == PointerEventData.InputButton.Left)
             {
-                
-                if(Input.GetKeyDown(KeyCode.LeftControl)){
-                    
-                    isDraggingNodesStarted = true;
-                    foreach(var selectedNode in selectedNodes){
-                        selectedNode.SetMoving(true, selectedNode.transform.position - mousePosNode.transform.position);
-                    }
+                StartNodeDrag();
+            }
+        }
 
-                } else {
-
-                    foreach(var selectedNode in selectedNodes){
-                        ConnectionStart(selectedNode, true);
-                    }
-
-                    isConnecting = true;
-                }
+        public void StartNodeDrag()
+        {
+            isNodeDragStarted = true;
+            foreach (var selectedNode in selectedNodes)
+            {
+                selectedNode.SetMoving(true, selectedNode.transform.position - mousePosNode.transform.position);
             }
         }
 
@@ -247,6 +295,14 @@ namespace Scripts.Hacking
                 }
 
                 isSelectionDragStarted = false;
+            }
+
+            if (pointerEvent.button == PointerEventData.InputButton.Right)
+            {
+                if(isConnecting){
+                    RemoveConnections();
+                    isConnecting = false;
+                }
             }
         }
 
