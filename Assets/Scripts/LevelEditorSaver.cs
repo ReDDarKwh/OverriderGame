@@ -56,6 +56,12 @@ public class LevelEditorSaver : MonoBehaviour
         Load();
     }
 
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.F7)){
+            SaveLevel();
+        }
+    }
+
     public void Load(){
         SaveMaster.ClearActiveSavedPrefabs();
         SaveMaster.SetSlot(SlotNumber, false);

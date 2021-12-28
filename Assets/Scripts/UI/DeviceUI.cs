@@ -115,7 +115,7 @@ public class DeviceUI : MonoBehaviour
         if (isHovered && !disableClose)
         {
             selectionCircle.enabled = true;
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
                 ToggleSelected();
             }

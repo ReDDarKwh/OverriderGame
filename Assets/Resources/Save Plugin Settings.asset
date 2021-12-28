@@ -27,7 +27,7 @@ MonoBehaviour:
   cleanSavedPrefabsOnSlotSwitch: 0
   loadDefaultSlotOnStart: 0
   defaultSlot: 0
-  useHotkeys: 1
+  useHotkeys: 0
   saveAndWriteToDiskKey: 286
   syncSaveGameKey: 0
   syncLoadGameKey: 290
