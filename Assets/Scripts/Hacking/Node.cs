@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Lowscope.Saving;
 using Scripts.Actions;
 using UnityEngine;
@@ -114,26 +115,19 @@ namespace Scripts.Hacking
                 return;
             }
 
-
-            // SetState(gate.currentValue ? NodeState.On : NodeState.Off);
-
-            // if (Network.Instance.selectedNode == this)
-            // {
-            //     SetState(NodeState.Selected);
-            // }
-            // else
-            // {
-            //     if (isHovered)
-            //     {
-            //         SetState(NodeState.Hover);
-            //     }
-
-            //     if (Network.Instance.selectedNode && !Network.Instance.selectedNode.gate.CanConnect(gate))
-            //     {
-            //         SetState(isHovered ? NodeState.Error : NodeState.Disabled);
-            //     }
-            // }
-
+            if(currentState == NodeState.Selected){
+                nodeImage.color = selectedColor;
+            } else {
+                nodeImage.color = gate.currentValue ? onColor : offColor;
+                if (isHovered)
+                {
+                    nodeImage.color = hoverColor;
+                }
+                if (Network.Instance.isConnecting && (Network.Instance.selectedNodes?.Any() ?? false) && !Network.Instance.selectedNodes.All(x => x.gate.CanConnect(gate)))
+                {
+                    nodeImage.color =  isHovered ? errorColor : disabledColor;
+                }
+            }
 
             if (moving)
             {
@@ -156,32 +150,6 @@ namespace Scripts.Hacking
             if (currentState != state)
             {
                 currentState = state;
-                switch (state)
-                {
-                    case NodeState.Hover:
-                        nodeImage.color = hoverColor;
-                        break;
-
-                    case NodeState.Selected:
-                        nodeImage.color = selectedColor;
-                        break;
-
-                    case NodeState.On:
-                        nodeImage.color = onColor;
-                        break;
-
-                    case NodeState.Off:
-                        nodeImage.color = offColor;
-                        break;
-
-                    case NodeState.Error:
-                        nodeImage.color = errorColor;
-                        break;
-
-                    case NodeState.Disabled:
-                        nodeImage.color = disabledColor;
-                        break;
-                }
             }
         }
 
@@ -284,12 +252,12 @@ namespace Scripts.Hacking
 
         public void OnHoverEnter()
         {
-            Network.Instance.OnNodeHoverEnter(this);    
+            isHovered = true;
         }
 
         public void OnHoverExit()
         {
-            Network.Instance.OnNodeHoverExit(this);     
+            isHovered = false;
         }
 
         public void OnBeginDrag(BaseEventData eventData)

@@ -8,6 +8,7 @@ using System;
 using TMPro;
 using Network = Scripts.Hacking.Network;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class DeviceUI : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class DeviceUI : MonoBehaviour
     private bool isMoving;
     private Vector3 pos;
     private bool isHovered;
+    private Coroutine quickConnectCoroutine;
+    public Color lineColor;
 
     void Start()
     {
@@ -67,7 +70,7 @@ public class DeviceUI : MonoBehaviour
         if (!disableLine)
         {
             lineFactory = GameObject.FindGameObjectWithTag("LineFactory").GetComponent<LineFactory>();
-            line = lineFactory.GetLine(Vector2.zero, Vector2.zero, 0.02f, Color.green);
+            line = lineFactory.GetLine(Vector2.zero, Vector2.zero, 0.02f, lineColor);
         }
         else
         {
@@ -103,28 +106,17 @@ public class DeviceUI : MonoBehaviour
     public void OnHover()
     {
         isHovered = true;
+        selectionCircle.enabled = true;
     }
 
     public void OnHoverExit()
     {
         isHovered = false;
+        selectionCircle.enabled = false;
     }
 
     void Update()
     {
-        if (isHovered && !disableClose)
-        {
-            selectionCircle.enabled = true;
-            if (Input.GetMouseButtonDown(1))
-            {
-                ToggleSelected();
-            }
-        }
-        else
-        {
-            selectionCircle.enabled = false;
-        }
-
         if (line != null)
         {
             if (selected)
@@ -141,6 +133,14 @@ public class DeviceUI : MonoBehaviour
         }
 
         UpdateAccessLevelUI();
+    }
+
+    public void OnPointerClick(BaseEventData eventData)
+    {
+        var pointerEvent = (PointerEventData)eventData;
+        if(pointerEvent.button == PointerEventData.InputButton.Left){
+            ToggleSelected();
+        }
     }
 
     public void ToggleSelected()

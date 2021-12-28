@@ -23,7 +23,9 @@ namespace Scripts.Hacking
         private bool isSelectionDragStarted;
         private Vector3 selectionStartPos;
         private bool isNodeDragStarted;
-        private bool isConnecting;
+
+        [System.NonSerialized]
+        public bool isConnecting;
         private Dictionary<Node, Connection> connectionBySelectedNode;
         private Node selectedNodeFromHUD;
 
@@ -106,7 +108,7 @@ namespace Scripts.Hacking
 
                 if(Input.GetMouseButtonUp(0) && selectedNodeFromHUD != null){
 
-                    NodeLeftClick(selectedNodeFromHUD);
+                    StartOrEndConnect(selectedNodeFromHUD);
                     selectedNodeFromHUD = null;
                 }
               
@@ -145,6 +147,8 @@ namespace Scripts.Hacking
 
         public void RemoveConnections()
         {
+            isConnecting = false;     
+
             foreach(var c in connectionBySelectedNode.Values){
                 c.PlayDeconnectedSound();
                 Destroy(c.gameObject);
@@ -179,7 +183,7 @@ namespace Scripts.Hacking
             }
         }
 
-        public void SelectNode(Node node, bool fromHUD)
+        public void SelectNode(Node node, bool fromHUD = false)
         {
             DeselectSelectedNodes();
             SelectNodes(new List<Node>() { node });
@@ -191,7 +195,7 @@ namespace Scripts.Hacking
             var pointerEvent = (PointerEventData)eventData;
             if (pointerEvent.button == PointerEventData.InputButton.Left)
             {
-                NodeLeftClick(node);
+                StartOrEndConnect(node);
             }
 
             if (pointerEvent.button == PointerEventData.InputButton.Right)
@@ -204,7 +208,7 @@ namespace Scripts.Hacking
             }
         }
 
-        private void NodeLeftClick(Node node)
+        public void StartOrEndConnect(Node node)
         {
             node.SetMoving(false, Vector3.zero);
 
@@ -238,16 +242,6 @@ namespace Scripts.Hacking
 
             isNodeDragStarted = false;
             isSelectionDragStarted = false;
-        }
-
-        internal void OnNodeHoverEnter(Node node)
-        {
-            Debug.Log("OnNodeHoverEnter");
-        }
-
-        internal void OnNodeHoverExit(Node node)
-        {
-            Debug.Log("OnNodeHoverExit");
         }
 
         internal void OnNodeBeginDrag(BaseEventData eventData, Node node)
@@ -301,7 +295,6 @@ namespace Scripts.Hacking
             {
                 if(isConnecting){
                     RemoveConnections();
-                    isConnecting = false;
                 }
             }
         }

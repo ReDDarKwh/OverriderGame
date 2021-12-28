@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionName: Active
   disableOutput: 0
-  disableInput: 0
+  disableInput: 1
   onTime: 4
 --- !u!1 &2077865597902047870
 GameObject:
