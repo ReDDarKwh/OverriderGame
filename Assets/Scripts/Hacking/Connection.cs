@@ -41,6 +41,8 @@ public class Connection : MonoBehaviour
     public ParticleSystem connectionEffect;
     public GameObject connectionDotPrefab;
 
+    private bool isConnected;
+
     public float dotInterval;
 
     private float lastDotTime;
@@ -90,6 +92,8 @@ public class Connection : MonoBehaviour
 
         sparksEffect.Stop();
         connectionEffect.Play();
+
+        isConnected = true;
     }
 
     public void PlayDeconnectedSound()
@@ -138,7 +142,7 @@ public class Connection : MonoBehaviour
             line.color = lineColor;
         }
 
-        line.SetWidth(lineWidth / Camera.main.orthographicSize);
+        line.SetWidth((IsSelected()? lineWidth * 2f : lineWidth) / Camera.main.orthographicSize);
 
         if (startPos != endPos)
         {
@@ -182,7 +186,7 @@ public class Connection : MonoBehaviour
                 start.Disconnect(end);
             }
 
-            if (Input.GetMouseButton(1) && line.Selected(Input.mousePosition))
+            if (Input.GetMouseButton(1) && IsSelected())
             {
                 selectedForDelete = true;
             }
@@ -191,6 +195,10 @@ public class Connection : MonoBehaviour
                 selectedForDelete = false;
             }
         }
+    }
+
+    private bool IsSelected(){
+        return line.Selected(Input.mousePosition) && isConnected;
     }
 
     void OnDestroy()

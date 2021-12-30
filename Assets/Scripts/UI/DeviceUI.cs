@@ -117,6 +117,8 @@ public class DeviceUI : MonoBehaviour
 
     void Update()
     {
+        OnHoverExit();
+
         if (line != null)
         {
             if (selected)
@@ -133,14 +135,6 @@ public class DeviceUI : MonoBehaviour
         }
 
         UpdateAccessLevelUI();
-    }
-
-    public void OnPointerClick(BaseEventData eventData)
-    {
-        var pointerEvent = (PointerEventData)eventData;
-        if(pointerEvent.button == PointerEventData.InputButton.Left){
-            ToggleSelected();
-        }
     }
 
     public void ToggleSelected()

@@ -15,7 +15,6 @@ namespace Scripts.Hacking
         public SelectionSquareUIController selectionController;
         public LayerMask nodeLayerMask;
 
-
         internal int accessLevel;
         internal DeviceUI lastDeviceMoved;
         internal int baseDeviceSortingOrder;

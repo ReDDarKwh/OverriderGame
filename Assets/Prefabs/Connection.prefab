@@ -9675,7 +9675,7 @@ MonoBehaviour:
   noodlePath: 1
   zoom: 1
   divMultiplier: 20
-  lineWidth: 20
+  lineWidth: 25
   lineDepth: 60
   lineMaxWeldDistance: 10
   color: {r: 0.92549026, g: 0.9333334, b: 0.9176471, a: 1}
