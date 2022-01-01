@@ -9675,7 +9675,7 @@ MonoBehaviour:
   noodlePath: 1
   zoom: 1
   divMultiplier: 20
-  lineWidth: 25
+  lineWidth: 32.38
   lineDepth: 60
   lineMaxWeldDistance: 10
   color: {r: 0.92549026, g: 0.9333334, b: 0.9176471, a: 1}
@@ -9699,6 +9699,13 @@ MonoBehaviour:
   connectionDotPrefab: {fileID: 2873682809274102752, guid: 00b2f7a1febe18f41b2062ce4228ece6,
     type: 3}
   dotInterval: 0.5
+  selfConnectRadiusY: 0.08
+  selfConnectRadiusX: 0.11
+  selfConnectPointCount: 40
+  wavyLineModifier: 6
+  wavyLineFrequency: 13.2
+  wavyLineAmplitude: 92.5
+  wavyLineOffsetY: 53.07
 --- !u!1 &6177825562662897278
 GameObject:
   m_ObjectHideFlags: 0

@@ -56,6 +56,14 @@ public class Connection : MonoBehaviour
     private IEnumerable<electricHumSetting> electricHum;
 
     private Color lineColor;
+    public float selfConnectRadiusY;
+    public float selfConnectRadiusX;
+    public int selfConnectPointCount;
+
+    public float wavyLineModifier;
+    public float wavyLineFrequency;
+    public float wavyLineAmplitude;
+    public float wavyLineOffsetY;
 
     // Start is called before the first frame update
     void Start()
@@ -142,31 +150,39 @@ public class Connection : MonoBehaviour
             line.color = lineColor;
         }
 
-        line.SetWidth((IsSelected()? lineWidth * 2f : lineWidth) / Camera.main.orthographicSize);
+        var baseLineWidth = (IsSelected()? lineWidth * 2f : lineWidth);
+
+        if (start.gate.currentValue && (start.deviceUI?.device.playerCanAccess ?? true))
+        {
+            var pointCount = line.points3.Count();
+            for(var i = 0; i < pointCount - 1; i++){
+                var baseWidth = line.GetWidth(i);
+                var wave = Mathf.Max(0, Mathf.Sin(Time.unscaledTime * wavyLineFrequency + i * wavyLineModifier) * wavyLineAmplitude - wavyLineOffsetY);
+
+                line.SetWidth((baseLineWidth + wave) / Camera.main.orthographicSize, i);
+            }
+        } else {
+            line.SetWidth(baseLineWidth / Camera.main.orthographicSize);
+        }
 
         if (startPos != endPos)
         {
             DrawNoodle(noodlePath, new List<Vector3>
-                {
-                    startPos.position,
-                    endPos.position
-                });
-
-            if (start.gate.currentValue)
             {
-                if (Time.unscaledTime - lastDotTime > dotInterval)
-                {
-                    lastDotTime = Time.unscaledTime;
-                    var dot = Instantiate(connectionDotPrefab, startPos.position, Quaternion.identity).GetComponent<ConnectionDot>();
-                    dot.line = line;
-                    dot.spriteRenderer.color = lineColor;
-                    dot.gate = start.gate;
-                    dot.connection = this;
-                }
-            }
+                startPos.position,
+                endPos.position
+            });
         }
-        else
+        else if (start.deviceUI?.device.playerCanAccess ?? true)
         {
+            var p = new List<Vector3>();
+            for(var i = 0; i < selfConnectPointCount; i++){
+                p.Add(Vector3.zero);
+            }
+
+            line.points3 = p;
+            line.MakeEllipse(startPos.position + new Vector3(0, selfConnectRadiusY, 0), selfConnectRadiusX, selfConnectRadiusY);
+        } else {
             line.points3.Clear();
         }
 

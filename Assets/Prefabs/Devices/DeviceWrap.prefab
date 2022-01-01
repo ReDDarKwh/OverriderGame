@@ -187,9 +187,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 21
+  m_SortingOrder: 61
   m_Sprite: {fileID: 21300000, guid: 9a15e907f7aa84fbfa51ac45cd4d9d51, type: 3}
-  m_Color: {r: 0.17927411, g: 1, b: 0.051886797, a: 0.5019608}
+  m_Color: {r: 0.17927411, g: 1, b: 0.051886797, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -993,7 +993,7 @@ MonoBehaviour:
   device: {fileID: 4089401180447782000}
   actionsToolbar: {fileID: 918815885727065572}
   actionsContainer: {fileID: 1009430982531961698}
-  deviceCircle: {fileID: 954493080113079280}
+  deviceCircle: {fileID: 518360851045212039}
   title: {fileID: 6282629269309382537}
   AccessDeniedDisplay: {fileID: 7047857550082094679}
   AccessDeniedText: {fileID: 7674226205684045744}
@@ -1010,6 +1010,8 @@ MonoBehaviour:
   disableClose: 0
   disableAnchor: 0
   UIDestroyable: 0
+  deviceCircleColor: {r: 0, g: 1, b: 0.29411766, a: 1}
+  deviceCircleBlockedColor: {r: 0.95686275, g: 0.52156866, b: 0, a: 1}
   lineColor: {r: 0, g: 1, b: 0.29234123, a: 0.49019608}
 --- !u!58 &8112609292630850992
 CircleCollider2D:
