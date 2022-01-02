@@ -10,7 +10,7 @@ namespace Scripts.Actions
         private DataGate filtersDataInput;
         internal override void OnStart()
         {
-            filtersDataInput = new DataGate
+            filtersDataInput = new DataGate(true)
             {
                 name = "filter",
                 dataGateType = DataGate.DataGateType.Filter,

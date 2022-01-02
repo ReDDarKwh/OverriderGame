@@ -98,7 +98,7 @@ namespace Scripts.Actions
         {
             disableInput = true;
 
-            intrudersDataOutput = new DataGate
+            intrudersDataOutput = new DataGate(false)
             {
                 name = intrudersDataOutputName,
                 dataGateType = DataGate.DataGateType.Output
@@ -106,7 +106,7 @@ namespace Scripts.Actions
 
             dataGates.Add(intrudersDataOutput);
 
-            filterDataInput = new DataGate
+            filterDataInput = new DataGate(true)
             {
                 name = filterDataInputName,
                 dataGateType = DataGate.DataGateType.Input,

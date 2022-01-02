@@ -14,8 +14,13 @@ namespace Scripts.Hacking
         public bool saveData;
         private object data;
 
-        public DataGate()
+        public DataGate(bool isInput)
         {
+            if(isInput){
+                maxOutputs = 0;
+            } else {
+                maxInputs = 0;
+            }
             currentValue = false;
         }
 

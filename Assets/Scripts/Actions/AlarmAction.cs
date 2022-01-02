@@ -43,7 +43,7 @@ namespace Scripts.Actions
                 }
             };
 
-            targetsDataInput = new DataGate { name = "targets" };
+            targetsDataInput = new DataGate(true) { name = "targets" };
             dataGates.Add(targetsDataInput);
 
             activate.outputGate.ValueHasChanged += (object sender, EventArgs args) =>

@@ -18,7 +18,7 @@ public class LaserEmitter : Scripts.Actions.Action
 
     internal override void OnStart()
     {
-        filterDataInput = new DataGate { name = filterDataInputName, dataGateType = DataGate.DataGateType.Input };
+        filterDataInput = new DataGate(true) { name = filterDataInputName, dataGateType = DataGate.DataGateType.Input };
         dataGates.Add(filterDataInput);
 
         line.positionCount = 2;

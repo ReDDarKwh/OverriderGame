@@ -20,7 +20,7 @@ namespace Scripts.Actions
         {
             initialRotation = transform.rotation;
 
-            targetsDataInput = new DataGate { name = "targets" };
+            targetsDataInput = new DataGate(true) { name = "targets" };
             dataGates.Add(targetsDataInput);
 
             targetsDataInput.ValueHasChanged += targetsDataInput_ValueChanged;

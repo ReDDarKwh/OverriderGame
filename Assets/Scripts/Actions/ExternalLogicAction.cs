@@ -18,7 +18,7 @@ namespace Scripts.Actions
         {
             foreach (var dIn in dataInputsNames)
             {
-                var gate = new DataGate { name = dIn, dataGateType = DataGate.DataGateType.Input };
+                var gate = new DataGate(true) { name = dIn, dataGateType = DataGate.DataGateType.Input };
                 dataGates.Add(gate);
                 dataInputs.Add(gate.name, null);
                 dataInputsHasData.Add(gate.name, false);

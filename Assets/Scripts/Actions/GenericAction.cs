@@ -10,7 +10,7 @@ namespace Scripts.Actions
         private DataGate genericDataOutput;
         internal override void OnStart()
         {
-            genericDataOutput = new DataGate { name = "Device", dataGateType = DataGate.DataGateType.Output };
+            genericDataOutput = new DataGate (false) { name = "Device", dataGateType = DataGate.DataGateType.Output };
             dataGates.Add(genericDataOutput);
             genericDataOutput.SetData(new List<GameObject> { gameObject });
         }
