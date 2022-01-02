@@ -11,6 +11,7 @@ public class ActionPulseModifier : MonoBehaviour
     public Action activate;
     public Action desactivate;
     public Action active;
+    private Coroutine disactivateCoroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -54,8 +55,19 @@ public class ActionPulseModifier : MonoBehaviour
 
     public void Desactivate()
     {
+        if(disactivateCoroutine != null){
+            StopCoroutine(disactivateCoroutine);
+            disactivateCoroutine = null;
+        }
+        
         desactivate.actionGate.SetValue(false);
         desactivate.actionGate.SetValue(true);
-        desactivate.actionGate.SetValue(false);
+        disactivateCoroutine = StartCoroutine(DelayedDisactivate());
     }
+
+    private IEnumerator DelayedDisactivate(){
+        yield return new WaitForSeconds(0.5f);
+        desactivate.actionGate.SetValue(false);
+    } 
+
 }
