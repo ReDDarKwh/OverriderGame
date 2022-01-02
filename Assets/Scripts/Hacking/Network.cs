@@ -56,12 +56,18 @@ namespace Scripts.Hacking
             ConnectionEnd(from, to, ConnectionStart(from, soundOn));
         }
 
-        internal Connection ConnectionStart(Node from, bool soundOn)
+        internal Connection ConnectionStart(Node from, bool soundOn, bool reversed = false)
         {
             var connection = Instantiate(connectionPrefab, transform).GetComponent<Connection>();
             connection.soundOn = soundOn;
-            connection.start = from;
-            connection.end = mousePosNode;
+
+            if(reversed){
+                connection.start = mousePosNode;
+                connection.end = from;
+            } else {
+                connection.start = from;
+                connection.end = mousePosNode;
+            }
 
             return connection;
         }
@@ -227,7 +233,7 @@ namespace Scripts.Hacking
                 connectionBySelectedNode = new Dictionary<Node, Connection>();
                 foreach (var selectedNode in selectedNodes)
                 {
-                    connectionBySelectedNode.Add(selectedNode, ConnectionStart(selectedNode, true));
+                    connectionBySelectedNode.Add(selectedNode, ConnectionStart(selectedNode, true, selectedNode.gate.maxOutputs == 0));
                 }
                 isConnecting = true;
             }

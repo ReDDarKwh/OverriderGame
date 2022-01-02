@@ -166,6 +166,7 @@ MonoBehaviour:
   externalListeners: []
   cachedSaveableComponents: []
   saveIdentification: 
+  priority: 0
   sceneName: 
 --- !u!1 &6160194193034092183
 GameObject:
@@ -202,10 +203,10 @@ RectTransform:
   m_Father: {fileID: 348439042822629426}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.8, y: 0}
-  m_SizeDelta: {x: 1.6, y: 0.19}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0.19}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1222137441629114152
 CanvasRenderer:
@@ -356,10 +357,10 @@ RectTransform:
   m_Father: {fileID: 348439042822629426}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0.8, y: -0.39}
-  m_SizeDelta: {x: 1.6, y: 0.02}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1868190423043348981
 CanvasRenderer:

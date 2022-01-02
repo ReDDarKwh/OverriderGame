@@ -141,7 +141,8 @@ public class Connection : MonoBehaviour
 
         transform.position = endPos.position;
 
-        SetLineOn(start.gate.currentValue);
+        SetLineOn(GetRootNode().gate.currentValue);
+        
         UpdateSelection();
 
         if (start.rightClickDown || end.rightClickDown || selectedForDelete)
@@ -153,7 +154,7 @@ public class Connection : MonoBehaviour
 
         var baseLineWidth = (IsSelected()? lineWidth * 1.5f : lineWidth);
 
-        if (start.gate.currentValue)
+        if (GetRootNode().gate.currentValue)
         {
             if(!hasAnimationPlayed){
                 animator.SetTrigger("On");
@@ -200,9 +201,13 @@ public class Connection : MonoBehaviour
         lastEndPos = endPos;
     }
 
+    private Node GetRootNode(){
+        return start.gate == null ? end: start;
+    }
+
     private void UpdateSelection()
     {
-        if (start.deviceUI?.device.playerCanAccess ?? true)
+        if (IsSelected() && (start.deviceUI?.device.playerCanAccess ?? true))
         {
             if (selectedForDelete && Input.GetMouseButtonUp(1))
             {
@@ -210,7 +215,7 @@ public class Connection : MonoBehaviour
                 start.Disconnect(end);
             }
 
-            if (Input.GetMouseButton(1) && IsSelected())
+            if (Input.GetMouseButton(1))
             {
                 selectedForDelete = true;
             }
