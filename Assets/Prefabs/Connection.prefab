@@ -9635,6 +9635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5592402402756229263}
   - component: {fileID: 5592402402756229265}
+  - component: {fileID: 4503021403346872913}
   m_Layer: 0
   m_Name: Connection
   m_TagString: HackUI
@@ -9675,13 +9676,14 @@ MonoBehaviour:
   noodlePath: 1
   zoom: 1
   divMultiplier: 20
-  lineWidth: 32.38
+  lineWidth: 36
   lineDepth: 60
   lineMaxWeldDistance: 10
   color: {r: 0.92549026, g: 0.9333334, b: 0.9176471, a: 1}
   onColor: {r: 1, g: 0.7413453, b: 0, a: 1}
   removeColor: {r: 0.7169812, g: 0, b: 0, a: 1}
-  lineMaterial: {fileID: 2100000, guid: 8e6e521184ac4f34a89b12af674d8775, type: 2}
+  lineMaterialOn: {fileID: 2100000, guid: 8e6e521184ac4f34a89b12af674d8775, type: 2}
+  lineMaterialOff: {fileID: 2100000, guid: f72f735c38d4e4c44b1966b32487d1e2, type: 2}
   electricHumSounds:
   - electricHumSound: {fileID: 11400000, guid: e0ddb592b795adb45a96519b07f1db70, type: 2}
     changePitch: 1
@@ -9693,19 +9695,40 @@ MonoBehaviour:
   deconnectedSound: {fileID: 11400000, guid: 92067fb7a0caf044fa3a5ffb30cd3316, type: 2}
   electricHumPitchMinMax: {x: 1.5, y: 3}
   electricHumDistanceMinMax: {x: 0, y: 5}
-  soundOn: 1
+  soundOn: 0
   sparksEffect: {fileID: 5659050337832298901}
   connectionEffect: {fileID: 513186410}
   connectionDotPrefab: {fileID: 2873682809274102752, guid: 00b2f7a1febe18f41b2062ce4228ece6,
     type: 3}
-  dotInterval: 0.5
-  selfConnectRadiusY: 0.08
-  selfConnectRadiusX: 0.11
-  selfConnectPointCount: 40
-  wavyLineModifier: 6
-  wavyLineFrequency: 13.2
-  wavyLineAmplitude: 92.5
-  wavyLineOffsetY: 53.07
+  animator: {fileID: 4503021403346872913}
+  dotInterval: 0.62
+  lineColor: {r: 0, g: 0.48144865, b: 1, a: 1}
+  selfConnectRadiusY: 0
+  selfConnectRadiusX: 0.21
+  selfConnectPointCount: 25
+  wavyLineModifier: -5
+  wavyLineFrequency: 0.172
+  wavyLineAmplitude: 0
+  wavyLineOffsetY: 270.1
+--- !u!95 &4503021403346872913
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592402402756229266}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e840260f5de8f314baa81d5376b13c1c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6177825562662897278
 GameObject:
   m_ObjectHideFlags: 0

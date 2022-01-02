@@ -29,7 +29,8 @@ public class Connection : MonoBehaviour
     public Color color;
     public Color onColor;
     public Color removeColor;
-    public Material lineMaterial;
+    public Material lineMaterialOn;
+    public Material lineMaterialOff;
     public electricHumSetting[] electricHumSounds;
     public SoundPreset connectedSound;
     public SoundPreset connectedStartSound;
@@ -40,6 +41,7 @@ public class Connection : MonoBehaviour
     public ParticleSystem sparksEffect;
     public ParticleSystem connectionEffect;
     public GameObject connectionDotPrefab;
+    public Animator animator;
 
     private bool isConnected;
 
@@ -55,26 +57,27 @@ public class Connection : MonoBehaviour
     private bool selectedForDelete;
     private IEnumerable<electricHumSetting> electricHum;
 
-    private Color lineColor;
+    public Color lineColor;
     public float selfConnectRadiusY;
     public float selfConnectRadiusX;
     public int selfConnectPointCount;
 
     public float wavyLineModifier;
+    [Range(0.0f, 2.0f)]
     public float wavyLineFrequency;
     public float wavyLineAmplitude;
     public float wavyLineOffsetY;
+    private bool hasAnimationPlayed;
 
     // Start is called before the first frame update
     void Start()
     {
-        lineColor = UnityEngine.Random.ColorHSV(0, 1, 0.5f, 1);
+        //lineColor = UnityEngine.Random.ColorHSV(0, 1, 1, 1, 1, 1);
 
         line = new VectorLine("ConnectionLine", new List<Vector3>(), lineWidth, lineDepth);
         line.joins = Joins.Weld;
         line.lineType = LineType.Continuous;
         line.maxWeldDistance = lineMaxWeldDistance;
-        line.material = lineMaterial;
         if (soundOn)
         {
             connectedStartSound.Play(transform.position);
@@ -141,8 +144,6 @@ public class Connection : MonoBehaviour
         SetLineOn(start.gate.currentValue);
         UpdateSelection();
 
-
-
         if (start.rightClickDown || end.rightClickDown || selectedForDelete)
         {
             line.color = removeColor;
@@ -150,19 +151,26 @@ public class Connection : MonoBehaviour
             line.color = lineColor;
         }
 
-        var baseLineWidth = (IsSelected()? lineWidth * 2f : lineWidth);
+        var baseLineWidth = (IsSelected()? lineWidth * 1.5f : lineWidth);
 
-        if (start.gate.currentValue && (start.deviceUI?.device.playerCanAccess ?? true))
+        if (start.gate.currentValue)
         {
+            if(!hasAnimationPlayed){
+                animator.SetTrigger("On");
+                wavyLineAmplitude = 0;
+                hasAnimationPlayed = true;
+            }
+
             var pointCount = line.points3.Count();
             for(var i = 0; i < pointCount - 1; i++){
                 var baseWidth = line.GetWidth(i);
-                var wave = Mathf.Max(0, Mathf.Sin(Time.unscaledTime * wavyLineFrequency + i * wavyLineModifier) * wavyLineAmplitude - wavyLineOffsetY);
+                var wave = Mathf.Max(0, Mathf.Sin(Time.unscaledTime * wavyLineModifier + i * wavyLineFrequency) * wavyLineAmplitude - wavyLineOffsetY);
 
                 line.SetWidth((baseLineWidth + wave) / Camera.main.orthographicSize, i);
             }
         } else {
             line.SetWidth(baseLineWidth / Camera.main.orthographicSize);
+            hasAnimationPlayed = false;
         }
 
         if (startPos != endPos)
@@ -252,6 +260,7 @@ public class Connection : MonoBehaviour
         if (line != null)
         {
             line.color = currentValue ? onColor : color;
+            line.material = currentValue? lineMaterialOn : lineMaterialOff;
         }
     }
 

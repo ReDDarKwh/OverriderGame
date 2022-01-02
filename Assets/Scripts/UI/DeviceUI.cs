@@ -159,6 +159,8 @@ namespace Scripts.UI
                 // Move actionWindow above others;
                 SetIsMoving(true);
                 SetIsMoving(false);
+
+                UpdateAccessLevelUI();
             }
             else
             {
