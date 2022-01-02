@@ -6,6 +6,8 @@ public class WorkshopCameraController : MonoBehaviour
 {
     public Transform target;
 
+    public float defaultOrthographicSize;
+
     public float distance = 5.0f;
     public float maxDistance = 20;
     public float minDistance = .6f;
@@ -21,6 +23,15 @@ public class WorkshopCameraController : MonoBehaviour
     private Quaternion rotation;
     private Vector3 position;
     private Vector3 lastPosition;
+    private Vector3 currentFocusPlayerVel;
+    private float currentFocusPlayerZoomVel;
+    private bool isFocusingOnPlayer;
+    private float lastFocusTime;
+    private Vector3 focusTarget;
+    public float focusPlayerSmoothTime;
+    public float focusPlayerMaxSpeed;
+    public float focusPlayerZoomSmoothTime;
+    public float focusPlayerZoomMaxSpeed;
 
     void Start() { Init(); }
     void OnEnable() { Init(); }
@@ -65,23 +76,45 @@ public class WorkshopCameraController : MonoBehaviour
             return;
         }
 
+        if(Input.GetButtonDown("FocusPlayer")){
+            isFocusingOnPlayer = true;
+            lastFocusTime = Time.time;
+            focusTarget = target.position;
+
+        }
+
+        if(isFocusingOnPlayer){
+            var t = new Vector3(focusTarget.x, focusTarget.y, transform.position.z);
+            transform.position = Vector3.SmoothDamp(transform.position, t , ref currentFocusPlayerVel, focusPlayerSmoothTime, focusPlayerMaxSpeed);
+            this.cam.orthographicSize = Mathf.SmoothDamp(this.cam.orthographicSize, defaultOrthographicSize, ref currentFocusPlayerZoomVel, focusPlayerZoomSmoothTime, focusPlayerZoomMaxSpeed);
+
+            if((transform.position - t).magnitude < 0.1f && this.cam.orthographicSize - defaultOrthographicSize < 0.1){
+                isFocusingOnPlayer = false;
+            }
+        }
+
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             ZoomOrthoCamera(cam.ScreenToWorldPoint(Input.mousePosition), 1);
+            isFocusingOnPlayer = false;
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             ZoomOrthoCamera(cam.ScreenToWorldPoint(Input.mousePosition), -1);
+            isFocusingOnPlayer = false;
         }
 
         if (Input.GetMouseButtonDown(2))
         {
             lastPosition = cam.ScreenToWorldPoint(Input.mousePosition);
+            isFocusingOnPlayer = false;
         }
         else if (Input.GetMouseButton(2))
         {
             var difference = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             transform.position = lastPosition - difference;
+            isFocusingOnPlayer = false;
         }
+
     }
 }
