@@ -124,7 +124,7 @@ namespace Scripts.Hacking
                 {
                     nodeImage.color = hoverColor;
                 }
-                if (Network.Instance.isConnecting && (Network.Instance.selectedNodes?.Any() ?? false) && !Network.Instance.selectedNodes.All(x => x.gate.CanConnect(gate)))
+                if (Network.Instance.isConnecting && (Network.Instance.selectedNodes?.Any() ?? false) && Network.Instance.selectedNodes.All(x => Mathf.Abs(maxOutputs - x.maxOutputs) == 0 || (!x.gate.CanConnect(gate) && !gate.CanConnect(x.gate))))
                 {
                     nodeImage.color =  isHovered ? errorColor : disabledColor;
                 }
@@ -207,6 +207,7 @@ namespace Scripts.Hacking
             var result = gate.Connect(node.gate);
             if (result)
             {
+                connection.start = this;
                 connection.end = node;
                 connectionsTo.Add(node.gate, connection);
                 connectedToInUI = true;

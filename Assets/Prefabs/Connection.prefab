@@ -9676,7 +9676,7 @@ MonoBehaviour:
   noodlePath: 1
   zoom: 1
   divMultiplier: 20
-  lineWidth: 36
+  lineWidth: 28.2
   lineDepth: 60
   lineMaxWeldDistance: 10
   color: {r: 0.92549026, g: 0.9333334, b: 0.9176471, a: 1}
@@ -9702,14 +9702,17 @@ MonoBehaviour:
     type: 3}
   animator: {fileID: 4503021403346872913}
   dotInterval: 0.62
-  lineColor: {r: 0, g: 0.48144865, b: 1, a: 1}
+  lineColor: {r: 0, g: 0.48144865, b: 1, a: 0.68235296}
   selfConnectRadiusY: 0
   selfConnectRadiusX: 0.21
   selfConnectPointCount: 25
   wavyLineModifier: -5
   wavyLineFrequency: 0.172
-  wavyLineAmplitude: 0
+  wavyLineAmplitude: 312.2
   wavyLineOffsetY: 270.1
+  waveStrength: 2.5
+  selectedWaveStrength: 11
+  lineSelectionStrength: 0.5
 --- !u!95 &4503021403346872913
 Animator:
   serializedVersion: 3

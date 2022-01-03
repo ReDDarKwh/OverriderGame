@@ -7,18 +7,18 @@ namespace Scripts.Actions
 {
     public class FilterAction : Action
     {
-        private DataGate filtersDataInput;
+        private DataGate filtersDataOutput;
         internal override void OnStart()
         {
-            filtersDataInput = new DataGate(true)
+            filtersDataOutput = new DataGate(false)
             {
                 name = "filter",
                 dataGateType = DataGate.DataGateType.Filter,
                 saveData = true,
                 dataType = DataGate.DataType.Filters
             };
-            filtersDataInput.SetValue(true);
-            dataGates.Add(filtersDataInput);
+            filtersDataOutput.SetValue(true);
+            dataGates.Add(filtersDataOutput);
         }
     }
 }

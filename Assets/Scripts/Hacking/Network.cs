@@ -15,8 +15,10 @@ namespace Scripts.Hacking
         public static Network Instance = null;
         public SelectionSquareUIController selectionController;
         public LayerMask nodeLayerMask;
+        public Color[] accessLevels;
 
-        internal int accessLevel;
+        internal HashSet<int> hackedAccessLevels = new HashSet<int>();
+
         internal DeviceUI lastDeviceMoved;
         internal int baseDeviceSortingOrder;
         internal IEnumerable<Node> selectedNodes;
@@ -28,6 +30,7 @@ namespace Scripts.Hacking
         public bool isConnecting;
         private Dictionary<Node, Connection> connectionBySelectedNode;
         private Node selectedNodeFromHUD;
+
 
         private void Awake()
         {
@@ -41,15 +44,15 @@ namespace Scripts.Hacking
             }
         }
 
-        public void UpdateAccessLevels(int accessLevel)
+        public void UpdateAccessLevels(int accessLevelId)
         {
+            hackedAccessLevels.Add(accessLevelId);
+            
             foreach (var device in GetComponentsInChildren<Device>())
             {
-                this.accessLevel = accessLevel;
-                device.UpdateAccessLevel();
+                device.UpdateAccessLevel(accessLevelId);
             }
         }
-
        
         internal void Connect(Node from, Node to, bool soundOn)
         {
@@ -68,6 +71,8 @@ namespace Scripts.Hacking
                 connection.start = from;
                 connection.end = mousePosNode;
             }
+
+            connection.reversed = reversed;
 
             return connection;
         }
@@ -126,10 +131,10 @@ namespace Scripts.Hacking
 
             if (Debug.isDebugBuild)
             {
-                if (Input.GetKeyDown(KeyCode.U))
-                {
-                    UpdateAccessLevels(100);
-                }
+                // if (Input.GetKeyDown(KeyCode.U))
+                // {
+                //     UpdateAccessLevels(100);
+                // }
 
                 if (Input.GetKeyDown(KeyCode.I))
                 {
@@ -220,13 +225,16 @@ namespace Scripts.Hacking
 
             if (isConnecting)
             {
-
                 foreach (var selectedNode in connectionBySelectedNode.Keys)
                 {
-                    Network.Instance.ConnectionEnd(selectedNode, node, connectionBySelectedNode[selectedNode]);
+                    var con = connectionBySelectedNode[selectedNode];
+                    if(con.reversed){
+                        Network.Instance.ConnectionEnd(node, selectedNode, con);
+                    } else {
+                        Network.Instance.ConnectionEnd(selectedNode, node, con);
+                    }
                 }
                 isConnecting = false;
-
             }
             else if (!isNodeDragStarted)
             {

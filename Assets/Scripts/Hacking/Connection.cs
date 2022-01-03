@@ -68,12 +68,17 @@ public class Connection : MonoBehaviour
     public float wavyLineAmplitude;
     public float wavyLineOffsetY;
     private bool hasAnimationPlayed;
+    internal bool reversed;
+    public float waveStrength;
+    public float selectedWaveStrength;
+    public float lineSelectionStrength;
+
+    private Camera cam;
 
     // Start is called before the first frame update
     void Start()
     {
         //lineColor = UnityEngine.Random.ColorHSV(0, 1, 1, 1, 1, 1);
-
         line = new VectorLine("ConnectionLine", new List<Vector3>(), lineWidth, lineDepth);
         line.joins = Joins.Weld;
         line.lineType = LineType.Continuous;
@@ -90,6 +95,8 @@ public class Connection : MonoBehaviour
                 }
             ).ToList();
         }
+
+        cam = Camera.main;
     }
 
     public void Connected()
@@ -119,6 +126,7 @@ public class Connection : MonoBehaviour
     {
         var startPos = GetPos(start);
         var endPos = GetPos(end);
+        var isSelected = IsSelected();
 
         if (electricHum != null)
         {
@@ -139,11 +147,11 @@ public class Connection : MonoBehaviour
             }
         }
 
-        transform.position = endPos.position;
+        transform.position = reversed? startPos.position : endPos.position;
 
         SetLineOn(GetRootNode().gate.currentValue);
         
-        UpdateSelection();
+        UpdateSelection(isSelected);
 
         if (start.rightClickDown || end.rightClickDown || selectedForDelete)
         {
@@ -152,7 +160,7 @@ public class Connection : MonoBehaviour
             line.color = lineColor;
         }
 
-        var baseLineWidth = (IsSelected()? lineWidth * 1.5f : lineWidth);
+        var baseLineWidth = (isSelected? lineWidth * lineSelectionStrength : lineWidth);
 
         if (GetRootNode().gate.currentValue)
         {
@@ -162,15 +170,16 @@ public class Connection : MonoBehaviour
                 hasAnimationPlayed = true;
             }
 
-            var pointCount = line.points3.Count();
-            for(var i = 0; i < pointCount - 1; i++){
-                var baseWidth = line.GetWidth(i);
-                var wave = Mathf.Max(0, Mathf.Sin(Time.unscaledTime * wavyLineModifier + i * wavyLineFrequency) * wavyLineAmplitude - wavyLineOffsetY);
-
-                line.SetWidth((baseLineWidth + wave) / Camera.main.orthographicSize, i);
+            if(line.points3.Any()){
+                line.SetWidths(line.points3.Skip(1).Select((x, i) => {
+                    var baseWidth = line.GetWidth(i);
+                    var wave = Mathf.Max(0, Mathf.Sin(Time.unscaledTime * wavyLineModifier + i * wavyLineFrequency) * wavyLineAmplitude - wavyLineOffsetY);
+                    return Screen.height / ((baseLineWidth - wave / ((isSelected? selectedWaveStrength : waveStrength)))) / cam.orthographicSize;
+                }).ToList());
             }
+            
         } else {
-            line.SetWidth(baseLineWidth / Camera.main.orthographicSize);
+            line.SetWidth(Screen.height / baseLineWidth / cam.orthographicSize);
             hasAnimationPlayed = false;
         }
 
@@ -205,9 +214,9 @@ public class Connection : MonoBehaviour
         return start.gate == null ? end: start;
     }
 
-    private void UpdateSelection()
+    private void UpdateSelection(bool isSelected)
     {
-        if (IsSelected() && (start.deviceUI?.device.playerCanAccess ?? true))
+        if (isSelected && (start.deviceUI?.device.playerCanAccess ?? true))
         {
             if (selectedForDelete && Input.GetMouseButtonUp(1))
             {
@@ -219,10 +228,9 @@ public class Connection : MonoBehaviour
             {
                 selectedForDelete = true;
             }
-            else
-            {
-                selectedForDelete = false;
-            }
+            
+        } else {
+            selectedForDelete = false;
         }
     }
 

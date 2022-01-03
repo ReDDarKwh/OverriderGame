@@ -44,15 +44,15 @@ namespace Scripts.Actions
             if (!initiated)
             {
                 UpdateActionDisplays();
-                UpdateAccessLevel();
+                UpdateAccessLevel(0);
                 mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
                 initiated = true;
             }
         }
 
-        internal void UpdateAccessLevel()
+        internal void UpdateAccessLevel(int accessLevelId)
         {
-            if (Network.Instance.accessLevel < this.accessLevel && playerCanAccess)
+            if (accessLevelId != accessLevel && playerCanAccess)
             {
                 SetNodesPlayerAccessible(false);
                 playerCanAccess = false;

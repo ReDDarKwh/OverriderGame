@@ -226,8 +226,12 @@ namespace Scripts.UI
 
         internal void UpdateAccessLevelUI()
         {
+            if(device.accessLevel > Network.Instance.accessLevels.Count() -1 ){
+                deviceCircle.gameObject.SetActive(false);
+                return;
+            }
 
-            deviceCircle.color = device.playerCanAccess? deviceCircleColor: deviceCircleBlockedColor;
+            deviceCircle.color = Network.Instance.accessLevels[device.accessLevel];
 
             if (device.playerCanAccess)
             {
