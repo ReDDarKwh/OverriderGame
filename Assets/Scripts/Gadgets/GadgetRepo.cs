@@ -51,7 +51,11 @@ namespace Scripts.Gadgets
             {
                 if (Input.GetKeyDown(gadgetKeys[i]))
                 {
-                    SelectGadget(i > instanciatedGadgets.Count - 1 ? null : instanciatedGadgets[i]);
+                    if(i > instanciatedGadgets.Count - 1){
+                        SelectGadget(null);
+                    } else {
+                        SelectGadget(instanciatedGadgets[i] == currentGadget ? null : instanciatedGadgets[i]);
+                    }
                     break;
                 }
             }

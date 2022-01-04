@@ -42,7 +42,7 @@ namespace Scripts.Hacking
         private NodeState currentState;
         private bool isHovered;
         internal bool rightClickDown;
-
+        private object connectionsFrom;
 
         [Serializable]
         public struct SaveData
@@ -82,6 +82,7 @@ namespace Scripts.Hacking
 
             gate.node = this;
             gate.DeconnectionCompleted += gate_DeconnectionCompleted;
+
             gate.ValueHasChanged += gate_ValueChange;
             mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
             deviceUI = device?.GetComponent<DeviceUI>();
@@ -197,6 +198,19 @@ namespace Scripts.Hacking
             }
         }
 
+        public void SelectAllConnectionsForDelete(bool isSelected)
+        {
+            foreach(var c in gate.parents.Where(x => x.node).Select(x => x.node).Select(x => x.connectionsTo[this.gate])){
+                c.isSelectedForDeleteForce = isSelected;
+                c.isSelectedForce = isSelected;
+            }
+
+            foreach(var c in connectionsTo.Values){
+                c.isSelectedForDeleteForce = isSelected;
+                c.isSelectedForce = isSelected;
+            }
+        }
+
         internal void Disconnect(Node node)
         {
             gate.Disconnect(node.gate);
@@ -210,6 +224,7 @@ namespace Scripts.Hacking
                 connection.start = this;
                 connection.end = node;
                 connectionsTo.Add(node.gate, connection);
+
                 connectedToInUI = true;
             }
             return result;
@@ -249,17 +264,21 @@ namespace Scripts.Hacking
 
         public void OnUnClick(BaseEventData eventData)
         {
-            Network.Instance.OnNodeClickUp(eventData, this);    
+            if(isHovered){
+                Network.Instance.OnNodeClickUp(eventData, this);    
+            }
         }
 
         public void OnHoverEnter()
         {
             isHovered = true;
+            Network.Instance.OnNodeHoverEnter(this);  
         }
 
         public void OnHoverExit()
         {
             isHovered = false;
+            Network.Instance.OnNodeHoverExit(this);   
         }
 
         public void OnBeginDrag(BaseEventData eventData)

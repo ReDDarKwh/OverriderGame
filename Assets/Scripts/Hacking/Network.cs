@@ -16,21 +16,20 @@ namespace Scripts.Hacking
         public SelectionSquareUIController selectionController;
         public LayerMask nodeLayerMask;
         public Color[] accessLevels;
+        public SoundPreset disconnectSound;
 
+        internal bool isConnecting;
         internal HashSet<int> hackedAccessLevels = new HashSet<int>();
-
         internal DeviceUI lastDeviceMoved;
         internal int baseDeviceSortingOrder;
-        internal IEnumerable<Node> selectedNodes;
+        internal HashSet<Node> selectedNodes = new HashSet<Node>();
+        internal bool isConnectionSelectionEnabled = true;
+        
         private bool isSelectionDragStarted;
         private Vector3 selectionStartPos;
         private bool isNodeDragStarted;
-
-        [System.NonSerialized]
-        public bool isConnecting;
         private Dictionary<Node, Connection> connectionBySelectedNode;
         private Node selectedNodeFromHUD;
-
 
         private void Awake()
         {
@@ -89,7 +88,7 @@ namespace Scripts.Hacking
 
         private void RemoveConnection(Connection connection)
         {
-            connection.PlayDeconnectedSound();
+            connection.PlayDisconnectionSound();
             Destroy(connection.gameObject);
         }
 
@@ -103,7 +102,7 @@ namespace Scripts.Hacking
                 selectedNode.Remove();
             }
 
-            selectedNodes = null;
+            selectedNodes.Clear();
         }
 
         // Update is called once per frame
@@ -152,8 +151,7 @@ namespace Scripts.Hacking
                     sn.SetState(NodeState.Off);
                 }
             }
-
-            selectedNodes = null;
+            selectedNodes.Clear();
         }
 
         public void RemoveConnections()
@@ -161,7 +159,7 @@ namespace Scripts.Hacking
             isConnecting = false;     
 
             foreach(var c in connectionBySelectedNode.Values){
-                c.PlayDeconnectedSound();
+                c.PlayDisconnectionSound();
                 Destroy(c.gameObject);
             }            
         }
@@ -171,17 +169,22 @@ namespace Scripts.Hacking
             node.SetState(NodeState.Off);
 
             if(selectedNodes != null){
-                selectedNodes = selectedNodes.Where(x => x != node).ToList();
+                selectedNodes.Remove(node);
             }
         }
         
         private void SelectNodes(IEnumerable<Node> nodes)
         {
-            selectedNodes = nodes;
             foreach (var sn in nodes)
             {
-                sn.SetState(NodeState.Selected);
+                SelectNode(sn);
             }
+        }
+
+        private void SelectNode(Node sn)
+        {
+            selectedNodes.Add(sn);
+            sn.SetState(NodeState.Selected);
         }
 
         // EVENTS
@@ -190,14 +193,37 @@ namespace Scripts.Hacking
         {
             if (selectedNodes == null || !selectedNodes.Contains(node))
             {
-                SelectNode(node, false);
+                if(Input.GetKey(KeyCode.LeftControl)){
+                    SelectNodeAdd(node);
+                } else {
+                    SelectNode(node, false);
+                }
+            } else if (selectedNodes != null){
+                if(Input.GetKey(KeyCode.LeftControl)){
+                    DeselectNode(node);
+                }
             }
+
+            var pointerEvent = (PointerEventData)eventData;
+            if (pointerEvent.button == PointerEventData.InputButton.Right)
+            {
+                if(selectedNodes != null){
+                    foreach(var selectedNode in selectedNodes){
+                        selectedNode.SelectAllConnectionsForDelete(true);
+                    }
+                }
+            }
+        }
+
+        public void SelectNodeAdd(Node node)
+        {
+            SelectNode(node);
         }
 
         public void SelectNode(Node node, bool fromHUD = false)
         {
             DeselectSelectedNodes();
-            SelectNodes(new List<Node>() { node });
+            SelectNode(node);
             selectedNodeFromHUD = fromHUD? node : null;
         }
 
@@ -211,9 +237,39 @@ namespace Scripts.Hacking
 
             if (pointerEvent.button == PointerEventData.InputButton.Right)
             {
+                PlayDisconnectionSound();
                 if(selectedNodes != null){
                     foreach(var selectedNode in selectedNodes){
                         selectedNode.DisconnectAll();
+                    }
+                }
+            }
+        }
+
+        public void PlayDisconnectionSound()
+        {
+            disconnectSound.Play(mousePosNode.transform.position);
+        }
+
+        internal void OnNodeHoverExit(Node node)
+        {
+            isConnectionSelectionEnabled = true;
+            
+            if(selectedNodes != null){
+                foreach(var selectedNode in selectedNodes){
+                    selectedNode.SelectAllConnectionsForDelete(false);
+                }
+            }
+        }
+
+        internal void OnNodeHoverEnter(Node node)
+        {
+            isConnectionSelectionEnabled = false;
+
+            if(Input.GetMouseButton(1)){
+                if(selectedNodes != null && selectedNodes.Contains(node)){
+                    foreach(var selectedNode in selectedNodes){
+                        selectedNode.SelectAllConnectionsForDelete(true);
                     }
                 }
             }
@@ -236,7 +292,7 @@ namespace Scripts.Hacking
                 }
                 isConnecting = false;
             }
-            else if (!isNodeDragStarted)
+            else if (!isNodeDragStarted && !Input.GetKey(KeyCode.LeftControl))
             {
                 connectionBySelectedNode = new Dictionary<Node, Connection>();
                 foreach (var selectedNode in selectedNodes)

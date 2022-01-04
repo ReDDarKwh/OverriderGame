@@ -5,8 +5,7 @@ using Scripts.Hacking;
 using UnityEngine;
 using Vectrosity;
 using System.Linq;
-
-
+using Network = Scripts.Hacking.Network;
 
 public class Connection : MonoBehaviour
 {
@@ -17,9 +16,7 @@ public class Connection : MonoBehaviour
         public bool changePitch;
         internal AudioSource audioSource;
     }
-
-    public float offset = 25;
-    public float disFromEnd;
+    
     public NoodlePath noodlePath;
     public float zoom = 1;
     public float divMultiplier;
@@ -40,40 +37,34 @@ public class Connection : MonoBehaviour
     public bool soundOn;
     public ParticleSystem sparksEffect;
     public ParticleSystem connectionEffect;
-    public GameObject connectionDotPrefab;
     public Animator animator;
-
-    private bool isConnected;
-
-    public float dotInterval;
-
-    private float lastDotTime;
-
-    internal VectorLine line;
-    internal Node end;
-    internal Node start;
-    private Transform lastStartPos;
-    private Transform lastEndPos;
-    private bool selectedForDelete;
-    private IEnumerable<electricHumSetting> electricHum;
-
     public Color lineColor;
     public float selfConnectRadiusY;
     public float selfConnectRadiusX;
     public int selfConnectPointCount;
-
     public float wavyLineModifier;
     [Range(0.0f, 2.0f)]
     public float wavyLineFrequency;
     public float wavyLineAmplitude;
     public float wavyLineOffsetY;
-    private bool hasAnimationPlayed;
-    internal bool reversed;
     public float waveStrength;
     public float selectedWaveStrength;
     public float lineSelectionStrength;
 
+    internal VectorLine line;
+    internal Node end;
+    internal Node start;
+    internal bool selectedForDelete;
+    internal bool reversed;
+    internal bool isSelectedForce;
+    internal bool isSelectedForDeleteForce;
+    
+    private Transform lastStartPos;
+    private Transform lastEndPos;
+    private IEnumerable<electricHumSetting> electricHum;
+    private bool hasAnimationPlayed;
     private Camera cam;
+    private bool isConnected;
 
     // Start is called before the first frame update
     void Start()
@@ -106,15 +97,14 @@ public class Connection : MonoBehaviour
             SoundManager.Instance.FadeOut(electricHum?.Select(x => x.audioSource).ToList());
             electricHum = null;
             connectedSound.Play(lastEndPos.position);
+            connectionEffect.Play();
         }
 
         sparksEffect.Stop();
-        connectionEffect.Play();
-
         isConnected = true;
     }
 
-    public void PlayDeconnectedSound()
+    public void PlayDisconnectionSound()
     {
         SoundManager.Instance.FadeOut(electricHum?.Select(x => x.audioSource));
         electricHum = null;
@@ -153,7 +143,7 @@ public class Connection : MonoBehaviour
         
         UpdateSelection(isSelected);
 
-        if (start.rightClickDown || end.rightClickDown || selectedForDelete)
+        if (start.rightClickDown || end.rightClickDown || selectedForDelete || isSelectedForDeleteForce)
         {
             line.color = removeColor;
         } else {
@@ -220,7 +210,7 @@ public class Connection : MonoBehaviour
         {
             if (selectedForDelete && Input.GetMouseButtonUp(1))
             {
-                PlayDeconnectedSound();
+                PlayDisconnectionSound();
                 start.Disconnect(end);
             }
 
@@ -235,7 +225,7 @@ public class Connection : MonoBehaviour
     }
 
     private bool IsSelected(){
-        return line.Selected(Input.mousePosition) && isConnected;
+        return ((Network.Instance.isConnectionSelectionEnabled && line.Selected(Input.mousePosition)) || isSelectedForce) && isConnected;
     }
 
     void OnDestroy()
