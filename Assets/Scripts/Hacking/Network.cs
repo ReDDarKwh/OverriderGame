@@ -25,12 +25,12 @@ namespace Scripts.Hacking
         internal int baseDeviceSortingOrder;
         internal HashSet<Node> selectedNodes = new HashSet<Node>();
         internal bool isConnectionSelectionEnabled = true;
+        internal bool isNodeDragStarted;
         
         internal AccessLevelEvent OnUpdateAccessLevel = new AccessLevelEvent();
 
         private bool isSelectionDragStarted;
         private Vector3 selectionStartPos;
-        private bool isNodeDragStarted;
         private Dictionary<Node, Connection> connectionBySelectedNode;
         private Node selectedNodeFromHUD;
 
@@ -333,6 +333,7 @@ namespace Scripts.Hacking
 
         public void StartNodeDrag()
         {
+            
             isNodeDragStarted = true;
             foreach (var selectedNode in selectedNodes)
             {
@@ -395,7 +396,7 @@ namespace Scripts.Hacking
                 var selectionRect = selectionController.GetSelectionRect(selectionStartPos, mousePosNode.transform.position);
                 DeselectSelectedNodes();
                 SelectNodes(Physics2D.OverlapBoxAll(selectionRect.position + selectionRect.size / 2, selectionRect.size, 0, nodeLayerMask)
-                .Select(x => x.GetComponent<Node>()).Where(x => x.deviceUI == null || x.deviceUI.selected));
+                .Select(x => x.GetComponent<Node>()).Where(x => (x.deviceUI == null || x.deviceUI.selected) && x.deviceUI.device.playerCanAccess));
             }
         }
 

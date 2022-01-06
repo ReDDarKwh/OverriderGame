@@ -255,47 +255,63 @@ namespace Scripts.Hacking
             return this != null && this.gameObject.activeSelf;
         }
 
+        public bool IsInteractable(){
+            return deviceUI == null || deviceUI.device.playerCanAccess;
+        }
         
         // EVENTS
         public void OnClick(BaseEventData eventData)
         {
-            Network.Instance.OnNodeClickDown(eventData, this);    
+            if(IsInteractable()){
+                Network.Instance.OnNodeClickDown(eventData, this);    
+            }
         }
 
         public void OnUnClick(BaseEventData eventData)
         {
-            if(isHovered){
-                Network.Instance.OnNodeClickUp(eventData, this);    
+            if(IsInteractable()){
+                if(isHovered){
+                    Network.Instance.OnNodeClickUp(eventData, this);    
+                }
             }
         }
 
         public void OnHoverEnter()
         {
-            isHovered = true;
-            Network.Instance.OnNodeHoverEnter(this);  
+            if(IsInteractable()){
+                isHovered = true;
+                Network.Instance.OnNodeHoverEnter(this);  
+            }
         }
 
         public void OnHoverExit()
         {
-            isHovered = false;
-            Network.Instance.OnNodeHoverExit(this);   
+            if(IsInteractable()){
+                isHovered = false;
+                Network.Instance.OnNodeHoverExit(this);   
+            }
         }
 
         public void OnBeginDrag(BaseEventData eventData)
         {
-            Network.Instance.OnNodeBeginDrag(eventData, this);            
+            if(IsInteractable()){
+                Network.Instance.OnNodeBeginDrag(eventData, this);            
+            }
         }
 
         public void OnDrag(BaseEventData eventData)
         {
-            Network.Instance.OnNodeDrag(eventData, this);   
+            if(IsInteractable()){
+                Network.Instance.OnNodeDrag(eventData, this);   
+            }
         }
 
         public void OnEndDrag(BaseEventData eventData)
         {
-            Network.Instance.OnNodeEndDrag(eventData, this);   
+            if(IsInteractable()){
+                Network.Instance.OnNodeEndDrag(eventData, this);   
+            }
         }
-
     }
 }
 

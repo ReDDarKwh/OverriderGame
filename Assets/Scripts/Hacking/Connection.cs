@@ -23,8 +23,6 @@ public class Connection : MonoBehaviour
     public float lineWidth = 1;
     public int lineDepth;
     public float lineMaxWeldDistance;
-    public Color color;
-    public Color onColor;
     public Color removeColor;
     public Material lineMaterialOn;
     public Material lineMaterialOff;
@@ -98,6 +96,7 @@ public class Connection : MonoBehaviour
             electricHum = null;
             connectedSound.Play(lastEndPos.position);
             connectionEffect.Play();
+            animator.SetTrigger("Connect");
         }
 
         sparksEffect.Stop();
@@ -137,41 +136,13 @@ public class Connection : MonoBehaviour
             }
         }
 
-        transform.position = reversed? startPos.position : endPos.position;
+        transform.position = reversed ? startPos.position : endPos.position;
 
         SetLineOn(GetRootNode().gate.currentValue);
-        
+
         UpdateSelection(isSelected);
 
-        if (start.rightClickDown || end.rightClickDown || selectedForDelete || isSelectedForDeleteForce)
-        {
-            line.color = removeColor;
-        } else {
-            line.color = lineColor;
-        }
-
-        var baseLineWidth = (isSelected? lineWidth * lineSelectionStrength : lineWidth);
-
-        if (GetRootNode().gate.currentValue)
-        {
-            if(!hasAnimationPlayed){
-                animator.SetTrigger("On");
-                wavyLineAmplitude = 0;
-                hasAnimationPlayed = true;
-            }
-
-            if(line.points3.Any()){
-                line.SetWidths(line.points3.Skip(1).Select((x, i) => {
-                    var baseWidth = line.GetWidth(i);
-                    var wave = Mathf.Max(0, Mathf.Sin(Time.unscaledTime * wavyLineModifier + i * wavyLineFrequency) * wavyLineAmplitude - wavyLineOffsetY);
-                    return Screen.height / ((baseLineWidth - wave / ((isSelected? selectedWaveStrength : waveStrength)))) / cam.orthographicSize;
-                }).ToList());
-            }
-            
-        } else {
-            line.SetWidth(Screen.height / baseLineWidth / cam.orthographicSize);
-            hasAnimationPlayed = false;
-        }
+        var baseLineWidth = (isSelected ? lineWidth * lineSelectionStrength : lineWidth);
 
         if (startPos != endPos)
         {
@@ -180,24 +151,73 @@ public class Connection : MonoBehaviour
                 startPos.position,
                 endPos.position
             });
+            UpdateLineColor();
         }
         else if (start.deviceUI?.device.playerCanAccess ?? true)
         {
             var p = new List<Vector3>();
-            for(var i = 0; i < selfConnectPointCount; i++){
+            for (var i = 0; i < selfConnectPointCount; i++)
+            {
                 p.Add(Vector3.zero);
             }
 
             line.points3 = p;
             line.MakeEllipse(startPos.position + new Vector3(0, selfConnectRadiusY, 0), selfConnectRadiusX, selfConnectRadiusY);
-        } else {
+            UpdateLineColor();
+        }
+        else
+        {
             line.points3.Clear();
+        }
+
+        if (GetRootNode().gate.currentValue)
+        {
+            if (!hasAnimationPlayed)
+            {
+                animator.SetTrigger("On");
+                wavyLineAmplitude = 0;
+                hasAnimationPlayed = true;
+            }
+
+            if (line.points3.Any())
+            {
+                line.SetWidths(line.points3.Skip(1).Select((x, i) =>
+                {
+                    var baseWidth = line.GetWidth(i);
+                    var wave = Mathf.Max(0, Mathf.Sin(Time.unscaledTime * wavyLineModifier + i * wavyLineFrequency) * wavyLineAmplitude - wavyLineOffsetY);
+                    return Screen.height / ((baseLineWidth - wave / ((isSelected ? selectedWaveStrength : waveStrength)))) / cam.orthographicSize;
+                }).ToList());
+            }
+
+        }
+        else
+        {
+            line.SetWidth(Screen.height / baseLineWidth / cam.orthographicSize);
+            hasAnimationPlayed = false;
         }
 
         line.Draw3D();
 
         lastStartPos = startPos;
         lastEndPos = endPos;
+    }
+
+    private void UpdateLineColor()
+    {
+        if (start.rightClickDown || end.rightClickDown || selectedForDelete || isSelectedForDeleteForce)
+        {
+            line.color = removeColor;
+        }
+        else
+        {
+            line.color = (start.deviceUI?.device.playerCanAccess ?? true) ? lineColor : GetAccessDeniedColor();
+        }
+    }
+
+    private Color GetAccessDeniedColor()
+    {
+        var c = Network.Instance.accessLevels[start.deviceUI.device.accessLevel];
+        return new Color(c.r, c.g, c.b, lineColor.a);
     }
 
     private Node GetRootNode(){
@@ -225,7 +245,7 @@ public class Connection : MonoBehaviour
     }
 
     private bool IsSelected(){
-        return ((Network.Instance.isConnectionSelectionEnabled && line.Selected(Input.mousePosition)) || isSelectedForce) && isConnected;
+        return ((Network.Instance.isConnectionSelectionEnabled && !Network.Instance.isNodeDragStarted && line.Selected(Input.mousePosition)) || isSelectedForce) && isConnected;
     }
 
     void OnDestroy()
@@ -262,7 +282,6 @@ public class Connection : MonoBehaviour
     {
         if (line != null)
         {
-            line.color = currentValue ? onColor : color;
             line.material = currentValue? lineMaterialOn : lineMaterialOff;
         }
     }

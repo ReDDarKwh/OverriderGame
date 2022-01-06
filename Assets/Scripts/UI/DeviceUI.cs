@@ -19,11 +19,10 @@ namespace Scripts.UI
         public HackUI actionsToolbar;
         public HackUI actionsContainer;
         public SpriteRenderer deviceCircle;
+        public Image accessRequiredImage;
         public TextMeshProUGUI title;
         public GameObject AccessDeniedDisplay;
-        public TextMeshProUGUI AccessDeniedText;
         public Image selectionCircle;
-        public float selectionRadius;
         public int baseSortingOrder = 60;
         public Canvas actionDisplayContainerCanvas;
         public Transform actionWindow;
@@ -37,14 +36,9 @@ namespace Scripts.UI
         public bool UIDestroyable;
         public bool isPlayerAccessable = true;
 
-        public Color deviceCircleColor;
-        public Color deviceCircleBlockedColor;
-
-        internal bool minimized;
         internal bool selected;
         internal bool isAnchored;
 
-        private bool canBeSelected;
         private LineFactory lineFactory;
         private Line line;
         private Transform mousePos;
@@ -52,7 +46,6 @@ namespace Scripts.UI
         private bool isMoving;
         private Vector3 pos;
         private bool isHovered;
-        private Coroutine quickConnectCoroutine;
         public Color lineColor;
         
         void Start()
@@ -94,6 +87,10 @@ namespace Scripts.UI
             {
                 anchorButton.gameObject.SetActive(false);
             }
+
+            if(device.accessLevel < Network.Instance.accessLevels.Count()){
+                accessRequiredImage.color = Network.Instance.accessLevels[device.accessLevel];
+            }    
 
             UpdateAccessLevelUI();
             device.OnPlayerCanAccess.AddListener(UpdateAccessLevelUI);
@@ -238,7 +235,6 @@ namespace Scripts.UI
             {
                 AccessDeniedDisplay.SetActive(true);
                 title.SetText(device.deviceName + " (Secured)");
-                AccessDeniedText.SetText($"Level {device.accessLevel}");
             }
         }
     }
