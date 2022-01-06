@@ -999,6 +999,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2468540076793365220, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: isPlayerAccessable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: deviceName

@@ -8,6 +8,7 @@ using System.Linq;
 using Vectrosity;
 using TMPro;
 using Network = Scripts.Hacking.Network;
+using UnityEngine.Events;
 
 namespace Scripts.Actions
 {
@@ -23,7 +24,7 @@ namespace Scripts.Actions
         public int accessLevel;
         public SoundPreset deconnectedSound;
 
-        internal bool playerCanAccess = true;
+        internal bool playerCanAccess;
         internal Device parentDevice;
         internal AttachedGadgetController attachedGadgetController;
         internal bool isAttachedGadget;
@@ -32,6 +33,8 @@ namespace Scripts.Actions
 
         private Dictionary<string, GameObject> currentActionDisplays = new Dictionary<string, GameObject>();
         private Transform mousePos;
+
+        internal UnityEvent OnPlayerCanAccess = new UnityEvent();
 
         // Start is called before the first frame update
         void Start()
@@ -47,20 +50,17 @@ namespace Scripts.Actions
                 UpdateAccessLevel(0);
                 mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
                 initiated = true;
+                Network.Instance.OnUpdateAccessLevel.AddListener(UpdateAccessLevel);
             }
         }
 
         internal void UpdateAccessLevel(int accessLevelId)
         {
-            if (accessLevelId != accessLevel && playerCanAccess)
-            {
-                SetNodesPlayerAccessible(false);
-                playerCanAccess = false;
-            }
-            else
+            if(accessLevelId == accessLevel)
             {
                 SetNodesPlayerAccessible(true);
                 playerCanAccess = true;
+                OnPlayerCanAccess.Invoke();
             }
         }
 

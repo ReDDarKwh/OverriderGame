@@ -7,6 +7,7 @@ using Scripts.Hacking;
 using UnityEngine;
 using UnityEngine.UI;
 using static Scripts.UI.ContextMenuUIController;
+using Network = Scripts.Hacking.Network;
 
 namespace Scripts.UI 
 {
@@ -19,7 +20,19 @@ namespace Scripts.UI
         public GameObject contextMenuContainerPrefab;
         private ContextMenuUIController currentContextMenu;
         public LayerMask deviceLayerMask;
+        public GameObject hackedLevelsContainer;
+        public GameObject hackedLevelPrefab;
+
         private bool isDeviceInteractionActive = true;
+
+        void Start(){
+            Network.Instance.OnUpdateAccessLevel.AddListener((int accessLevel) => AddHackedAccessLevel(Network.Instance.accessLevels[accessLevel]));
+        }
+
+        public void AddHackedAccessLevel(Color color){
+            var inst = Instantiate(hackedLevelPrefab, hackedLevelsContainer.transform);
+            inst.GetComponentInChildren<AccessLevelUIController>().img.color = color;
+        }
 
         public void CreateContextMenu(IEnumerable<ContextMenuItem> items){
 
@@ -39,7 +52,7 @@ namespace Scripts.UI
             }
 
             if(isDeviceInteractionActive){
-                var devicesUnderMouse = Physics2D.OverlapPointAll(mousePos.position, deviceLayerMask).Select(x => x.GetComponent<DeviceUI>()).ToList();
+                var devicesUnderMouse = Physics2D.OverlapPointAll(mousePos.position, deviceLayerMask).Select(x => x.GetComponent<DeviceUI>()).Where(x => x.isPlayerAccessable).ToList();
 
                 foreach(var d in devicesUnderMouse){
                     d.OnHover();                    

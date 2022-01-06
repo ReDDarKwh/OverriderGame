@@ -35,6 +35,7 @@ namespace Scripts.UI
         public bool disableClose;
         public bool disableAnchor;
         public bool UIDestroyable;
+        public bool isPlayerAccessable = true;
 
         public Color deviceCircleColor;
         public Color deviceCircleBlockedColor;
@@ -53,7 +54,7 @@ namespace Scripts.UI
         private bool isHovered;
         private Coroutine quickConnectCoroutine;
         public Color lineColor;
-
+        
         void Start()
         {
 
@@ -73,10 +74,11 @@ namespace Scripts.UI
                 actionWindow.gameObject.SetActive(false);
             }
 
-            if (!disableLine)
+            if (!disableLine && isPlayerAccessable)
             {
                 lineFactory = GameObject.FindGameObjectWithTag("LineFactory").GetComponent<LineFactory>();
                 line = lineFactory.GetLine(Vector2.zero, Vector2.zero, 0.02f, lineColor);
+                deviceCircle.color = Network.Instance.accessLevels[device.accessLevel];
             }
             else
             {
@@ -92,6 +94,9 @@ namespace Scripts.UI
             {
                 anchorButton.gameObject.SetActive(false);
             }
+
+            UpdateAccessLevelUI();
+            device.OnPlayerCanAccess.AddListener(UpdateAccessLevelUI);
         }
 
         void OnDestroy()
@@ -139,8 +144,6 @@ namespace Scripts.UI
                     line.gameObject.SetActive(false);
                 }
             }
-
-            UpdateAccessLevelUI();
         }
 
         public void ToggleSelected()
@@ -226,13 +229,6 @@ namespace Scripts.UI
 
         internal void UpdateAccessLevelUI()
         {
-            if(device.accessLevel > Network.Instance.accessLevels.Count() -1 ){
-                deviceCircle.gameObject.SetActive(false);
-                return;
-            }
-
-            deviceCircle.color = Network.Instance.accessLevels[device.accessLevel];
-
             if (device.playerCanAccess)
             {
                 AccessDeniedDisplay.SetActive(false);

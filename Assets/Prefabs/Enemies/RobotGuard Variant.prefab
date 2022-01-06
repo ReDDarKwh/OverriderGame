@@ -618,6 +618,11 @@ PrefabInstance:
       propertyPath: accessLevel
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4327714371950195448, guid: 07d7b830d55fc444495a8d5f2cb65199,
+        type: 3}
+      propertyPath: isPlayerAccessable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4424575753510071145, guid: 07d7b830d55fc444495a8d5f2cb65199,
         type: 3}
       propertyPath: m_Sprite

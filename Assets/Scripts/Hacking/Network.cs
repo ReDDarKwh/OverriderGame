@@ -4,6 +4,7 @@ using System.Linq;
 using Scripts.Actions;
 using Scripts.UI;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace Scripts.Hacking
@@ -25,11 +26,20 @@ namespace Scripts.Hacking
         internal HashSet<Node> selectedNodes = new HashSet<Node>();
         internal bool isConnectionSelectionEnabled = true;
         
+        internal AccessLevelEvent OnUpdateAccessLevel = new AccessLevelEvent();
+
         private bool isSelectionDragStarted;
         private Vector3 selectionStartPos;
         private bool isNodeDragStarted;
         private Dictionary<Node, Connection> connectionBySelectedNode;
         private Node selectedNodeFromHUD;
+
+        public class AccessLevelEvent : UnityEvent<int>{};
+
+        IEnumerator Start(){
+            yield return null;
+            UpdateAccessLevels(0);
+        }
 
         private void Awake()
         {
@@ -45,11 +55,9 @@ namespace Scripts.Hacking
 
         public void UpdateAccessLevels(int accessLevelId)
         {
-            hackedAccessLevels.Add(accessLevelId);
-            
-            foreach (var device in GetComponentsInChildren<Device>())
-            {
-                device.UpdateAccessLevel(accessLevelId);
+            if(!hackedAccessLevels.Contains(accessLevelId)){
+                OnUpdateAccessLevel.Invoke(accessLevelId);
+                hackedAccessLevels.Add(accessLevelId);
             }
         }
        
