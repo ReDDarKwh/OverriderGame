@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Lowscope.Saving;
+using Lowscope.Saving.Components;
 using UnityEngine;
 
 namespace Scripts.States
 {
+
+   
     public class PatrollingState : AbstractState, ISaveable
     {
         public Creature creature;
@@ -63,9 +66,9 @@ namespace Scripts.States
             currentPoint = JsonUtility.FromJson<SaveData>(data).currentPoint;
         }
 
-        public bool OnSaveCondition()
+        public bool OnSaveCondition(bool v)
         {
-            return true;
+            return !v;
         }
 
         public override void StateEnter()

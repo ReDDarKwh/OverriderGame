@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using static Scripts.UI.ContextMenuUIController;
 using Network = Scripts.Hacking.Network;
 
-namespace Scripts.UI 
+namespace Scripts.UI
 {
     public class HackingHUDControl : MonoBehaviour
     {
@@ -25,50 +25,86 @@ namespace Scripts.UI
 
         private bool isDeviceInteractionActive = true;
 
-        void Start(){
-            Network.Instance.OnUpdateAccessLevel.AddListener((int accessLevel) => AddHackedAccessLevel(Network.Instance.accessLevels[accessLevel]));
+        void Start()
+        {
+            Network.Instance.OnUpdateAccessLevel.AddListener((int accessLevel) => { 
+                if (accessLevel == -1) 
+                { 
+                    ClearHackedAccessLevels(); 
+                } 
+                else 
+                { 
+                    AddHackedAccessLevel(Network.Instance.accessLevels[accessLevel]); 
+                }; 
+            });
         }
 
-        public void AddHackedAccessLevel(Color color){
+        public void AddHackedAccessLevel(Color color)
+        {
             var inst = Instantiate(hackedLevelPrefab, hackedLevelsContainer.transform);
             inst.GetComponentInChildren<AccessLevelUIController>().img.color = color;
         }
 
-        public void CreateContextMenu(IEnumerable<ContextMenuItem> items){
+        public void ClearHackedAccessLevels()
+        {
+            foreach (Transform child in hackedLevelsContainer.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+
+        public void CreateContextMenu(IEnumerable<ContextMenuItem> items)
+        {
 
             var ctxMenu = Instantiate(contextMenuContainerPrefab, Input.mousePosition, Quaternion.identity, transform).GetComponent<ContextMenuUIController>();
             ctxMenu.SetItems(items, this);
             currentContextMenu = ctxMenu;
         }
 
-        void LateUpdate(){
-            
-            if(Input.GetMouseButtonUp(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)){
-                if(currentContextMenu != null){
+        void LateUpdate()
+        {
+
+            if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
+            {
+                if (currentContextMenu != null)
+                {
                     Destroy(currentContextMenu.gameObject);
                     currentContextMenu = null;
                     return;
                 }
             }
 
-            if(isDeviceInteractionActive){
+            if (isDeviceInteractionActive)
+            {
                 var devicesUnderMouse = Physics2D.OverlapPointAll(mousePos.position, deviceLayerMask).Select(x => x.GetComponent<DeviceUI>()).Where(x => x.isPlayerAccessable).ToList();
 
-                foreach(var d in devicesUnderMouse){
-                    d.OnHover();                    
+                foreach (var d in devicesUnderMouse)
+                {
+                    d.OnHover();
                 }
 
-                if(Input.GetMouseButtonUp(0)){
-                    if(devicesUnderMouse.Count() == 1){
-                        foreach(var d in devicesUnderMouse){
-                            d.ToggleSelected();                      
+                if (Input.GetMouseButtonUp(0))
+                {
+                    if (devicesUnderMouse.Count() == 1)
+                    {
+                        foreach (var d in devicesUnderMouse)
+                        {
+                            d.ToggleSelected();
                         }
-                    } else if(devicesUnderMouse.Any()){
-                        CreateContextMenu(devicesUnderMouse.Select(x => {
-                            return new ContextMenuItem{name = x.device.deviceName, action = ()=> {
+                    }
+                    else if (devicesUnderMouse.Any())
+                    {
+                        CreateContextMenu(devicesUnderMouse.Select(x =>
+                        {
+                            return new ContextMenuItem
+                            {
+                                name = x.device.deviceName,
+                                action = () =>
+                                {
                                     x.ToggleSelected();
                                     SetDeviceInteractionActive(true);
-                                }};
+                                }
+                            };
                         }));
                     }
                 }
@@ -98,7 +134,7 @@ namespace Scripts.UI
         public void CreateSavedDevice(string devicePrefabPath)
         {
             var inst = SaveMaster.SpawnSavedPrefab(devicePrefabPath, mousePos.position + deviceSpawnOffset, Quaternion.identity, network.transform).GetComponent<UniqueId>();
-            inst.uniqueId = Guid.NewGuid().ToString(); 
+            inst.uniqueId = Guid.NewGuid().ToString();
         }
 
         public void RemoveDevice()
@@ -109,9 +145,12 @@ namespace Scripts.UI
             }
         }
 
-        public void HideAllDeviceUIs(){
-            foreach(var dui in network.GetComponentsInChildren<DeviceUI>()){
-                if(dui.selected){
+        public void HideAllDeviceUIs()
+        {
+            foreach (var dui in network.GetComponentsInChildren<DeviceUI>())
+            {
+                if (dui.selected)
+                {
                     dui.ToggleSelected();
                 }
             }

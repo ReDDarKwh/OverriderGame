@@ -10,7 +10,7 @@ namespace Lowscope.Saving.Components
     /// </summary>
 
     [AddComponentMenu("Saving/Components/Save Position"), DisallowMultipleComponent]
-    public class SavePosition : MonoBehaviour, ISaveable
+    public class SavePosition : SavedBehaviour
     {
         Vector3 lastPosition;
 
@@ -20,14 +20,14 @@ namespace Lowscope.Saving.Components
             public Vector3 position;
         }
 
-        public void OnLoad(string data)
+        public override void OnLoad(string data)
         {
             var pos = JsonUtility.FromJson<SaveData>(data).position;
             transform.position = pos;
             lastPosition = pos;
         }
 
-        public string OnSave()
+        public override string OnSave()
         {
             try{
                 lastPosition = transform.position;
@@ -38,7 +38,7 @@ namespace Lowscope.Saving.Components
             }
         }
 
-        public bool OnSaveCondition()
+        public override bool OnSaveCondition()
         {
             return this != null && this.gameObject.activeSelf && lastPosition != transform.position;
         }

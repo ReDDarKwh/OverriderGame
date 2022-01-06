@@ -367,7 +367,7 @@ namespace Lowscope.Saving.Components
         }
 
         // Request is sent by the Save System
-        public void OnSaveRequest(SaveGame saveGame)
+        public void OnSaveRequest(SaveGame saveGame, int slot)
         {
             // if (!hasIdentification)
             // {
@@ -389,7 +389,7 @@ namespace Lowscope.Saving.Components
                 }
                 else
                 {
-                    if (!hasStateReset && !getSaveable.OnSaveCondition())
+                    if (!getSaveable.OnSaveCondition(slot % 2 == 0))
                     {
                         continue;
                     }

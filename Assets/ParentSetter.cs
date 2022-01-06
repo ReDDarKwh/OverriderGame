@@ -17,7 +17,7 @@ public class ParentSetter : MonoBehaviour, ISaveable
         return "x";
     }
 
-    public bool OnSaveCondition()
+    public bool OnSaveCondition(bool v)
     {
         return true;
     }

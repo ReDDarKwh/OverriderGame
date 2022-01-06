@@ -7,9 +7,10 @@ using UnityEngine;
 using System.Linq;
 using Lowscope.Saving;
 using Newtonsoft.Json;
+using Lowscope.Saving.Components;
 
 [RequireComponent(typeof(StateMachineMemory), typeof(EmptyState))]
-public abstract class HSM : MonoBehaviour, ISaveable
+public abstract class HSM : SavedBehaviour
 {
     protected StateMachine stateMachine = new StateMachine();
     private EventData baseData;
@@ -83,7 +84,7 @@ public abstract class HSM : MonoBehaviour, ISaveable
     }
     public abstract void Init(StateMachine sm, HSM root);
 
-    public string OnSave()
+    public override string OnSave()
     {
         if( memory == null || stateMachine == null){
             return null;
@@ -93,7 +94,7 @@ public abstract class HSM : MonoBehaviour, ISaveable
         return JsonConvert.SerializeObject(s);
     }
 
-    public void OnLoad(string data)
+    public override void OnLoad(string data)
     {
         Start();
         
@@ -107,7 +108,7 @@ public abstract class HSM : MonoBehaviour, ISaveable
         
     }
 
-    public bool OnSaveCondition()
+    public override bool OnSaveCondition()
     {
         return this != null && this.gameObject.activeSelf && memory != null && stateMachine != null;
     }

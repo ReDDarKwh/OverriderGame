@@ -399,7 +399,7 @@ namespace Lowscope.Saving
             {
                 for (int i = 0; i < saveables.Count; i++)
                 {
-                    saveables[i].OnSaveRequest(activeSaveGame);
+                    saveables[i].OnSaveRequest(activeSaveGame, activeSlot);
                 }
 
                 SaveFileUtility.WriteSave(activeSaveGame, activeSlot);
@@ -471,7 +471,7 @@ namespace Lowscope.Saving
                 int saveableCount = saveables.Count;
                 for (int i = saveableCount - 1; i >= 0; i--)
                 {
-                    saveables[i].OnSaveRequest(activeSaveGame);
+                    saveables[i].OnSaveRequest(activeSaveGame, activeSlot);
                 }
             }
 
@@ -588,7 +588,7 @@ namespace Lowscope.Saving
 
             for (int i = 0; i < count; i++)
             {
-                saveables[i].OnSaveRequest(activeSaveGame);
+                saveables[i].OnSaveRequest(activeSaveGame, activeSlot);
             }
         }
 

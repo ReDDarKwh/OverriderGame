@@ -104,7 +104,7 @@ namespace Scripts.Hacking
                 };
             });
 
-            var saveData = new SavedGame { nodes = savedNodes.ToArray() };
+            var saveData = new SavedGame { nodes = savedNodes.ToArray(), hackedAccessLevels = network.hackedAccessLevels.ToArray()};
 
             return JsonUtility.ToJson(saveData);
         }
@@ -133,9 +133,14 @@ namespace Scripts.Hacking
             {
                 Connect(savedNode, savedNodeRepo, connectedNodes);
             }
+
+            network.ClearAccessLevels();
+            foreach(var al in container.hackedAccessLevels){
+                network.UpdateAccessLevels(al);
+            }
         }
 
-        public bool OnSaveCondition()
+        public bool OnSaveCondition(bool v)
         {
             return true;
         }

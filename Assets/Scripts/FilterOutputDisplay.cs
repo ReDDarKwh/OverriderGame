@@ -82,7 +82,7 @@ public class FilterOutputDisplay : MonoBehaviour, ISaveable
         UpdateUI();
     }
 
-    public bool OnSaveCondition()
+    public bool OnSaveCondition(bool v)
     {
         return true;
     }

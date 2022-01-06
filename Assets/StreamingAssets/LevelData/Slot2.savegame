@@ -1,213 +1,43 @@
-Ñû{
+ž½{
     "metaData": {
         "gameVersion": 0,
-        "creationDate": "2021-12-14 2:33:38 PM",
+        "creationDate": "2022-01-06 4:09:37 PM",
         "timePlayed": "00:00:00"
     },
     "saveData": [
         {
-            "guid": "L1-Actions-a2de4-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":0.0,\"y\":4.5,\"z\":0.0}}",
+            "guid": "L1-Network-b886b-ShootingAction-812ce4",
+            "data": "{\"outputGate\":false}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Actions-23454-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-2.5151143074035646,\"y\":12.889569282531739,\"z\":0.0}}",
+            "guid": "L1-Network-b886b-SpottingAction-a64112",
+            "data": "{\"outputGate\":false}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Actions-8cea2-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-1.9780000448226929,\"y\":7.666999816894531,\"z\":-4.76837158203125e-7}}",
+            "guid": "L1-Network-b886b-ExternalLogicAction-19633b",
+            "data": "{\"outputGate\":false}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Actions-dff16-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":5.070000171661377,\"y\":8.687456130981446,\"z\":0.0}}",
+            "guid": "L1-Network-b886b-Killable-0b7cb8",
+            "data": "{\"dead\":true,\"health\":-3999980.0}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Actions-67e8c-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":2.020963430404663,\"y\":-1.0176112651824952,\"z\":0.0}}",
+            "guid": "L1-Network-b886b-SwitchAction-d50187",
+            "data": "{\"isOn\":false,\"timeOn\":504.7564697265625}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Actions-1cf07-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.2733371257781984,\"y\":7.758689880371094,\"z\":0.0}}",
+            "guid": "L1-Network-b886b-SwitchAction-7eb384",
+            "data": "{\"isOn\":false,\"timeOn\":504.7564697265625}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Actions-88e46-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-0.10100000351667404,\"y\":13.476181983947754,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-e1dc2-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-3.502025842666626,\"y\":2.7023987770080568,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-d6431-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.3389999866485597,\"y\":11.227999687194825,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-1d03d-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.370206594467163,\"y\":14.49759292602539,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-d8789-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-2.140000104904175,\"y\":11.220000267028809,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-bc07a-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":1.3992290496826172,\"y\":8.13291072845459,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-cf7b0-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":2.1349375247955324,\"y\":6.4070000648498539,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-db1ea-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":7.74399995803833,\"y\":10.361000061035157,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-ea4b3-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.3589999675750734,\"y\":2.9549999237060549,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-0aaaf-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":7.473999977111816,\"y\":8.029000282287598,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-ccda1-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.3589999675750734,\"y\":4.650000095367432,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-c61da-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.7730000019073488,\"y\":10.125,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-3b206-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.4443576335906984,\"y\":12.916098594665528,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-184d7-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.322352170944214,\"y\":5.888259410858154,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-a9d8b-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":7.39300012588501,\"y\":11.121999740600586,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-9ec81-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-1.5107077360153199,\"y\":2.2431914806365969,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-60bce-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":7.4379682540893559,\"y\":13.201895713806153,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-c68e8-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":9.936383247375489,\"y\":8.90947151184082,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-ee906-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-4.354108810424805,\"y\":11.721565246582032,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-08860-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-3.449591636657715,\"y\":4.046927452087402,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-50748-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-4.373144626617432,\"y\":12.270840644836426,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-8452a-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-0.375,\"y\":14.25,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-67147-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":5.3425493240356449,\"y\":12.948020935058594,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-5102e-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":2.038911819458008,\"y\":9.094134330749512,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-f28b6-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":7.919000148773193,\"y\":7.577000141143799,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-87cf8-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":2.250999927520752,\"y\":8.456999778747559,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-daec9-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.00600004196167,\"y\":9.28600025177002,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-df1ac-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":1.388342261314392,\"y\":5.659182548522949,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-ec852-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-1.9112637042999268,\"y\":-0.9537355899810791,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-cab5c-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":5.647197723388672,\"y\":10.108383178710938,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-8a562-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.9422173500061037,\"y\":1.0425697565078736,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-aee39-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":3.3134868144989015,\"y\":4.167166233062744,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-c2563-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-1.3585491180419922,\"y\":9.015569686889649,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Actions-70fed-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":0.3703574538230896,\"y\":9.055709838867188,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-DeviceHSM-97bd19",
-            "data": "{\"path\":[\"alive\"],\"memory\":[]}",
+            "guid": "L1-Network-b886b-OpeningAction-1ee355",
+            "data": "{\"outputGate\":false,\"pos\":0.0}",
             "scene": "L1"
         },
         {
@@ -266,96 +96,6 @@
             "scene": "L1"
         },
         {
-            "guid": "L1-Network-b886b-PathFindingNav-3b6ef0",
-            "data": "{\"lastDesiredVelocity\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PathFindingNav-dbe28f",
-            "data": "{\"lastDesiredVelocity\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PathFindingNav-5dbcf5",
-            "data": "{\"lastDesiredVelocity\":{\"x\":0.49998119473457339,\"y\":0.004132437519729137,\"z\":1.4778749335420117e-9}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PathFindingNav-2711c7",
-            "data": "{\"lastDesiredVelocity\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PathFindingNav-c90b20",
-            "data": "{\"lastDesiredVelocity\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PathFindingNav-ba6552",
-            "data": "{\"lastDesiredVelocity\":{\"x\":-0.005323904566466808,\"y\":-0.4925868511199951,\"z\":-1.7616279990306794e-7}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PathFindingNav-b096f7",
-            "data": "{\"lastDesiredVelocity\":{\"x\":-0.02369164675474167,\"y\":0.4993841350078583,\"z\":1.7859369449979568e-7}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PathFindingNav-82fe9b",
-            "data": "{\"lastDesiredVelocity\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PathFindingNav-7ae666",
-            "data": "{\"lastDesiredVelocity\":{\"x\":0.22610504925251008,\"y\":-0.44229069352149966,\"z\":-1.5817548160157458e-7}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PathFindingNav-0d8f4b",
-            "data": "{\"lastDesiredVelocity\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-3f38ab",
-            "data": "{\"position\":{\"x\":0.3799999952316284,\"y\":9.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-8fffdf",
-            "data": "{\"position\":{\"x\":-1.1200000047683716,\"y\":14.25,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-71f307",
-            "data": "{\"position\":{\"x\":7.135000228881836,\"y\":9.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-9fcb84",
-            "data": "{\"position\":{\"x\":3.7730000019073488,\"y\":10.119999885559082,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-71b495",
-            "data": "{\"position\":{\"x\":-0.3700000047683716,\"y\":12.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-904523",
-            "data": "{\"position\":{\"x\":-0.375,\"y\":4.5,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-b3f484",
-            "data": "{\"position\":{\"x\":2.25,\"y\":7.869999885559082,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-dcee72",
-            "data": "{\"position\":{\"x\":-0.375,\"y\":0.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
             "guid": "L1-Network-b886b-AlarmAction-d1dc90",
             "data": "{\"outputGate\":false}",
             "scene": "L1"
@@ -397,7 +137,7 @@
         },
         {
             "guid": "L1-Network-b886b-SpottingAction-617023",
-            "data": "{\"outputGate\":false}",
+            "data": "{\"outputGate\":true}",
             "scene": "L1"
         },
         {
@@ -477,11 +217,6 @@
         },
         {
             "guid": "L1-Network-b886b-ExternalLogicAction-bd964c",
-            "data": "{\"outputGate\":false}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-ShootingAction-e32022",
             "data": "{\"outputGate\":false}",
             "scene": "L1"
         },
@@ -612,17 +347,17 @@
         },
         {
             "guid": "L1-Network-b886b-SpottingAction-634c3f",
-            "data": "{\"outputGate\":false}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SpottingAction-5005ef",
             "data": "{\"outputGate\":true}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Network-b886b-SpottingAction-55d765",
+            "guid": "L1-Network-b886b-SpottingAction-5005ef",
             "data": "{\"outputGate\":false}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Network-b886b-SpottingAction-55d765",
+            "data": "{\"outputGate\":true}",
             "scene": "L1"
         },
         {
@@ -722,52 +457,52 @@
         },
         {
             "guid": "L1-Network-b886b-SwitchAction-ddeb80",
-            "data": "{\"isOn\":false,\"timeOn\":1975.539794921875}",
+            "data": "{\"isOn\":false,\"timeOn\":504.7564697265625}",
             "scene": "L1"
         },
         {
             "guid": "L1-Network-b886b-SwitchAction-6cc3c8",
-            "data": "{\"isOn\":false,\"timeOn\":1975.539794921875}",
+            "data": "{\"isOn\":false,\"timeOn\":504.7564697265625}",
             "scene": "L1"
         },
         {
             "guid": "L1-Network-b886b-SwitchAction-94c56e",
-            "data": "{\"isOn\":false,\"timeOn\":4.64781379699707}",
+            "data": "{\"isOn\":true,\"timeOn\":2.270824432373047}",
             "scene": "L1"
         },
         {
             "guid": "L1-Network-b886b-SwitchAction-64523b",
-            "data": "{\"isOn\":false,\"timeOn\":21.88616371154785}",
+            "data": "{\"isOn\":false,\"timeOn\":19.292354583740236}",
             "scene": "L1"
         },
         {
             "guid": "L1-Network-b886b-SwitchAction-0644c2",
-            "data": "{\"isOn\":false,\"timeOn\":1975.539794921875}",
+            "data": "{\"isOn\":false,\"timeOn\":494.32666015625}",
             "scene": "L1"
         },
         {
             "guid": "L1-Network-b886b-SwitchAction-19174f",
-            "data": "{\"isOn\":false,\"timeOn\":1975.539794921875}",
+            "data": "{\"isOn\":false,\"timeOn\":504.7564697265625}",
             "scene": "L1"
         },
         {
             "guid": "L1-Network-b886b-SwitchAction-bc7f33",
-            "data": "{\"isOn\":false,\"timeOn\":1975.539794921875}",
+            "data": "{\"isOn\":false,\"timeOn\":504.7564697265625}",
             "scene": "L1"
         },
         {
             "guid": "L1-Network-b886b-SwitchAction-a182f8",
-            "data": "{\"isOn\":false,\"timeOn\":1975.539794921875}",
+            "data": "{\"isOn\":false,\"timeOn\":504.7564697265625}",
             "scene": "L1"
         },
         {
             "guid": "L1-Network-b886b-SwitchAction-7bef9e",
-            "data": "{\"isOn\":false,\"timeOn\":1975.539794921875}",
+            "data": "{\"isOn\":false,\"timeOn\":504.7564697265625}",
             "scene": "L1"
         },
         {
             "guid": "L1-Network-b886b-OpeningAction-2f50e6",
-            "data": "{\"outputGate\":false,\"pos\":0.0}",
+            "data": "{\"outputGate\":true,\"pos\":1.0}",
             "scene": "L1"
         },
         {
@@ -792,7 +527,7 @@
         },
         {
             "guid": "L1-Network-b886b-OpeningAction-b5a2ac",
-            "data": "{\"outputGate\":false,\"pos\":0.0}",
+            "data": "{\"outputGate\":true,\"pos\":1.0}",
             "scene": "L1"
         },
         {
@@ -802,412 +537,12 @@
         },
         {
             "guid": "L1-Network-b886b-OpeningAction-942d71",
-            "data": "{\"outputGate\":false,\"pos\":0.0}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-c5967a",
-            "data": "{\"position\":{\"x\":7.473999977111816,\"y\":8.029000282287598,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-e7ee09",
-            "data": "{\"position\":{\"x\":7.74399995803833,\"y\":10.361000061035157,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-e80ecb",
-            "data": "{\"position\":{\"x\":5.647197723388672,\"y\":10.108383178710938,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-97af05",
-            "data": "{\"position\":{\"x\":7.39300012588501,\"y\":11.121999740600586,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-aee4fc",
-            "data": "{\"position\":{\"x\":3.00600004196167,\"y\":9.28600025177002,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-4b8d24",
-            "data": "{\"position\":{\"x\":-1.5107077360153199,\"y\":2.2431914806365969,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-13f396",
-            "data": "{\"position\":{\"x\":-0.10100000351667404,\"y\":13.476181983947754,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-a48cd8",
-            "data": "{\"position\":{\"x\":1.388342261314392,\"y\":5.659182548522949,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-6c25cd",
-            "data": "{\"position\":{\"x\":-2.140000104904175,\"y\":11.220000267028809,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SaveRotation-b23d9f",
-            "data": "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SaveRotation-283881",
-            "data": "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":152.95001220703126}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SaveRotation-1bb70b",
-            "data": "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":0.7216342091560364}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SaveRotation-f1eafa",
-            "data": "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":274.25}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SaveRotation-6b8701",
-            "data": "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":90.00000762939453}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SaveRotation-1769ea",
-            "data": "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":94.07689666748047}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SaveRotation-7fe24a",
-            "data": "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":270.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SaveRotation-0de3db",
-            "data": "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":303.9313049316406}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SaveRotation-da8dbe",
-            "data": "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":270.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SaveRotation-9cccf9",
-            "data": "{\"rotation\":{\"x\":0.0,\"y\":0.0,\"z\":278.55462646484377}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-6a519c",
-            "data": "{\"position\":{\"x\":1.3992290496826172,\"y\":8.13291072845459,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-f89b9b",
-            "data": "{\"position\":{\"x\":3.3589999675750734,\"y\":4.650000095367432,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-29b930",
-            "data": "{\"position\":{\"x\":7.919000148773193,\"y\":7.577000141143799,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-f08cc9",
-            "data": "{\"position\":{\"x\":-3.449591636657715,\"y\":4.046927452087402,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-ba5b8b",
-            "data": "{\"position\":{\"x\":2.250999927520752,\"y\":8.456999778747559,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-c53f0e",
-            "data": "{\"position\":{\"x\":2.1349375247955324,\"y\":6.4070000648498539,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-421577",
-            "data": "{\"position\":{\"x\":0.3703574538230896,\"y\":9.055709838867188,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-3fd74b",
-            "data": "{\"position\":{\"x\":-1.3585491180419922,\"y\":9.015569686889649,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-4369ef",
-            "data": "{\"position\":{\"x\":2.038911819458008,\"y\":9.094134330749512,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-f98bfe",
-            "data": "{\"position\":{\"x\":7.473999977111816,\"y\":8.029000282287598,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-EnemyHSM-92599a",
-            "data": "{\"path\":[\"alive\",\"perceptive\",\"idle\",\"stationnary\",\"atPos\"],\"memory\":[{\"key\":\"gotoSettingsName\",\"value\":\"patrolling\",\"uniqueId\":\"\",\"memType\":0},{\"key\":\"lookAtTarget\",\"value\":false,\"uniqueId\":\"\",\"memType\":0},{\"key\":\"positionEventName\",\"value\":\"cleanUpGoto\",\"uniqueId\":\"\",\"memType\":0}]}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PatrollingState-13f07d",
-            "data": "{\"currentPoint\":0}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-e163aa",
-            "data": "{\"position\":{\"x\":7.74399995803833,\"y\":10.361000061035157,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-EnemyHSM-08b99e",
-            "data": "{\"path\":[\"alive\",\"perceptive\",\"idle\",\"stationnary\",\"atPos\"],\"memory\":[{\"key\":\"gotoSettingsName\",\"value\":\"patrolling\",\"uniqueId\":\"\",\"memType\":0},{\"key\":\"lookAtTarget\",\"value\":false,\"uniqueId\":\"\",\"memType\":0},{\"key\":\"positionEventName\",\"value\":\"cleanUpGoto\",\"uniqueId\":\"\",\"memType\":0}]}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PatrollingState-b384b1",
-            "data": "{\"currentPoint\":0}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-07dd8e",
-            "data": "{\"position\":{\"x\":5.647197723388672,\"y\":10.108383178710938,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-EnemyHSM-68b922",
-            "data": "{\"path\":[\"alive\",\"perceptive\",\"idle\",\"patrolling\",\"goto\",\"goto\"],\"memory\":[{\"key\":\"targetTransform\",\"value\":null,\"uniqueId\":\"\",\"memType\":1},{\"key\":\"targetPos\",\"value\":{\"x\":6.724,\"y\":9.908418,\"z\":0.0},\"uniqueId\":\"\",\"memType\":3},{\"key\":\"gotoSettingsName\",\"value\":\"patrolling\",\"uniqueId\":\"\",\"memType\":0},{\"key\":\"lookAtTarget\",\"value\":false,\"uniqueId\":\"\",\"memType\":0},{\"key\":\"positionEventName\",\"value\":\"cleanUpGoto\",\"uniqueId\":\"\",\"memType\":0}]}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PatrollingState-51de10",
-            "data": "{\"currentPoint\":3}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-a25b5e",
-            "data": "{\"position\":{\"x\":7.39300012588501,\"y\":11.121999740600586,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-EnemyHSM-1c5c79",
-            "data": "{\"path\":[\"alive\",\"perceptive\",\"idle\",\"stationnary\",\"atPos\"],\"memory\":[{\"key\":\"gotoSettingsName\",\"value\":\"patrolling\",\"uniqueId\":\"\",\"memType\":0},{\"key\":\"lookAtTarget\",\"value\":false,\"uniqueId\":\"\",\"memType\":0},{\"key\":\"positionEventName\",\"value\":\"cleanUpGoto\",\"uniqueId\":\"\",\"memType\":0}]}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PatrollingState-2275aa",
-            "data": "{\"currentPoint\":0}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-196155",
-            "data": "{\"position\":{\"x\":3.00600004196167,\"y\":9.28600025177002,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-EnemyHSM-5dc2f7",
-            "data": "{\"path\":[\"alive\",\"perceptive\",\"idle\",\"stationnary\",\"atPos\"],\"memory\":[{\"key\":\"gotoSettingsName\",\"value\":\"patrolling\",\"uniqueId\":\"\",\"memType\":0},{\"key\":\"lookAtTarget\",\"value\":false,\"uniqueId\":\"\",\"memType\":0},{\"key\":\"positionEventName\",\"value\":\"cleanUpGoto\",\"uniqueId\":\"\",\"memType\":0}]}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PatrollingState-a6a8ec",
-            "data": "{\"currentPoint\":0}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-be640f",
-            "data": "{\"position\":{\"x\":1.3992290496826172,\"y\":8.13291072845459,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-EnemyHSM-5bcc95",
-            "data": "{\"path\":[\"alive\",\"perceptive\",\"idle\",\"patrolling\",\"goto\",\"goto\"],\"memory\":[{\"key\":\"targetPos\",\"value\":{\"x\":1.515,\"y\":5.95441771,\"z\":0.0},\"uniqueId\":\"\",\"memType\":3},{\"key\":\"targetTransform\",\"value\":null,\"uniqueId\":\"\",\"memType\":1},{\"key\":\"gotoSettingsName\",\"value\":\"patrolling\",\"uniqueId\":\"\",\"memType\":0},{\"key\":\"lookAtTarget\",\"value\":false,\"uniqueId\":\"\",\"memType\":0},{\"key\":\"positionEventName\",\"value\":\"cleanUpGoto\",\"uniqueId\":\"\",\"memType\":0}]}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PatrollingState-4d711a",
-            "data": "{\"currentPoint\":5}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-8f6d93",
-            "data": "{\"position\":{\"x\":-1.5107077360153199,\"y\":2.2431914806365969,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-EnemyHSM-f62c5f",
-            "data": "{\"path\":[\"alive\",\"perceptive\",\"idle\",\"patrolling\",\"goto\",\"goto\"],\"memory\":[{\"key\":\"targetPos\",\"value\":{\"x\":-1.62,\"y\":3.64041758,\"z\":0.0},\"uniqueId\":\"\",\"memType\":3},{\"key\":\"targetTransform\",\"value\":null,\"uniqueId\":\"\",\"memType\":1},{\"key\":\"gotoSettingsName\",\"value\":\"patrolling\",\"uniqueId\":\"\",\"memType\":0},{\"key\":\"lookAtTarget\",\"value\":false,\"uniqueId\":\"\",\"memType\":0},{\"key\":\"positionEventName\",\"value\":\"cleanUpGoto\",\"uniqueId\":\"\",\"memType\":0}]}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PatrollingState-dadd8d",
-            "data": "{\"currentPoint\":0}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-b439d1",
-            "data": "{\"position\":{\"x\":5.3425493240356449,\"y\":12.948020935058594,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-ec0dbc",
-            "data": "{\"position\":{\"x\":5.070000171661377,\"y\":8.687456130981446,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-add952",
-            "data": "{\"position\":{\"x\":3.3389999866485597,\"y\":11.227999687194825,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-9a5a0c",
-            "data": "{\"position\":{\"x\":-1.9780000448226929,\"y\":7.666999816894531,\"z\":-4.76837158203125e-7}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-f1ef37",
-            "data": "{\"position\":{\"x\":-1.9112637042999268,\"y\":-0.9537355899810791,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-bb5f29",
-            "data": "{\"position\":{\"x\":2.020963430404663,\"y\":-1.0176112651824952,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-4beeb1",
-            "data": "{\"position\":{\"x\":3.3589999675750734,\"y\":2.9549999237060549,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-34ae45",
-            "data": "{\"position\":{\"x\":-3.502025842666626,\"y\":2.7023987770080568,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-ad8124",
-            "data": "{\"position\":{\"x\":-0.375,\"y\":14.25,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-451acf",
-            "data": "{\"position\":{\"x\":9.936383247375489,\"y\":8.90947151184082,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-dc25ea",
-            "data": "{\"position\":{\"x\":3.7730000019073488,\"y\":10.125,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-448ad9",
-            "data": "{\"position\":{\"x\":-2.5151143074035646,\"y\":12.889569282531739,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-dba708",
-            "data": "{\"position\":{\"x\":0.0,\"y\":4.5,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-51bd02",
-            "data": "{\"position\":{\"x\":3.2733371257781984,\"y\":7.758689880371094,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-fe7aa8",
-            "data": "{\"position\":{\"x\":3.9422173500061037,\"y\":1.0425697565078736,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-c783c1",
-            "data": "{\"position\":{\"x\":3.3134868144989015,\"y\":4.167166233062744,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-d94351",
-            "data": "{\"position\":{\"x\":-4.354108810424805,\"y\":11.721565246582032,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-667d42",
-            "data": "{\"position\":{\"x\":-4.373144626617432,\"y\":12.270840644836426,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-a1dc37",
-            "data": "{\"position\":{\"x\":-0.10100000351667404,\"y\":13.476181983947754,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-TargetHSM-a26044",
-            "data": "{\"path\":[\"alive\",\"perceptive\",\"idle\",\"stationnary\",\"atPos\"],\"memory\":[{\"key\":\"gotoSettingsName\",\"value\":\"patrolling\",\"uniqueId\":\"\",\"memType\":0},{\"key\":\"lookAtTarget\",\"value\":false,\"uniqueId\":\"\",\"memType\":0},{\"key\":\"positionEventName\",\"value\":\"cleanUpGoto\",\"uniqueId\":\"\",\"memType\":0}]}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PatrollingState-3079c3",
-            "data": "{\"currentPoint\":0}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-10d3af",
-            "data": "{\"position\":{\"x\":3.4443576335906984,\"y\":12.916098594665528,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-50b7cf",
-            "data": "{\"position\":{\"x\":3.370206594467163,\"y\":14.49759292602539,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-434065",
-            "data": "{\"position\":{\"x\":7.4379682540893559,\"y\":13.201895713806153,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-249bc7",
-            "data": "{\"position\":{\"x\":1.388342261314392,\"y\":5.659182548522949,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-EnemyHSM-97a4fd",
-            "data": "{\"path\":[\"alive\",\"perceptive\",\"idle\",\"patrolling\",\"goto\",\"goto\"],\"memory\":[{\"key\":\"targetTransform\",\"value\":null,\"uniqueId\":\"\",\"memType\":1},{\"key\":\"targetPos\",\"value\":{\"x\":1.535,\"y\":4.867418,\"z\":0.0},\"uniqueId\":\"\",\"memType\":3},{\"key\":\"gotoSettingsName\",\"value\":\"patrolling\",\"uniqueId\":\"\",\"memType\":0},{\"key\":\"lookAtTarget\",\"value\":false,\"uniqueId\":\"\",\"memType\":0},{\"key\":\"positionEventName\",\"value\":\"cleanUpGoto\",\"uniqueId\":\"\",\"memType\":0}]}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PatrollingState-4cdc84",
-            "data": "{\"currentPoint\":3}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-2f4aee",
-            "data": "{\"position\":{\"x\":-2.140000104904175,\"y\":11.220000267028809,\"z\":0.0}}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-EnemyHSM-7e78bf",
-            "data": "{\"path\":[\"alive\",\"perceptive\",\"idle\",\"stationnary\",\"atPos\"],\"memory\":[{\"key\":\"gotoSettingsName\",\"value\":\"patrolling\",\"uniqueId\":\"\",\"memType\":0},{\"key\":\"lookAtTarget\",\"value\":false,\"uniqueId\":\"\",\"memType\":0},{\"key\":\"positionEventName\",\"value\":\"cleanUpGoto\",\"uniqueId\":\"\",\"memType\":0}]}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-PatrollingState-9bf54d",
-            "data": "{\"currentPoint\":0}",
-            "scene": "L1"
-        },
-        {
-            "guid": "L1-Network-b886b-SavePosition-99a0bf",
-            "data": "{\"position\":{\"x\":3.322352170944214,\"y\":5.888259410858154,\"z\":0.0}}",
+            "data": "{\"outputGate\":true,\"pos\":1.0}",
             "scene": "L1"
         },
         {
             "guid": "L1-Network-b886b-NetworkPersistance-9bddad",
-            "data": "{\"nodes\":[{\"id\":\"L1_0acdca39-a50c-48a7-8119-5cd55435df4eRotatinginput\",\"gateType\":0,\"pos\":[2.622352123260498,6.1515092849731449],\"connections\":[]},{\"id\":\"L1_0acdca39-a50c-48a7-8119-5cd55435df4eRotatingoutput\",\"gateType\":0,\"pos\":[4.02235221862793,6.1515092849731449],\"connections\":[]},{\"id\":\"L1_0acdca39-a50c-48a7-8119-5cd55435df4eSpottingoutput\",\"gateType\":0,\"pos\":[4.02235221862793,5.891509532928467],\"connections\":[\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cActivateinput\"]},{\"id\":\"L1_0acdca39-a50c-48a7-8119-5cd55435df4eSpottingIntruders\",\"gateType\":3,\"pos\":[4.02235221862793,5.681509494781494],\"connections\":[\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cActivetargets\"]},{\"id\":\"L1_0acdca39-a50c-48a7-8119-5cd55435df4eSpottingFilter\",\"gateType\":3,\"pos\":[2.622352123260498,5.491509437561035],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87Attackingoutput\",\"gateType\":0,\"pos\":[-1.440000057220459,11.483250617980957],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87AttackingTargets\",\"gateType\":3,\"pos\":[-2.8400001525878908,11.273250579833985],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87Spottingoutput\",\"gateType\":0,\"pos\":[-1.440000057220459,11.033249855041504],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87SpottingIntruders\",\"gateType\":3,\"pos\":[-1.440000057220459,10.823249816894532],\"connections\":[\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87AttackingTargets\"]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87SpottingFilter\",\"gateType\":3,\"pos\":[-2.8400001525878908,10.63325023651123],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87Shootinginput\",\"gateType\":0,\"pos\":[-2.8400001525878908,10.393250465393067],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87Shootingoutput\",\"gateType\":0,\"pos\":[-1.440000057220459,10.393250465393067],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beAttackingoutput\",\"gateType\":0,\"pos\":[2.0883421897888185,5.9224324226379398],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beAttackingTargets\",\"gateType\":3,\"pos\":[0.688342273235321,5.712432384490967],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beSpottingoutput\",\"gateType\":0,\"pos\":[2.0883421897888185,5.472432613372803],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beSpottingIntruders\",\"gateType\":3,\"pos\":[2.0883421897888185,5.26243257522583],\"connections\":[\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beAttackingTargets\"]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beSpottingFilter\",\"gateType\":3,\"pos\":[0.688342273235321,5.072432518005371],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beShootinginput\",\"gateType\":0,\"pos\":[0.688342273235321,4.832432746887207],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beShootingoutput\",\"gateType\":0,\"pos\":[2.0883421897888185,4.832432746887207],\"connections\":[]},{\"id\":\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fActivateinput\",\"gateType\":0,\"pos\":[6.737968444824219,13.4651460647583],\"connections\":[]},{\"id\":\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fDeactivateinput\",\"gateType\":0,\"pos\":[6.737968444824219,13.205145835876465],\"connections\":[]},{\"id\":\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fActiveoutput\",\"gateType\":0,\"pos\":[8.137968063354493,12.945145606994629],\"connections\":[]},{\"id\":\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fActivetargets\",\"gateType\":3,\"pos\":[6.737968444824219,12.735145568847657],\"connections\":[]},{\"id\":\"L1_5f0ba174-9379-41af-8e3d-0c7b781837faActivateinput\",\"gateType\":0,\"pos\":[2.6702065467834474,14.760843276977539],\"connections\":[]},{\"id\":\"L1_5f0ba174-9379-41af-8e3d-0c7b781837faDeactivateinput\",\"gateType\":0,\"pos\":[2.6702065467834474,14.500843048095704],\"connections\":[]},{\"id\":\"L1_5f0ba174-9379-41af-8e3d-0c7b781837faActiveoutput\",\"gateType\":0,\"pos\":[4.070206642150879,14.240842819213868],\"connections\":[]},{\"id\":\"L1_5f0ba174-9379-41af-8e3d-0c7b781837faActivetargets\",\"gateType\":3,\"pos\":[2.6702065467834474,14.030842781066895],\"connections\":[]},{\"id\":\"L1_d9c506e9-5de5-46c3-ac74-f92228cae501Activeoutput\",\"gateType\":0,\"pos\":[4.144357681274414,13.179348945617676],\"connections\":[\"L1_5f0ba174-9379-41af-8e3d-0c7b781837faActivateinput\"]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecAttackingoutput\",\"gateType\":0,\"pos\":[0.5989999771118164,13.739432334899903],\"connections\":[]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecAttackingTargets\",\"gateType\":3,\"pos\":[-0.8009999990463257,13.52943229675293],\"connections\":[]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecSpottingoutput\",\"gateType\":0,\"pos\":[0.5989999771118164,13.28943157196045],\"connections\":[]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecSpottingIntruders\",\"gateType\":3,\"pos\":[0.5989999771118164,13.079431533813477],\"connections\":[\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecAttackingTargets\"]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecSpottingFilter\",\"gateType\":3,\"pos\":[-0.8009999990463257,12.889431953430176],\"connections\":[]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecShootinginput\",\"gateType\":0,\"pos\":[-0.8009999990463257,12.649432182312012],\"connections\":[]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecShootingoutput\",\"gateType\":0,\"pos\":[0.5989999771118164,12.649432182312012],\"connections\":[]},{\"id\":\"L1_6f7b6747-e105-4aef-97b2-45aa997744e7Activeoutput\",\"gateType\":0,\"pos\":[-3.673144578933716,12.534090995788575],\"connections\":[\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8Openinput\"]},{\"id\":\"L1_a387046b-759d-4bf9-8d20-6b014a96f145Activeoutput\",\"gateType\":0,\"pos\":[-3.654108762741089,11.98481559753418],\"connections\":[\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8Openinput\"]},{\"id\":\"L1_b81f4eb4-71ed-4aeb-82dc-ef4e3fd7bdaeRotatinginput\",\"gateType\":0,\"pos\":[2.6134867668151857,4.430416107177734],\"connections\":[]},{\"id\":\"L1_b81f4eb4-71ed-4aeb-82dc-ef4e3fd7bdaeRotatingoutput\",\"gateType\":0,\"pos\":[4.013486862182617,4.430416107177734],\"connections\":[]},{\"id\":\"L1_b81f4eb4-71ed-4aeb-82dc-ef4e3fd7bdaeSpottingoutput\",\"gateType\":0,\"pos\":[4.013486862182617,4.170416355133057],\"connections\":[\"L1_54f7d61e-2875-4641-9540-61231c9184ecActivateinput\"]},{\"id\":\"L1_b81f4eb4-71ed-4aeb-82dc-ef4e3fd7bdaeSpottingIntruders\",\"gateType\":3,\"pos\":[4.013486862182617,3.960416316986084],\"connections\":[\"L1_54f7d61e-2875-4641-9540-61231c9184ecActivetargets\"]},{\"id\":\"L1_b81f4eb4-71ed-4aeb-82dc-ef4e3fd7bdaeSpottingFilter\",\"gateType\":3,\"pos\":[2.6134867668151857,3.770416259765625],\"connections\":[]},{\"id\":\"L1_5fded786-e4ae-40df-9a28-7d6e44748180Spottingoutput\",\"gateType\":0,\"pos\":[4.64221715927124,1.3058197498321534],\"connections\":[]},{\"id\":\"L1_5fded786-e4ae-40df-9a28-7d6e44748180SpottingUsers\",\"gateType\":3,\"pos\":[4.64221715927124,1.0958197116851807],\"connections\":[]},{\"id\":\"L1_5fded786-e4ae-40df-9a28-7d6e44748180SpottingFilter\",\"gateType\":3,\"pos\":[3.2422173023223879,0.9058197736740112],\"connections\":[]},{\"id\":\"L1_5fded786-e4ae-40df-9a28-7d6e44748180Openinput\",\"gateType\":0,\"pos\":[3.2422173023223879,0.6658197641372681],\"connections\":[]},{\"id\":\"L1_5fded786-e4ae-40df-9a28-7d6e44748180Openoutput\",\"gateType\":0,\"pos\":[4.64221715927124,0.6658197641372681],\"connections\":[]},{\"id\":\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558Spottingoutput\",\"gateType\":0,\"pos\":[3.973337173461914,8.021940231323243],\"connections\":[]},{\"id\":\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558SpottingUsers\",\"gateType\":3,\"pos\":[3.973337173461914,7.811939716339111],\"connections\":[]},{\"id\":\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558SpottingFilter\",\"gateType\":3,\"pos\":[2.5733370780944826,7.621939659118652],\"connections\":[]},{\"id\":\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558Openinput\",\"gateType\":0,\"pos\":[2.5733370780944826,7.381939888000488],\"connections\":[]},{\"id\":\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558Openoutput\",\"gateType\":0,\"pos\":[3.973337173461914,7.381939888000488],\"connections\":[]},{\"id\":\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcSpottingoutput\",\"gateType\":0,\"pos\":[0.699999988079071,4.76324987411499],\"connections\":[\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcOpeninput\"]},{\"id\":\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcSpottingUsers\",\"gateType\":3,\"pos\":[0.699999988079071,4.553249835968018],\"connections\":[]},{\"id\":\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcSpottingFilter\",\"gateType\":3,\"pos\":[-0.699999988079071,4.363249778747559],\"connections\":[]},{\"id\":\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcOpeninput\",\"gateType\":0,\"pos\":[-0.699999988079071,4.1232500076293949],\"connections\":[]},{\"id\":\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcOpenoutput\",\"gateType\":0,\"pos\":[0.699999988079071,4.1232500076293949],\"connections\":[]},{\"id\":\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8Spottingoutput\",\"gateType\":0,\"pos\":[-1.8151142597198487,13.152819633483887],\"connections\":[]},{\"id\":\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8SpottingUsers\",\"gateType\":3,\"pos\":[-1.8151142597198487,12.942819595336914],\"connections\":[]},{\"id\":\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8SpottingFilter\",\"gateType\":3,\"pos\":[-3.2151143550872804,12.752819061279297],\"connections\":[]},{\"id\":\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8Openinput\",\"gateType\":0,\"pos\":[-3.2151143550872804,12.512819290161133],\"connections\":[]},{\"id\":\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8Openoutput\",\"gateType\":0,\"pos\":[-1.8151142597198487,12.512819290161133],\"connections\":[]},{\"id\":\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cSpottingoutput\",\"gateType\":0,\"pos\":[4.4730000495910648,10.388250350952149],\"connections\":[\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cOpeninput\"]},{\"id\":\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cSpottingUsers\",\"gateType\":3,\"pos\":[4.4730000495910648,10.178250312805176],\"connections\":[]},{\"id\":\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cSpottingFilter\",\"gateType\":3,\"pos\":[3.072999954223633,9.988249778747559],\"connections\":[]},{\"id\":\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cOpeninput\",\"gateType\":0,\"pos\":[3.072999954223633,9.748250007629395],\"connections\":[]},{\"id\":\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cOpenoutput\",\"gateType\":0,\"pos\":[4.4730000495910648,9.748250007629395],\"connections\":[]},{\"id\":\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fSpottingoutput\",\"gateType\":0,\"pos\":[10.636383056640625,9.172721862792969],\"connections\":[\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fOpeninput\"]},{\"id\":\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fSpottingUsers\",\"gateType\":3,\"pos\":[10.636383056640625,8.962721824645996],\"connections\":[]},{\"id\":\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fSpottingFilter\",\"gateType\":3,\"pos\":[9.236383438110352,8.772721290588379],\"connections\":[]},{\"id\":\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fOpeninput\",\"gateType\":0,\"pos\":[9.236383438110352,8.532721519470215],\"connections\":[]},{\"id\":\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fOpenoutput\",\"gateType\":0,\"pos\":[10.636383056640625,8.532721519470215],\"connections\":[]},{\"id\":\"L1_f5bddc9b-808d-4b42-b147-951be30351c5Spottingoutput\",\"gateType\":0,\"pos\":[0.32499998807907107,14.513250350952149],\"connections\":[\"L1_f5bddc9b-808d-4b42-b147-951be30351c5Openinput\"]},{\"id\":\"L1_f5bddc9b-808d-4b42-b147-951be30351c5SpottingUsers\",\"gateType\":3,\"pos\":[0.32499998807907107,14.303250312805176],\"connections\":[]},{\"id\":\"L1_f5bddc9b-808d-4b42-b147-951be30351c5SpottingFilter\",\"gateType\":3,\"pos\":[-1.0750000476837159,14.113249778747559],\"connections\":[]},{\"id\":\"L1_f5bddc9b-808d-4b42-b147-951be30351c5Openinput\",\"gateType\":0,\"pos\":[-1.0750000476837159,13.873250007629395],\"connections\":[]},{\"id\":\"L1_f5bddc9b-808d-4b42-b147-951be30351c5Openoutput\",\"gateType\":0,\"pos\":[0.32499998807907107,13.873250007629395],\"connections\":[]},{\"id\":\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Activateinput\",\"gateType\":0,\"pos\":[-4.202025890350342,2.965648651123047],\"connections\":[]},{\"id\":\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Deactivateinput\",\"gateType\":0,\"pos\":[-4.202025890350342,2.705648899078369],\"connections\":[]},{\"id\":\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Activeoutput\",\"gateType\":0,\"pos\":[-2.80202579498291,2.445648670196533],\"connections\":[]},{\"id\":\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Activetargets\",\"gateType\":3,\"pos\":[-4.202025890350342,2.2356486320495607],\"connections\":[]},{\"id\":\"L1_54f7d61e-2875-4641-9540-61231c9184ecActivateinput\",\"gateType\":0,\"pos\":[2.6589999198913576,3.218249797821045],\"connections\":[]},{\"id\":\"L1_54f7d61e-2875-4641-9540-61231c9184ecDeactivateinput\",\"gateType\":0,\"pos\":[2.6589999198913576,2.958250045776367],\"connections\":[]},{\"id\":\"L1_54f7d61e-2875-4641-9540-61231c9184ecActiveoutput\",\"gateType\":0,\"pos\":[4.059000015258789,2.6982498168945314],\"connections\":[]},{\"id\":\"L1_54f7d61e-2875-4641-9540-61231c9184ecActivetargets\",\"gateType\":3,\"pos\":[2.6589999198913576,2.4882497787475588],\"connections\":[]},{\"id\":\"L1_1c23b1d3-4cdd-48b2-b236-3413c4c3153cActiveoutput\",\"gateType\":0,\"pos\":[2.720963478088379,-0.7543612718582153],\"connections\":[\"L1_5fded786-e4ae-40df-9a28-7d6e44748180Openinput\"]},{\"id\":\"L1_5fc97a51-69a6-4aab-a94c-294a5bd07bdcActiveoutput\",\"gateType\":0,\"pos\":[-1.211263656616211,-0.6904855966567993],\"connections\":[\"L1_5fded786-e4ae-40df-9a28-7d6e44748180Openinput\"]},{\"id\":\"L1_8106527a-1c0e-4dbb-95d5-33351ceac694Desactivateinput\",\"gateType\":0,\"pos\":[-2.677999973297119,7.9302496910095219],\"connections\":[]},{\"id\":\"L1_8106527a-1c0e-4dbb-95d5-33351ceac694Desactivateoutput\",\"gateType\":0,\"pos\":[-1.2780001163482667,7.9302496910095219],\"connections\":[]},{\"id\":\"L1_8106527a-1c0e-4dbb-95d5-33351ceac694Activateinput\",\"gateType\":0,\"pos\":[-2.677999973297119,7.670249938964844],\"connections\":[]},{\"id\":\"L1_8106527a-1c0e-4dbb-95d5-33351ceac694Activateoutput\",\"gateType\":0,\"pos\":[-1.2780001163482667,7.670249938964844],\"connections\":[]},{\"id\":\"L1_8106527a-1c0e-4dbb-95d5-33351ceac694Activeoutput\",\"gateType\":0,\"pos\":[-1.2780001163482667,7.410249710083008],\"connections\":[]},{\"id\":\"L1_b52e4046-30b6-41e4-8032-3c61c59cc83bDesactivateinput\",\"gateType\":0,\"pos\":[2.6389999389648439,11.491250038146973],\"connections\":[]},{\"id\":\"L1_b52e4046-30b6-41e4-8032-3c61c59cc83bDesactivateoutput\",\"gateType\":0,\"pos\":[4.039000034332275,11.491250038146973],\"connections\":[]},{\"id\":\"L1_b52e4046-30b6-41e4-8032-3c61c59cc83bActivateinput\",\"gateType\":0,\"pos\":[2.6389999389648439,11.231249809265137],\"connections\":[]},{\"id\":\"L1_b52e4046-30b6-41e4-8032-3c61c59cc83bActivateoutput\",\"gateType\":0,\"pos\":[4.039000034332275,11.231249809265137],\"connections\":[]},{\"id\":\"L1_b52e4046-30b6-41e4-8032-3c61c59cc83bActiveoutput\",\"gateType\":0,\"pos\":[4.039000034332275,10.9712495803833],\"connections\":[]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Targetingtargets\",\"gateType\":3,\"pos\":[4.37000036239624,8.740706443786621],\"connections\":[]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Spottingoutput\",\"gateType\":0,\"pos\":[5.769999980926514,8.50070571899414],\"connections\":[\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Shootinginput\"]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66SpottingIntruders\",\"gateType\":3,\"pos\":[5.769999980926514,8.290706634521485],\"connections\":[\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Targetingtargets\"]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66SpottingFilter\",\"gateType\":3,\"pos\":[4.37000036239624,8.100706100463868],\"connections\":[]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Shootinginput\",\"gateType\":0,\"pos\":[4.37000036239624,7.860706329345703],\"connections\":[]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Shootingoutput\",\"gateType\":0,\"pos\":[5.769999980926514,7.860706329345703],\"connections\":[]},{\"id\":\"L1_fa636f5c-a537-41fa-80af-a0292e4cd87bSpottingoutput\",\"gateType\":0,\"pos\":[6.042549133300781,13.211271286010743],\"connections\":[\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fActivateinput\"]},{\"id\":\"L1_fa636f5c-a537-41fa-80af-a0292e4cd87bSpottingIntruders\",\"gateType\":3,\"pos\":[6.042549133300781,13.00127124786377],\"connections\":[\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fActivetargets\"]},{\"id\":\"L1_fa636f5c-a537-41fa-80af-a0292e4cd87bSpottingFilter\",\"gateType\":3,\"pos\":[4.642549514770508,12.811270713806153],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989Attackingoutput\",\"gateType\":0,\"pos\":[-0.8107077479362488,2.506441593170166],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989AttackingTargets\",\"gateType\":3,\"pos\":[-2.210707664489746,2.2964415550231935],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989Spottingoutput\",\"gateType\":0,\"pos\":[-0.8107077479362488,2.05644154548645],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989SpottingIntruders\",\"gateType\":3,\"pos\":[-0.8107077479362488,1.8464415073394776],\"connections\":[\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989AttackingTargets\"]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989SpottingFilter\",\"gateType\":3,\"pos\":[-2.210707664489746,1.656441569328308],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989Shootinginput\",\"gateType\":0,\"pos\":[-2.210707664489746,1.4164414405822755],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989Shootingoutput\",\"gateType\":0,\"pos\":[-0.8107077479362488,1.4164414405822755],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1Attackingoutput\",\"gateType\":0,\"pos\":[2.099229097366333,8.396161079406739],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1AttackingTargets\",\"gateType\":3,\"pos\":[0.6992290616035461,8.186161041259766],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1Spottingoutput\",\"gateType\":0,\"pos\":[2.099229097366333,7.946160793304443],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1SpottingIntruders\",\"gateType\":3,\"pos\":[2.099229097366333,7.736160755157471],\"connections\":[\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1AttackingTargets\"]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1SpottingFilter\",\"gateType\":3,\"pos\":[0.6992290616035461,7.546160697937012],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1Shootinginput\",\"gateType\":0,\"pos\":[0.6992290616035461,7.306160926818848],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1Shootingoutput\",\"gateType\":0,\"pos\":[2.099229097366333,7.306160926818848],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baAttackingoutput\",\"gateType\":0,\"pos\":[3.7060000896453859,9.549250602722168],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baAttackingTargets\",\"gateType\":3,\"pos\":[2.305999994277954,9.339250564575196],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baSpottingoutput\",\"gateType\":0,\"pos\":[3.7060000896453859,9.099249839782715],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baSpottingIntruders\",\"gateType\":3,\"pos\":[3.7060000896453859,8.889249801635743],\"connections\":[\"L1_7fd47732-20e0-4b33-817d-2298601583baAttackingTargets\"]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baSpottingFilter\",\"gateType\":3,\"pos\":[2.305999994277954,8.699250221252442],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baShootinginput\",\"gateType\":0,\"pos\":[2.305999994277954,8.459250450134278],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baShootingoutput\",\"gateType\":0,\"pos\":[3.7060000896453859,8.459250450134278],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291Attackingoutput\",\"gateType\":0,\"pos\":[8.093000411987305,11.385250091552735],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291AttackingTargets\",\"gateType\":3,\"pos\":[6.693000316619873,11.175250053405762],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291Spottingoutput\",\"gateType\":0,\"pos\":[8.093000411987305,10.935249328613282],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291SpottingIntruders\",\"gateType\":3,\"pos\":[8.093000411987305,10.725249290466309],\"connections\":[\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291AttackingTargets\"]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291SpottingFilter\",\"gateType\":3,\"pos\":[6.693000316619873,10.535249710083008],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291Shootinginput\",\"gateType\":0,\"pos\":[6.693000316619873,10.295249938964844],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291Shootingoutput\",\"gateType\":0,\"pos\":[8.093000411987305,10.295249938964844],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbAttackingoutput\",\"gateType\":0,\"pos\":[6.347197532653809,10.371633529663086],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbAttackingTargets\",\"gateType\":3,\"pos\":[4.947197914123535,10.161633491516114],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbSpottingoutput\",\"gateType\":0,\"pos\":[6.347197532653809,9.921632766723633],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbSpottingIntruders\",\"gateType\":3,\"pos\":[6.347197532653809,9.71163272857666],\"connections\":[\"L1_75e07a43-a546-49e1-a271-2f74295073bbAttackingTargets\"]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbSpottingFilter\",\"gateType\":3,\"pos\":[4.947197914123535,9.52163314819336],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbShootinginput\",\"gateType\":0,\"pos\":[4.947197914123535,9.281633377075196],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbShootingoutput\",\"gateType\":0,\"pos\":[6.347197532653809,9.281633377075196],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aAttackingoutput\",\"gateType\":0,\"pos\":[8.444000244140625,10.624250411987305],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aAttackingTargets\",\"gateType\":3,\"pos\":[7.044000148773193,10.414250373840332],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aSpottingoutput\",\"gateType\":0,\"pos\":[8.444000244140625,10.174249649047852],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aSpottingIntruders\",\"gateType\":3,\"pos\":[8.444000244140625,9.964249610900879],\"connections\":[\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aAttackingTargets\"]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aSpottingFilter\",\"gateType\":3,\"pos\":[7.044000148773193,9.774250030517579],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aShootinginput\",\"gateType\":0,\"pos\":[7.044000148773193,9.534250259399414],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aShootingoutput\",\"gateType\":0,\"pos\":[8.444000244140625,9.534250259399414],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44Attackingoutput\",\"gateType\":0,\"pos\":[8.173999786376954,8.292250633239746],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44AttackingTargets\",\"gateType\":3,\"pos\":[6.77400016784668,8.082250595092774],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44Spottingoutput\",\"gateType\":0,\"pos\":[8.173999786376954,7.842250347137451],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44SpottingIntruders\",\"gateType\":3,\"pos\":[8.173999786376954,7.6322503089904789],\"connections\":[\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44AttackingTargets\"]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44SpottingFilter\",\"gateType\":3,\"pos\":[6.77400016784668,7.4422502517700199],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44Shootinginput\",\"gateType\":0,\"pos\":[6.77400016784668,7.2022504806518559],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44Shootingoutput\",\"gateType\":0,\"pos\":[8.173999786376954,7.2022504806518559],\"connections\":[]},{\"id\":\"L1_bcab1948-f8c4-4e48-b0e5-065ca44beb26Activeoutput\",\"gateType\":0,\"pos\":[2.7389118671417238,9.35738468170166],\"connections\":[\"L1_5302387c-8541-476e-962d-2103def90284Openinput\"]},{\"id\":\"L1_467b6809-f20c-4fb2-b785-a55ab2869bffActiveoutput\",\"gateType\":0,\"pos\":[-0.6585491299629211,9.278820037841797],\"connections\":[\"L1_5302387c-8541-476e-962d-2103def90284Openinput\"]},{\"id\":\"L1_5302387c-8541-476e-962d-2103def90284Spottingoutput\",\"gateType\":0,\"pos\":[1.0703574419021607,9.318960189819336],\"connections\":[]},{\"id\":\"L1_5302387c-8541-476e-962d-2103def90284SpottingUsers\",\"gateType\":3,\"pos\":[1.0703574419021607,9.108960151672364],\"connections\":[]},{\"id\":\"L1_5302387c-8541-476e-962d-2103def90284SpottingFilter\",\"gateType\":3,\"pos\":[-0.32964253425598147,8.918959617614746],\"connections\":[]},{\"id\":\"L1_5302387c-8541-476e-962d-2103def90284Openinput\",\"gateType\":0,\"pos\":[-0.32964253425598147,8.678959846496582],\"connections\":[]},{\"id\":\"L1_5302387c-8541-476e-962d-2103def90284Openoutput\",\"gateType\":0,\"pos\":[1.0703574419021607,8.678959846496582],\"connections\":[]},{\"id\":\"L1_1d046350-9189-4000-862a-5a0ee5ed8f2cActiveoutput\",\"gateType\":0,\"pos\":[2.834937572479248,6.670249938964844],\"connections\":[\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558Openinput\"]},{\"id\":\"L1_6e9751a8-9dc2-4ed7-b233-26c61a97169aActiveoutput\",\"gateType\":0,\"pos\":[2.9509999752044679,8.720250129699707],\"connections\":[\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558Openinput\"]},{\"id\":\"L1_7c483285-cd1d-4790-a0b4-07bac97a60efRotatinginput\",\"gateType\":0,\"pos\":[-4.149591445922852,4.310177326202393],\"connections\":[]},{\"id\":\"L1_7c483285-cd1d-4790-a0b4-07bac97a60efRotatingoutput\",\"gateType\":0,\"pos\":[-2.749591827392578,4.310177326202393],\"connections\":[]},{\"id\":\"L1_7c483285-cd1d-4790-a0b4-07bac97a60efSpottingoutput\",\"gateType\":0,\"pos\":[-2.749591827392578,4.050177574157715],\"connections\":[\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Activateinput\"]},{\"id\":\"L1_7c483285-cd1d-4790-a0b4-07bac97a60efSpottingIntruders\",\"gateType\":3,\"pos\":[-2.749591827392578,3.840177536010742],\"connections\":[\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Activetargets\"]},{\"id\":\"L1_7c483285-cd1d-4790-a0b4-07bac97a60efSpottingFilter\",\"gateType\":3,\"pos\":[-4.149591445922852,3.650177478790283],\"connections\":[]},{\"id\":\"L1_ba01055e-739e-4fcb-be61-0e723ef2d16fDesactivateinput\",\"gateType\":0,\"pos\":[7.219000339508057,7.840250015258789],\"connections\":[]},{\"id\":\"L1_ba01055e-739e-4fcb-be61-0e723ef2d16fDesactivateoutput\",\"gateType\":0,\"pos\":[8.619000434875489,7.840250015258789],\"connections\":[]},{\"id\":\"L1_ba01055e-739e-4fcb-be61-0e723ef2d16fActivateinput\",\"gateType\":0,\"pos\":[7.219000339508057,7.580250263214111],\"connections\":[]},{\"id\":\"L1_ba01055e-739e-4fcb-be61-0e723ef2d16fActivateoutput\",\"gateType\":0,\"pos\":[8.619000434875489,7.580250263214111],\"connections\":[]},{\"id\":\"L1_ba01055e-739e-4fcb-be61-0e723ef2d16fActiveoutput\",\"gateType\":0,\"pos\":[8.619000434875489,7.320250034332275],\"connections\":[]},{\"id\":\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cActivateinput\",\"gateType\":0,\"pos\":[2.6589999198913576,4.913249969482422],\"connections\":[]},{\"id\":\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cDeactivateinput\",\"gateType\":0,\"pos\":[2.6589999198913576,4.653250217437744],\"connections\":[]},{\"id\":\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cActiveoutput\",\"gateType\":0,\"pos\":[4.059000015258789,4.393249988555908],\"connections\":[]},{\"id\":\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cActivetargets\",\"gateType\":3,\"pos\":[2.6589999198913576,4.1832499504089359],\"connections\":[]},{\"id\":\"L1_82ffadce-4956-40e3-a46c-5083529939ceOpeninput\",\"gateType\":0,\"pos\":[3.502556085586548,-1.769755482673645],\"connections\":[]},{\"id\":\"L1_c4df86d6-6062-49bc-9c77-b9f81454eaf9Activeoutput\",\"gateType\":0,\"pos\":[2.4589664936065676,-1.7783981561660767],\"connections\":[]},{\"id\":\"L1_045964e7-0aab-4a5b-b4d2-5fe45c06aca4Activeoutput\",\"gateType\":0,\"pos\":[-1.4578756093978882,-1.6033567190170289],\"connections\":[]},{\"id\":\"6cb44167-c444-4f07-9509-fcd8c8908bf7\",\"gateType\":4,\"pos\":[-9.079437255859375,2.9949088096618654],\"connections\":[\"822a410f-12e8-4087-9e97-cd0c6be1131e\"]},{\"id\":\"822a410f-12e8-4087-9e97-cd0c6be1131e\",\"gateType\":1,\"pos\":[-7.50383186340332,2.238215923309326],\"connections\":[\"e59d1b70-e68e-48d5-b1c5-e02f11338f59\",\"58cc57bd-78a6-4569-aa15-db50af48db97\",\"c48ec347-488c-41aa-ac2e-2eb2ecde51c4\",\"65f9eaba-f8f1-4270-8115-368fb82616d5\"]},{\"id\":\"e59d1b70-e68e-48d5-b1c5-e02f11338f59\",\"gateType\":1,\"pos\":[-6.0903801918029789,3.241812229156494],\"connections\":[\"96b7a042-5ddd-4071-8949-ac90f2d0dc10\",\"c31f45f3-8f1d-4d9d-8a29-4d93ce2c5556\"]},{\"id\":\"96b7a042-5ddd-4071-8949-ac90f2d0dc10\",\"gateType\":1,\"pos\":[-5.229533672332764,3.787163019180298],\"connections\":[]},{\"id\":\"c31f45f3-8f1d-4d9d-8a29-4d93ce2c5556\",\"gateType\":1,\"pos\":[-5.3106608390808109,2.957867383956909],\"connections\":[]},{\"id\":\"58cc57bd-78a6-4569-aa15-db50af48db97\",\"gateType\":1,\"pos\":[-6.040802955627441,2.2727975845336916],\"connections\":[\"91fa477b-9c6c-4334-b9e9-251ce6580db4\",\"3d47a879-a1ab-4c69-9734-1ef827ed8789\"]},{\"id\":\"91fa477b-9c6c-4334-b9e9-251ce6580db4\",\"gateType\":1,\"pos\":[-5.351223945617676,2.466599941253662],\"connections\":[]},{\"id\":\"3d47a879-a1ab-4c69-9734-1ef827ed8789\",\"gateType\":1,\"pos\":[-5.42784309387207,1.8130789995193482],\"connections\":[]},{\"id\":\"c48ec347-488c-41aa-ac2e-2eb2ecde51c4\",\"gateType\":1,\"pos\":[-6.063337326049805,1.4029383659362794],\"connections\":[\"70dd3e37-3650-4bd4-9f90-51ede274995f\",\"35b21fb1-1d1f-4fac-949e-85e727965dfb\"]},{\"id\":\"70dd3e37-3650-4bd4-9f90-51ede274995f\",\"gateType\":1,\"pos\":[-5.148407936096191,1.389417052268982],\"connections\":[]},{\"id\":\"35b21fb1-1d1f-4fac-949e-85e727965dfb\",\"gateType\":1,\"pos\":[-5.391788005828857,0.5916707515716553],\"connections\":[]},{\"id\":\"65f9eaba-f8f1-4270-8115-368fb82616d5\",\"gateType\":1,\"pos\":[-6.054322719573975,0.2401214838027954],\"connections\":[]},{\"id\":\"837317b6-613f-47a0-b2fc-be7847a28f44\",\"gateType\":4,\"pos\":[-9.46105670928955,2.087368965148926],\"connections\":[\"d103f9ba-0702-488c-9a9f-9366ff1548d1\"]},{\"id\":\"d103f9ba-0702-488c-9a9f-9366ff1548d1\",\"gateType\":2,\"pos\":[-8.838374137878418,1.998414397239685],\"connections\":[]}]}",
+            "data": "{\"nodes\":[{\"id\":\"L1_0acdca39-a50c-48a7-8119-5cd55435df4eRotatinginput\",\"gateType\":0,\"pos\":[2.803748846054077,6.225856781005859],\"connections\":[]},{\"id\":\"L1_0acdca39-a50c-48a7-8119-5cd55435df4eRotatingoutput\",\"gateType\":0,\"pos\":[4.20374870300293,6.225856781005859],\"connections\":[]},{\"id\":\"L1_0acdca39-a50c-48a7-8119-5cd55435df4eSpottingoutput\",\"gateType\":0,\"pos\":[4.20374870300293,5.965857028961182],\"connections\":[\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cActivateinput\"]},{\"id\":\"L1_0acdca39-a50c-48a7-8119-5cd55435df4eSpottingIntruders\",\"gateType\":3,\"pos\":[4.20374870300293,5.755856990814209],\"connections\":[\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cActivetargets\"]},{\"id\":\"L1_0acdca39-a50c-48a7-8119-5cd55435df4eSpottingFilter\",\"gateType\":3,\"pos\":[2.803748846054077,5.56585693359375],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87Attackingoutput\",\"gateType\":0,\"pos\":[-1.440000057220459,11.483250617980957],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87AttackingTargets\",\"gateType\":3,\"pos\":[-2.8400001525878908,11.273250579833985],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87Spottingoutput\",\"gateType\":0,\"pos\":[-1.440000057220459,11.033249855041504],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87SpottingIntruders\",\"gateType\":3,\"pos\":[-1.440000057220459,10.823249816894532],\"connections\":[\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87AttackingTargets\"]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87SpottingFilter\",\"gateType\":3,\"pos\":[-2.8400001525878908,10.63325023651123],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87Shootinginput\",\"gateType\":0,\"pos\":[-2.8400001525878908,10.393250465393067],\"connections\":[]},{\"id\":\"L1_5ba0b8ef-1e64-4a5d-a564-b4ba623b6a87Shootingoutput\",\"gateType\":0,\"pos\":[-1.440000057220459,10.393250465393067],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beAttackingoutput\",\"gateType\":0,\"pos\":[13.713006019592286,1.0967326164245606],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beAttackingTargets\",\"gateType\":3,\"pos\":[12.313006401062012,0.8867325782775879],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beSpottingoutput\",\"gateType\":0,\"pos\":[13.713006019592286,0.6467328071594238],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beSpottingIntruders\",\"gateType\":3,\"pos\":[13.713006019592286,0.43673276901245119],\"connections\":[\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beAttackingTargets\"]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beSpottingFilter\",\"gateType\":3,\"pos\":[12.313006401062012,0.2467327117919922],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beShootinginput\",\"gateType\":0,\"pos\":[12.313006401062012,0.006732940673828125],\"connections\":[]},{\"id\":\"L1_31301ef4-7ebc-45f7-bb2a-53927a0409beShootingoutput\",\"gateType\":0,\"pos\":[13.713006019592286,0.006732940673828125],\"connections\":[]},{\"id\":\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fActivateinput\",\"gateType\":0,\"pos\":[6.873892784118652,13.349020004272461],\"connections\":[]},{\"id\":\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fDeactivateinput\",\"gateType\":0,\"pos\":[6.873892784118652,13.089019775390625],\"connections\":[]},{\"id\":\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fActiveoutput\",\"gateType\":0,\"pos\":[8.273892402648926,12.829019546508789],\"connections\":[]},{\"id\":\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fActivetargets\",\"gateType\":3,\"pos\":[6.873892784118652,12.619019508361817],\"connections\":[]},{\"id\":\"L1_5f0ba174-9379-41af-8e3d-0c7b781837faActivateinput\",\"gateType\":0,\"pos\":[2.95457124710083,14.24721622467041],\"connections\":[]},{\"id\":\"L1_5f0ba174-9379-41af-8e3d-0c7b781837faDeactivateinput\",\"gateType\":0,\"pos\":[2.95457124710083,13.987215995788575],\"connections\":[]},{\"id\":\"L1_5f0ba174-9379-41af-8e3d-0c7b781837faActiveoutput\",\"gateType\":0,\"pos\":[4.354571342468262,13.727215766906739],\"connections\":[]},{\"id\":\"L1_5f0ba174-9379-41af-8e3d-0c7b781837faActivetargets\",\"gateType\":3,\"pos\":[2.95457124710083,13.517215728759766],\"connections\":[]},{\"id\":\"L1_d9c506e9-5de5-46c3-ac74-f92228cae501Activeoutput\",\"gateType\":0,\"pos\":[2.793250560760498,12.853500366210938],\"connections\":[\"L1_5f0ba174-9379-41af-8e3d-0c7b781837faActivateinput\"]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecAttackingoutput\",\"gateType\":0,\"pos\":[0.5989999771118164,13.739432334899903],\"connections\":[]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecAttackingTargets\",\"gateType\":3,\"pos\":[-0.8009999990463257,13.52943229675293],\"connections\":[]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecSpottingoutput\",\"gateType\":0,\"pos\":[0.5989999771118164,13.28943157196045],\"connections\":[]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecSpottingIntruders\",\"gateType\":3,\"pos\":[0.5989999771118164,13.079431533813477],\"connections\":[\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecAttackingTargets\"]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecSpottingFilter\",\"gateType\":3,\"pos\":[-0.8009999990463257,12.889431953430176],\"connections\":[]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecShootinginput\",\"gateType\":0,\"pos\":[-0.8009999990463257,12.649432182312012],\"connections\":[]},{\"id\":\"L1_0393e066-0d3d-40e9-93b9-7bccd22563ecShootingoutput\",\"gateType\":0,\"pos\":[0.5989999771118164,12.649432182312012],\"connections\":[]},{\"id\":\"L1_6f7b6747-e105-4aef-97b2-45aa997744e7Activeoutput\",\"gateType\":0,\"pos\":[-3.5488922595977785,11.550680160522461],\"connections\":[\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8Openinput\"]},{\"id\":\"L1_a387046b-759d-4bf9-8d20-6b014a96f145Activeoutput\",\"gateType\":0,\"pos\":[-3.623499631881714,12.177749633789063],\"connections\":[\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8Openinput\"]},{\"id\":\"L1_b81f4eb4-71ed-4aeb-82dc-ef4e3fd7bdaeRotatinginput\",\"gateType\":0,\"pos\":[2.674999952316284,3.9822497367858888],\"connections\":[]},{\"id\":\"L1_b81f4eb4-71ed-4aeb-82dc-ef4e3fd7bdaeRotatingoutput\",\"gateType\":0,\"pos\":[4.074999809265137,3.9822497367858888],\"connections\":[]},{\"id\":\"L1_b81f4eb4-71ed-4aeb-82dc-ef4e3fd7bdaeSpottingoutput\",\"gateType\":0,\"pos\":[4.074999809265137,3.722249984741211],\"connections\":[\"L1_54f7d61e-2875-4641-9540-61231c9184ecActivateinput\"]},{\"id\":\"L1_b81f4eb4-71ed-4aeb-82dc-ef4e3fd7bdaeSpottingIntruders\",\"gateType\":3,\"pos\":[4.074999809265137,3.5122499465942385],\"connections\":[\"L1_54f7d61e-2875-4641-9540-61231c9184ecActivetargets\"]},{\"id\":\"L1_b81f4eb4-71ed-4aeb-82dc-ef4e3fd7bdaeSpottingFilter\",\"gateType\":3,\"pos\":[2.674999952316284,3.3222498893737795],\"connections\":[]},{\"id\":\"L1_5fded786-e4ae-40df-9a28-7d6e44748180Spottingoutput\",\"gateType\":0,\"pos\":[3.298797845840454,-0.4988977909088135],\"connections\":[\"L1_5fded786-e4ae-40df-9a28-7d6e44748180Openinput\"]},{\"id\":\"L1_5fded786-e4ae-40df-9a28-7d6e44748180SpottingUsers\",\"gateType\":3,\"pos\":[3.298797845840454,-0.7088978290557861],\"connections\":[]},{\"id\":\"L1_5fded786-e4ae-40df-9a28-7d6e44748180SpottingFilter\",\"gateType\":3,\"pos\":[1.8987977504730225,-0.8988977670669556],\"connections\":[]},{\"id\":\"L1_5fded786-e4ae-40df-9a28-7d6e44748180Openinput\",\"gateType\":0,\"pos\":[1.8987977504730225,-1.1388977766036988],\"connections\":[]},{\"id\":\"L1_5fded786-e4ae-40df-9a28-7d6e44748180Openoutput\",\"gateType\":0,\"pos\":[3.298797845840454,-1.1388977766036988],\"connections\":[]},{\"id\":\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558Spottingoutput\",\"gateType\":0,\"pos\":[2.950000047683716,8.138250350952149],\"connections\":[]},{\"id\":\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558SpottingUsers\",\"gateType\":3,\"pos\":[2.950000047683716,7.928249835968018],\"connections\":[]},{\"id\":\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558SpottingFilter\",\"gateType\":3,\"pos\":[1.5499999523162842,7.738249778747559],\"connections\":[]},{\"id\":\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558Openinput\",\"gateType\":0,\"pos\":[1.5499999523162842,7.4982500076293949],\"connections\":[]},{\"id\":\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558Openoutput\",\"gateType\":0,\"pos\":[2.950000047683716,7.4982500076293949],\"connections\":[]},{\"id\":\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcSpottingoutput\",\"gateType\":0,\"pos\":[0.699999988079071,4.76324987411499],\"connections\":[\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcOpeninput\"]},{\"id\":\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcSpottingUsers\",\"gateType\":3,\"pos\":[0.699999988079071,4.553249835968018],\"connections\":[]},{\"id\":\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcSpottingFilter\",\"gateType\":3,\"pos\":[-0.699999988079071,4.363249778747559],\"connections\":[]},{\"id\":\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcOpeninput\",\"gateType\":0,\"pos\":[-0.699999988079071,4.1232500076293949],\"connections\":[]},{\"id\":\"L1_fecc5385-9df6-41c8-afb1-33284eb6fcfcOpenoutput\",\"gateType\":0,\"pos\":[0.699999988079071,4.1232500076293949],\"connections\":[]},{\"id\":\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8Spottingoutput\",\"gateType\":0,\"pos\":[-2.711106777191162,13.64892864227295],\"connections\":[]},{\"id\":\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8SpottingUsers\",\"gateType\":3,\"pos\":[-2.711106777191162,13.438928604125977],\"connections\":[]},{\"id\":\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8SpottingFilter\",\"gateType\":3,\"pos\":[-4.111106872558594,13.24892807006836],\"connections\":[]},{\"id\":\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8Openinput\",\"gateType\":0,\"pos\":[-4.111106872558594,13.008928298950196],\"connections\":[]},{\"id\":\"L1_6e683814-9a69-404d-97fc-2aed87ebabe8Openoutput\",\"gateType\":0,\"pos\":[-2.711106777191162,13.008928298950196],\"connections\":[]},{\"id\":\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cSpottingoutput\",\"gateType\":0,\"pos\":[4.4730000495910648,10.388250350952149],\"connections\":[\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cOpeninput\"]},{\"id\":\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cSpottingUsers\",\"gateType\":3,\"pos\":[4.4730000495910648,10.178250312805176],\"connections\":[]},{\"id\":\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cSpottingFilter\",\"gateType\":3,\"pos\":[3.072999954223633,9.988249778747559],\"connections\":[]},{\"id\":\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cOpeninput\",\"gateType\":0,\"pos\":[3.072999954223633,9.748250007629395],\"connections\":[]},{\"id\":\"L1_bf8f6b34-ce9d-42ac-ba36-6af93ee1533cOpenoutput\",\"gateType\":0,\"pos\":[4.4730000495910648,9.748250007629395],\"connections\":[]},{\"id\":\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fSpottingoutput\",\"gateType\":0,\"pos\":[7.829999923706055,9.263250350952149],\"connections\":[\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fOpeninput\"]},{\"id\":\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fSpottingUsers\",\"gateType\":3,\"pos\":[7.829999923706055,9.053250312805176],\"connections\":[]},{\"id\":\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fSpottingFilter\",\"gateType\":3,\"pos\":[6.430000305175781,8.863249778747559],\"connections\":[]},{\"id\":\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fOpeninput\",\"gateType\":0,\"pos\":[6.430000305175781,8.623250007629395],\"connections\":[]},{\"id\":\"L1_7f564b8d-e9dc-49aa-90fb-4c7178a7c18fOpenoutput\",\"gateType\":0,\"pos\":[7.829999923706055,8.623250007629395],\"connections\":[]},{\"id\":\"L1_f5bddc9b-808d-4b42-b147-951be30351c5Spottingoutput\",\"gateType\":0,\"pos\":[0.32499998807907107,14.513250350952149],\"connections\":[\"L1_f5bddc9b-808d-4b42-b147-951be30351c5Openinput\"]},{\"id\":\"L1_f5bddc9b-808d-4b42-b147-951be30351c5SpottingUsers\",\"gateType\":3,\"pos\":[0.32499998807907107,14.303250312805176],\"connections\":[]},{\"id\":\"L1_f5bddc9b-808d-4b42-b147-951be30351c5SpottingFilter\",\"gateType\":3,\"pos\":[-1.0750000476837159,14.113249778747559],\"connections\":[]},{\"id\":\"L1_f5bddc9b-808d-4b42-b147-951be30351c5Openinput\",\"gateType\":0,\"pos\":[-1.0750000476837159,13.873250007629395],\"connections\":[]},{\"id\":\"L1_f5bddc9b-808d-4b42-b147-951be30351c5Openoutput\",\"gateType\":0,\"pos\":[0.32499998807907107,13.873250007629395],\"connections\":[]},{\"id\":\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Activateinput\",\"gateType\":0,\"pos\":[-4.339356899261475,3.1568751335144045],\"connections\":[]},{\"id\":\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Deactivateinput\",\"gateType\":0,\"pos\":[-4.339356899261475,2.8968749046325685],\"connections\":[]},{\"id\":\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Activeoutput\",\"gateType\":0,\"pos\":[-2.939356803894043,2.6368751525878908],\"connections\":[]},{\"id\":\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Activetargets\",\"gateType\":3,\"pos\":[-4.339356899261475,2.426875114440918],\"connections\":[]},{\"id\":\"L1_54f7d61e-2875-4641-9540-61231c9184ecActivateinput\",\"gateType\":0,\"pos\":[2.5215892791748049,2.2636070251464845],\"connections\":[]},{\"id\":\"L1_54f7d61e-2875-4641-9540-61231c9184ecDeactivateinput\",\"gateType\":0,\"pos\":[2.5215892791748049,2.0036067962646486],\"connections\":[]},{\"id\":\"L1_54f7d61e-2875-4641-9540-61231c9184ecActiveoutput\",\"gateType\":0,\"pos\":[3.9215893745422365,1.7436068058013917],\"connections\":[]},{\"id\":\"L1_54f7d61e-2875-4641-9540-61231c9184ecActivetargets\",\"gateType\":3,\"pos\":[2.5215892791748049,1.533607006072998],\"connections\":[]},{\"id\":\"L1_8106527a-1c0e-4dbb-95d5-33351ceac694Desactivateinput\",\"gateType\":0,\"pos\":[-2.677999973297119,7.9302496910095219],\"connections\":[]},{\"id\":\"L1_8106527a-1c0e-4dbb-95d5-33351ceac694Desactivateoutput\",\"gateType\":0,\"pos\":[-1.2780001163482667,7.9302496910095219],\"connections\":[]},{\"id\":\"L1_8106527a-1c0e-4dbb-95d5-33351ceac694Activateinput\",\"gateType\":0,\"pos\":[-2.677999973297119,7.670249938964844],\"connections\":[]},{\"id\":\"L1_8106527a-1c0e-4dbb-95d5-33351ceac694Activateoutput\",\"gateType\":0,\"pos\":[-1.2780001163482667,7.670249938964844],\"connections\":[]},{\"id\":\"L1_8106527a-1c0e-4dbb-95d5-33351ceac694Activeoutput\",\"gateType\":0,\"pos\":[-1.2780001163482667,7.410249710083008],\"connections\":[]},{\"id\":\"L1_b52e4046-30b6-41e4-8032-3c61c59cc83bDesactivateinput\",\"gateType\":0,\"pos\":[2.6389999389648439,11.491250038146973],\"connections\":[]},{\"id\":\"L1_b52e4046-30b6-41e4-8032-3c61c59cc83bDesactivateoutput\",\"gateType\":0,\"pos\":[4.039000034332275,11.491250038146973],\"connections\":[]},{\"id\":\"L1_b52e4046-30b6-41e4-8032-3c61c59cc83bActivateinput\",\"gateType\":0,\"pos\":[2.6389999389648439,11.231249809265137],\"connections\":[]},{\"id\":\"L1_b52e4046-30b6-41e4-8032-3c61c59cc83bActivateoutput\",\"gateType\":0,\"pos\":[4.039000034332275,11.231249809265137],\"connections\":[]},{\"id\":\"L1_b52e4046-30b6-41e4-8032-3c61c59cc83bActiveoutput\",\"gateType\":0,\"pos\":[4.039000034332275,10.9712495803833],\"connections\":[]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Targetingtargets\",\"gateType\":3,\"pos\":[9.215446472167969,9.91503620147705],\"connections\":[]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Spottingoutput\",\"gateType\":0,\"pos\":[10.615446090698243,9.67503547668457],\"connections\":[\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Shootinginput\"]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66SpottingIntruders\",\"gateType\":3,\"pos\":[10.615446090698243,9.465035438537598],\"connections\":[\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Targetingtargets\"]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66SpottingFilter\",\"gateType\":3,\"pos\":[9.215446472167969,9.275035858154297],\"connections\":[]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Shootinginput\",\"gateType\":0,\"pos\":[9.215446472167969,9.035036087036133],\"connections\":[]},{\"id\":\"L1_6bbd0f86-5e71-4308-aae1-c7792cf1cc66Shootingoutput\",\"gateType\":0,\"pos\":[10.615446090698243,9.035036087036133],\"connections\":[]},{\"id\":\"L1_fa636f5c-a537-41fa-80af-a0292e4cd87bSpottingoutput\",\"gateType\":0,\"pos\":[6.007659912109375,13.019268989562989],\"connections\":[\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fActivateinput\"]},{\"id\":\"L1_fa636f5c-a537-41fa-80af-a0292e4cd87bSpottingIntruders\",\"gateType\":3,\"pos\":[6.007659912109375,12.809268951416016],\"connections\":[\"L1_7a7c8cd4-5d17-48da-ba30-b25194e01b0fActivetargets\"]},{\"id\":\"L1_fa636f5c-a537-41fa-80af-a0292e4cd87bSpottingFilter\",\"gateType\":3,\"pos\":[4.607659339904785,12.619268417358399],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989Attackingoutput\",\"gateType\":0,\"pos\":[16.490575790405275,22.208044052124025],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989AttackingTargets\",\"gateType\":3,\"pos\":[15.090576171875,21.998043060302736],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989Spottingoutput\",\"gateType\":0,\"pos\":[16.490575790405275,21.75804328918457],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989SpottingIntruders\",\"gateType\":3,\"pos\":[16.490575790405275,21.548044204711915],\"connections\":[\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989AttackingTargets\"]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989SpottingFilter\",\"gateType\":3,\"pos\":[15.090576171875,21.358043670654298],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989Shootinginput\",\"gateType\":0,\"pos\":[15.090576171875,21.118043899536134],\"connections\":[]},{\"id\":\"L1_41ef1127-43d2-494b-b0c4-b9f5460c2989Shootingoutput\",\"gateType\":0,\"pos\":[16.490575790405275,21.118043899536134],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1Attackingoutput\",\"gateType\":0,\"pos\":[-0.6972054243087769,-2.2992210388183595],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1AttackingTargets\",\"gateType\":3,\"pos\":[-2.097205638885498,-2.509221076965332],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1Spottingoutput\",\"gateType\":0,\"pos\":[-0.6972054243087769,-2.7492218017578127],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1SpottingIntruders\",\"gateType\":3,\"pos\":[-0.6972054243087769,-2.959221839904785],\"connections\":[\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1AttackingTargets\"]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1SpottingFilter\",\"gateType\":3,\"pos\":[-2.097205638885498,-3.149221420288086],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1Shootinginput\",\"gateType\":0,\"pos\":[-2.097205638885498,-3.38922119140625],\"connections\":[]},{\"id\":\"L1_14fe9092-0bd7-405a-989f-b85bd9f113f1Shootingoutput\",\"gateType\":0,\"pos\":[-0.6972054243087769,-3.38922119140625],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baAttackingoutput\",\"gateType\":0,\"pos\":[3.7887680530548097,9.722373008728028],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baAttackingTargets\",\"gateType\":3,\"pos\":[2.388767957687378,9.512372970581055],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baSpottingoutput\",\"gateType\":0,\"pos\":[3.7887680530548097,9.272372245788575],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baSpottingIntruders\",\"gateType\":3,\"pos\":[3.7887680530548097,9.062372207641602],\"connections\":[\"L1_7fd47732-20e0-4b33-817d-2298601583baAttackingTargets\"]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baSpottingFilter\",\"gateType\":3,\"pos\":[2.388767957687378,8.8723726272583],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baShootinginput\",\"gateType\":0,\"pos\":[2.388767957687378,8.632372856140137],\"connections\":[]},{\"id\":\"L1_7fd47732-20e0-4b33-817d-2298601583baShootingoutput\",\"gateType\":0,\"pos\":[3.7887680530548097,8.632372856140137],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291Attackingoutput\",\"gateType\":0,\"pos\":[8.093000411987305,11.385250091552735],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291AttackingTargets\",\"gateType\":3,\"pos\":[6.693000316619873,11.175250053405762],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291Spottingoutput\",\"gateType\":0,\"pos\":[8.093000411987305,10.935249328613282],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291SpottingIntruders\",\"gateType\":3,\"pos\":[8.093000411987305,10.725249290466309],\"connections\":[\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291AttackingTargets\"]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291SpottingFilter\",\"gateType\":3,\"pos\":[6.693000316619873,10.535249710083008],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291Shootinginput\",\"gateType\":0,\"pos\":[6.693000316619873,10.295249938964844],\"connections\":[]},{\"id\":\"L1_b8721fb2-e2e7-418a-a2a2-f4e0b985b291Shootingoutput\",\"gateType\":0,\"pos\":[8.093000411987305,10.295249938964844],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbAttackingoutput\",\"gateType\":0,\"pos\":[-11.291446685791016,9.926858901977539],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbAttackingTargets\",\"gateType\":3,\"pos\":[-12.691448211669922,9.716858863830567],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbSpottingoutput\",\"gateType\":0,\"pos\":[-11.291446685791016,9.476858139038086],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbSpottingIntruders\",\"gateType\":3,\"pos\":[-11.291446685791016,9.26685905456543],\"connections\":[\"L1_75e07a43-a546-49e1-a271-2f74295073bbAttackingTargets\"]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbSpottingFilter\",\"gateType\":3,\"pos\":[-12.691448211669922,9.076858520507813],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbShootinginput\",\"gateType\":0,\"pos\":[-12.691448211669922,8.836858749389649],\"connections\":[]},{\"id\":\"L1_75e07a43-a546-49e1-a271-2f74295073bbShootingoutput\",\"gateType\":0,\"pos\":[-11.291446685791016,8.836858749389649],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aAttackingoutput\",\"gateType\":0,\"pos\":[8.444000244140625,10.624250411987305],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aAttackingTargets\",\"gateType\":3,\"pos\":[7.044000148773193,10.414250373840332],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aSpottingoutput\",\"gateType\":0,\"pos\":[8.444000244140625,10.174249649047852],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aSpottingIntruders\",\"gateType\":3,\"pos\":[8.444000244140625,9.964249610900879],\"connections\":[\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aAttackingTargets\"]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aSpottingFilter\",\"gateType\":3,\"pos\":[7.044000148773193,9.774250030517579],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aShootinginput\",\"gateType\":0,\"pos\":[7.044000148773193,9.534250259399414],\"connections\":[]},{\"id\":\"L1_f6f21092-dcfc-4bf2-9a07-2f891e72699aShootingoutput\",\"gateType\":0,\"pos\":[8.444000244140625,9.534250259399414],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44Attackingoutput\",\"gateType\":0,\"pos\":[8.173999786376954,8.292250633239746],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44AttackingTargets\",\"gateType\":3,\"pos\":[6.77400016784668,8.082250595092774],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44Spottingoutput\",\"gateType\":0,\"pos\":[8.173999786376954,7.842250347137451],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44SpottingIntruders\",\"gateType\":3,\"pos\":[8.173999786376954,7.6322503089904789],\"connections\":[\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44AttackingTargets\"]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44SpottingFilter\",\"gateType\":3,\"pos\":[6.77400016784668,7.4422502517700199],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44Shootinginput\",\"gateType\":0,\"pos\":[6.77400016784668,7.2022504806518559],\"connections\":[]},{\"id\":\"L1_bdcdfdcc-9a26-4616-8ed6-6e56c5a1bb44Shootingoutput\",\"gateType\":0,\"pos\":[8.173999786376954,7.2022504806518559],\"connections\":[]},{\"id\":\"L1_bcab1948-f8c4-4e48-b0e5-065ca44beb26Activeoutput\",\"gateType\":0,\"pos\":[1.6340000629425049,9.255249977111817],\"connections\":[\"L1_5302387c-8541-476e-962d-2103def90284Openinput\"]},{\"id\":\"L1_467b6809-f20c-4fb2-b785-a55ab2869bffActiveoutput\",\"gateType\":0,\"pos\":[0.515999972820282,9.260250091552735],\"connections\":[\"L1_5302387c-8541-476e-962d-2103def90284Openinput\"]},{\"id\":\"L1_5302387c-8541-476e-962d-2103def90284Spottingoutput\",\"gateType\":0,\"pos\":[1.0750000476837159,9.263250350952149],\"connections\":[]},{\"id\":\"L1_5302387c-8541-476e-962d-2103def90284SpottingUsers\",\"gateType\":3,\"pos\":[1.0750000476837159,9.053250312805176],\"connections\":[]},{\"id\":\"L1_5302387c-8541-476e-962d-2103def90284SpottingFilter\",\"gateType\":3,\"pos\":[-0.32499998807907107,8.863249778747559],\"connections\":[]},{\"id\":\"L1_5302387c-8541-476e-962d-2103def90284Openinput\",\"gateType\":0,\"pos\":[-0.32499998807907107,8.623250007629395],\"connections\":[]},{\"id\":\"L1_5302387c-8541-476e-962d-2103def90284Openoutput\",\"gateType\":0,\"pos\":[1.0750000476837159,8.623250007629395],\"connections\":[]},{\"id\":\"L1_1d046350-9189-4000-862a-5a0ee5ed8f2cActiveoutput\",\"gateType\":0,\"pos\":[2.9509999752044679,6.799642562866211],\"connections\":[\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558Openinput\"]},{\"id\":\"L1_6e9751a8-9dc2-4ed7-b233-26c61a97169aActiveoutput\",\"gateType\":0,\"pos\":[2.9509999752044679,8.720250129699707],\"connections\":[\"L1_f8e44b3c-29f6-4587-b29d-49ec1c831558Openinput\"]},{\"id\":\"L1_7c483285-cd1d-4790-a0b4-07bac97a60efRotatinginput\",\"gateType\":0,\"pos\":[-4.292089939117432,4.420713901519775],\"connections\":[]},{\"id\":\"L1_7c483285-cd1d-4790-a0b4-07bac97a60efRotatingoutput\",\"gateType\":0,\"pos\":[-2.89208984375,4.420713901519775],\"connections\":[]},{\"id\":\"L1_7c483285-cd1d-4790-a0b4-07bac97a60efSpottingoutput\",\"gateType\":0,\"pos\":[-2.89208984375,4.160714149475098],\"connections\":[\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Activateinput\"]},{\"id\":\"L1_7c483285-cd1d-4790-a0b4-07bac97a60efSpottingIntruders\",\"gateType\":3,\"pos\":[-2.89208984375,3.950714111328125],\"connections\":[\"L1_466e3d56-d80f-489e-a87b-b1d8ad4aeb29Activetargets\"]},{\"id\":\"L1_7c483285-cd1d-4790-a0b4-07bac97a60efSpottingFilter\",\"gateType\":3,\"pos\":[-4.292089939117432,3.760714054107666],\"connections\":[]},{\"id\":\"L1_ba01055e-739e-4fcb-be61-0e723ef2d16fDesactivateinput\",\"gateType\":0,\"pos\":[7.219000339508057,7.840250015258789],\"connections\":[]},{\"id\":\"L1_ba01055e-739e-4fcb-be61-0e723ef2d16fDesactivateoutput\",\"gateType\":0,\"pos\":[8.619000434875489,7.840250015258789],\"connections\":[]},{\"id\":\"L1_ba01055e-739e-4fcb-be61-0e723ef2d16fActivateinput\",\"gateType\":0,\"pos\":[7.219000339508057,7.580250263214111],\"connections\":[]},{\"id\":\"L1_ba01055e-739e-4fcb-be61-0e723ef2d16fActivateoutput\",\"gateType\":0,\"pos\":[8.619000434875489,7.580250263214111],\"connections\":[]},{\"id\":\"L1_ba01055e-739e-4fcb-be61-0e723ef2d16fActiveoutput\",\"gateType\":0,\"pos\":[8.619000434875489,7.320250034332275],\"connections\":[]},{\"id\":\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cActivateinput\",\"gateType\":0,\"pos\":[2.6589999198913576,4.913249969482422],\"connections\":[]},{\"id\":\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cDeactivateinput\",\"gateType\":0,\"pos\":[2.6589999198913576,4.653250217437744],\"connections\":[]},{\"id\":\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cActiveoutput\",\"gateType\":0,\"pos\":[4.059000015258789,4.393249988555908],\"connections\":[]},{\"id\":\"L1_83d7486c-bb92-4a78-92c1-d20a58e4fa6cActivetargets\",\"gateType\":3,\"pos\":[2.6589999198913576,4.1832499504089359],\"connections\":[]},{\"id\":\"L1_82ffadce-4956-40e3-a46c-5083529939ceOpeninput\",\"gateType\":0,\"pos\":[3.5455644130706789,-3.248073101043701],\"connections\":[]},{\"id\":\"L1_c4df86d6-6062-49bc-9c77-b9f81454eaf9Activeoutput\",\"gateType\":0,\"pos\":[2.619699716567993,-3.245645046234131],\"connections\":[]},{\"id\":\"L1_045964e7-0aab-4a5b-b4d2-5fe45c06aca4Activeoutput\",\"gateType\":0,\"pos\":[-1.0260000228881837,-3.401750087738037],\"connections\":[]},{\"id\":\"L1_0315d2e3-2bd4-4628-9601-9b4b46bcd7adAttackingoutput\",\"gateType\":0,\"pos\":[0.6109879016876221,-9.25706958770752],\"connections\":[]},{\"id\":\"L1_0315d2e3-2bd4-4628-9601-9b4b46bcd7adAttackingTargets\",\"gateType\":3,\"pos\":[-0.78901207447052,-9.467069625854493],\"connections\":[]},{\"id\":\"L1_0315d2e3-2bd4-4628-9601-9b4b46bcd7adSpottingoutput\",\"gateType\":0,\"pos\":[0.6109879016876221,-9.707070350646973],\"connections\":[]},{\"id\":\"L1_0315d2e3-2bd4-4628-9601-9b4b46bcd7adSpottingIntruders\",\"gateType\":3,\"pos\":[0.6109879016876221,-9.917070388793946],\"connections\":[]},{\"id\":\"L1_0315d2e3-2bd4-4628-9601-9b4b46bcd7adSpottingFilter\",\"gateType\":3,\"pos\":[-0.78901207447052,-10.107069969177246],\"connections\":[]},{\"id\":\"L1_0315d2e3-2bd4-4628-9601-9b4b46bcd7adShootinginput\",\"gateType\":0,\"pos\":[-0.78901207447052,-10.34706974029541],\"connections\":[]},{\"id\":\"L1_0315d2e3-2bd4-4628-9601-9b4b46bcd7adShootingoutput\",\"gateType\":0,\"pos\":[0.6109879016876221,-10.34706974029541],\"connections\":[]}],\"hackedAccessLevels\":[0,1]}",
             "scene": "L1"
         },
         {
@@ -1216,78 +551,253 @@
             "scene": "L1"
         },
         {
-            "guid": "L1-Player-b131e-DeviceHSM-1ba91",
-            "data": "{\"path\":[\"alive\"],\"memory\":[]}",
+            "guid": "L1-Actions-06e29-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-0.08901210874319077,\"y\":-9.520319938659668,\"z\":0.0}}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Player-b131e-SavePosition-0af2e",
-            "data": "{\"position\":{\"x\":-0.028723768889904023,\"y\":-3.6053667068481447,\"z\":0.0}}",
+            "guid": "L1-Actions-a2de4-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":0.0,\"y\":4.5,\"z\":0.0}}",
             "scene": "L1"
         },
         {
-            "guid": "SaveMaster-L1-IM",
-            "data": "{\n    \"infoCollection\": [],\n    \"spawnCountHistory\": 8\n}",
+            "guid": "L1-Actions-23454-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-3.411106824874878,\"y\":13.3856782913208,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-8cea2-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-1.9780000448226929,\"y\":7.666999816894531,\"z\":-4.76837158203125e-7}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-dff16-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":9.915446281433106,\"y\":9.861785888671875,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-67e8c-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-0.24199998378753663,\"y\":-2.1549999713897707,\"z\":2.384185791015625e-7}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-1cf07-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":2.25,\"y\":7.875,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-88e46-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-0.10100001096725464,\"y\":13.476181983947754,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-e1dc2-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-3.639356851577759,\"y\":2.893625020980835,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-d6431-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":3.3389999866485597,\"y\":11.227999687194825,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-1d03d-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":3.654571533203125,\"y\":13.983965873718262,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-d8789-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-2.140000104904175,\"y\":11.220000267028809,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-bc07a-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-1.3972054719924927,\"y\":-2.562471389770508,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-cf7b0-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":2.250999927520752,\"y\":6.536392688751221,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-db1ea-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":7.74399995803833,\"y\":10.361000061035157,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-ea4b3-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":3.2215893268585207,\"y\":2.000356912612915,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-0aaaf-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":7.473999977111816,\"y\":8.029000282287598,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-ccda1-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":3.3589999675750734,\"y\":4.650000095367432,\"z\":0.0}}",
             "scene": "L1"
         },
         {
             "guid": "L1-Actions-2f86c-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":-2.1578755378723146,\"y\":-1.8666067123413087,\"z\":0.0}}",
+            "data": "{\"position\":{\"x\":-1.7260000705718995,\"y\":-3.6649999618530275,\"z\":2.384185791015625e-7}}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Actions-72f22-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":1.7589665651321412,\"y\":-2.0416481494903566,\"z\":0.0}}",
+            "guid": "L1-Actions-c61da-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":3.7730000019073488,\"y\":10.125,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-3b206-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":2.0932505130767824,\"y\":12.590250015258789,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-184d7-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":3.503748893737793,\"y\":5.962606906890869,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-a9d8b-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":7.39300012588501,\"y\":11.121999740600586,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-9ec81-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":15.790575981140137,\"y\":21.944793701171876,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-60bce-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":7.573892593383789,\"y\":13.085769653320313,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-c68e8-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":7.130000114440918,\"y\":9.0,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-ee906-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-4.32349967956543,\"y\":11.914499282836914,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-08860-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-3.5920896530151369,\"y\":4.157464027404785,\"z\":0.0}}",
             "scene": "L1"
         },
         {
             "guid": "L1-Actions-99dc2-SavePosition-c6503",
-            "data": "{\"position\":{\"x\":4.202556133270264,\"y\":-2.033005475997925,\"z\":0.0}}",
+            "data": "{\"position\":{\"x\":4.2455644607543949,\"y\":-3.5113229751586916,\"z\":2.384185791015625e-7}}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Network-b886b-SwitchAction-d50187",
-            "data": "{\"isOn\":false,\"timeOn\":1378.211669921875}",
+            "guid": "L1-Actions-50748-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-4.248892307281494,\"y\":11.287429809570313,\"z\":0.0}}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Network-b886b-SavePosition-b7aee3",
-            "data": "{\"position\":{\"x\":-2.1578755378723146,\"y\":-1.8666067123413087,\"z\":0.0}}",
+            "guid": "L1-Actions-8452a-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-0.375,\"y\":14.25,\"z\":0.0}}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Network-b886b-SwitchAction-7eb384",
-            "data": "{\"isOn\":false,\"timeOn\":1396.796630859375}",
+            "guid": "L1-Actions-67147-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":5.30765962600708,\"y\":12.75601863861084,\"z\":0.0}}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Network-b886b-SavePosition-5c6966",
-            "data": "{\"position\":{\"x\":1.7589665651321412,\"y\":-2.0416481494903566,\"z\":0.0}}",
+            "guid": "L1-Actions-5102e-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":0.9340000152587891,\"y\":8.991999626159668,\"z\":0.0}}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Network-b886b-SavePosition-42cfc4",
-            "data": "{\"position\":{\"x\":-0.375,\"y\":-2.25,\"z\":0.0}}",
+            "guid": "L1-Actions-f28b6-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":7.919000148773193,\"y\":7.577000141143799,\"z\":0.0}}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Network-b886b-OpeningAction-1ee355",
-            "data": "{\"outputGate\":false,\"pos\":0.0}",
+            "guid": "L1-Actions-87cf8-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":2.250999927520752,\"y\":8.456999778747559,\"z\":0.0}}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Network-b886b-SpottingAction-feb74f",
+            "guid": "L1-Actions-daec9-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":3.0887680053710939,\"y\":9.459122657775879,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-df1ac-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":13.013006210327149,\"y\":0.8334827423095703,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-ec852-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":1.7820000648498536,\"y\":-0.7590000033378601,\"z\":2.384185791015625e-7}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-cab5c-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-11.991447448730469,\"y\":9.66360855102539,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-8a562-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":2.5987977981567385,\"y\":-0.7621477842330933,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-aee39-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":3.375,\"y\":3.7189998626708986,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-c2563-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":-0.18400000035762788,\"y\":8.996999740600586,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-70fed-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":0.375,\"y\":9.0,\"z\":0.0}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-Actions-72f22-SavePosition-c6503",
+            "data": "{\"position\":{\"x\":1.9196996688842774,\"y\":-3.5088951587677,\"z\":2.384185791015625e-7}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "SaveMaster-L1-IM",
+            "data": "{\n    \"infoCollection\": [],\n    \"spawnCountHistory\": 14\n}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-FilterDevice(Clone)-0-Dyn-FilterOutput(Clone)-FilterDevice(Clone) (UniqueId)",
+            "data": "{\"mask\":{\"serializedVersion\":\"2\",\"m_Bits\":33562624}}",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-FilterDevice(Clone)-0-ParentSetter-ffbf64",
+            "data": "x",
+            "scene": "L1"
+        },
+        {
+            "guid": "L1-FilterDevice(Clone)-0-FilterAction-997927",
             "data": "{\"outputGate\":false}",
             "scene": "L1"
         },
         {
-            "guid": "L1-Network-b886b-SavePosition-d45447",
-            "data": "{\"position\":{\"x\":4.202556133270264,\"y\":-2.033005475997925,\"z\":0.0}}",
+            "guid": "L1-FilterDevice(Clone)-0-SavePosition-d0b7f2",
+            "data": "{\"position\":{\"x\":9.199284553527832,\"y\":10.68071460723877,\"z\":0.0}}",
             "scene": "L1"
         },
         {
-            "guid": "L1-CameraContainer-19c87-SavePosition-1e7c62",
-            "data": "{\"position\":{\"x\":0.07080018520355225,\"y\":-3.506148338317871,\"z\":-10.0}}",
+            "guid": "L1-FilterDevice(Clone)-0-UniqueIdSaver-63e74a",
+            "data": "{\"id\":\"d04ba0e8-dbf8-4613-be1c-adb7a0c7b696\"}",
             "scene": "L1"
         }
     ]

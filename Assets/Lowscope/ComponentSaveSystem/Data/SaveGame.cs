@@ -44,13 +44,14 @@ namespace Lowscope.Saving.Data
         // This makes it posible to wipe all data from a specific scene.
         [NonSerialized] private Dictionary<string, List<string>> sceneObjectIDS = new Dictionary<string, List<string>>();
 
-        public void OnWrite()
+        public void OnWrite(int slot)
         {
             if (creationDate == default(DateTime))
             {
                 creationDate = DateTime.Now;
             }
 
+        
             metaData.creationDate = creationDate.ToString();
             metaData.gameVersion = gameVersion;
             metaData.timePlayed = timePlayed.ToString();
@@ -59,7 +60,6 @@ namespace Lowscope.Saving.Data
         public void OnLoad()
         {
             gameVersion = metaData.gameVersion;
-
             DateTime.TryParse(metaData.creationDate, out creationDate);
             TimeSpan.TryParse(metaData.timePlayed, out timePlayed);
 

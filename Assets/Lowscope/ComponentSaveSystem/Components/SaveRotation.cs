@@ -9,7 +9,7 @@ namespace Lowscope.Saving.Components
     /// </summary>
 
     [AddComponentMenu("Saving/Components/Save Rotation"), DisallowMultipleComponent]
-    public class SaveRotation : MonoBehaviour, ISaveable
+    public class SaveRotation : SavedBehaviour
     {
         private Vector3 lastRotation;
         private Vector3 activeRotation;
@@ -20,13 +20,13 @@ namespace Lowscope.Saving.Components
             public Vector3 rotation;
         }
 
-        public void OnLoad(string data)
+        public override void OnLoad(string data)
         {
             lastRotation = JsonUtility.FromJson<SaveData>(data).rotation;
             this.transform.rotation = Quaternion.Euler(lastRotation);
         }
 
-        public string OnSave()
+        public override string OnSave()
         {
             try{
                 lastRotation = activeRotation;
@@ -37,7 +37,7 @@ namespace Lowscope.Saving.Components
             }
         }
 
-        public bool OnSaveCondition()
+        public override bool OnSaveCondition()
         {
             if(this != null){
                 activeRotation = this.transform.rotation.eulerAngles;

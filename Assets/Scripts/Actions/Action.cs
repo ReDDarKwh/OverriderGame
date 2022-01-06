@@ -8,7 +8,7 @@ using Lowscope.Saving;
 
 namespace Scripts.Actions
 {
-    public abstract class Action : MonoBehaviour, ISaveable
+    public abstract class Action : Lowscope.Saving.Components.SavedBehaviour
     {
         public string actionName;
         public bool disableOutput;
@@ -90,17 +90,17 @@ namespace Scripts.Actions
             handler?.Invoke(this, e);
         }
 
-        public virtual string OnSave()
+        public override string OnSave()
         {
             return JsonUtility.ToJson(new SaveData { outputGate = outputGate?.currentValue ?? false });
         }
 
-        public virtual void OnLoad(string data)
+        public override void OnLoad(string data)
         {
             this.outputGate?.SetValue(JsonUtility.FromJson<SaveData>(data).outputGate);
         }
 
-        public virtual bool OnSaveCondition()
+        public override bool OnSaveCondition()
         {
             return this != null && this.gameObject.activeSelf;
         }

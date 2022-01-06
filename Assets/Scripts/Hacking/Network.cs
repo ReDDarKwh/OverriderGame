@@ -60,10 +60,16 @@ namespace Scripts.Hacking
                 hackedAccessLevels.Add(accessLevelId);
             }
         }
+
+        public void ClearAccessLevels()
+        {
+            hackedAccessLevels.Clear();           
+            OnUpdateAccessLevel.Invoke(-1);
+        }
        
         internal void Connect(Node from, Node to, bool soundOn)
         {
-            ConnectionEnd(from, to, ConnectionStart(from, soundOn));
+            ConnectionEnd(from, to, ConnectionStart(from, soundOn), soundOn);
         }
 
         internal Connection ConnectionStart(Node from, bool soundOn, bool reversed = false)
@@ -84,19 +90,20 @@ namespace Scripts.Hacking
             return connection;
         }
 
-        internal void ConnectionEnd(Node from, Node to, Connection connection)
+        internal void ConnectionEnd(Node from, Node to, Connection connection, bool soundOn = true)
         {
             var connected = from.Connect(to, connection);
             connection.Connected();
             DeselectSelectedNodes();
             if(!connected){
-                RemoveConnection(connection);
+                RemoveConnection(connection, soundOn);
             }
         }
 
-        private void RemoveConnection(Connection connection)
+        private void RemoveConnection(Connection connection, bool soundOn = true)
         {
-            connection.PlayDisconnectionSound();
+            if(soundOn)
+                connection.PlayDisconnectionSound();
             Destroy(connection.gameObject);
         }
 
@@ -138,10 +145,18 @@ namespace Scripts.Hacking
 
             if (Debug.isDebugBuild)
             {
-                // if (Input.GetKeyDown(KeyCode.U))
-                // {
-                //     UpdateAccessLevels(100);
-                // }
+                if (Input.GetKeyDown(KeyCode.Y))
+                {
+                    for(var i = 0; i< accessLevels.Count(); i++){
+                        UpdateAccessLevels(i);
+                    }
+                }
+                
+                if (Input.GetKeyDown(KeyCode.U))
+                {
+                    ClearAccessLevels();
+                    UpdateAccessLevels(0);
+                }
 
                 if (Input.GetKeyDown(KeyCode.I))
                 {
@@ -396,7 +411,7 @@ namespace Scripts.Hacking
                 var selectionRect = selectionController.GetSelectionRect(selectionStartPos, mousePosNode.transform.position);
                 DeselectSelectedNodes();
                 SelectNodes(Physics2D.OverlapBoxAll(selectionRect.position + selectionRect.size / 2, selectionRect.size, 0, nodeLayerMask)
-                .Select(x => x.GetComponent<Node>()).Where(x => (x.deviceUI == null || x.deviceUI.selected) && x.deviceUI.device.playerCanAccess));
+                .Select(x => x.GetComponent<Node>()).Where(x => (x.deviceUI == null || x.deviceUI.selected) && x.accessible));
             }
         }
 

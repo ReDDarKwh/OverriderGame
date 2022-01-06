@@ -225,7 +225,7 @@ namespace Lowscope.Saving.Core
             }
         }
 
-        public bool OnSaveCondition()
+        public bool OnSaveCondition(bool v)
         {
             return true;
         }

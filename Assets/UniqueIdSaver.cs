@@ -24,7 +24,7 @@ public class UniqueIdSaver : MonoBehaviour, ISaveable
         return JsonUtility.ToJson(new SaveData { id = uniqueId.uniqueId });
     }
 
-    public bool OnSaveCondition()
+    public bool OnSaveCondition(bool v)
     {
         return true;
     }

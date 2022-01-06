@@ -232,7 +232,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -4451404377064668064, guid: 791bdc5de0b54124b8b530cc4b164fc6,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2c7167844c4a445b275f02764b1d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableLevelSave: 0
 --- !u!1 &6411344215655945897
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2fbb147e71b1b42a893d75cc643259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionName: Spotting
+  enableLevelSave: 0
+  actionName: Proximity Sensor
   disableOutput: 0
   disableInput: 0
   VisionRadius: 0.77
@@ -478,6 +480,7 @@ MonoBehaviour:
     m_Bits: 33562880
   fieldOfView: {fileID: 0}
   disableFilterInput: 0
+  disableUsersOutput: 0
   intrudersDataOutputName: Users
   filterDataInputName: Filter
   parent: {fileID: 0}
@@ -493,6 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec562cbdfe0e6c64599d91683aff5da6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableLevelSave: 0
   actionName: Open
   disableOutput: 0
   disableInput: 0

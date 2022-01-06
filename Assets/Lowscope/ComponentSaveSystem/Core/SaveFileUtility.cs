@@ -208,7 +208,7 @@ namespace Lowscope.Saving.Core
 
             Log(string.Format("Saving game slot {0} to : {1}", saveSlot.ToString(), savePath));
 
-            saveGame.OnWrite();
+            saveGame.OnWrite(saveSlot);
 
             using (var writer = new BinaryWriter(File.Open(savePath, FileMode.Create)))
             {

@@ -5,4 +5,5 @@ using System.Collections.Generic;
 public class SavedGame
 {
     public SavedNode[] nodes;
+    public int[] hackedAccessLevels;
 }

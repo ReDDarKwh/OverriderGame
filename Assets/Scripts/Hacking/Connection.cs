@@ -107,7 +107,9 @@ public class Connection : MonoBehaviour
     {
         SoundManager.Instance.FadeOut(electricHum?.Select(x => x.audioSource));
         electricHum = null;
-        deconnectedSound.Play(lastEndPos.position);
+        if(deconnectedSound){
+            deconnectedSound.Play(lastEndPos.position);
+        }
     }
 
     // Update is called once per frame
@@ -210,7 +212,7 @@ public class Connection : MonoBehaviour
         }
         else
         {
-            line.color = (start.deviceUI?.device.playerCanAccess ?? true) ? lineColor : GetAccessDeniedColor();
+            line.color = (start.accessible) ? lineColor : GetAccessDeniedColor();
         }
     }
 

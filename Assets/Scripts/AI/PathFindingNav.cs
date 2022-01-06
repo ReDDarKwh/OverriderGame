@@ -7,8 +7,9 @@ using System.Linq;
 using System;
 using UnityEngine.Events;
 using Lowscope.Saving;
+using Lowscope.Saving.Components;
 
-public class PathFindingNav: MonoBehaviour, ISaveable
+public class PathFindingNav: SavedBehaviour
 {
     internal bool stopped;
     public AIPath ai;
@@ -186,12 +187,12 @@ public class PathFindingNav: MonoBehaviour, ISaveable
         UpdateBlockedNodes();
     }
 
-    public string OnSave()
+    public override string OnSave()
     {
         return JsonUtility.ToJson(new SaveData { lastDesiredVelocity = lastDesiredVelocity });
     }
 
-    public void OnLoad(string data)
+    public override void OnLoad(string data)
     {
         ResetPathfinding();
         lastDesiredVelocity = JsonUtility.FromJson<SaveData>(data).lastDesiredVelocity;
@@ -202,7 +203,7 @@ public class PathFindingNav: MonoBehaviour, ISaveable
         ai.enabled = true;
     }
 
-    public bool OnSaveCondition()
+    public override bool OnSaveCondition()
     {
         return this != null && this.gameObject.activeSelf;
     }

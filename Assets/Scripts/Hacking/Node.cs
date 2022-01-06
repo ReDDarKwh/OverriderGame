@@ -111,9 +111,8 @@ namespace Scripts.Hacking
         {
             nodeCanvas.enabled = deviceUI?.selected ?? true;
 
-            if (deviceUI && !deviceUI.selected || !accessible)
+            if (deviceUI && !deviceUI.selected)
             {
-                Network.Instance.DeselectNode(this);
                 return;
             }
 
@@ -158,6 +157,11 @@ namespace Scripts.Hacking
         internal void SetPlayerAccessible(bool accessible)
         {
             this.accessible = accessible;
+
+            if(!accessible){
+                isHovered = false;
+                Network.Instance.DeselectNode(this);
+            }
         }
 
         public IEnumerator DisableMove()
@@ -256,7 +260,7 @@ namespace Scripts.Hacking
         }
 
         public bool IsInteractable(){
-            return deviceUI == null || deviceUI.device.playerCanAccess;
+            return accessible;
         }
         
         // EVENTS

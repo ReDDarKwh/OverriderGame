@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -4451404377064668064, guid: 791bdc5de0b54124b8b530cc4b164fc6,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,7 +103,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8192
   doorDamage: 1000000
-  disableTouchLock: 0
 --- !u!61 &255170172
 BoxCollider2D:
   m_ObjectHideFlags: 0

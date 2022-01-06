@@ -374,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4d7e29417b28548af8dc3400985224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableLevelSave: 0
   ai: {fileID: 6622381057551690531}
   seeker: {fileID: 9063174312630287883}
   refreshDis: 0.5
@@ -553,6 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6768d12a80722934396d62565aa4ef8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableLevelSave: 0
   currentState: []
   memory: {fileID: 3386556007646536247}
 --- !u!114 &1551009004965999882
@@ -677,6 +679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2c7167844c4a445b275f02764b1d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableLevelSave: 0
 --- !u!114 &9063174312630287883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,6 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ee85bc9dc4d7942b110ac8bffc59bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableLevelSave: 0
 --- !u!1 &8808413042824828919
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ namespace Lowscope.Saving.Components
     /// </summary>
 
     [AddComponentMenu("Saving/Components/Save Scale"), DisallowMultipleComponent]
-    public class SaveScale : MonoBehaviour, ISaveable
+    public class SaveScale : SavedBehaviour
     {
         private Vector3 lastScale;
 
@@ -19,19 +19,19 @@ namespace Lowscope.Saving.Components
             public Vector3 scale;
         }
 
-        public void OnLoad(string data)
+        public override void OnLoad(string data)
         {
             this.transform.localScale = JsonUtility.FromJson<SaveData>(data).scale;
             lastScale = this.transform.localScale;
         }
 
-        public string OnSave()
+        public override string OnSave()
         {
             lastScale = this.transform.localScale;
             return JsonUtility.ToJson(new SaveData() { scale = this.transform.localScale });
         }
 
-        public bool OnSaveCondition()
+        public override bool OnSaveCondition()
         {
             return lastScale != this.transform.localScale;
         }

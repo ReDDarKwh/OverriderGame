@@ -56,12 +56,16 @@ namespace Scripts.Actions
 
         internal void UpdateAccessLevel(int accessLevelId)
         {
-            if(accessLevelId == accessLevel)
+            if(accessLevelId == -1){
+                SetNodesPlayerAccessible(false);
+                playerCanAccess = false;
+            } else if(accessLevelId == accessLevel)
             {
                 SetNodesPlayerAccessible(true);
                 playerCanAccess = true;
-                OnPlayerCanAccess.Invoke();
             }
+            
+            OnPlayerCanAccess.Invoke();
         }
 
         private void SetNodesPlayerAccessible(bool accessible)

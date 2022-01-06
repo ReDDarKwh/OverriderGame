@@ -9,7 +9,7 @@ namespace Lowscope.Saving.Components
     /// </summary>
 
     [AddComponentMenu("Saving/Components/Save Visibility"), DisallowMultipleComponent]
-    public class SaveVisibility : MonoBehaviour, ISaveable
+    public class SaveVisibility : SavedBehaviour
     {
         private bool isEnabled;
 
@@ -28,18 +28,18 @@ namespace Lowscope.Saving.Components
             }
         }
 
-        public void OnLoad(string data)
+        public override void OnLoad(string data)
         {
             isEnabled = (data == "1");
             gameObject.SetActive(isEnabled);
         }
 
-        public string OnSave()
+        public override string OnSave()
         {
             return isEnabled ? "1" : "0";
         }
 
-        public bool OnSaveCondition()
+        public override bool OnSaveCondition()
         {
             return true;
         }

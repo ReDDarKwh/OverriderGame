@@ -67,7 +67,7 @@ public class Killable : MonoBehaviour, ISaveable
         }
     }
 
-    public bool OnSaveCondition()
+    public bool OnSaveCondition(bool v)
     {
         return true;
     }

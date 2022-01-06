@@ -15,6 +15,7 @@ namespace Scripts.Actions
         public FieldOfView fieldOfView;
         public DataGate intrudersDataOutput;
         public bool disableFilterInput;
+        public bool disableUsersOutput;
         public string intrudersDataOutputName = "Intruders";
         public string filterDataInputName = "Filter";
         public GameObject parent;
@@ -104,7 +105,10 @@ namespace Scripts.Actions
                 dataGateType = DataGate.DataGateType.Output
             };
 
-            dataGates.Add(intrudersDataOutput);
+            if (!disableUsersOutput)
+            {
+                dataGates.Add(intrudersDataOutput);
+            }
 
             filterDataInput = new DataGate(true)
             {
