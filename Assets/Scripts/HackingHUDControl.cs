@@ -94,7 +94,7 @@ namespace Scripts.UI
                     }
                     else if (devicesUnderMouse.Any())
                     {
-                        CreateContextMenu(devicesUnderMouse.Select(x =>
+                        var items = devicesUnderMouse.Select(x =>
                         {
                             return new ContextMenuItem
                             {
@@ -105,7 +105,20 @@ namespace Scripts.UI
                                     SetDeviceInteractionActive(true);
                                 }
                             };
-                        }));
+                        }).OrderBy(x => x.name).ToList();
+                        
+                        CreateContextMenu(
+                            new List<ContextMenuItem>(){
+                                new ContextMenuItem{
+                                    name = "Open all",
+                                    action = ()=>{
+                                        foreach(var a in items){
+                                            a.action();
+                                        }
+                                    }
+                                }
+                            }.Concat(items)
+                        );
                     }
                 }
             }

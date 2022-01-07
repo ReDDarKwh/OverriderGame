@@ -146,7 +146,7 @@ public class Connection : MonoBehaviour
 
         var baseLineWidth = (isSelected ? lineWidth * lineSelectionStrength : lineWidth);
 
-        if (startPos != endPos)
+        if (startPos.position != endPos.position)
         {
             DrawNoodle(noodlePath, new List<Vector3>
             {

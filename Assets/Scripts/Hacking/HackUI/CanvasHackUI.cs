@@ -15,7 +15,8 @@ namespace Scripts.Hacking
 
             foreach (var g in toDisable)
             {
-                g.SetActive(false);
+                if(g)
+                    g.SetActive(false);
             }
 
             // foreach (var node in GetNodeHackUIs())
@@ -30,7 +31,8 @@ namespace Scripts.Hacking
 
             foreach (var g in toDisable)
             {
-                g.SetActive(true);
+                if(g)
+                    g.SetActive(true);
             }
 
             // foreach (var node in GetNodeHackUIs())
