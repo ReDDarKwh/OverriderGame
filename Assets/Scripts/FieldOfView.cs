@@ -33,6 +33,9 @@ public class FieldOfView : MonoBehaviour
     private VectorLine line;
     public float maxWeldDistance = 30;
     public Material lineMat;
+    internal Color color;
+    internal Color lineColor;
+    public MeshRenderer meshRenderer;
 
     void Start()
     {
@@ -41,7 +44,6 @@ public class FieldOfView : MonoBehaviour
         viewMeshFilter.mesh = viewMesh;
 
         line = new VectorLine("FieldOfViewBorder", new List<Vector3>(), lineTex, 15, LineType.Continuous, Joins.Weld);
-        line.color = Color.white;
         line.drawTransform = transform;
         line.maxWeldDistance = maxWeldDistance;
         line.material = lineMat;
@@ -70,6 +72,10 @@ public class FieldOfView : MonoBehaviour
 
     void LateUpdate()
     {
+        if(meshRenderer){
+            meshRenderer.material.color = color;
+        }
+        line.color = lineColor;
         DrawFieldOfView();
     }
 

@@ -149,6 +149,12 @@ namespace Scripts.UI
             UpdateVisible();
         }
 
+        public void Open()
+        {
+            selected = true;
+            UpdateVisible();
+        }
+
         private void UpdateVisible()
         {
             if (selected)

@@ -25,7 +25,7 @@ namespace Scripts.Actions
         public SoundPreset deconnectedSound;
 
         internal bool playerCanAccess;
-        internal Device parentDevice;
+        public Device parentDevice;
         internal AttachedGadgetController attachedGadgetController;
         internal bool isAttachedGadget;
         internal Dictionary<Action, Dictionary<string, Node>> nodesPerAction;

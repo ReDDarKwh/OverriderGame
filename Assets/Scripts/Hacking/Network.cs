@@ -114,10 +114,11 @@ namespace Scripts.Hacking
             }
 
             foreach(var selectedNode in selectedNodes){
-                selectedNode.Remove();
+                if(!selectedNode.deviceUI)
+                    selectedNode.Remove();
             }
 
-            selectedNodes.Clear();
+            DeselectSelectedNodes();
         }
 
         // Update is called once per frame
@@ -325,12 +326,9 @@ namespace Scripts.Hacking
                 isConnecting = true;
             }
 
-            if (selectedNodes != null)
+            foreach (var selectedNode in selectedNodes)
             {
-                foreach (var selectedNode in selectedNodes)
-                {
-                    selectedNode.SetMoving(false, Vector3.zero);
-                }
+                selectedNode.SetMoving(false, Vector3.zero);
             }
 
             isNodeDragStarted = false;
@@ -382,6 +380,12 @@ namespace Scripts.Hacking
                     DeselectSelectedNodes();
                 }
 
+                foreach (var selectedNode in selectedNodes)
+                {
+                    selectedNode.SetMoving(false, Vector3.zero);
+                }
+
+                isNodeDragStarted = false;
                 isSelectionDragStarted = false;
             }
 

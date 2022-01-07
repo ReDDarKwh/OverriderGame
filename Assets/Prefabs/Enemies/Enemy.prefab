@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f912815743b7f4a90348e335096dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableLevelSave: 0
   actionName: Shooting
   disableOutput: 0
   disableInput: 0
@@ -791,6 +792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1298987a1613d4f91e2f603f73a9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableLevelSave: 0
   actionName: Attacking
   disableOutput: 0
   disableInput: 1
@@ -853,11 +855,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2fbb147e71b1b42a893d75cc643259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableLevelSave: 0
   actionName: Spotting
   disableOutput: 0
   disableInput: 0
   VisionRadius: 2.27
   VisionAngle: 51
+  OffFieldOfViewColor: {r: 0, g: 0.5288329, b: 0.7490196, a: 0.14117648}
+  OnFieldOfViewColor: {r: 4.831661, g: 2.7926233, b: 0, a: 0.050980393}
+  OffFieldOfViewLineColor: {r: 0, g: 0.5391021, b: 1, a: 0.32156864}
+  OnFieldOfViewLineColor: {r: 1, g: 0.4448824, b: 0, a: 0.32156864}
   ViewBlockingLayers:
     serializedVersion: 2
     m_Bits: 75513856
@@ -866,6 +873,7 @@ MonoBehaviour:
     m_Bits: 33554688
   fieldOfView: {fileID: 6760242283404706886}
   disableFilterInput: 0
+  disableUsersOutput: 0
   intrudersDataOutputName: Intruders
   filterDataInputName: Filter
   parent: {fileID: 6725844347703517079}

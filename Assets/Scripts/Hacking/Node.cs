@@ -274,9 +274,9 @@ namespace Scripts.Hacking
         public void OnUnClick(BaseEventData eventData)
         {
             if(IsInteractable()){
-                if(isHovered){
-                    Network.Instance.OnNodeClickUp(eventData, this);    
-                }
+                //if(isHovered){
+                Network.Instance.OnNodeClickUp(eventData, this);    
+                //}
             }
         }
 

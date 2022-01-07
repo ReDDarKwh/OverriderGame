@@ -10,6 +10,17 @@ namespace Scripts.Actions
     {
         public float VisionRadius;
         public int VisionAngle;
+
+        [ColorUsageAttribute(true, true)]
+        public Color OffFieldOfViewColor;
+        [ColorUsageAttribute(true, true)]
+        public Color OnFieldOfViewColor;
+
+         [ColorUsageAttribute(true, true)]
+        public Color OffFieldOfViewLineColor;
+        [ColorUsageAttribute(true, true)]
+        public Color OnFieldOfViewLineColor;
+
         public LayerMask ViewBlockingLayers;
         public LayerMask TargetLayers;
         public FieldOfView fieldOfView;
@@ -19,10 +30,7 @@ namespace Scripts.Actions
         public string intrudersDataOutputName = "Intruders";
         public string filterDataInputName = "Filter";
         public GameObject parent;
-
         private DataGate filterDataInput;
-
-
 
         // Update is called once per frame
         void Update()
@@ -39,6 +47,8 @@ namespace Scripts.Actions
             {
                 fieldOfView.viewAngle = VisionAngle;
                 fieldOfView.viewRadius = VisionRadius;
+                fieldOfView.color = outputGate.currentValue? OnFieldOfViewColor: OffFieldOfViewColor;
+                fieldOfView.lineColor = outputGate.currentValue? OnFieldOfViewLineColor: OffFieldOfViewLineColor;
             }
         }
 

@@ -107,9 +107,7 @@ public class Connection : MonoBehaviour
     {
         SoundManager.Instance.FadeOut(electricHum?.Select(x => x.audioSource));
         electricHum = null;
-        if(deconnectedSound){
-            deconnectedSound.Play(lastEndPos.position);
-        }
+        deconnectedSound.Play(transform.position);
     }
 
     // Update is called once per frame

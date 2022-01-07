@@ -101,7 +101,7 @@ namespace Scripts.UI
                                 name = x.device.deviceName,
                                 action = () =>
                                 {
-                                    x.ToggleSelected();
+                                    x.Open();
                                     SetDeviceInteractionActive(true);
                                 }
                             };

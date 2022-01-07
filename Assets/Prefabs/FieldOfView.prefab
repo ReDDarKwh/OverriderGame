@@ -71,6 +71,7 @@ MonoBehaviour:
   viewMeshFilter: {fileID: 869137357626560296}
   maxWeldDistance: 45
   lineMat: {fileID: 2100000, guid: 129768a918b7f924d93fd3fb2bb30486, type: 2}
+  meshRenderer: {fileID: 1654369756789024045}
 --- !u!23 &1654369756789024045
 MeshRenderer:
   m_ObjectHideFlags: 0
