@@ -83,6 +83,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -92,8 +94,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -114,9 +116,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -564,6 +569,27 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      SneakWalk15: 2385008910307460147
+      SneakWalk17: -9148761513165411692
+      SneakWalk19: -2682486990896665
+      SneakWalk12: 744947347123155730
+      SneakWalk16: 8603219169327219667
+      SneakWalk08: 5194951209228559616
+      SneakWalk13: 1551979840697751860
+      SneakWalk06: -5657130919467704285
+      SneakWalk09: 4353617014401563777
+      SneakWalk18: -4857915728979597599
+      SneakWalk04: -8717383845099898612
+      SneakWalk07: -4967855951120309801
+      SneakWalk02: 7341978027697201510
+      SneakWalk03: 4018932376056774714
+      SneakWalk00: -2197429302310259811
+      SneakWalk10: -4797326972376866702
+      SneakWalk14: 881151647944199469
+      SneakWalk05: 5175304331139486260
+      SneakWalk11: 5619945977900397079
+      SneakWalk01: -5568553958418551967
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

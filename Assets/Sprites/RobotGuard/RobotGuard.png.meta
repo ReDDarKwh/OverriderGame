@@ -89,6 +89,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -98,8 +100,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -120,9 +122,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -612,6 +617,29 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      RobotGuard19: -2339162764464443070
+      RobotGuard06: -87799034756438018
+      RobotGuard04: -7366932160630426821
+      RobotGuard21: 7968091671408628752
+      RobotGuard01: 4441206405933427159
+      RobotGuard11: 414733346971214952
+      RobotGuard08: 35711240464388495
+      RobotGuard10: 8896247408397206590
+      RobotGuard09: -2796573470879238080
+      RobotGuard07: -3939605777978663936
+      RobotGuard02: -4879462088815617286
+      RobotGuard15: -5261288136315036121
+      RobotGuard14: -914449100467385825
+      RobotGuard20: -7895050536803694912
+      RobotGuard17: 1131511869386727522
+      RobotGuard12: -1506921096087569618
+      RobotGuard13: 8355157111954498865
+      RobotGuard16: -4595181422415296977
+      RobotGuard05: 8303991406635854104
+      RobotGuard00: 324164018406323287
+      RobotGuard03: 7787521439153221928
+      RobotGuard18: -6657122365200324564
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

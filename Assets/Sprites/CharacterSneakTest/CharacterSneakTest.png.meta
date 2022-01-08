@@ -119,6 +119,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -128,8 +130,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -150,9 +152,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -852,6 +857,39 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      CharacterSneakTest24: -3281189627740209911
+      CharacterSneakTest28: -1431774083294394030
+      CharacterSneakTest18: -1277506252042253003
+      CharacterSneakTest08: -2850538383778584699
+      CharacterSneakTest01: 5407079943461396877
+      CharacterSneakTest05: -4735319374454172163
+      CharacterSneakTest12: 8566210989185813201
+      CharacterSneakTest02: 4794905134661592261
+      CharacterSneakTest07: 8050896924601546345
+      CharacterSneakTest09: -5965596310713201066
+      CharacterSneakTest16: -2548762411877572968
+      CharacterSneakTest10: 1358773782592924388
+      CharacterSneakTest21: 4883927686104883412
+      CharacterSneakTest23: -2901561432381601844
+      CharacterSneakTest00: 7578982943623988361
+      CharacterSneakTest14: -3493053901020240754
+      CharacterSneakTest29: -1794727065073275743
+      CharacterSneakTest27: 1196389296249713001
+      CharacterSneakTest11: -2551860080841127074
+      CharacterSneakTest30: -198180853496282191
+      CharacterSneakTest25: -552792671970485585
+      CharacterSneakTest22: 8944695833214397742
+      CharacterSneakTest17: 6654349269500701621
+      CharacterSneakTest19: 95242129361026233
+      CharacterSneakTest31: -5146703461266518806
+      CharacterSneakTest03: -4794452847765018151
+      CharacterSneakTest06: 6410696151263397876
+      CharacterSneakTest15: 2008236649579559504
+      CharacterSneakTest13: -8866689509091592937
+      CharacterSneakTest04: 6566520768413649857
+      CharacterSneakTest20: -2283436635852172326
+      CharacterSneakTest26: 3256257873785844140
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
