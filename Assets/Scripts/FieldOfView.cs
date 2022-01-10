@@ -30,11 +30,17 @@ public class FieldOfView : MonoBehaviour
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
 
-    private VectorLine line;
+
+    [ColorUsageAttribute(true, true)]
+    public Color offFieldOfViewColor;
+    [ColorUsageAttribute(true, true)]
+    public Color onFieldOfViewColor;
+
+    internal bool isOn;
+
     public float maxWeldDistance = 30;
-    public Material lineMat;
+    
     internal Color color;
-    internal Color lineColor;
     public MeshRenderer meshRenderer;
 
     void Start()
@@ -43,22 +49,15 @@ public class FieldOfView : MonoBehaviour
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
 
-        line = new VectorLine("FieldOfViewBorder", new List<Vector3>(), lineTex, 15, LineType.Continuous, Joins.Weld);
-        line.drawTransform = transform;
-        line.maxWeldDistance = maxWeldDistance;
-        line.material = lineMat;
-
         StartCoroutine("FindTargetsWithDelay", .2f);
     }
 
     void OnDestroy()
     {
-        VectorLine.Destroy(ref line);
     }
 
     void OnDisable()
     {
-        VectorLine.Destroy(ref line);
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
@@ -73,9 +72,9 @@ public class FieldOfView : MonoBehaviour
     void LateUpdate()
     {
         if(meshRenderer){
-            meshRenderer.material.color = color;
+            meshRenderer.material.color = isOn? onFieldOfViewColor: offFieldOfViewColor;
+            meshRenderer.material.SetFloat("_Radius", viewRadius);
         }
-        line.color = lineColor;
         DrawFieldOfView();
     }
 
@@ -161,9 +160,6 @@ public class FieldOfView : MonoBehaviour
         }
 
 
-        line.points3 = linePoints;
-        line.SetWidth(lineWidth / Camera.main.orthographicSize);
-
         viewMesh.Clear();
 
         viewMesh.vertices = vertices;
@@ -171,7 +167,7 @@ public class FieldOfView : MonoBehaviour
 
         viewMesh.RecalculateNormals();
 
-        line.Draw3D();
+        //line.Draw3D();
     }
 
 

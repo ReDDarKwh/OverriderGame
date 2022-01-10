@@ -70,8 +70,9 @@ MonoBehaviour:
   lineWidth: 45
   lineTex: {fileID: 0}
   viewMeshFilter: {fileID: 869137357626560296}
+  offFieldOfViewColor: {r: 1, g: 0.46832344, b: 0, a: 1}
+  onFieldOfViewColor: {r: 1, g: 0.026395842, b: 0, a: 1}
   maxWeldDistance: 45
-  lineMat: {fileID: 2100000, guid: 129768a918b7f924d93fd3fb2bb30486, type: 2}
   meshRenderer: {fileID: 1654369756789024045}
 --- !u!23 &1654369756789024045
 MeshRenderer:
