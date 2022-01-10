@@ -37,6 +37,7 @@ public class Connection : MonoBehaviour
     public ParticleSystem connectionEffect;
     public Animator animator;
     public Color lineColor;
+    public Texture lineTexture;
     public float selfConnectRadiusY;
     public float selfConnectRadiusX;
     public int selfConnectPointCount;
@@ -72,6 +73,7 @@ public class Connection : MonoBehaviour
         line.joins = Joins.Weld;
         line.lineType = LineType.Continuous;
         line.maxWeldDistance = lineMaxWeldDistance;
+        line.texture = lineTexture;
         if (soundOn)
         {
             connectedStartSound.Play(transform.position);
