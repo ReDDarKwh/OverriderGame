@@ -2024,32 +2024,13 @@ MonoBehaviour:
     type: 3}
   objectiveUIContainer: {fileID: 2040355316}
   objectives:
-  - name: Kill target
+  - name: 
     objectiveType: 0
     onComplete:
       m_PersistentCalls:
         m_Calls: []
-    target: {fileID: 2023774448}
-    triggerZone: {fileID: 0}
-  - name: Exit
-    objectiveType: 1
-    onComplete:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 68017249}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: ChangeSceneAdditiveUI
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: LevelOverScene
-            m_BoolArgument: 0
-          m_CallState: 2
     target: {fileID: 0}
-    triggerZone: {fileID: 836436048}
+    triggerZone: {fileID: 0}
 --- !u!114 &68017252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18483,18 +18464,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dce845f1d029975488423cc329931046, type: 3}
---- !u!114 &836436048 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 531393072933603449, guid: dce845f1d029975488423cc329931046,
-    type: 3}
-  m_PrefabInstance: {fileID: 836436047}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f6ff1022ee8c9e49ad42ceb8ea46e29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &837077117
 PrefabInstance:
   m_ObjectHideFlags: 0

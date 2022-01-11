@@ -1,0 +1,28 @@
+ 
+
+
+Verbs of Overrider:
+A - Open device IO menu
+B - Pause
+C - Interact
+D - Sneak
+E - Connect
+F - Disconnect
+G - Place Gadget
+H - Security Access
+
+
+First level could be a data gathering missing. Need to interact with computers looked behind doors. 
+
+Maybe show filters on level levels. (Maybe unlockable)
+
+1.	Show that you can click on device to open IO menu [A]
+2.	Connect switch output to door input [E]
+3.  Interact with switch -> doors open [C]
+4.  Disconnect camera from alarm [F]
+5.  Interact with security computer (unlock floor plan)
+6.  Get to second security room
+7.  Get objective
+8.  Exit
+
+
