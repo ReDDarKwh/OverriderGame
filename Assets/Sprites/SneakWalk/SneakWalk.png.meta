@@ -570,7 +570,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SneakWalk15: 2385008910307460147
+      SneakWalk11: 5619945977900397079
       SneakWalk17: -9148761513165411692
       SneakWalk19: -2682486990896665
       SneakWalk12: 744947347123155730
@@ -588,8 +588,8 @@ TextureImporter:
       SneakWalk10: -4797326972376866702
       SneakWalk14: 881151647944199469
       SneakWalk05: 5175304331139486260
-      SneakWalk11: 5619945977900397079
       SneakWalk01: -5568553958418551967
+      SneakWalk15: 2385008910307460147
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
