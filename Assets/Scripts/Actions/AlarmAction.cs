@@ -66,7 +66,7 @@ namespace Scripts.Actions
             
             foreach (var guard in enemySharedInfoManager.GetAllAliveEnemies())
             {
-                float magnitude = (transform.position - guard.transform.position).magnitude;
+                float magnitude = (transform.position - guard.transform.position).sqrMagnitude;
                 if (magnitude < minDis && guard.gameObject != target)
                 {
                     minEnemy = guard;
