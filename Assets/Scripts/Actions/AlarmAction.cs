@@ -58,7 +58,7 @@ namespace Scripts.Actions
             };
         }
 
-        private IEnumerator AttractClosestGuard()
+        private void AttractClosestGuard()
         {
             var target = targetsDataInput.GetData<GameObject>().FirstOrDefault() ?? alternativeTarget;
             var minDis = float.MaxValue;
@@ -66,7 +66,6 @@ namespace Scripts.Actions
             
             foreach (var guard in enemySharedInfoManager.GetAllAliveEnemies())
             {
-                yield return new WaitForSeconds(0.5f);
                 float magnitude = (transform.position - guard.transform.position).magnitude;
                 if (magnitude < minDis && guard.gameObject != target)
                 {
@@ -85,7 +84,7 @@ namespace Scripts.Actions
         void Update()
         {
             if(trigger){
-                StartCoroutine(AttractClosestGuard());
+                AttractClosestGuard();
                 trigger = false;
             }
             animator.SetBool("Active", outputGate.currentValue);
