@@ -12,11 +12,15 @@ namespace Scripts.States
 
         private Vector3 GetHiddingSpot(Transform target)
         {
+            if(hiddingSpots.Count() == 1){
+                return hiddingSpots.First().position;
+            }
+
             var maxDis = 0f;
             Vector3 farthest = Vector3.zero;
             foreach (var point in hiddingSpots.Where(x => lastHiddingSpot == null || x.position != lastHiddingSpot.Value))
             {
-                var dis = (point.position - target.position).magnitude;
+                var dis = (point.position - (target?.position ?? Vector3.zero)).magnitude;
                 if (dis > maxDis)
                 {
                     maxDis = dis;
@@ -31,7 +35,7 @@ namespace Scripts.States
         public override void StateEnter()
         {
             root.TriggerEvent("flee", 
-                new EventData{{"hiddingPosition", GetHiddingSpot(memory.Get<GameObject>("target", false).transform)}
+                new EventData{{"hiddingPosition", GetHiddingSpot(memory.Get<GameObject>("target", false)?.transform)}
             });
         }
 

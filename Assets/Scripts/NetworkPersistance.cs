@@ -83,7 +83,7 @@ namespace Scripts.Hacking
 
         public string OnSave()
         {
-            var nodes = network.GetComponentsInChildren<Node>();
+            var nodes = network.GetComponentsInChildren<Node>(true);
             var savedNodes = nodes.Select(x =>
             {
                 return new SavedNode
@@ -117,7 +117,7 @@ namespace Scripts.Hacking
         private IEnumerator DelayedLoad(string data)
         {
             yield return 0;
-            var levelNodes = network.GetComponentsInChildren<Node>();
+            var levelNodes = network.GetComponentsInChildren<Node>(true);
             levelNodesRepo = new Dictionary<string, Node>();
             foreach (var node in levelNodes)
             {

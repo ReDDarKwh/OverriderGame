@@ -14,10 +14,6 @@ public class Interactor : MonoBehaviour
         var i = interactable;
         if (i != null)
         {
-            if (creature)
-            {
-                creature.headDir = interactable.transform.position - transform.position;
-            }
             if (animator != null)
             {
                 animator.SetTrigger("Interact");

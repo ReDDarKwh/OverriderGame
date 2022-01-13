@@ -8,9 +8,11 @@ class TargetAliveSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
-        var perceptive = new PerceptiveSuperState(sm, root, "perceptive");
-        var alert = new TargetAlertSuperState(sm, root, "alert");
+        var perceptive = new PerceptiveSuperState(sm, root, "perceptive").sub;
+        var alert = new TargetAlertSuperState(sm, root, "alert").sub;
+        var fleeing = new FleeingSuperState(sm, root, "fleeing").sub;
 
-        perceptive.sub.AddHandler("isAlert", alert.sub);
+        perceptive.AddHandler("isAlert", alert);
+        perceptive.AddHandler("alarmTriggered", fleeing);
     }
 }

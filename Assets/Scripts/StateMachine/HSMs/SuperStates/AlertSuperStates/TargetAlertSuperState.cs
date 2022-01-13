@@ -12,13 +12,17 @@ class TargetAlertSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
-        var start = AddState(root.GetComponent<EmptyState>(), "start");
+        var alerting = AddState(root.GetComponent<AlertingState>(), "alerting");
         var interacting = new InteractSuperState(sm, root, "interacting").sub;
         var fleeing = new FleeingSuperState(sm, root, "fleeing").sub;
 
-        start.AddEnterHandler(interacting, null, (EventData data) => {
-            root.memory.Set("interactionObject", ((TargetHSM)root).alertSwitch, MemoryType.GameObject);
-        });
+        if(((TargetHSM)root).alertSwitch){
+            alerting.AddEnterHandler(interacting, null, (EventData data) => {
+                root.memory.Set("interactionObject", ((TargetHSM)root).alertSwitch, MemoryType.GameObject);
+            });
+        } else {
+            alerting.AddEnterHandler(fleeing, null);
+        }
 
         interacting.AddHandler("interactionDone", fleeing);
     }

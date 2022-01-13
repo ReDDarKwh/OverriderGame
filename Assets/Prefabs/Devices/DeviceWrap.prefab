@@ -866,9 +866,8 @@ MonoBehaviour:
   hidden: 0
   canvas: {fileID: 3634802027296639367}
   toDisable:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 9111744829625659240}
+  - {fileID: 2951799961083322975}
 --- !u!1 &2859389370005065691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1132,7 @@ MonoBehaviour:
   preconnections: []
   accessLevel: 0
   deconnectedSound: {fileID: 11400000, guid: 92067fb7a0caf044fa3a5ffb30cd3316, type: 2}
+  runPreconnectionsOnStart: 0
   parentDevice: {fileID: 0}
 --- !u!114 &8355662138841550960
 MonoBehaviour:
@@ -1163,7 +1163,7 @@ MonoBehaviour:
   actionsToolbar: {fileID: 918815885727065572}
   actionsContainer: {fileID: 1009430982531961698}
   deviceCircle: {fileID: 518360851045212039}
-  accessRequiredImage: {fileID: 8162131700369358274}
+  accessRequiredImage: {fileID: 3458393667030151127}
   title: {fileID: 3575262962459016631}
   AccessDeniedDisplay: {fileID: 2951799961083322975}
   selectionCircle: {fileID: 1240474811537160783}
@@ -2187,7 +2187,7 @@ MonoBehaviour:
   hidden: 0
   canvas: {fileID: 902342919566956359}
   toDisable:
-  - {fileID: 0}
+  - {fileID: 5334253513029474556}
 --- !u!1 &8539017791043535765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2709,15 +2709,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1027198945327943238}
   m_PrefabAsset: {fileID: 0}
---- !u!223 &4888837126738463008 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 5591769283585722214, guid: b793f52fff1412748a2c9e02d12535a2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1027198945327943238}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8162131700369358274 stripped
+--- !u!114 &3458393667030151127 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9152687144355361668, guid: b793f52fff1412748a2c9e02d12535a2,
+  m_CorrespondingSourceObject: {fileID: 2431936411858330001, guid: b793f52fff1412748a2c9e02d12535a2,
     type: 3}
   m_PrefabInstance: {fileID: 1027198945327943238}
   m_PrefabAsset: {fileID: 0}
@@ -2727,3 +2721,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!223 &4888837126738463008 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 5591769283585722214, guid: b793f52fff1412748a2c9e02d12535a2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1027198945327943238}
+  m_PrefabAsset: {fileID: 0}

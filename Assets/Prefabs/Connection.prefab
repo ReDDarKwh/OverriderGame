@@ -9836,7 +9836,7 @@ MonoBehaviour:
   sparksEffect: {fileID: 5659050337832298901}
   connectionEffect: {fileID: 513186410}
   animator: {fileID: 4503021403346872913}
-  lineColor: {r: 0, g: 0.48144865, b: 1, a: 0.68235296}
+  lineColor: {r: 0, g: 0.48144865, b: 1, a: 0.56078434}
   lineTexture: {fileID: 2800000, guid: 6866339fa4174da4599c49496cfc7e11, type: 3}
   selfConnectRadiusY: 0
   selfConnectRadiusX: 0.21

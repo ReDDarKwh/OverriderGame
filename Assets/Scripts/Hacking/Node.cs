@@ -182,13 +182,15 @@ namespace Scripts.Hacking
 
         public void DisconnectAll(bool nodesOnly = false)
         {
-            if (gate != null)
+            if (gate != null && (!gate.isHiddenFromPlayer || !nodesOnly))
             {
                 foreach (var parent in new List<AbstractGate>(gate.parents))
                 {
-                    if ((nodesOnly && parent.node) || !nodesOnly)
-                    {
-                        parent.Disconnect(this.gate);
+                    if((!parent.isHiddenFromPlayer || !nodesOnly)){
+                        if ((nodesOnly && parent.node) || !nodesOnly)
+                        {
+                            parent.Disconnect(this.gate);
+                        }
                     }
                 }
 
@@ -204,7 +206,13 @@ namespace Scripts.Hacking
 
         public void SelectAllConnectionsForDelete(bool isSelected)
         {
-            foreach(var c in gate.parents.Where(x => x.node).Select(x => x.node).Select(x => x.connectionsTo[this.gate])){
+            foreach(var c in gate.parents
+                .Where(x => x.node)
+                .Select(x => x.node)
+                .Where(x => x.connectionsTo.ContainsKey(this.gate))
+                .Select(x => x.connectionsTo[this.gate])
+            )
+            {
                 c.isSelectedForDeleteForce = isSelected;
                 c.isSelectedForce = isSelected;
             }
@@ -223,12 +231,11 @@ namespace Scripts.Hacking
         internal bool Connect(Node node, Connection connection)
         {
             var result = gate.Connect(node.gate);
-            if (result)
+            if (result && connection)
             {
                 connection.start = this;
                 connection.end = node;
                 connectionsTo.Add(node.gate, connection);
-
                 connectedToInUI = true;
             }
             return result;

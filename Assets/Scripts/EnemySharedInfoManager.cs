@@ -14,7 +14,7 @@ public class EnemySharedInfoManager : MonoBehaviour
     }
 
     public IEnumerable<Enemy> GetAllAliveEnemies(){
-        return enemies.Where(x => !(x?.killable.dead ?? false));
+        return enemies.Where(x => x.isHostile && !(x?.killable.dead ?? false)).ToList();
     }
 
     public bool IsObjectAlreadyInvestigated(GameObject o)

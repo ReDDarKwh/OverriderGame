@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     public SpriteRenderer spriteRenderer;
     public Killable killable;
+    public HSM hsm;
+    public bool isHostile;
 
     public float alertSpottingRadius;
     public int alertSpottingAngle;
@@ -21,6 +23,7 @@ public class Enemy : MonoBehaviour
     private bool alert;
     private AlarmManager alarm;
     public SpottingAction spotting;
+    
 
     void Start()
     {
@@ -31,6 +34,7 @@ public class Enemy : MonoBehaviour
             if (alarm.gate.currentValue)
             {
                 SetAlert();
+                hsm.TriggerEvent("alarmTriggered");
             }
         };
     }

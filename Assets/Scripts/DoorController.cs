@@ -12,6 +12,7 @@ public class DoorController : MonoBehaviour
     public NavMeshObstacle obstacle;
     public UniqueId uniqueId;
     public float enemyNoticeDoorOpenDistance;
+    public float aiUnlockDistance;
 
     public float lockTime;
     private float lockStartTime;
@@ -58,7 +59,7 @@ public class DoorController : MonoBehaviour
             if (Time.time - keyval.Value > lockTime || 
                 (
                     openingAction.outputGate.currentValue &&  
-                    keyval.Key.spottingAction.TargetInView(this.gameObject) != null
+                    (keyval.Key.spottingAction.TargetInView(this.gameObject) != null || (keyval.Key.transform.position - transform.position).magnitude < aiUnlockDistance )
                 )
             )
             {

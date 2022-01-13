@@ -14,8 +14,10 @@ namespace Scripts.Actions
         public Animator animator;
         public GameObject alternativeTarget;
         public Enemy[] assignedGuards;
+        public bool isTargetInputHiddenFromPlayer;
         private DataGate targetsDataInput;
         private EnemySharedInfoManager enemySharedInfoManager;
+        public bool trigger;
 
         internal override void OnStart()
         {
@@ -43,26 +45,28 @@ namespace Scripts.Actions
                 }
             };
 
-            targetsDataInput = new DataGate(true) { name = "targets" };
+            targetsDataInput = new DataGate(true) { 
+                name = "targets",
+                isHiddenFromPlayer = isTargetInputHiddenFromPlayer 
+            };
+            
             dataGates.Add(targetsDataInput);
 
             activate.outputGate.ValueHasChanged += (object sender, EventArgs args) =>
             {
-                if(activate.outputGate.currentValue){
-                    AttractClosestGuard();
-                }
+                trigger = true;
             };
-
         }
 
-        private void AttractClosestGuard()
+        private IEnumerator AttractClosestGuard()
         {
             var target = targetsDataInput.GetData<GameObject>().FirstOrDefault() ?? alternativeTarget;
-
             var minDis = float.MaxValue;
             Enemy minEnemy = null;
+            
             foreach (var guard in enemySharedInfoManager.GetAllAliveEnemies())
             {
+                yield return new WaitForSeconds(0.5f);
                 float magnitude = (transform.position - guard.transform.position).magnitude;
                 if (magnitude < minDis && guard.gameObject != target)
                 {
@@ -80,6 +84,10 @@ namespace Scripts.Actions
 
         void Update()
         {
+            if(trigger){
+                StartCoroutine(AttractClosestGuard());
+                trigger = false;
+            }
             animator.SetBool("Active", outputGate.currentValue);
         }
     }

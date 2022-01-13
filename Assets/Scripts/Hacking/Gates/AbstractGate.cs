@@ -11,6 +11,7 @@ namespace Scripts.Hacking
         internal HashSet<AbstractGate> children = new HashSet<AbstractGate>();
         internal HashSet<AbstractGate> parents = new HashSet<AbstractGate>();
         public bool currentValue;
+        public bool isHiddenFromPlayer;
 
         internal int maxInputs = Int16.MaxValue;
         internal int maxOutputs = Int16.MaxValue;

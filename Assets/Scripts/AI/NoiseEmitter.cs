@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using MoreLinq;
 
 public class NoiseEmitter : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class NoiseEmitter : MonoBehaviour
             rippleEffect.Emit(1);
         }
 
-        foreach (var collider in colliders.Take(maxTargets).Except(ignoredColliders))
+        foreach (var collider in colliders.Take(maxTargets).Except(ignoredColliders).OrderBy(x => (x.transform.position - transform.position).sqrMagnitude))
         {
             var hsm = collider.GetComponent<HSM>();
             if(hsm != null){

@@ -9,6 +9,7 @@ namespace Scripts.States
 {
     public class InteractingState : AbstractState
     {
+        public Creature creature;
         public Interactor interactor;
         private Coroutine coroutine;
 
@@ -32,6 +33,11 @@ namespace Scripts.States
 
         private IEnumerator Interact(float interactionTime, Interactable interactable){
 
+            if (creature)
+            {
+                creature.headDir = interactable.transform.position - transform.position;
+            }
+            
             yield return new WaitForSeconds(interactionTime);
             interactor.InteractWith(interactable);
             root.TriggerEvent("interactionDone");

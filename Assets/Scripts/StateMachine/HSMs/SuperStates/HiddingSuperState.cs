@@ -11,9 +11,12 @@ class HiddingSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
+        var creature = root.GetComponent<Creature>();
         var hiddingGoto = new GotoSuperState(sm, root, "goingToHideSpot").sub;
         var hidding = AddState(root.GetComponent<EmptyState>(), "hiding");
 
-        hiddingGoto.AddHandler("isAtPosition", hidding);
+        hiddingGoto.AddHandler("isAtPosition", hidding, (EventData data) => {
+            creature.headDir = -creature.headDir;
+        });
     }
 }

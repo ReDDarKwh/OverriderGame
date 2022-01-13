@@ -11,6 +11,7 @@ namespace Scripts.Hacking
         public DataGateType dataGateType;
         public string name;
         public DataType dataType = DataType.GameObjects;
+     
         public bool saveData;
         private object data;
 

@@ -9,24 +9,20 @@ using UnityEngine.Events;
 using Lowscope.Saving;
 using Lowscope.Saving.Components;
 
-public class PathFindingNav: SavedBehaviour
+public class PathFindingNav: Pathfinding.AIPath, ISaveable
 {
-    internal bool stopped;
-    public AIPath ai;
-    public Seeker seeker;
-    public float refreshDis;
-    public LayerMask doorLayer;
-    public UnityEvent targetUnreachableEvent;
-
+    private UnityEvent targetUnreachableEvent;
+    private UnityEvent targetReachedEvent;
+    private float refreshDis;
+    private LayerMask doorLayer;
+    private Dictionary<string, List<GraphNode>> blockedNodesGroups = new Dictionary<string, List<GraphNode>>();
+    private bool stopped;
+    private Vector3 lastDesiredVelocity;
+    private HashSet<GraphNode> blockedNodes = new HashSet<GraphNode>();
     private Transform movingTarget;
-    public Vector3 lastDesiredVelocity;
-    public HashSet<GraphNode> blockedNodes = new HashSet<GraphNode>();
-
-    public Dictionary<string, List<GraphNode>> blockedNodesGroups = new Dictionary<string, List<GraphNode>>();
-
+    private float targetRange;
     private CoolTraversalProvider traversalProvider;
     private bool targetUnreachable;
-    public bool IsMovingD;
 
     public class CoolTraversalProvider : ITraversalProvider {
         public Func<HashSet<GraphNode>> GetBlockedNodes { get; internal set; }
@@ -51,44 +47,58 @@ public class PathFindingNav: SavedBehaviour
 
     public Vector3 GetDir()
     {
-        if(IsMoving())
-            lastDesiredVelocity = ai.desiredVelocity;
-        
+        lastDesiredVelocity = velocity2D;
         return lastDesiredVelocity;
     }
 
     public void SetSpeed(float speed)
     {
-        ai.maxSpeed = speed;
+        maxSpeed = speed;
     }
 
-    public void SetTarget(Transform target)
+    public void SetTarget(Transform target, float targetRange)
     {
         movingTarget = target;
-        SetTarget(movingTarget.position);
+        this.targetRange = targetRange;
+        SetTarget(movingTarget.position, targetRange);
     }
 
-    public void SetTarget(Vector3 target)
+    public void SetTarget(Vector3 target, float targetRange)
     {
-        ai.isStopped = stopped = false;
-        ai.destination = target;
-        ai.SearchPath();
+        if(IsAtPosition(target, targetRange)){
+            OnTargetReached();
+            return;
+        };
+
+        endReachedDistance = targetRange;
+        isStopped = stopped = false;
+        destination = target;
+        SearchPath();
+    }
+
+    private bool IsAtPosition(Vector3 target, float targetRange)
+    {
+        return (transform.position - target).magnitude < targetRange;
     }
 
     public void Stop()
     {
-        ai.SetPath(null);
-        ai.isStopped = stopped = true;
+        SetPath(null);
+        isStopped = stopped = true;
         movingTarget = null;
     }
 
-    public void ClearPath()
-    {
-    }
-
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        var p = GetComponent<PathFindingParams>();
+        doorLayer = p.doorLayer;
+        targetReachedEvent = p.targetReachedEvent;
+        targetUnreachableEvent = p.targetUnreachableEvent;
+        refreshDis = p.refreshDis;
+
+        base.Start();
+
         traversalProvider = new CoolTraversalProvider(){
             GetBlockedNodes = () => {
                 return blockedNodes;
@@ -109,26 +119,28 @@ public class PathFindingNav: SavedBehaviour
         
     }
 
-    void OnDestroy(){
+    public override void OnTargetReached(){
+        Debug.LogWarning("Path Reached");
+        targetReachedEvent.Invoke();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        if (movingTarget != null && ai.hasPath)
+        base.Update();
+
+        if (movingTarget != null && hasPath)
         {
-            if ((ai.destination - movingTarget.position).magnitude > refreshDis)
+            if ((destination - movingTarget.position).magnitude > refreshDis)
             {
-                SetTarget(movingTarget);
+                SetTarget(movingTarget, targetRange);
             }
         }
-
-        IsMovingD = IsMoving();
     }
 
     public bool IsGoingThroughDoor(DoorController doorController)
     {
-        if (this.ai.hasPath)
+        if (hasPath)
         {
             var lastCorner = transform.position;
             foreach (var c in this.seeker.GetCurrentPath().vectorPath)
@@ -149,19 +161,9 @@ public class PathFindingNav: SavedBehaviour
         return false;
     }
 
-    void OnEnable()
-    {
-        ai.canMove = true;
-    }
-
-    void OnDisable()
-    {
-        ai.canMove = false;
-    }
-
     public bool IsMoving()
     {
-        return (ai.hasPath && !ai.pathPending && !stopped);
+        return (hasPath && !pathPending && !stopped);
     }
 
     private void UpdateBlockedNodes(){
@@ -170,7 +172,7 @@ public class PathFindingNav: SavedBehaviour
             blockedNodesGroups.Values.SelectMany(x => x).Distinct()
         );
 
-        ai.SearchPath();
+        SearchPath();
     }
 
     internal void LockNodes(string groupId, List<GraphNode> nodesUnderDoor)
@@ -187,24 +189,25 @@ public class PathFindingNav: SavedBehaviour
         UpdateBlockedNodes();
     }
 
-    public override string OnSave()
+    public string OnSave()
     {
         return JsonUtility.ToJson(new SaveData { lastDesiredVelocity = lastDesiredVelocity });
     }
 
-    public override void OnLoad(string data)
+    public void OnLoad(string data)
     {
         ResetPathfinding();
         lastDesiredVelocity = JsonUtility.FromJson<SaveData>(data).lastDesiredVelocity;
     }
 
     public void ResetPathfinding(){
-        ai.enabled = false;
-        ai.enabled = true;
+        enabled = false;
+        enabled = true;
     }
 
-    public override bool OnSaveCondition()
+    public bool OnSaveCondition(bool isLevelSave)
     {
-        return this != null && this.gameObject.activeSelf;
+        return !isLevelSave && this != null && this.gameObject.activeSelf;
     }
+
 }

@@ -101,26 +101,21 @@ namespace Scripts.Actions
             intrudersDataOutput = new DataGate(false)
             {
                 name = intrudersDataOutputName,
-                dataGateType = DataGate.DataGateType.Output
+                dataGateType = DataGate.DataGateType.Output,
+                isHiddenFromPlayer = disableUsersOutput
             };
-
-            if (!disableUsersOutput)
-            {
-                dataGates.Add(intrudersDataOutput);
-            }
 
             filterDataInput = new DataGate(true)
             {
                 name = filterDataInputName,
                 dataGateType = DataGate.DataGateType.Input,
                 dataType = DataGate.DataType.Filters,
-                maxInputs = 1
+                maxInputs = 1,
+                isHiddenFromPlayer = disableFilterInput
             };
 
-            if (!disableFilterInput)
-            {
-                dataGates.Add(filterDataInput);
-            }
+            dataGates.Add(intrudersDataOutput);
+            dataGates.Add(filterDataInput);
 
             if (fieldOfView != null)
             {

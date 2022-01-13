@@ -7,9 +7,13 @@ using UnityEngine;
 public class AlarmManager : MonoBehaviour
 {
     internal OrGate gate = new OrGate();
+
+    public Node node;
     public SoundManager soundManager;
     public SoundPreset alarmSound;
     public float alarmTime;
+
+    public bool trigger;
 
     private float alarmStartTime;
     private AudioSource audioSource;
@@ -33,6 +37,11 @@ public class AlarmManager : MonoBehaviour
 
     void Update()
     {
+
+        if(trigger){
+            gate.SetValue(true);
+            trigger = false;
+        }
 
         if (gate.currentValue && Time.time - alarmStartTime > alarmTime)
         {

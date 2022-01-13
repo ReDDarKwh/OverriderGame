@@ -35,6 +35,26 @@ public class StateMachineMemory : MonoBehaviour
         }
     }
 
+    public void Set(string name, Vector3 value)
+    {
+        Set(name, value, MemoryType.Vector);
+    }
+
+    public void Set(string name, GameObject value)
+    {
+        Set(name, value, MemoryType.GameObject);
+    }
+
+    public void Set(string name, Component value)
+    {
+        Set(name, value, MemoryType.Component);
+    }
+
+    public void Set(string name, object value)
+    {
+        Set(name, value, MemoryType.Value);
+    }
+
     public T Get<T>(string name, bool remove = true)
     {
         MemoryValue result;

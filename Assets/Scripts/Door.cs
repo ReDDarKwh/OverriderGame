@@ -50,10 +50,11 @@ public class Door : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (!disableTouchLock)
+        if (!disableTouchLock && !openingAction.outputGate.currentValue)
         {
             if (AILayers == (AILayers | (1 << col.collider.gameObject.layer)))
             {
+                Debug.Log("Door locked");
                 SetIsLocked(col.gameObject.GetComponent<Creature>());
             }
         }

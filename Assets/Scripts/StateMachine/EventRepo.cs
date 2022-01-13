@@ -28,7 +28,8 @@ static class EventRepo
     {
         return (EventData data) =>
         {
-            return Time.time - data.GetVar<Hsm.State>("state").enterTime > v;
+            var t = Time.time;
+            return t - data.GetVar<Hsm.State>("state").enterTime > v;
         };
     }
 

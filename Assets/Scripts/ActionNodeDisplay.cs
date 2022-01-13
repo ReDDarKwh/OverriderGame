@@ -70,6 +70,8 @@ public class ActionNodeDisplay : MonoBehaviour
         }
         inst.node.gate = dataGate;
         inst.node.Init(device, actionid + dataGate.name);
+
+        inst.gameObject.SetActive(!dataGate.isHiddenFromPlayer);
         
         if(dataGate.dataGateType == DataGate.DataGateType.Filter){
             var s = inst.GetComponent<FilterOutputDisplay>();

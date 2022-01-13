@@ -23,6 +23,7 @@ namespace Scripts.Actions
         public Preconnection[] preconnections;
         public int accessLevel;
         public SoundPreset deconnectedSound;
+        public bool runPreconnectionsOnStart;
 
         internal bool playerCanAccess;
         public Device parentDevice;
@@ -51,7 +52,16 @@ namespace Scripts.Actions
                 mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
                 initiated = true;
                 Network.Instance.OnUpdateAccessLevel.AddListener(UpdateAccessLevel);
+
+                if(runPreconnectionsOnStart){
+                    StartCoroutine(DelayedPreconnection());
+                }
             }
+        }
+
+        private IEnumerator DelayedPreconnection(){
+            yield return new WaitForSeconds(5f);
+            ExecutePreConnection();
         }
 
         internal void UpdateAccessLevel(int accessLevelId)

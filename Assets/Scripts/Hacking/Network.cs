@@ -74,6 +74,11 @@ namespace Scripts.Hacking
 
         internal Connection ConnectionStart(Node from, bool soundOn, bool reversed = false)
         {
+            if(from.gate.isHiddenFromPlayer)
+            {
+                return null;
+            }
+
             var connection = Instantiate(connectionPrefab, transform).GetComponent<Connection>();
             connection.soundOn = soundOn;
 
@@ -93,9 +98,13 @@ namespace Scripts.Hacking
         internal void ConnectionEnd(Node from, Node to, Connection connection, bool soundOn = true)
         {
             var connected = from.Connect(to, connection);
-            connection.Connected();
+
+            if(connection){
+                connection.Connected();
+            }
+
             DeselectSelectedNodes();
-            if(!connected){
+            if(!connected && connection){
                 RemoveConnection(connection, soundOn);
             }
         }
@@ -264,7 +273,7 @@ namespace Scripts.Hacking
                 PlayDisconnectionSound();
                 if(selectedNodes != null){
                     foreach(var selectedNode in selectedNodes){
-                        selectedNode.DisconnectAll();
+                        selectedNode.DisconnectAll(true);
                     }
                 }
             }

@@ -12,10 +12,12 @@ class EnemyAlertSuperState : SuperState
 
     public override void Init(StateMachine sm, HSM root)
     {
+        var alerting = AddState(root.GetComponent<AlertingState>(), "alerting");
         var chasing = AddState(root.GetComponent<ChasingState>(), "chasing");
         var go = new GotoSuperState(sm, root, "goto");
         var attacking = AddState(root.GetComponent<AttackingState>(), "attacking");
 
+        alerting.AddEnterHandler(chasing, null);
         chasing.AddHandler("done", go.sub);
         go.sub.AddHandler("isAtPosition", attacking);
 

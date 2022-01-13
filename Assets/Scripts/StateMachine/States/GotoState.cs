@@ -38,33 +38,25 @@ namespace Scripts.States
             if (targetTransform != null)
             {
                 this.targetTransform = targetTransform;
-                creature.nav.SetTarget(this.targetTransform);
+                creature.nav.SetTarget(this.targetTransform, targetRange);
                 isMovingObject = true;
             }
             else
             {
                 this.targetPos = targetPos;
-                creature.nav.SetTarget(this.targetPos);
+                creature.nav.SetTarget(this.targetPos, targetRange);
                 isMovingObject = false;
             }
+        }
 
-            //CheckIsAtPosition(atPositionEventName);
+        public void IsAtPosition(){
+            root.TriggerEvent(atPositionEventName);
         }
 
         public override void StateUpdate()
         {
             var v = lookAtTarget ? (isMovingObject ? targetTransform.position : targetPos) - transform.position : creature.nav.GetDir();
             creature.headDir = v;
-
-            CheckIsAtPosition(atPositionEventName);
-        }
-
-        private void CheckIsAtPosition(string atPositionEventName)
-        {
-            if ((transform.position - (isMovingObject ? targetTransform.position : targetPos)).magnitude < targetRange)
-            {
-                root.TriggerEvent(atPositionEventName);
-            }
         }
 
         public override void StateExit()
