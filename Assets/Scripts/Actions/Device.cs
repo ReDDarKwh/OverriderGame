@@ -21,9 +21,9 @@ namespace Scripts.Actions
         public bool disableInput;
         public RectTransform actionDisplayContainer;
         public Preconnection[] preconnections;
+        public bool runPreconnectionsOnStart;
         public int accessLevel;
         public SoundPreset deconnectedSound;
-        public bool runPreconnectionsOnStart;
 
         internal bool playerCanAccess;
         public Device parentDevice;
@@ -53,7 +53,7 @@ namespace Scripts.Actions
                 initiated = true;
                 Network.Instance.OnUpdateAccessLevel.AddListener(UpdateAccessLevel);
 
-                if(runPreconnectionsOnStart){
+                if(runPreconnectionsOnStart && Debug.isDebugBuild){
                     StartCoroutine(DelayedPreconnection());
                 }
             }
@@ -187,8 +187,8 @@ namespace Scripts.Actions
         {
             foreach (var preconnection in preconnections)
             {
-                var fromNode = nodesPerAction[preconnection.fromAction][preconnection.fromNodeName];
-                var toNode = nodesPerAction[preconnection.toAction][preconnection.toNodeName];
+                var fromNode = (preconnection.fromDevice ?? this).nodesPerAction[preconnection.fromAction][preconnection.fromNodeName];
+                var toNode = (preconnection.toDevice ?? this).nodesPerAction[preconnection.toAction][preconnection.toNodeName];
                 Network.Instance.Connect(fromNode, toNode, false);
             }
         }

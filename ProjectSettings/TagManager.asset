@@ -12,6 +12,7 @@ TagManager:
   - MousePos
   - Paused
   - Cover
+  - Navmesh
   layers:
   - Default
   - TransparentFX
