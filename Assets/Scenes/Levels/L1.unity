@@ -15083,6 +15083,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8954240446361566460, guid: 554722a43f09c944181fc0dc8ee06bad,
         type: 3}
+      propertyPath: gizmosOffset.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954240446361566460, guid: 554722a43f09c944181fc0dc8ee06bad,
+        type: 3}
       propertyPath: preconnections.Array.data[0].toDevice
       value: 
       objectReference: {fileID: 1854903676}
