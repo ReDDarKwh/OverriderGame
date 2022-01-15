@@ -9,6 +9,7 @@ using Vectrosity;
 using TMPro;
 using Network = Scripts.Hacking.Network;
 using UnityEngine.Events;
+using UnityEditor;
 
 namespace Scripts.Actions
 {
@@ -206,6 +207,12 @@ namespace Scripts.Actions
         void OnDisable()
         {
             DisconnectAllForce();
+        }
+
+
+        void OnDrawGizmos(){
+
+            Handles.Label(transform.position, accessLevel.ToString(), new GUIStyle{alignment = TextAnchor.LowerCenter});
         }
     }
 }
