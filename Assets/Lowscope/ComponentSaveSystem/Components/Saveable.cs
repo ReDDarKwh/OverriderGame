@@ -50,7 +50,7 @@ namespace Lowscope.Saving.Components
         }
 
         private bool hasLoaded;
-        private bool hasStateReset;
+        //private bool hasStateReset;
         private bool hasIdentification;
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace Lowscope.Saving.Components
             // Since the game uses a new save game, reset loadOnce and hasLoaded
             loadOnce = false;
             hasLoaded = false;
-            hasStateReset = true;
+            //hasStateReset = true;
         }
 
         // Request is sent by the Save System
@@ -403,7 +403,7 @@ namespace Lowscope.Saving.Components
                 }
             }
 
-            hasStateReset = false;
+            //hasStateReset = false;
         }
 
         // Request is sent by the Save System

@@ -10,7 +10,7 @@ public class SwitchAction : Scripts.Actions.Action, ISaveable
     private float lastOnTime;
 
     [Serializable]
-    public struct SaveData
+    public struct SwitchSaveData
     {
         public bool isOn;
         public float timeOn;
@@ -19,14 +19,14 @@ public class SwitchAction : Scripts.Actions.Action, ISaveable
     public override void OnLoad(string data)
     {
         base.OnLoad(data);
-        var sd = JsonUtility.FromJson<SaveData>(data);
+        var sd = JsonUtility.FromJson<SwitchSaveData>(data);
         actionGate.SetValue(sd.isOn);
         lastOnTime = Time.time - sd.timeOn;
     }
 
     public override string OnSave()
     {
-        return JsonUtility.ToJson(new SaveData {
+        return JsonUtility.ToJson(new SwitchSaveData {
                 isOn = actionGate.currentValue,
                 timeOn = Time.time - lastOnTime
             });

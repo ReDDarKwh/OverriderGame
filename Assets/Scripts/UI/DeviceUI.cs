@@ -45,7 +45,7 @@ namespace Scripts.UI
         private Vector3 diff;
         private bool isMoving;
         private Vector3 pos;
-        private bool isHovered;
+        //private bool isHovered;
         public Color lineColor;
         
         void Start()
@@ -113,13 +113,13 @@ namespace Scripts.UI
 
         public void OnHover()
         {
-            isHovered = true;
+            //isHovered = true;
             selectionCircle.enabled = true;
         }
 
         public void OnHoverExit()
         {
-            isHovered = false;
+            //isHovered = false;
             selectionCircle.enabled = false;
         }
 

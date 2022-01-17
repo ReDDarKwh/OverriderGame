@@ -120,7 +120,6 @@ public class PathFindingNav: Pathfinding.AIPath, ISaveable
     }
 
     public override void OnTargetReached(){
-        Debug.LogWarning("Path Reached");
         targetReachedEvent.Invoke();
     }
 

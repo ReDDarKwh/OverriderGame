@@ -2,13 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using System.Xml.Serialization;
-using System.IO;
 using System;
-using System.Reflection;
-using Newtonsoft.Json;
-using UnityEngine.SceneManagement;
-using Scripts.Actions;
 using Lowscope.Saving;
 
 namespace Scripts.Hacking

@@ -1130,9 +1130,9 @@ MonoBehaviour:
   disableInput: 0
   actionDisplayContainer: {fileID: 640620665946886653}
   preconnections: []
+  runPreconnectionsOnStart: 0
   accessLevel: 0
   deconnectedSound: {fileID: 11400000, guid: 92067fb7a0caf044fa3a5ffb30cd3316, type: 2}
-  runPreconnectionsOnStart: 0
   parentDevice: {fileID: 0}
 --- !u!114 &8355662138841550960
 MonoBehaviour:
