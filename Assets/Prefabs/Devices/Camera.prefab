@@ -246,7 +246,7 @@ PrefabInstance:
     - target: {fileID: 4089401180447782002, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: m_Name
-      value: CameraDeviceWrap Variant
+      value: Camera
       objectReference: {fileID: 0}
     - target: {fileID: 4089401180447782003, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
@@ -506,7 +506,7 @@ PrefabInstance:
     - target: {fileID: 8355662138841550960, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: uniqueId
-      value: CameraDeviceWrap Variant_10313d1e-a7d1-40fd-8e50-e20745ba32b2
+      value: Camera_187e1404-40b0-42a9-85eb-3faa699aedc1
       objectReference: {fileID: 0}
     - target: {fileID: 8639037805424752173, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
@@ -716,3 +716,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4869855009101267282}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7203463838682831628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887092870591575328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ef85d6cf699394fbadca6fca7adf50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentTag: Network

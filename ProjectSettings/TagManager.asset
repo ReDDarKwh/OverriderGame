@@ -13,6 +13,8 @@ TagManager:
   - Paused
   - Cover
   - Navmesh
+  - Waypoints
+  - LevelItems
   layers:
   - Default
   - TransparentFX

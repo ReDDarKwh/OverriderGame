@@ -13,4 +13,7 @@ public struct Objective
 
     // type goToPosition only
     public TriggerZone triggerZone;
+
+    // type Interact only
+    public Interactable interactable;
 }

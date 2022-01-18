@@ -68,7 +68,6 @@ MonoBehaviour:
   openingAction: {fileID: 8919092600668445285}
   obstacle: {fileID: 4398630482785621332}
   uniqueId: {fileID: 5068457013782638350}
-  enemyNoticeDoorOpenDistance: 0
   aiUnlockDistance: 0.8
   lockTime: 60
   doorLayerMask:
@@ -135,7 +134,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0036958158, y: 0.21145129}
+  m_Offset: {x: 0, y: 0.21145129}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -146,7 +145,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7865135, y: 0.22559404}
+  m_Size: {x: 0.94, y: 0.26}
   m_EdgeRadius: 0
 --- !u!114 &5172126676850860480
 MonoBehaviour:
@@ -268,7 +267,7 @@ MonoBehaviour:
   AILayers:
     serializedVersion: 2
     m_Bits: 33562624
-  doorDamage: 1000000
+  doorDamage: 5
 --- !u!61 &3689620147346789885
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -380,7 +379,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0036958158, y: 0.21145129}
+  m_Offset: {x: 0, y: 0.21145129}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -391,7 +390,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7865135, y: 0.22559404}
+  m_Size: {x: 0.94, y: 0.26}
   m_EdgeRadius: 0
 --- !u!114 &5841620256236743260
 MonoBehaviour:

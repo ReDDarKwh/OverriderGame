@@ -1,5 +1,6 @@
 public enum ObjectiveType
 {
     Kill,
-    GoToPosition
+    GoToPosition,
+    Interact
 }

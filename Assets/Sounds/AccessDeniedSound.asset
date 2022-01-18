@@ -17,5 +17,6 @@ MonoBehaviour:
   playOnAwake: 1
   pitch: 2.08
   volume: 0.151
-  spacialBlend: 0.757
+  spacialBlend: 1
   priority: 128
+  ignorePause: 0

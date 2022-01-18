@@ -150,10 +150,11 @@ public class PathFindingNav: Pathfinding.AIPath, ISaveable
                     var door = hit.collider.GetComponent<Door>();
                     if (door != null)
                     {
-                        return door.doorController == doorController;
+                        if(door.doorController == doorController){
+                            return true;
+                        }
                     }
                 }
-
                 lastCorner = c;
             }
         }

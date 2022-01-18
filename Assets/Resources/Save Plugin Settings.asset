@@ -32,4 +32,4 @@ MonoBehaviour:
   syncSaveGameKey: 0
   syncLoadGameKey: 290
   wipeActiveSceneData: 287
-  showSaveFileUtilityLog: 1
+  showSaveFileUtilityLog: 0

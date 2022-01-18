@@ -11,7 +11,6 @@ public class DoorController : MonoBehaviour
     public OpeningAction openingAction;
     public NavMeshObstacle obstacle;
     public UniqueId uniqueId;
-    public float enemyNoticeDoorOpenDistance;
     public float aiUnlockDistance;
 
     public float lockTime;

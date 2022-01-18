@@ -105,7 +105,7 @@ MonoBehaviour:
   AILayers:
     serializedVersion: 2
     m_Bits: 8192
-  doorDamage: 1000000
+  doorDamage: 5
 --- !u!61 &255170172
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -193,12 +193,12 @@ PrefabInstance:
     - target: {fileID: 468141507449305728, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
         type: 3}
       propertyPath: m_Size.x
-      value: 1.25
+      value: 1.59
       objectReference: {fileID: 0}
     - target: {fileID: 468141507449305728, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.0054922104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1280579680355597824, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
         type: 3}
@@ -473,12 +473,12 @@ PrefabInstance:
     - target: {fileID: 6016235028204844351, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
         type: 3}
       propertyPath: m_Size.x
-      value: 1.25
+      value: 1.59
       objectReference: {fileID: 0}
     - target: {fileID: 6016235028204844351, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.0054922104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6885297882377714113, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
         type: 3}

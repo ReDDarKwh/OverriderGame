@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObjectiveManager : MonoBehaviour
 {
@@ -50,6 +51,18 @@ public class ObjectiveManager : MonoBehaviour
                         objective.triggerZone.playerHasEntered -= handler;
                     };
                 objective.triggerZone.playerHasEntered += handler;
+                break;
+            
+             case ObjectiveType.Interact:
+                UnityAction<Creature> interactHandler = null;       
+                interactHandler = (Creature creature) =>
+                    {
+                        if(creature == null){
+                            CompleteObjective(objective);
+                            objective.interactable.onUsedWithCreature.RemoveListener(interactHandler);
+                        }
+                    };
+                objective.interactable.onUsedWithCreature.AddListener(interactHandler);
                 break;
         }
     }

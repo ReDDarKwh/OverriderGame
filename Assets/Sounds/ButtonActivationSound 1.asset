@@ -15,7 +15,8 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: 49744445769705c4987ab3de44688f4a, type: 3}
   loop: 0
   playOnAwake: 1
-  pitch: 0.75
-  volume: 0.343
-  spacialBlend: 0.757
+  pitch: 0.47
+  volume: 0.123
+  spacialBlend: 1
   priority: 128
+  ignorePause: 0

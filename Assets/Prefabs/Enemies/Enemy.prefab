@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 5673978973498603161}
   - component: {fileID: 3905597657857341834}
   - component: {fileID: 8971431264771819956}
+  - component: {fileID: 4706200783122469474}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Untagged
@@ -475,7 +476,7 @@ MonoBehaviour:
     moveSpeed: 1
   - name: patrolling
     targetRange: 0.2
-    moveSpeed: 0.5
+    moveSpeed: 0.8
   - name: investigatingNoise
     targetRange: 1.5
     moveSpeed: 1.5
@@ -683,8 +684,8 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 4294967295
     useGraphRaycasting: 0
-  traversableTags: -3
-  tagPenalties: 00000000b80b0000d00700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  traversableTags: -7
+  tagPenalties: 00000000b80b0000d0070000e8030000e8030000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
 --- !u!114 &5673978973498603161
@@ -730,9 +731,9 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0
-  pickNextWaypointDist: 0.4
+  pickNextWaypointDist: 0.2
   endReachedDistance: 0.2
-  alwaysDrawGizmos: 1
+  alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
@@ -782,6 +783,19 @@ MonoBehaviour:
   doorLayer:
     serializedVersion: 2
     m_Bits: 67108864
+--- !u!114 &4706200783122469474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6725844347703517079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ef85d6cf699394fbadca6fca7adf50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentTag: Network
 --- !u!1 &8713028075916982006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,6 +1366,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7404561685869725619, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7458872107460082566, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: sceneName
@@ -1436,6 +1455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112609292630850992, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8208964719251520515, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}

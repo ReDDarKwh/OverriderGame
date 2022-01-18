@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3652741920752190094}
+  - component: {fileID: 3127847494829443137}
   m_Layer: 0
   m_Name: SecurityRoomKeyboard
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &3127847494829443137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652741920752190092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ef85d6cf699394fbadca6fca7adf50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentTag: LevelItems
 --- !u!1 &3652741920948192280
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1603179287055566610, guid: ed56d6bad7eb9084e8e9197af30aed43,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
