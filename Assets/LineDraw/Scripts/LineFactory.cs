@@ -22,7 +22,7 @@ public class LineFactory : MonoBehaviour
     private int currentIndex = 0;
     private bool isInitiated;
 
-    void Start()
+    void Awake()
     {
         Init();
     }

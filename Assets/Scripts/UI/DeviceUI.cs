@@ -58,8 +58,6 @@ namespace Scripts.UI
 
             mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
             selected = disableClose;
-            UpdateVisible();
-
             pos = actionWindow.transform.position;
 
             if (device.parentDevice != null)
@@ -92,6 +90,7 @@ namespace Scripts.UI
                 accessRequiredImage.color = Network.Instance.accessLevels[device.accessLevel];
             }    
 
+            UpdateVisible();
             UpdateAccessLevelUI();
             device.OnPlayerCanAccess.AddListener(UpdateAccessLevelUI);
         }
@@ -127,18 +126,13 @@ namespace Scripts.UI
         {
             OnHoverExit();
 
-            if (line != null)
+            if (line)
             {
                 if (selected)
                 {
-                    line.gameObject.SetActive(true);
                     line.start = transform.position;
                     line.end = device.actionDisplayContainer.position +
                     new Vector3(device.actionDisplayContainer.rect.size.x / 2, -device.actionDisplayContainer.rect.size.y / 2);
-                }
-                else
-                {
-                    line.gameObject.SetActive(false);
                 }
             }
         }
@@ -167,11 +161,19 @@ namespace Scripts.UI
                 SetIsMoving(false);
 
                 UpdateAccessLevelUI();
+
+                if(line){
+                    line.gameObject.SetActive(true);
+                }
             }
             else
             {
                 actionsToolbar.Hide();
                 actionsContainer.Hide();
+
+                if(line){
+                    line.gameObject.SetActive(false);
+                }
             }
         }
 

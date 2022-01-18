@@ -8,6 +8,7 @@ public class PlayerInteractor : MonoBehaviour
     public SpriteRenderer selectionSprite;
     public Interactable interactable;
     public Device device;
+    public LayerMask blockingLayers;
     public float cooldownTime;
     private bool playerInRange;
     private float lastTime;
@@ -17,6 +18,7 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && playerInRange)
         {
+            
             if (!device || device.playerCanAccess)
             {
                 interactable.Use(null);
@@ -32,9 +34,10 @@ public class PlayerInteractor : MonoBehaviour
     void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player")
-        {
-            playerInRange = true;
-            selectionSprite.enabled = true;
+        {   
+            var hit = false;//Physics2D.Raycast(collider.transform.position, transform.position - collider.transform.position, 1, blockingLayers).collider != null;
+            playerInRange = !hit;
+            selectionSprite.enabled = !hit;
         };
     }
 
