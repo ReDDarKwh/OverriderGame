@@ -12,9 +12,13 @@ public class Interactable : MonoBehaviour
     public InteractableUsedEvent onUsedWithCreature = new InteractableUsedEvent();
     public UnityEvent onUsed;
     public UnityEvent onError;
+    internal bool isDefective;
 
     internal void Use(Creature creature)
     {
+        if(isDefective){
+            Error();
+        }
         onUsedWithCreature.Invoke(creature);
         onUsed.Invoke();
     }

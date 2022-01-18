@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Lowscope.Saving;
 using UnityEngine;
 
 public class SwitchAction : Scripts.Actions.Action, ISaveable
 {
     public float onTime;
+
+    public Interactable interactable;
+
     private float lastOnTime;
 
     [Serializable]
@@ -48,6 +52,10 @@ public class SwitchAction : Scripts.Actions.Action, ISaveable
     
     void Update()
     {
+        if(interactable){
+            interactable.isDefective = !outputGate.children.Any();
+        }
+
         if (Time.time - lastOnTime > onTime && actionGate.currentValue)
         {
             actionGate.SetValue(false);

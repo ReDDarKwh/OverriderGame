@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Scripts.Actions;
 using UnityEngine;
 
-public class PlayerInteractable : MonoBehaviour
+public class PlayerInteractor : MonoBehaviour
 {
     public SpriteRenderer selectionSprite;
     public Interactable interactable;
