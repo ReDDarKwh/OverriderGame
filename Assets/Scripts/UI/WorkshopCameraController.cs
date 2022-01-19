@@ -80,13 +80,12 @@ public class WorkshopCameraController : MonoBehaviour
             isFocusingOnPlayer = true;
             lastFocusTime = Time.time;
             focusTarget = target.position;
-
         }
 
         if(isFocusingOnPlayer){
             var t = new Vector3(focusTarget.x, focusTarget.y, transform.position.z);
-            transform.position = Vector3.SmoothDamp(transform.position, t , ref currentFocusPlayerVel, focusPlayerSmoothTime, focusPlayerMaxSpeed);
-            this.cam.orthographicSize = Mathf.SmoothDamp(this.cam.orthographicSize, defaultOrthographicSize, ref currentFocusPlayerZoomVel, focusPlayerZoomSmoothTime, focusPlayerZoomMaxSpeed);
+            transform.position = Vector3.SmoothDamp(transform.position, t , ref currentFocusPlayerVel, focusPlayerSmoothTime, focusPlayerMaxSpeed, Time.unscaledDeltaTime);
+            this.cam.orthographicSize = Mathf.SmoothDamp(this.cam.orthographicSize, defaultOrthographicSize, ref currentFocusPlayerZoomVel, focusPlayerZoomSmoothTime, focusPlayerZoomMaxSpeed, Time.unscaledDeltaTime);
 
             if((transform.position - t).magnitude < 0.1f && this.cam.orthographicSize - defaultOrthographicSize < 0.1){
                 isFocusingOnPlayer = false;

@@ -136,9 +136,12 @@ namespace Scripts.Hacking
 
             if (selectedNodes != null)
             {
-                if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButton(1))
+                if (Input.GetButtonDown("HideHacking"))
                 {
-                    //DeselectSelectedNodes(true, true);
+                    if(isConnecting){
+                        RemoveConnections();
+                    }   
+                    DeselectSelectedNodes();
                 }
 
                 if(Input.GetMouseButtonUp(0) && selectedNodeFromHUD != null){

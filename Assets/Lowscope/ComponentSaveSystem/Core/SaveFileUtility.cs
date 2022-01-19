@@ -102,9 +102,9 @@ namespace Lowscope.Saving.Core
         {
             string data = "";
 
-            using (var reader = new BinaryReader(File.Open(savePath, FileMode.Open)))
+            using (var reader = new StreamReader(File.Open(savePath, FileMode.Open)))
             {
-                data = reader.ReadString();
+                data = reader.ReadToEnd();
             }
 
             if (string.IsNullOrEmpty(data))
@@ -210,7 +210,7 @@ namespace Lowscope.Saving.Core
 
             saveGame.OnWrite(saveSlot);
 
-            using (var writer = new BinaryWriter(File.Open(savePath, FileMode.Create)))
+            using (var writer = new StreamWriter(File.Open(savePath, FileMode.Create)))
             {
                 var jsonString = JsonUtility.ToJson(saveGame, SaveSettings.Get().useJsonPrettyPrint);
 

@@ -10,10 +10,11 @@ using TMPro;
 using Network = Scripts.Hacking.Network;
 using UnityEngine.Events;
 using UnityEditor;
+using Lowscope.Saving;
 
 namespace Scripts.Actions
 {
-    public class Device : MonoBehaviour
+    public class Device : MonoBehaviour, ISaveable
     {
         public string deviceName;
         public GameObject ActionNodePrefab;
@@ -39,9 +40,15 @@ namespace Scripts.Actions
         internal UnityEvent OnPlayerCanAccess = new UnityEvent();
 
         // Start is called before the first frame update
-        void Start()
+        IEnumerator Start()
         {
             Init();
+            yield return 0;
+            yield return 0;
+            yield return 0;
+            if(runPreconnectionsOnStart && Debug.isDebugBuild){
+                StartCoroutine(DelayedPreconnection());
+            }
         }
 
         public void Init()
@@ -53,10 +60,6 @@ namespace Scripts.Actions
                 mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
                 initiated = true;
                 Network.Instance.OnUpdateAccessLevel.AddListener(UpdateAccessLevel);
-
-                if(runPreconnectionsOnStart && Debug.isDebugBuild){
-                    StartCoroutine(DelayedPreconnection());
-                }
             }
         }
 
@@ -213,6 +216,21 @@ namespace Scripts.Actions
         void OnDrawGizmos(){
 
             Handles.Label(transform.position, accessLevel.ToString(), new GUIStyle{alignment = TextAnchor.LowerCenter});
+        }
+
+        public string OnSave()
+        {
+            return "s";
+        }
+
+        public void OnLoad(string data)
+        {
+            runPreconnectionsOnStart = false;
+        }
+
+        public bool OnSaveCondition(bool isLevelSave)
+        {
+            return true;
         }
     }
 }

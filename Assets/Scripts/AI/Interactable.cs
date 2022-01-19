@@ -18,8 +18,9 @@ public class Interactable : MonoBehaviour
     {
         if(isDefective){
             Error();
+            onUsedWithCreature.Invoke(creature);
+            return;
         }
-        onUsedWithCreature.Invoke(creature);
         onUsed.Invoke();
     }
     internal void Error()

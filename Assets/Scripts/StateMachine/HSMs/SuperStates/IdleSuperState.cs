@@ -25,5 +25,9 @@ class IdleSuperState : SuperState
         start.AddEnterHandler(stationnary.sub, (EventData data) => {
             return root.GetComponent<PatrollingState>().stationnaryTransform != null;
         });
+
+        stationnary.sub.AddHandler("patrol", patrolling.sub, TransitionKind.External, (EventData data) => {
+            root.GetComponent<PatrollingState>().stationnaryTransform  = null;
+        });
     }
 }

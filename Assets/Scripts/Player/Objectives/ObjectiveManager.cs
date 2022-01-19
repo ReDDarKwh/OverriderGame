@@ -45,12 +45,14 @@ public class ObjectiveManager : MonoBehaviour
                 objective.target.hasDied += handler;
                 break;
             case ObjectiveType.GoToPosition:
-                handler = (object sender, EventArgs e) =>
+
+                UnityAction gotoPosHandler = null;   
+                gotoPosHandler = () =>
                     {
                         CompleteObjective(objective);
-                        objective.triggerZone.playerHasEntered -= handler;
+                        objective.triggerZone.playerHasEntered.RemoveListener(gotoPosHandler);
                     };
-                objective.triggerZone.playerHasEntered += handler;
+                objective.triggerZone.playerHasEntered.AddListener(gotoPosHandler);
                 break;
             
              case ObjectiveType.Interact:

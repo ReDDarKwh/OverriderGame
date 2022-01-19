@@ -30,8 +30,8 @@ namespace Scripts.Actions
                 .Select(x => TargetInView(x.gameObject))
                 .Where(x => x != null);
             intrudersDataOutput.SetData(targets == null ? null : targets);
-            intrudersDataOutput.SetValue(targets != null && targets.Count() > 0);
-            actionGate.SetValue(targets.Count() != 0);
+            intrudersDataOutput.SetValue(targets != null && targets.Any());
+            actionGate.SetValue(targets.Any());
 
             if (fieldOfView != null)
             {

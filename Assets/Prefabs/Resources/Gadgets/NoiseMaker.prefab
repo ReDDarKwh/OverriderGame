@@ -296,6 +296,8 @@ MonoBehaviour:
     monoBehaviour: {fileID: 7032644804454462247}
   - identifier: SavePosition-3ca668
     monoBehaviour: {fileID: 1806593368012046809}
+  - identifier: Device-449d29
+    monoBehaviour: {fileID: 7572073477118588330}
   saveIdentification: 
   priority: 0
   sceneName: 

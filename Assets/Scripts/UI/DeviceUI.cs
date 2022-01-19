@@ -34,10 +34,13 @@ namespace Scripts.UI
         public bool disableClose;
         public bool disableAnchor;
         public bool UIDestroyable;
-        public bool isPlayerAccessable = true;
+        public bool defaultIsPlayerAccessable = true;
+        public Color lineColor;
 
+        internal bool isPlayerAccessable = true;
         internal bool selected;
         internal bool isAnchored;
+        internal bool isVisible = true;
 
         private LineFactory lineFactory;
         private Line line;
@@ -45,9 +48,10 @@ namespace Scripts.UI
         private Vector3 diff;
         private bool isMoving;
         private Vector3 pos;
+        private bool wasSelected;
+
         //private bool isHovered;
-        public Color lineColor;
-        
+
         void Start()
         {
 
@@ -56,6 +60,7 @@ namespace Scripts.UI
                 device.Init();
             }
 
+            isPlayerAccessable = defaultIsPlayerAccessable;
             mousePos = GameObject.FindGameObjectWithTag("MousePos").transform;
             selected = disableClose;
             pos = actionWindow.transform.position;
@@ -134,6 +139,34 @@ namespace Scripts.UI
                     line.end = device.actionDisplayContainer.position +
                     new Vector3(device.actionDisplayContainer.rect.size.x / 2, -device.actionDisplayContainer.rect.size.y / 2);
                 }
+            }
+
+            if(Input.GetButtonDown("HideHacking")){
+                ToggleVisible();
+            }
+        }
+
+        private void ToggleVisible()
+        {
+            isVisible = !isVisible; 
+            
+            if(isVisible){
+                isPlayerAccessable = defaultIsPlayerAccessable;
+                if(!disableLine && isPlayerAccessable){
+                    deviceCircle.gameObject.SetActive(true);
+                }  
+
+                if(wasSelected && !selected){
+                    ToggleSelected();
+                }
+
+            } else {
+                isPlayerAccessable = false;
+                wasSelected = selected;
+                if(selected){
+                    ToggleSelected();
+                }
+                deviceCircle.gameObject.SetActive(false); 
             }
         }
 

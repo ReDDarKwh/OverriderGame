@@ -1,21 +1,16 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TriggerZone : MonoBehaviour
 {
-    public event EventHandler playerHasEntered;
+    public UnityEvent playerHasEntered;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player")
         {
-            OnEnter(EventArgs.Empty);
+            playerHasEntered.Invoke();
         }
-    }
-
-    protected virtual void OnEnter(EventArgs e)
-    {
-        EventHandler handler = playerHasEntered;
-        handler?.Invoke(this, e);
     }
 }

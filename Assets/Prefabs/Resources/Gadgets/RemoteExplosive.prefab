@@ -361,6 +361,8 @@ MonoBehaviour:
     monoBehaviour: {fileID: 7061072599311032807}
   - identifier: ParentSetter-63a228
     monoBehaviour: {fileID: 1382367507980638319}
+  - identifier: Device-f73f65
+    monoBehaviour: {fileID: 156271097128408870}
   saveIdentification: 
   priority: 0
   sceneName: 

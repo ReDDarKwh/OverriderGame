@@ -58,7 +58,6 @@ public class Connection : MonoBehaviour
     internal bool isSelectedForce;
     internal bool isSelectedForDeleteForce;
     
-    private Transform lastStartPos;
     private Transform lastEndPos;
     private IEnumerable<electricHumSetting> electricHum;
     private bool hasAnimationPlayed;
@@ -115,9 +114,16 @@ public class Connection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         var startPos = GetPos(start);
         var endPos = GetPos(end);
         var isSelected = IsSelected();
+
+        if(!GetRootNode().deviceUI?.isVisible ?? false){
+            line.points3.Clear();
+            line.Draw3D();
+            return;
+        }
 
         if (electricHum != null)
         {
@@ -199,8 +205,6 @@ public class Connection : MonoBehaviour
         }
 
         line.Draw3D();
-
-        lastStartPos = startPos;
         lastEndPos = endPos;
     }
 

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7686e087ccc6a7f4993a0ebd4e968eee, type: 3}
   m_Name: AccessDeniedSound
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 8201e290b3d2e2648875892ff9d4508b, type: 3}
+  audioClip: {fileID: 8300000, guid: ed4c49bdfbea34642a7d993f2789e795, type: 3}
   loop: 0
   playOnAwake: 1
-  pitch: 2.08
+  pitch: 2.02
   volume: 0.151
   spacialBlend: 1
   priority: 128

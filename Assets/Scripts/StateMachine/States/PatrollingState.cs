@@ -81,8 +81,7 @@ namespace Scripts.States
                 {
                     Init();
                 }
-                nextPoint = GetNextPoint();
-
+                nextPoint = waypoints[0].position;
             }
             else
             {
