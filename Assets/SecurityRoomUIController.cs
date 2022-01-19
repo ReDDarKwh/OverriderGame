@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using Scripts.Hacking;
-
+using UnityEngine;
+using Network = Scripts.Hacking.Network;
 
 namespace Scripts.UI 
 {
@@ -19,7 +20,9 @@ namespace Scripts.UI
         // Update is called once per frame
         void Update()
         {
-            
+            if(Input.GetButtonDown("HideHacking")){
+                accessLevelDotImage.enabled = !accessLevelDotImage.enabled;
+            }
         }
     }
 }

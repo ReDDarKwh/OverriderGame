@@ -48,7 +48,7 @@ public class PathFindingNav: Pathfinding.AIPath, ISaveable
     public Vector3 GetDir()
     {
         if(IsMoving())
-            lastDesiredVelocity = desiredVelocity;
+            lastDesiredVelocity = velocity2D;
 
         return lastDesiredVelocity;
     }

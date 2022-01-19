@@ -21,6 +21,7 @@ public class Interactable : MonoBehaviour
             onUsedWithCreature.Invoke(creature);
             return;
         }
+        onUsedWithCreature.Invoke(creature);
         onUsed.Invoke();
     }
     internal void Error()

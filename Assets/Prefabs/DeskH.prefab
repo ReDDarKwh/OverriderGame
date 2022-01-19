@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3854470782570315115}
   - component: {fileID: 2738805507746599387}
   m_Layer: 23
-  m_Name: Desk0
+  m_Name: DeskH
   m_TagString: Cover
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
