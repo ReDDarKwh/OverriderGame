@@ -457,6 +457,11 @@ PrefabInstance:
       propertyPath: saveIdentification
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8782331770787400712, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
+        type: 3}
+      propertyPath: m_InstanceId
+      value: -363834
+      objectReference: {fileID: 0}
     - target: {fileID: 8919092600668445285, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
         type: 3}
       propertyPath: doors.Array.data[0].openPositionOffset.x

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 255170173}
   - component: {fileID: 255170172}
   - component: {fileID: 255170171}
+  - component: {fileID: 805617201208755317}
   m_Layer: 26
   m_Name: Door (1)
   m_TagString: Untagged
@@ -158,6 +159,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75230646, y: 0.1270292}
   m_EdgeRadius: 0
+--- !u!114 &805617201208755317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255170169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000319de123f313d09d
+  m_ShapePath:
+  - {x: -0.39068413, y: -0.061649323, z: 0}
+  - {x: -0.39049494, y: 0.062351227, z: 0}
+  - {x: 0.37480152, y: 0.06315613, z: 0}
+  - {x: 0.37499863, y: -0.06252766, z: 0}
+  m_ShapePathHash: -1132261417
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 227152
 --- !u!1001 &4792512572352384822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -639,6 +667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: saveIdentification
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8782331770787400712, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
+        type: 3}
+      propertyPath: m_InstanceId
+      value: -366252
       objectReference: {fileID: 0}
     - target: {fileID: 8919092600668445285, guid: 8e5aaa6b63418ce4b8a9cb93ed268c56,
         type: 3}

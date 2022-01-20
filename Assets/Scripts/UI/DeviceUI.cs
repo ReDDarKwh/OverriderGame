@@ -267,7 +267,7 @@ namespace Scripts.UI
 
         internal void UpdateAccessLevelUI()
         {
-            if (device.playerCanAccess)
+            if (device.playerHasRequiredSecurityAccess)
             {
                 AccessDeniedDisplay.SetActive(false);
                 title.SetText(device.deviceName);

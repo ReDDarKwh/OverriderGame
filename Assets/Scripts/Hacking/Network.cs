@@ -109,11 +109,45 @@ namespace Scripts.Hacking
             }
         }
 
+        internal void CancelLastConnections()
+        {
+            DeselectSelectedNodes();
+
+            if(connectionBySelectedNode == null || !connectionBySelectedNode.Any()){
+                return;
+            }
+
+            foreach(var keyval in connectionBySelectedNode){
+                keyval.Value.start.Disconnect(keyval.Value.end);
+                SelectNode(keyval.Key);
+            }
+
+            StartOrEndConnect(null);
+        }
+
         private void RemoveConnection(Connection connection, bool soundOn = true)
         {
             if(soundOn)
                 connection.PlayDisconnectionSound();
             Destroy(connection.gameObject);
+        }
+
+        internal bool RequestDeviceDefaultIOConnection(Device device)
+        {
+            var ioAction = isConnecting? device.defaultIO.inputAction : device.defaultIO.outputAction;
+            if(!ioAction || !device.playerHasRequiredSecurityAccess){
+                return false;
+            }
+
+            var node = isConnecting? ioAction.inputGate.node: ioAction.outputGate.node;
+            
+            if(!isConnecting){
+                DeselectSelectedNodes();
+                SelectNode(node);
+            }
+
+            StartOrEndConnect(node);
+            return true;
         }
 
         private void RemoveSelectedNodes()
@@ -192,12 +226,15 @@ namespace Scripts.Hacking
 
         public void RemoveConnections()
         {
-            isConnecting = false;     
+            if(isConnecting){
+                isConnecting = false;     
+                foreach(var c in connectionBySelectedNode.Values){
+                    c.PlayDisconnectionSound();
+                    Destroy(c.gameObject);
+                }
 
-            foreach(var c in connectionBySelectedNode.Values){
-                c.PlayDisconnectionSound();
-                Destroy(c.gameObject);
-            }            
+                connectionBySelectedNode = null; 
+            }
         }
 
         public void DeselectNode(Node node)
@@ -313,7 +350,7 @@ namespace Scripts.Hacking
 
         public void StartOrEndConnect(Node node)
         {
-            node.SetMoving(false, Vector3.zero);
+            node?.SetMoving(false, Vector3.zero);
 
             if (isConnecting)
             {
@@ -403,9 +440,7 @@ namespace Scripts.Hacking
 
             if (pointerEvent.button == PointerEventData.InputButton.Right)
             {
-                if(isConnecting){
-                    RemoveConnections();
-                }
+                RemoveConnections();
             }
         }
 

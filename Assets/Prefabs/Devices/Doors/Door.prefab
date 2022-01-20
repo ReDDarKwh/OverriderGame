@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 3689620147346789885}
   - component: {fileID: 3689620147346789884}
   - component: {fileID: 7831113597745220309}
+  - component: {fileID: 8782331770787400712}
   m_Layer: 26
   m_Name: Door
   m_TagString: Untagged
@@ -333,6 +334,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableLevelSave: 0
+--- !u!114 &8782331770787400712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3689620147346789874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000319de123f313d09d
+  m_ShapePath:
+  - {x: -0.39068413, y: -0.061649323, z: 0}
+  - {x: -0.39049494, y: 0.062351227, z: 0}
+  - {x: 0.37480152, y: 0.06315613, z: 0}
+  - {x: 0.37499863, y: -0.06252766, z: 0}
+  m_ShapePathHash: -1132261417
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 370964
 --- !u!1 &6411344215655945897
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +567,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
+      propertyPath: defaultIO.inputAction
+      value: 
+      objectReference: {fileID: 8919092600668445285}
+    - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: defaultIO.outputAction
+      value: 
+      objectReference: {fileID: 8919092600668445285}
+    - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: defaultActionNode.action
+      value: 
+      objectReference: {fileID: 8919092600668445285}
+    - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
       propertyPath: runPreconnectionsOnStart
       value: 1
       objectReference: {fileID: 0}
@@ -546,6 +589,26 @@ PrefabInstance:
         type: 3}
       propertyPath: preconnections.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: defaultActionNode.nodeName
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: defaultActionNode.inputAction
+      value: 
+      objectReference: {fileID: 8919092600668445285}
+    - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: defaultActionNode.outputAction
+      value: 
+      objectReference: {fileID: 6915836721690139276}
+    - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: defaultActionNode.inputNodeName
+      value: Input
       objectReference: {fileID: 0}
     - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}

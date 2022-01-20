@@ -161,7 +161,7 @@ public class Connection : MonoBehaviour
             });
             UpdateLineColor();
         }
-        else if (start.deviceUI?.device.playerCanAccess ?? true)
+        else if (start.deviceUI?.device.playerHasRequiredSecurityAccess ?? true)
         {
             var p = new List<Vector3>();
             for (var i = 0; i < selfConnectPointCount; i++)
@@ -232,7 +232,7 @@ public class Connection : MonoBehaviour
 
     private void UpdateSelection(bool isSelected)
     {
-        if (isSelected && (start.deviceUI?.device.playerCanAccess ?? true))
+        if (isSelected && (start.deviceUI?.device.playerHasRequiredSecurityAccess ?? true))
         {
             if (selectedForDelete && Input.GetMouseButtonUp(1))
             {

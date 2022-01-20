@@ -26,9 +26,10 @@ namespace Scripts.Actions
         public bool runPreconnectionsOnStart;
         public int accessLevel;
         public SoundPreset deconnectedSound;
-
-        internal bool playerCanAccess;
         public Device parentDevice;
+        public DefaultIO defaultIO;
+
+        internal bool playerHasRequiredSecurityAccess;
         internal AttachedGadgetController attachedGadgetController;
         internal bool isAttachedGadget;
         internal Dictionary<Action, Dictionary<string, Node>> nodesPerAction;
@@ -72,11 +73,11 @@ namespace Scripts.Actions
         {
             if(accessLevelId == -1){
                 SetNodesPlayerAccessible(false);
-                playerCanAccess = false;
+                playerHasRequiredSecurityAccess = false;
             } else if(accessLevelId == accessLevel)
             {
                 SetNodesPlayerAccessible(true);
-                playerCanAccess = true;
+                playerHasRequiredSecurityAccess = true;
             }
             
             OnPlayerCanAccess.Invoke();
@@ -95,7 +96,7 @@ namespace Scripts.Actions
 
         public void DisconnectAll(bool nodesOnly)
         {
-            if (playerCanAccess)
+            if (playerHasRequiredSecurityAccess)
             {
                 deconnectedSound.Play(transform.position);
                 foreach (var action in nodesPerAction)

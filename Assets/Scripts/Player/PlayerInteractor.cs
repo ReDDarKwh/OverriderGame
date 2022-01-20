@@ -19,7 +19,7 @@ public class PlayerInteractor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && playerInRange)
         {
             
-            if (!device || device.playerCanAccess)
+            if (!device || device.playerHasRequiredSecurityAccess)
             {
                 interactable.Use(null);
             }

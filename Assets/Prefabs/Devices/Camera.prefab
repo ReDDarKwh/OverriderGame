@@ -243,6 +243,16 @@ PrefabInstance:
       propertyPath: deviceName
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: defaultIO.inputAction
+      value: 
+      objectReference: {fileID: 3993013553253857018}
+    - target: {fileID: 4089401180447782000, guid: 6e3ab18108021c44f8ff40f77330424b,
+        type: 3}
+      propertyPath: defaultIO.outputAction
+      value: 
+      objectReference: {fileID: 6008291312490995698}
     - target: {fileID: 4089401180447782002, guid: 6e3ab18108021c44f8ff40f77330424b,
         type: 3}
       propertyPath: m_Name

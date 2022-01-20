@@ -1178,7 +1178,7 @@ MonoBehaviour:
   disableClose: 0
   disableAnchor: 0
   UIDestroyable: 0
-  isPlayerAccessable: 1
+  defaultIsPlayerAccessable: 1
   lineColor: {r: 1, g: 0.49475378, b: 0, a: 0.49019608}
 --- !u!58 &8112609292630850992
 CircleCollider2D:

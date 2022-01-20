@@ -22,8 +22,11 @@ namespace Scripts.UI
         public LayerMask deviceLayerMask;
         public GameObject hackedLevelsContainer;
         public GameObject hackedLevelPrefab;
+        public float doubleClickInterval;
 
         private bool isDeviceInteractionActive = true;
+        private float lastMouseLeftUpTime = -1;
+        private bool successfulDefaultIOConnection;
 
         void Start()
         {
@@ -83,44 +86,82 @@ namespace Scripts.UI
                     d.OnHover();
                 }
 
-                if (Input.GetMouseButtonUp(0))
-                {
-                    if (devicesUnderMouse.Count() == 1)
-                    {
-                        foreach (var d in devicesUnderMouse)
-                        {
-                            d.ToggleSelected();
-                        }
-                    }
-                    else if (devicesUnderMouse.Any())
-                    {
-                        var items = devicesUnderMouse.Select(x =>
-                        {
-                            return new ContextMenuItem
-                            {
-                                name = x.device.deviceName,
-                                action = () =>
-                                {
-                                    x.Open();
-                                    SetDeviceInteractionActive(true);
-                                }
-                            };
-                        }).OrderBy(x => x.name).ToList();
-                        
-                        CreateContextMenu(
-                            new List<ContextMenuItem>(){
-                                new ContextMenuItem{
-                                    name = "Open all",
-                                    action = ()=>{
-                                        foreach(var a in items){
-                                            a.action();
-                                        }
-                                    }
-                                }
-                            }.Concat(items)
-                        );
+                if(Input.GetMouseButtonUp(1)){
+                    foreach(var d in devicesUnderMouse){
+                        d.device.DisconnectAll(true);
                     }
                 }
+
+                if (Input.GetMouseButtonDown(0) && devicesUnderMouse.Any())
+                {
+                    if (lastMouseLeftUpTime != -1 && Time.unscaledTime - lastMouseLeftUpTime < doubleClickInterval && devicesUnderMouse.Where(x=> !x.selected).Any())
+                    {
+                        if(!network.isConnecting){
+                            if(successfulDefaultIOConnection)
+                                network.CancelLastConnections();
+                        } else {
+                            if(successfulDefaultIOConnection)
+                                network.RemoveConnections();
+                        }                        
+                        
+                        SelectDevice(devicesUnderMouse);
+                        lastMouseLeftUpTime = -1;
+                    }
+                    else
+                    {
+                        var d = devicesUnderMouse?.FirstOrDefault() ?? null;
+                        successfulDefaultIOConnection = false;
+
+                        if(d){
+                            var success = network.RequestDeviceDefaultIOConnection(d.device);
+                            if(!success){
+                                SelectDevice(new List<DeviceUI>{d});     
+                            }
+                            successfulDefaultIOConnection = success;
+                        }
+
+                        lastMouseLeftUpTime = Time.unscaledTime;
+                    }
+                }
+            }
+        }
+
+        private void SelectDevice(List<DeviceUI> devicesUnderMouse)
+        {
+            if (devicesUnderMouse.Count() == 1)
+            {
+                foreach (var d in devicesUnderMouse)
+                {
+                    d.Open();
+                }
+            }
+            else if (devicesUnderMouse.Any())
+            {
+                var items = devicesUnderMouse.Select(x =>
+                {
+                    return new ContextMenuItem
+                    {
+                        name = x.device.deviceName,
+                        action = () =>
+                        {
+                            x.Open();
+                            SetDeviceInteractionActive(true);
+                        }
+                    };
+                }).OrderBy(x => x.name).ToList();
+
+                CreateContextMenu(
+                    new List<ContextMenuItem>(){
+                            new ContextMenuItem{
+                                name = "Open all",
+                                action = ()=>{
+                                    foreach(var a in items){
+                                        a.action();
+                                    }
+                                }
+                            }
+                    }.Concat(items)
+                );
             }
         }
 
