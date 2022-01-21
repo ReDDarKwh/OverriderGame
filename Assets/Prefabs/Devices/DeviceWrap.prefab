@@ -1134,6 +1134,9 @@ MonoBehaviour:
   accessLevel: 0
   deconnectedSound: {fileID: 11400000, guid: 92067fb7a0caf044fa3a5ffb30cd3316, type: 2}
   parentDevice: {fileID: 0}
+  defaultIO:
+    inputAction: {fileID: 0}
+    outputAction: {fileID: 0}
 --- !u!114 &8355662138841550960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,7 +1198,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.15
 --- !u!1 &4089401182147920999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,7 +1873,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0.325, y: 0.325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1806234570469029456
 Canvas:
@@ -1915,7 +1918,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6520641759021183112
 MonoBehaviour:
   m_ObjectHideFlags: 0
