@@ -9841,7 +9841,7 @@ MonoBehaviour:
   selfConnectRadiusY: 0
   selfConnectRadiusX: 0.21
   selfConnectPointCount: 25
-  wavyLineModifier: -5
+  wavyLineModifier: -7
   wavyLineFrequency: 0.172
   wavyLineAmplitude: 312.2
   wavyLineOffsetY: 270.1
