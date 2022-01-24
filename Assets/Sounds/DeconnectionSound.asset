@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7686e087ccc6a7f4993a0ebd4e968eee, type: 3}
   m_Name: DeconnectionSound
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 40c4048d29f207b4fb12aea256b51fa6, type: 3}
+  audioClip: {fileID: 8300000, guid: d75daa03d0b4c8844bc6659717c20a2a, type: 3}
   loop: 0
   playOnAwake: 1
-  pitch: 1
-  volume: 0.095
+  pitch: 1.07
+  volume: 0.109
   spacialBlend: 0
   priority: 107
   ignorePause: 0

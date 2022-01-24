@@ -13,6 +13,7 @@ public class NoiseEmitter : MonoBehaviour
     public ParticleSystem rippleEffect;
     public GameObject interactableObject;
     public Collider2D[] ignoredColliders;
+    public LayerMask soundBlockingLayers;
 
     public enum NoiseEmitterEvents {
         noiseHeard,
@@ -30,6 +31,14 @@ public class NoiseEmitter : MonoBehaviour
 
         foreach (var collider in colliders.Take(maxTargets).Except(ignoredColliders).OrderBy(x => (x.transform.position - transform.position).sqrMagnitude))
         {
+            var hit = Physics2D.Raycast(transform.position, collider.transform.position - transform.position, noiseRadius, soundBlockingLayers);
+
+            if(hit.collider){
+                if((collider.transform.position - transform.position).magnitude > noiseRadius / 2){
+                    continue;
+                }
+            }
+
             var hsm = collider.GetComponent<HSM>();
             if(hsm != null){
                 if (noiseHeardEvent == NoiseEmitterEvents.noiseHeard)

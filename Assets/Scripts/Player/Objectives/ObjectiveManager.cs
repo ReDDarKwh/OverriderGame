@@ -9,14 +9,26 @@ public class ObjectiveManager : MonoBehaviour
     public GameObject objectiveUIPrefab;
     public Transform objectiveUIContainer;
     public List<Objective> objectives = new List<Objective>();
-    private Dictionary<string, ObjectiveUI> objectiveUIPerName = new Dictionary<string, ObjectiveUI>();
+    public MoneyAmountChangeEvent onMoneyAmountChange;
 
+    private Dictionary<string, ObjectiveUI> objectiveUIPerName = new Dictionary<string, ObjectiveUI>();
     private int currentObjective = -1;
+
+    private float money;
+
+    [System.Serializable]
+    public class MoneyAmountChangeEvent: UnityEvent<float>{};
 
     void Start()
     {
         InitNextObjective();
     }
+
+    public void AddMoney(float amount){
+        money += amount;
+        onMoneyAmountChange.Invoke(money);
+    }
+
     void InitNextObjective()
     {
         currentObjective++;

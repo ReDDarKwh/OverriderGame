@@ -8,10 +8,7 @@ public class PlayerInteractor : MonoBehaviour
     public SpriteRenderer selectionSprite;
     public Interactable interactable;
     public Device device;
-    public LayerMask blockingLayers;
-    public float cooldownTime;
     private bool playerInRange;
-    private float lastTime;
 
     // Update is called once per frame
     void Update()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Lowscope.Saving;
 using Scripts.Hacking;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Scripts.UI.ContextMenuUIController;
@@ -23,10 +24,16 @@ namespace Scripts.UI
         public GameObject hackedLevelsContainer;
         public GameObject hackedLevelPrefab;
         public float doubleClickInterval;
+        public TextMeshProUGUI moneyText;
 
         private bool isDeviceInteractionActive = true;
         private float lastMouseLeftUpTime = -1;
         private bool successfulDefaultIOConnection;
+        private bool selectDeviceOnMouseUp;
+
+        public void ChangeMoneyAmount(float amount){
+            moneyText.text =  "$" + amount.ToString();    
+        }
 
         void Start()
         {
@@ -104,7 +111,8 @@ namespace Scripts.UI
                                 network.RemoveConnections();
                         }                        
                         
-                        SelectDevice(devicesUnderMouse);
+                        selectDeviceOnMouseUp = true;
+                        
                         lastMouseLeftUpTime = -1;
                     }
                     else
@@ -115,7 +123,7 @@ namespace Scripts.UI
                         if(d){
                             var success = network.RequestDeviceDefaultIOConnection(d.device);
                             if(!success){
-                                SelectDevice(new List<DeviceUI>{d});     
+                                selectDeviceOnMouseUp = true;   
                             }
                             successfulDefaultIOConnection = success;
                         }
@@ -123,6 +131,13 @@ namespace Scripts.UI
                         lastMouseLeftUpTime = Time.unscaledTime;
                     }
                 }
+
+                if(selectDeviceOnMouseUp && Input.GetMouseButtonUp(0)){
+
+                    selectDeviceOnMouseUp = false;
+                    SelectDevice(devicesUnderMouse);
+                }
+
             }
         }
 

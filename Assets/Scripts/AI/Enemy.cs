@@ -10,8 +10,8 @@ using Scripts.Actions;
 public class Enemy : MonoBehaviour
 {
     public Creature creature;
-    public Animator anim;
-    public SpriteRenderer spriteRenderer;
+    //public Animator anim;
+    //public SpriteRenderer spriteRenderer;
     public Killable killable;
     public HSM hsm;
     public bool isHostile;
@@ -53,14 +53,14 @@ public class Enemy : MonoBehaviour
     {
         if (!killable.dead)
         {
-            anim.SetInteger("Mode", (int)creature.moveState);
+            //anim.SetInteger("Mode", (int)creature.moveState);
         }
     }
 
     public void OnDead()
     {
-        anim.SetInteger("Mode", 0);
-        spriteRenderer.sortingOrder = 9;
-        spriteRenderer.transform.rotation = Quaternion.Euler(0, 0, 90);
+        //anim.SetInteger("Mode", 0);
+        //spriteRenderer.sortingOrder = 9;
+        //spriteRenderer.transform.rotation = Quaternion.Euler(0, 0, 90);
     }
 }
