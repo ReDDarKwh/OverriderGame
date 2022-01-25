@@ -73,7 +73,6 @@ namespace Scripts.UI
 
         void LateUpdate()
         {
-
             if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
             {
                 if (currentContextMenu != null)

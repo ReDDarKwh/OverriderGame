@@ -18,6 +18,7 @@ namespace Scripts.Hacking
         public LayerMask nodeLayerMask;
         public Color[] accessLevels;
         public SoundPreset disconnectSound;
+        public Transform padlockMouseCursor;
 
         internal bool isConnecting;
         internal HashSet<int> hackedAccessLevels = new HashSet<int>();
@@ -33,6 +34,7 @@ namespace Scripts.Hacking
         private Vector3 selectionStartPos;
         private Dictionary<Node, Connection> connectionBySelectedNode;
         private Node selectedNodeFromHUD;
+        private int padlockCount;
 
         public class AccessLevelEvent : UnityEvent<int>{};
 
@@ -72,6 +74,22 @@ namespace Scripts.Hacking
             ConnectionEnd(from, to, ConnectionStart(from, soundOn), soundOn);
         }
 
+        public void ShowPadlockCursor(bool hasAccess){
+            if(!hasAccess){
+                padlockMouseCursor.gameObject.SetActive(true);
+                Cursor.visible = false;
+                padlockCount ++;
+            }
+        }
+
+        public void HidePadlockCursor(bool hasAccess){
+            padlockCount = Mathf.Max(0, padlockCount - 1) ;
+            if(!hasAccess && padlockCount == 0){
+                padlockMouseCursor.gameObject.SetActive(false);
+                Cursor.visible = true;
+            }
+        }
+
         internal Connection ConnectionStart(Node from, bool soundOn, bool reversed = false)
         {
             if(from.gate.isHiddenFromPlayer)
@@ -89,6 +107,9 @@ namespace Scripts.Hacking
                 connection.start = from;
                 connection.end = mousePosNode;
             }
+
+            connection.OnHoverEnter.AddListener(ShowPadlockCursor);
+            connection.OnHoverExit.AddListener(HidePadlockCursor);
 
             connection.reversed = reversed;
 
@@ -167,6 +188,8 @@ namespace Scripts.Hacking
         // Update is called once per frame
         void Update()
         {
+
+            padlockMouseCursor.position = Input.mousePosition;
 
             if (selectedNodes != null)
             {

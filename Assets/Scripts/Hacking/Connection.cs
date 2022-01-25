@@ -6,6 +6,7 @@ using UnityEngine;
 using Vectrosity;
 using System.Linq;
 using Network = Scripts.Hacking.Network;
+using UnityEngine.Events;
 
 public class Connection : MonoBehaviour
 {
@@ -50,6 +51,12 @@ public class Connection : MonoBehaviour
     public float selectedWaveStrength;
     public float lineSelectionStrength;
 
+    internal ConnectionHoverEnterEvent OnHoverEnter = new ConnectionHoverEnterEvent();
+    internal ConnectionHoverExitEvent OnHoverExit = new ConnectionHoverExitEvent();
+
+    public class ConnectionHoverEnterEvent: UnityEvent<bool>{};
+    public class ConnectionHoverExitEvent: UnityEvent<bool>{};
+
     internal VectorLine line;
     internal Node end;
     internal Node start;
@@ -63,6 +70,8 @@ public class Connection : MonoBehaviour
     private bool hasAnimationPlayed;
     private Camera cam;
     private bool isConnected;
+    private bool oldIsSelected;
+    private bool? oldPlayerHasRequiredSecurityAccess;
 
     // Start is called before the first frame update
     void Start()
@@ -248,6 +257,20 @@ public class Connection : MonoBehaviour
         } else {
             selectedForDelete = false;
         }
+
+
+        if(isSelected != oldIsSelected || start.deviceUI?.device.playerHasRequiredSecurityAccess != oldPlayerHasRequiredSecurityAccess){
+
+            if(isSelected){
+                OnHoverEnter.Invoke(start.deviceUI?.device.playerHasRequiredSecurityAccess ?? true);
+            } else {
+                OnHoverExit.Invoke(start.deviceUI?.device.playerHasRequiredSecurityAccess ?? true);
+            }
+
+            oldIsSelected = isSelected;
+            oldPlayerHasRequiredSecurityAccess = start.deviceUI?.device.playerHasRequiredSecurityAccess;
+        }
+
     }
 
     private bool IsSelected(){
